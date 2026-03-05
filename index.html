@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- ===== SEO ===== -->
+    <title>شراء عملة Pi بأعلى سعر $100 | الانصاري للصرافة دبي</title>
+    <meta name="description" content="بيع عملات Pi Network الآن بأعلى سعر $100 للعملة الواحدة. خدمة فورية وآمنة مع الانصاري للصرافة دبي. استلم أموالك خلال 15 دقيقة عبر USDT Solana.">
+    <meta name="keywords" content="شراء Pi Network, بيع Pi, Pi coin price, Pi Network Dubai, صرف Pi, الانصاري للصرافة, PI USDT, Pi Network exchange">
+    <meta name="author" content="الانصاري للصرافة دبي">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://alansari-pi.exchange/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="شراء عملة Pi بأعلى سعر $100 | الانصاري للصرافة دبي">
+    <meta property="og:description" content="بيع Pi Network بأعلى سعر. استلم USDT خلال 15 دقيقة.">
+    <meta property="og:image" content="https://www2.0zz0.com/2026/03/05/22/956653607.jpg">
+    <meta property="og:locale" content="ar_AE">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="بيع Pi Network بسعر $100">
+    <meta name="twitter:description" content="الانصاري للصرافة دبي - أعلى سعر لعملة Pi">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "الانصاري للصرافة دبي - شراء Pi Network",
+      "description": "خدمة شراء عملة Pi Network بأعلى سعر في السوق",
+      "telephone": "+97142245189",
+      "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"},
+      "currenciesAccepted": "PI, USDT",
+      "openingHours": "Mo-Su 00:00-23:59"
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #d4a017;
+            --gold-light: #f0c040;
+            --gold-dark: #a07810;
+            --dark: #0a0a0f;
+            --dark2: #12121a;
+            --dark3: #1a1a28;
+            --surface: #1e1e2e;
+            --surface2: #252538;
+            --border: rgba(212,160,23,0.2);
+            --text: #e8e8f0;
+            --text-muted: #8888aa;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --radius: 14px;
+            --radius-sm: 8px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            color: var(--text);
+            background: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body.lang-en, body.lang-fr, body.lang-zh, body.lang-fil {
+            font-family: 'Space Grotesk', 'Tajawal', sans-serif;
+        }
+
+        /* ── Background ── */
+        #bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(212,160,23,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212,160,23,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* ── Layout ── */
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Header ── */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30,30,46,0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 17px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 0.3px;
+        }
+
+        .pi-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--dark);
+            flex-shrink: 0;
+            box-shadow: 0 0 16px rgba(212,160,23,0.4);
+        }
+
+        .lang-selector select {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 7px 14px;
+            font-family: inherit;
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* ── Hero Card ── */
+        .hero-card {
+            background: linear-gradient(135deg, var(--dark3) 0%, #1a1430 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            text-align: center;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212,160,23,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-card h1 {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .hero-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 550px;
+            margin: 0 auto 18px;
+        }
+
+        .price-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .price-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .price-box .label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .price-box .value {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .price-box.market .value { color: var(--text-muted); text-decoration: line-through; }
+        .price-box.ours { border-color: var(--gold); background: rgba(212,160,23,0.08); }
+        .price-box.ours .value { color: var(--gold); font-size: 26px; }
+        .price-box.ours .label { color: var(--gold-light); }
+
+        .badge-hot {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            font-size: 10px;
+            font-weight: 900;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Ticker ── */
+        .ticker-wrap {
+            background: var(--dark2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 12px 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .ticker-dot {
+            width: 8px; height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            flex-shrink: 0;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+            50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+        }
+
+        .ticker-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .ticker-content {
+            font-size: 13px;
+            color: var(--text);
+            transition: opacity 0.4s;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .t-gold { color: var(--gold); font-weight: 700; }
+        .t-pi { color: #a78bfa; }
+
+        /* ── Card ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 22px;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── Instructions ── */
+        .steps-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 12px 14px;
+            background: var(--dark3);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: var(--text);
+            transition: border-color 0.2s;
+        }
+
+        .step-item:hover { border-color: var(--border); }
+
+        .step-num {
+            min-width: 26px;
+            height: 26px;
+            background: var(--gold);
+            color: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 13px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ── Form ── */
+        .form-group { margin-bottom: 18px; }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrap input {
+            width: 100%;
+            padding: 13px 44px 13px 16px;
+            background: var(--dark3);
+            border: 1.5px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        [dir="rtl"] .input-wrap input { padding: 13px 16px 13px 44px; }
+
+        .input-wrap input:focus { border-color: var(--gold); outline: none; }
+
+        .input-wrap input[readonly] { color: var(--text-muted); cursor: default; }
+
+        .suffix-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        [dir="rtl"] .suffix-icon { left: 14px; }
+        [dir="ltr"] .suffix-icon { right: 14px; }
+
+        .min-hint {
+            font-size: 11px;
+            color: var(--danger);
+            margin-top: 5px;
+            display: none;
+        }
+
+        .wallet-display {
+            background: var(--dark3);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            font-size: 11px;
+            font-family: monospace;
+            color: var(--text-muted);
+            word-break: break-all;
+            line-height: 1.5;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-copy {
+            flex: 1;
+            background: rgba(212,160,23,0.12);
+            border: 1px solid var(--border);
+            color: var(--gold);
+            padding: 10px;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-copy:active, .btn-copy:hover { background: rgba(212,160,23,0.22); }
+
+        .qr-box {
+            text-align: center;
+            padding: 14px;
+            background: var(--dark3);
+            border-radius: var(--radius-sm);
+            margin-top: 12px;
+        }
+
+        .qr-box img {
+            max-width: 160px;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+        }
+
+        .qr-box p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .wallet-hint {
+            font-size: 12px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .wallet-hint.ok { background: rgba(34,197,94,0.1); color: #86efac; border: 1px solid rgba(34,197,94,0.2); }
+        .wallet-hint.warn { background: rgba(239,68,68,0.1); color: #fca5a5; border: 1px solid rgba(239,68,68,0.2); }
+
+        .file-input-label {
+            display: block;
+            border: 2px dashed rgba(255,255,255,0.12);
+            border-radius: var(--radius-sm);
+            padding: 18px;
+            text-align: center;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 13px;
+            transition: border-color 0.2s;
+        }
+
+        .file-input-label:hover { border-color: var(--gold); color: var(--gold); }
+        .file-input-label input { display: none; }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+            background-size: 200% 100%;
+            color: var(--dark);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 17px;
+            font-weight: 900;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 24px rgba(212,160,23,0.3);
+            margin-top: 8px;
+            transition: box-shadow 0.2s, opacity 0.2s;
+        }
+
+        .submit-btn:hover { box-shadow: 0 6px 32px rgba(212,160,23,0.5); }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* ── Success ── */
+        .success-box {
+            background: rgba(34,197,94,0.08);
+            border: 1px solid rgba(34,197,94,0.3);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .success-box h3 { color: var(--success); font-size: 20px; margin-bottom: 12px; }
+        .success-box p { color: var(--text); font-size: 14px; margin-bottom: 8px; line-height: 1.6; }
+
+        .success-steps {
+            background: rgba(0,0,0,0.2);
+            border-radius: var(--radius-sm);
+            padding: 14px;
+            margin: 14px 0;
+            text-align: right;
+        }
+
+        [dir="ltr"] .success-steps { text-align: left; }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-muted);
+            font-size: 12px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 20px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 480px) {
+            .brand { font-size: 14px; }
+            .price-display { gap: 12px; }
+            .price-box.ours .value { font-size: 22px; }
+            .hero-card { padding: 20px 16px; }
+            .card { padding: 16px; }
+            .btn-row { flex-direction: column; }
+        }
+
+        /* ── Live Feed Panel ── */
+        .live-feed-panel {
+            background: var(--dark2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .live-feed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 18px;
+            background: rgba(212,160,23,0.06);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .live-feed-title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .live-pulse-ring {
+            width: 16px; height: 16px;
+            border-radius: 50%;
+            border: 2px solid var(--success);
+            animation: ring-pulse 1.8s infinite;
+            position: relative;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .live-dot-inner {
+            width: 8px; height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            position: absolute;
+            top: 4px; left: 4px;
+        }
+
+        @keyframes ring-pulse {
+            0% { transform: scale(1); opacity: 1; }
+            70% { transform: scale(1.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        .live-feed-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .live-feed-stats {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-item { text-align: center; }
+
+        .stat-val {
+            display: block;
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--gold);
+            font-variant-numeric: tabular-nums;
+            transition: all 0.3s;
+        }
+
+        .stat-lbl {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-sep {
+            width: 1px;
+            height: 30px;
+            background: var(--border);
+        }
+
+        .live-feed-list {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 8px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+
+        .live-feed-list::-webkit-scrollbar { width: 4px; }
+        .live-feed-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+        .feed-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            animation: slideInRow 0.4s cubic-bezier(0.22,1,0.36,1) both;
+            transition: background 0.2s;
+        }
+
+        .feed-row:hover { background: rgba(212,160,23,0.04); }
+        .feed-row:last-child { border-bottom: none; }
+
+        @keyframes slideInRow {
+            from { opacity: 0; transform: translateX(20px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        [dir="rtl"] @keyframes slideInRow {
+            from { opacity: 0; transform: translateX(-20px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .feed-icon {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(212,160,23,0.1);
+            border: 1px solid rgba(212,160,23,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .feed-body { flex: 1; min-width: 0; }
+
+        .feed-wallet {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text);
+            font-family: monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .feed-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .feed-right { text-align: left; flex-shrink: 0; }
+        [dir="rtl"] .feed-right { text-align: right; }
+
+        .feed-amount {
+            font-size: 15px;
+            font-weight: 900;
+            color: var(--success);
+            white-space: nowrap;
+        }
+
+        .feed-usd {
+            font-size: 11px;
+            color: var(--gold);
+            margin-top: 2px;
+            white-space: nowrap;
+        }
+
+        .feed-time {
+            font-size: 10px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            text-align: center;
+            flex-shrink: 0;
+            min-width: 44px;
+        }
+
+        .feed-badge {
+            display: inline-block;
+            background: rgba(34,197,94,0.12);
+            color: #86efac;
+            border: 1px solid rgba(34,197,94,0.2);
+            border-radius: 4px;
+            font-size: 9px;
+            padding: 1px 6px;
+            margin-right: 4px;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+
+        [dir="ltr"] .feed-badge { margin-right: 0; margin-left: 4px; }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card, .hero-card, .ticker-wrap { animation: fadeUp 0.4s ease both; }
+        header { animation: fadeUp 0.3s ease both; }
+        .card:nth-child(1) { animation-delay: 0.05s; }
+        .card:nth-child(2) { animation-delay: 0.10s; }
+        .card:nth-child(3) { animation-delay: 0.15s; }
+    </style>
+</head>
+<body class="lang-ar">
+
+<div class="grid-bg"></div>
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+
+    <!-- Header -->
+    <header>
+        <div class="brand">
+            <div class="pi-logo">π</div>
+            <span id="txt-brand">شراء Pi بأعلى سعر</span>
+        </div>
+        <div class="lang-selector">
+            <select id="langSelect" onchange="app.setLanguage(this.value)">
+                <option value="ar" selected>🇦🇪 العربية</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="zh">🇨🇳 中文</option>
+                <option value="fil">🇵🇭 Filipino</option>
+                <option value="hi">🇮🇳 हिन्दी</option>
+                <option value="fr">🇫🇷 Français</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="hero-card">
+        <h1 id="txt-title">نؤمن بمستقبل Pi Network</h1>
+        <p id="txt-desc">لأننا نؤمن أن سعر Pi سيصل يوماً ما إلى سعر الإجماع، نقوم بشراء عملات Pi حالياً بسعر تشجيعي مميز.</p>
+        <div class="price-display">
+            <div class="price-box market">
+                <div class="label" id="txt-market-label">سعر السوق</div>
+                <div class="value" id="market-val">...</div>
+            </div>
+            <div class="price-box ours">
+                <div class="label" id="txt-our-label">سعرنا الخاص</div>
+                <div class="value">$100.00</div>
+                <div class="badge-hot" id="txt-badge">🔥 أفضل سعر</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Sales Feed -->
+    <div class="live-feed-panel">
+        <div class="live-feed-header">
+            <div class="live-feed-title-row">
+                <span class="live-pulse-ring"></span>
+                <span class="live-dot-inner"></span>
+                <span class="live-feed-label" id="txt-live-title">عمليات البيع المباشرة</span>
+            </div>
+            <div class="live-feed-stats">
+                <div class="stat-item">
+                    <span class="stat-val" id="stat-count">0</span>
+                    <span class="stat-lbl" id="stat-lbl-count">عملية اليوم</span>
+                </div>
+                <div class="stat-sep"></div>
+                <div class="stat-item">
+                    <span class="stat-val" id="stat-total">0</span>
+                    <span class="stat-lbl" id="stat-lbl-total">Pi تم شراؤها</span>
+                </div>
+            </div>
+        </div>
+        <div class="live-feed-list" id="live-feed-list">
+            <!-- Rows injected by JS -->
+        </div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="card">
+        <div class="card-title" id="txt-instructions-title">📋 تعليمات البيع خطوة بخطوة</div>
+        <ol class="steps-list" id="instructions-list"></ol>
+    </div>
+
+    <!-- Sell Form -->
+    <div class="card">
+        <div class="card-title" id="txt-form-title">💰 نموذج البيع</div>
+
+        <form id="sellForm" onsubmit="app.handleSubmit(event)">
+
+            <!-- Amount -->
+            <div class="form-group">
+                <label id="lbl-amount">عدد العملات (حد أدنى 250 Pi)</label>
+                <div class="input-wrap">
+                    <input type="number" id="piAmount" placeholder="250" min="1" inputmode="numeric">
+                    <span class="suffix-icon">π</span>
+                </div>
+                <div class="min-hint" id="min-error"></div>
+            </div>
+
+            <!-- Total -->
+            <div class="form-group">
+                <label id="lbl-total">ستحصل على (دولار أمريكي)</label>
+                <div class="input-wrap">
+                    <input type="text" id="usdTotal" readonly value="0.00">
+                    <span class="suffix-icon">$</span>
+                </div>
+            </div>
+
+            <!-- Our Wallet -->
+            <div class="form-group">
+                <label id="lbl-deposit">📤 محفظتنا لاستقبال Pi</label>
+                <div class="wallet-display" id="depositWallet">GDCPYOJXJGCEZBBANLOMDINPXDHZZZYIWGMHLJIL2BMNRQ743B2BKASN</div>
+                <div class="btn-row">
+                    <button type="button" class="btn-copy" onclick="app.copyWallet()" id="btn-copy">
+                        📋 <span id="txt-copy">نسخ العنوان</span>
+                    </button>
+                </div>
+                <div class="qr-box">
+                    <p id="lbl-qr">امسح رمز QR لنسخ العنوان</p>
+                    <img src="https://raw.githubusercontent.com/piprice/pi/main/5c5fafb0-b03c-4a74-b777-c36174ad4633.jpg" alt="QR Code - Pi Wallet Address" loading="lazy">
+                </div>
+            </div>
+
+            <!-- User Wallet -->
+            <div class="form-group">
+                <label id="lbl-user-wallet">📥 عنوان محفظتك USDT (شبكة Solana)</label>
+                <div class="input-wrap">
+                    <input type="text" id="userWallet" placeholder="Solana Wallet Address" autocomplete="off">
+                </div>
+                <div class="wallet-hint" id="walletWarning"></div>
+            </div>
+
+            <!-- Receipt -->
+            <div class="form-group">
+                <label id="lbl-receipt">🖼️ إثبات تحويل Pi</label>
+                <label class="file-input-label" id="file-drop-label">
+                    <input type="file" id="receiptFile" accept="image/*" onchange="app.onFileChange(this)">
+                    <div id="file-label-text">📎 اضغط لرفع صورة الإثبات</div>
+                </label>
+            </div>
+
+            <button type="submit" class="submit-btn" id="btn-submit" id="txt-submit">✅ تأكيد عملية البيع</button>
+        </form>
+
+        <div class="success-box" id="feedbackArea">
+            <h3 id="succ-title">✅ تم الاستلام</h3>
+            <div class="success-steps">
+                <p id="succ-1"></p>
+                <p id="succ-2"></p>
+                <p id="succ-3"></p>
+            </div>
+            <p id="succ-4" style="color: var(--gold); font-weight: 700; font-size: 16px;"></p>
+        </div>
+    </div>
+
+    <footer id="footer-text">جميع الحقوق محفوظة — الانصاري للصرافة دبي 2026/2027</footer>
+</div>
+
+<script>
+const app = {
+    config: { buyPrice: 100, minPi: 250, okxApi: "https://www.okx.com/api/v5/market/ticker?instId=PI-USDT" },
+    state: { lang: 'ar' },
+
+    i18n: {
+        ar: {
+            brand: "شراء Pi بأعلى سعر",
+            title: "نؤمن بمستقبل Pi Network",
+            desc: "لأننا نؤمن أن سعر Pi سيصل يوماً ما إلى سعر الإجماع، نقوم بشراء عملات Pi حالياً بسعر تشجيعي مميز.",
+            marketLabel: "سعر السوق",
+            ourLabel: "سعرنا الخاص",
+            badge: "🔥 أفضل سعر",
+            liveTitle: "عمليات البيع المباشرة 🔴",
+            instructionsTitle: "📋 تعليمات البيع خطوة بخطوة",
+            formTitle: "💰 نموذج البيع",
+            lblAmount: "عدد العملات (حد أدنى 250 Pi)",
+            lblTotal: "ستحصل على (دولار أمريكي)",
+            lblDeposit: "📤 محفظتنا لاستقبال Pi",
+            btnCopy: "نسخ العنوان",
+            copied: "تم النسخ ✓",
+            lblQr: "امسح رمز QR لنسخ العنوان",
+            lblUserWallet: "📥 عنوان محفظتك USDT (شبكة Solana)",
+            walletOk: "✅ يبدو صحيحاً - تأكد من شبكة Solana (SOL)",
+            walletWarn: "⚠️ تأكد أن العنوان لشبكة Solana (SOL) وليس ERC20",
+            lblReceipt: "🖼️ إثبات تحويل Pi",
+            fileLabel: "📎 اضغط لرفع صورة الإثبات",
+            btnSubmit: "✅ تأكيد عملية البيع",
+            footer: "جميع الحقوق محفوظة — الانصاري للصرافة دبي 2026/2027",
+            minError: "الحد الأدنى 250 عملة Pi",
+            steps: [
+                "قم بنسخ عنوان محفظتنا الخاصة باستقبال Pi من الأعلى، أو امسح رمز QR.",
+                "اذهب إلى أي محفظة لديك عليها عملات Pi وأرسل العدد الذي تريد بيعه إلى عنواننا.",
+                "بعد الإرسال، قم بأخذ سكرين شوت (لقطة شاشة) لعملية إرسال عملات Pi إلينا كإثبات.",
+                "اذهب إلى محفظة الأموال الخاصة بمنصتك أو محفظتك الرقمية، واضغط على 'إيداع عملات رقمية' أو 'استقبال'، ثم اختر USDT من نوع Solana (SOL).",
+                "انسخ عنوان محفظتك الذي ظهر لك، وارجع ضعه في الحقل أدناه في خانة محفظة USDT.",
+                "ارفع صورة سكرين شوت إثبات تحويل عملات Pi إلينا في حقل الإثبات.",
+                "اضغط 'تأكيد عملية البيع' لإرسال الطلب.",
+                "أموالك USDT ستصلك في حد أقصى 15 دقيقة، وفقاً لضغط شبكة Solana (SOL).",
+                "إن لم تصلك الأموال خلال 24 ساعة، تواصل معنا فوراً عبر الهاتف: +971 4 224 5189"
+            ],
+            succTitle: "✅ تم استلام طلبك بنجاح",
+            succMsg1: "📨 تم إرسال بياناتك إلى فريق الانصاري للصرافة.",
+            succMsg2: "🔍 جاري التحقق من عملية التحويل.",
+            succMsg3: "⏱️ أموالك USDT ستصل خلال 15 دقيقة على شبكة Solana.",
+            succMsg4: "📞 للدعم والاستفسار: +971 4 224 5189",
+            tickerSold: "باع",
+            timeAgo: "منذ",
+            timeUnit: "د",
+            timeUnitSec: "ث",
+            statOps: "عملية اليوم",
+            statPi: "Pi تم شراؤها"
+        },
+        en: {
+            brand: "Buy Pi - Highest Price",
+            title: "We Believe in Pi's Future",
+            desc: "We purchase Pi coins at a premium price because we believe in their long-term value reaching the consensus price.",
+            marketLabel: "Market Price",
+            ourLabel: "Our Price",
+            badge: "🔥 Best Rate",
+            liveTitle: "Live Sales Feed 🔴",
+            instructionsTitle: "📋 Step-by-Step Selling Instructions",
+            formTitle: "💰 Sell Form",
+            lblAmount: "Number of Coins (Min. 250 Pi)",
+            lblTotal: "You Will Receive (USD)",
+            lblDeposit: "📤 Our Pi Wallet Address",
+            btnCopy: "Copy Address",
+            copied: "Copied ✓",
+            lblQr: "Scan QR Code to copy address",
+            lblUserWallet: "📥 Your USDT Wallet (Solana Network)",
+            walletOk: "✅ Looks correct — confirm it's on Solana (SOL) network",
+            walletWarn: "⚠️ Ensure this is a Solana (SOL) address, not ERC20",
+            lblReceipt: "🖼️ Proof of Pi Transfer",
+            fileLabel: "📎 Tap to upload screenshot proof",
+            btnSubmit: "✅ Confirm Sale",
+            footer: "All Rights Reserved — Al Ansari Exchange Dubai 2026/2027",
+            minError: "Minimum is 250 Pi coins",
+            steps: [
+                "Copy our Pi wallet address above, or scan the QR code provided.",
+                "Open any wallet that holds your Pi coins and send the amount you wish to sell to our address.",
+                "After sending, take a screenshot of the Pi transfer as proof of transaction.",
+                "Open your exchange or crypto wallet app, tap 'Deposit', select USDT and choose the Solana (SOL) network.",
+                "Copy the USDT deposit address shown, then return here and paste it in the wallet field below.",
+                "Upload the screenshot proof of your Pi transfer in the receipt field.",
+                "Press 'Confirm Sale' to submit your request.",
+                "Your USDT will arrive within 15 minutes, depending on Solana (SOL) network traffic.",
+                "If funds don't arrive within 24 hours, contact us immediately: +971 4 224 5189"
+            ],
+            succTitle: "✅ Request Received Successfully",
+            succMsg1: "📨 Your details have been sent to Al Ansari Exchange team.",
+            succMsg2: "🔍 We are verifying your transfer.",
+            succMsg3: "⏱️ Your USDT will arrive within 15 minutes on Solana network.",
+            succMsg4: "📞 Support: +971 4 224 5189",
+            tickerSold: "sold",
+            timeAgo: "ago",
+            timeUnit: "m",
+            timeUnitSec: "s",
+            statOps: "Sales Today",
+            statPi: "Pi Purchased"
+        },
+        zh: {
+            brand: "最高价购买Pi",
+            title: "我们相信Pi的未来",
+            desc: "我们以高价购买Pi，因为我们相信Pi将达到共识价格。",
+            marketLabel: "市场价格",
+            ourLabel: "我们的价格",
+            badge: "🔥 最佳价格",
+            liveTitle: "实时",
+            instructionsTitle: "📋 出售步骤说明",
+            formTitle: "💰 出售表单",
+            lblAmount: "Pi数量（最少250个）",
+            lblTotal: "您将收到（美元）",
+            lblDeposit: "📤 我们的Pi钱包地址",
+            btnCopy: "复制地址",
+            copied: "已复制 ✓",
+            lblQr: "扫描二维码复制地址",
+            lblUserWallet: "📥 您的USDT钱包（Solana网络）",
+            walletOk: "✅ 地址有效 — 请确认使用Solana (SOL)网络",
+            walletWarn: "⚠️ 请确保使用Solana (SOL)网络，而非ERC20",
+            lblReceipt: "🖼️ Pi转账证明",
+            fileLabel: "📎 点击上传截图证明",
+            btnSubmit: "✅ 确认出售",
+            footer: "版权所有 — Al Ansari迪拜兑换 2026/2027",
+            minError: "最少250个Pi",
+            steps: [
+                "复制上方我们的Pi钱包地址或扫描二维码。",
+                "打开您持有Pi的钱包，将要出售的数量发送到我们的地址。",
+                "发送后，截图保存Pi转账记录作为凭证。",
+                "打开您的交易所或加密钱包，点击「充值」，选择USDT并选择Solana (SOL)网络。",
+                "复制显示的USDT充值地址，返回此页面粘贴到钱包字段。",
+                "在凭证栏上传Pi转账的截图。",
+                "点击「确认出售」提交申请。",
+                "您的USDT将在15分钟内到账（取决于Solana网络情况）。",
+                "若24小时内未收到款项，请立即联系我们：+971 4 224 5189"
+            ],
+            succTitle: "✅ 申请已成功接收",
+            succMsg1: "📨 您的信息已发送给Al Ansari兑换团队。",
+            succMsg2: "🔍 正在验证您的转账。",
+            succMsg3: "⏱️ 您的USDT将在15分钟内通过Solana网络到账。",
+            succMsg4: "📞 支持热线：+971 4 224 5189",
+            tickerSold: "售出",
+            timeAgo: "前",
+            timeUnit: "分",
+            timeUnitSec: "秒",
+            statOps: "今日交易",
+            statPi: "已购Pi"
+        },
+        fil: {
+            brand: "Pinakamataas na Presyo ng Pi",
+            title: "Naniniwala Kami sa Kinabukasan ng Pi",
+            desc: "Binibili namin ang Pi sa mataas na presyo dahil naniniwala kami sa pangmatagalang halaga nito.",
+            marketLabel: "Presyo ng Merkado",
+            ourLabel: "Aming Presyo",
+            badge: "🔥 Pinakamahusay",
+            liveTitle: "Live",
+            instructionsTitle: "📋 Mga Hakbang sa Pagbebenta",
+            formTitle: "💰 Form ng Pagbebenta",
+            lblAmount: "Bilang ng Pi (Min. 250)",
+            lblTotal: "Matatanggap Mo (USD)",
+            lblDeposit: "📤 Aming Pi Wallet Address",
+            btnCopy: "Kopyahin ang Address",
+            copied: "Nakopya ✓",
+            lblQr: "I-scan ang QR Code",
+            lblUserWallet: "📥 Iyong USDT Wallet (Solana Network)",
+            walletOk: "✅ Mukhang tama — tiyaking Solana (SOL) network",
+            walletWarn: "⚠️ Tiyaking Solana (SOL) at hindi ERC20",
+            lblReceipt: "🖼️ Patunay ng Pi Transfer",
+            fileLabel: "📎 I-tap para mag-upload ng screenshot",
+            btnSubmit: "✅ Kumpirmahin ang Pagbebenta",
+            footer: "Lahat ng Karapatan ay Nakalaan — Al Ansari Exchange Dubai 2026/2027",
+            minError: "Minimum ay 250 Pi",
+            steps: [
+                "Kopyahin ang aming Pi wallet address sa itaas, o i-scan ang QR code.",
+                "Buksan ang iyong Pi wallet at ipadala ang gustong ibenta sa aming address.",
+                "Pagkatapos magpadala, kumuha ng screenshot ng Pi transfer bilang patunay.",
+                "Buksan ang iyong exchange o crypto wallet, pindutin ang 'Deposit', piliin ang USDT at Solana (SOL) network.",
+                "Kopyahin ang USDT deposit address, bumalik dito at i-paste sa field ng wallet.",
+                "I-upload ang screenshot ng iyong Pi transfer sa receipt field.",
+                "Pindutin ang 'Kumpirmahin ang Pagbebenta' para isumite.",
+                "Ang iyong USDT ay darating sa loob ng 15 minuto, depende sa Solana network.",
+                "Kung hindi dumating sa loob ng 24 oras, makipag-ugnayan: +971 4 224 5189"
+            ],
+            succTitle: "✅ Natanggap ang Kahilingan",
+            succMsg1: "📨 Naipadala na ang iyong detalye sa Al Ansari Exchange.",
+            succMsg2: "🔍 Bine-verify ang iyong transfer.",
+            succMsg3: "⏱️ Ang iyong USDT ay darating sa 15 minuto sa Solana.",
+            succMsg4: "📞 Suporta: +971 4 224 5189",
+            tickerSold: "Nabenta",
+            timeAgo: "nakaraan",
+            timeUnit: "min",
+            timeUnitSec: "sec",
+            statOps: "Benta Ngayon",
+            statPi: "Pi Nabili"
+        },
+        hi: {
+            brand: "Pi खरीदें - सर्वोच्च मूल्य",
+            title: "हम Pi के भविष्य में विश्वास करते हैं",
+            desc: "हम Pi को उच्च मूल्य पर खरीदते हैं क्योंकि हम मानते हैं यह आम सहमति मूल्य तक पहुंचेगा।",
+            marketLabel: "बाजार मूल्य",
+            ourLabel: "हमारा मूल्य",
+            badge: "🔥 सर्वश्रेष्ठ दर",
+            liveTitle: "लाइव",
+            instructionsTitle: "📋 बिक्री के चरण",
+            formTitle: "💰 बिक्री फ़ॉर्म",
+            lblAmount: "Pi की संख्या (न्यूनतम 250)",
+            lblTotal: "आपको मिलेगा (USD)",
+            lblDeposit: "📤 हमारा Pi Wallet पता",
+            btnCopy: "पता कॉपी करें",
+            copied: "कॉपी हो गया ✓",
+            lblQr: "QR कोड स्कैन करें",
+            lblUserWallet: "📥 आपका USDT Wallet (Solana नेटवर्क)",
+            walletOk: "✅ सही लग रहा है — Solana (SOL) नेटवर्क की पुष्टि करें",
+            walletWarn: "⚠️ सुनिश्चित करें यह Solana (SOL) है, ERC20 नहीं",
+            lblReceipt: "🖼️ Pi ट्रांसफर का प्रमाण",
+            fileLabel: "📎 स्क्रीनशॉट अपलोड करें",
+            btnSubmit: "✅ बिक्री की पुष्टि करें",
+            footer: "सर्वाधिकार सुरक्षित — Al Ansari Exchange Dubai 2026/2027",
+            minError: "न्यूनतम 250 Pi सिक्के",
+            steps: [
+                "ऊपर से हमारा Pi wallet पता कॉपी करें या QR कोड स्कैन करें।",
+                "अपना Pi wallet खोलें और बेचने की मात्रा हमारे पते पर भेजें।",
+                "भेजने के बाद, Pi ट्रांसफर का स्क्रीनशॉट लें।",
+                "अपने exchange या crypto wallet में 'Deposit' पर जाएं, USDT चुनें और Solana (SOL) नेटवर्क चुनें।",
+                "दिखाया गया USDT deposit पता कॉपी करें और यहां wallet field में पेस्ट करें।",
+                "Pi ट्रांसफर का स्क्रीनशॉट receipt field में अपलोड करें।",
+                "'बिक्री की पुष्टि करें' दबाएं।",
+                "आपका USDT 15 मिनट में आ जाएगा (Solana नेटवर्क के अनुसार)।",
+                "24 घंटे में न आए तो संपर्क करें: +971 4 224 5189"
+            ],
+            succTitle: "✅ अनुरोध सफलतापूर्वक प्राप्त हुआ",
+            succMsg1: "📨 आपकी जानकारी Al Ansari टीम को भेज दी गई है।",
+            succMsg2: "🔍 आपके ट्रांसफर की जांच हो रही है।",
+            succMsg3: "⏱️ आपका USDT 15 मिनट में Solana नेटवर्क पर आएगा।",
+            succMsg4: "📞 सहायता: +971 4 224 5189",
+            tickerSold: "बेचा",
+            timeAgo: "पहले",
+            timeUnit: "मि",
+            timeUnitSec: "से",
+            statOps: "आज की बिक्री",
+            statPi: "Pi खरीदी"
+        },
+        fr: {
+            brand: "Achat Pi - Meilleur Prix",
+            title: "Nous Croyons en l'Avenir de Pi",
+            desc: "Nous achetons Pi à prix premium car nous croyons en sa valeur à long terme.",
+            marketLabel: "Prix du Marché",
+            ourLabel: "Notre Prix",
+            badge: "🔥 Meilleur Taux",
+            liveTitle: "Direct",
+            instructionsTitle: "📋 Instructions de Vente",
+            formTitle: "💰 Formulaire de Vente",
+            lblAmount: "Nombre de Pi (Min. 250)",
+            lblTotal: "Vous Recevrez (USD)",
+            lblDeposit: "📤 Notre Adresse Pi",
+            btnCopy: "Copier l'Adresse",
+            copied: "Copié ✓",
+            lblQr: "Scanner le QR Code",
+            lblUserWallet: "📥 Votre Wallet USDT (Réseau Solana)",
+            walletOk: "✅ Correct — confirmez le réseau Solana (SOL)",
+            walletWarn: "⚠️ Assurez-vous que c'est Solana (SOL), pas ERC20",
+            lblReceipt: "🖼️ Preuve de Transfert Pi",
+            fileLabel: "📎 Cliquer pour uploader la capture d'écran",
+            btnSubmit: "✅ Confirmer la Vente",
+            footer: "Tous droits réservés — Al Ansari Exchange Dubaï 2026/2027",
+            minError: "Minimum 250 Pi",
+            steps: [
+                "Copiez notre adresse Pi wallet ci-dessus ou scannez le QR code.",
+                "Ouvrez votre wallet Pi et envoyez la quantité souhaitée à notre adresse.",
+                "Après l'envoi, faites une capture d'écran du transfert Pi.",
+                "Dans votre exchange ou wallet crypto, allez sur 'Dépôt', choisissez USDT puis le réseau Solana (SOL).",
+                "Copiez l'adresse USDT affichée, revenez ici et collez-la dans le champ wallet.",
+                "Uploadez la capture d'écran du transfert Pi dans le champ preuve.",
+                "Appuyez sur 'Confirmer la Vente'.",
+                "Vos USDT arriveront en 15 minutes selon le trafic Solana.",
+                "Si les fonds n'arrivent pas sous 24h, contactez-nous: +971 4 224 5189"
+            ],
+            succTitle: "✅ Demande Reçue avec Succès",
+            succMsg1: "📨 Vos informations ont été envoyées à l'équipe Al Ansari.",
+            succMsg2: "🔍 Vérification de votre transfert en cours.",
+            succMsg3: "⏱️ Vos USDT arriveront dans 15 min sur Solana.",
+            succMsg4: "📞 Support: +971 4 224 5189",
+            tickerSold: "vendu",
+            timeAgo: "il y a",
+            timeUnit: "min",
+            timeUnitSec: "sec",
+            statOps: "Ventes Aujourd'hui",
+            statPi: "Pi Achetés"
+        }
+    },
+
+    init() {
+        document.getElementById('piAmount').addEventListener('input', () => this.calcTotal());
+        document.getElementById('userWallet').addEventListener('input', () => this.checkWallet());
+        this.setLanguage('ar');
+        this.fetchPrice();
+        // Live feed
+        this._preloadFeed();
+        setInterval(() => this._addNewRow(),  6000);   // new sale every 6s
+        setInterval(() => this._tickTimes(),  30000);  // age times every 30s
+        this.initCanvas();
+    },
+
+    setLanguage(lang) {
+        if (!this.i18n[lang]) lang = 'ar';
+        this.state.lang = lang;
+        const t = this.i18n[lang];
+        const isRtl = lang === 'ar';
+
+        document.documentElement.lang = lang;
+        document.body.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+        document.body.className = `lang-${lang}`;
+
+        const set = (id, val) => { const el = document.getElementById(id); if (el && val) el.textContent = val; };
+        const setHtml = (id, val) => { const el = document.getElementById(id); if (el && val) el.innerHTML = val; };
+
+        set('txt-brand', t.brand);
+        set('txt-title', t.title);
+        set('txt-desc', t.desc);
+        set('txt-market-label', t.marketLabel);
+        set('txt-our-label', t.ourLabel);
+        set('txt-badge', t.badge);
+        set('txt-live-title', t.liveTitle || (this.state.lang === 'ar' ? 'عمليات البيع المباشرة' : 'Live Sales Feed'));
+        set('stat-lbl-count', t.statOps);
+        set('stat-lbl-total', t.statPi);
+
+        // Refresh feed rows with new language
+        const feedList = document.getElementById('live-feed-list');
+        if (feedList) {
+            // Just re-render existing rows is complex; simply clear & rebuild
+            feedList.innerHTML = '';
+            this.feed.totalPi = 0; this.feed.totalOps = 0;
+            this.feed.usedWallets.clear(); this.feed.usedAmounts.clear(); this.feed.usedTimes.clear();
+            this._preloadFeed();
+        }
+        set('txt-instructions-title', t.instructionsTitle);
+        set('txt-form-title', t.formTitle);
+        set('lbl-amount', t.lblAmount);
+        set('lbl-total', t.lblTotal);
+        set('lbl-deposit', t.lblDeposit);
+        set('txt-copy', t.btnCopy);
+        set('lbl-qr', t.lblQr);
+        set('lbl-user-wallet', t.lblUserWallet);
+        set('lbl-receipt', t.lblReceipt);
+        set('file-label-text', t.fileLabel);
+        set('btn-submit', t.btnSubmit);
+        set('footer-text', t.footer);
+
+        // Build steps
+        const list = document.getElementById('instructions-list');
+        list.innerHTML = '';
+        t.steps.forEach((step, i) => {
+            const li = document.createElement('li');
+            li.className = 'step-item';
+            li.innerHTML = `<div class="step-num">${i + 1}</div><div>${step}</div>`;
+            list.appendChild(li);
+        });
+
+        this.fetchPrice();
+        this.checkWallet();
+        this.updateTicker();
+    },
+
+    fetchPrice() {
+        const el = document.getElementById('market-val');
+        fetch(this.config.okxApi)
+            .then(r => r.json())
+            .then(d => {
+                if (d.code === '0' && d.data?.[0]) {
+                    el.textContent = '$' + parseFloat(d.data[0].last).toFixed(4);
+                } else { el.textContent = '$0.7300 (Est.)'; }
+            })
+            .catch(() => { el.textContent = '$0.7300 (Est.)'; });
+    },
+
+    calcTotal() {
+        const val = parseFloat(document.getElementById('piAmount').value);
+        const out = document.getElementById('usdTotal');
+        const err = document.getElementById('min-error');
+        if (isNaN(val) || val <= 0) { out.value = '0.00'; err.style.display = 'none'; return; }
+        out.value = (val * this.config.buyPrice).toLocaleString('en-US', { minimumFractionDigits: 2 });
+        if (val < this.config.minPi) {
+            err.textContent = this.i18n[this.state.lang].minError;
+            err.style.display = 'block';
+        } else { err.style.display = 'none'; }
+    },
+
+    checkWallet() {
+        const val = document.getElementById('userWallet').value.trim();
+        const hint = document.getElementById('walletWarning');
+        const t = this.i18n[this.state.lang];
+        if (!val) { hint.style.display = 'none'; return; }
+        hint.style.display = 'block';
+        if (val.length >= 32 && val.length <= 44 && !val.startsWith('0x') && /^[1-9A-HJ-NP-Za-km-z]+$/.test(val)) {
+            hint.className = 'wallet-hint ok';
+            hint.textContent = t.walletOk;
+        } else {
+            hint.className = 'wallet-hint warn';
+            hint.textContent = t.walletWarn;
+        }
+    },
+
+    copyWallet() {
+        const addr = 'GDCPYOJXJGCEZBBANLOMDINPXDHZZZYIWGMHLJIL2BMNRQ743B2BKASN';
+        navigator.clipboard.writeText(addr).catch(() => {});
+        const span = document.getElementById('txt-copy');
+        const t = this.i18n[this.state.lang];
+        span.textContent = t.copied;
+        setTimeout(() => { span.textContent = t.btnCopy; }, 2000);
+    },
+
+    onFileChange(input) {
+        const label = document.getElementById('file-label-text');
+        if (input.files[0]) {
+            label.textContent = '✅ ' + input.files[0].name;
+        }
+    },
+
+    // ── Live Feed Engine ──
+    feed: {
+        usedWallets: new Set(),
+        usedAmounts: new Set(),
+        usedTimes: new Set(),
+        totalPi: 0,
+        totalOps: 0,
+        MAX_ROWS: 30
+    },
+
+    _randWallet() {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        const prefix = Array.from({length: 6}, () => chars[Math.floor(Math.random()*chars.length)]).join('');
+        const suffix = Array.from({length: 4}, () => chars[Math.floor(Math.random()*chars.length)]).join('');
+        const w = `${prefix}...${suffix}`;
+        if (this.feed.usedWallets.has(w)) return this._randWallet();
+        if (this.feed.usedWallets.size > 500) this.feed.usedWallets.clear();
+        this.feed.usedWallets.add(w);
+        return w;
+    },
+
+    _randAmount() {
+        // Weighted: more mid-range transactions, occasional large ones
+        const pools = [
+            [250, 800],    // small  — 50% chance
+            [800, 3000],   // medium — 35% chance
+            [3000, 12000], // large  — 12% chance
+            [12000, 50000] // whale  — 3% chance
+        ];
+        const roll = Math.random();
+        let range;
+        if (roll < 0.50) range = pools[0];
+        else if (roll < 0.85) range = pools[1];
+        else if (roll < 0.97) range = pools[2];
+        else range = pools[3];
+
+        let amt;
+        let tries = 0;
+        do {
+            amt = Math.floor(Math.random() * (range[1] - range[0] + 1)) + range[0];
+            // Round to nice numbers
+            amt = Math.round(amt / 50) * 50;
+            tries++;
+        } while (this.feed.usedAmounts.has(amt) && tries < 30);
+        if (this.feed.usedAmounts.size > 300) this.feed.usedAmounts.clear();
+        this.feed.usedAmounts.add(amt);
+        return amt;
+    },
+
+    _randTime() {
+        // Returns seconds ago (1s – 59m)
+        let secs;
+        let tries = 0;
+        do {
+            secs = Math.floor(Math.random() * 3540) + 10; // 10s to 59m
+            tries++;
+        } while (this.feed.usedTimes.has(secs) && tries < 40);
+        if (this.feed.usedTimes.size > 200) this.feed.usedTimes.clear();
+        this.feed.usedTimes.add(secs);
+        return secs;
+    },
+
+    _formatTime(secs, t) {
+        if (secs < 60) return `${secs}${t.timeUnitSec}`;
+        const m = Math.floor(secs / 60);
+        return `${m} ${t.timeUnit}`;
+    },
+
+    _isWhale(amount) { return amount >= 10000; },
+    _isBig(amount)   { return amount >= 3000; },
+
+    _buildRow(wallet, amount, secsAgo, isNew) {
+        const t = this.i18n[this.state.lang];
+        const usd = (amount * this.config.buyPrice).toLocaleString('en-US');
+        const timeStr = this._formatTime(secsAgo, t);
+        const isRtl = this.state.lang === 'ar';
+
+        const whale = this._isWhale(amount);
+        const big   = this._isBig(amount);
+
+        const icon = whale ? '🐋' : big ? '💰' : '✅';
+        const badgeHtml = whale
+            ? `<span class="feed-badge" style="background:rgba(212,160,23,0.15);color:var(--gold-light);border-color:rgba(212,160,23,0.3);">WHALE</span>`
+            : big
+            ? `<span class="feed-badge">BIG</span>`
+            : '';
+
+        const soldWord = t.tickerSold;
+        const timeAgo  = isRtl
+            ? `${t.timeAgo} ${timeStr}`
+            : `${timeStr} ${t.timeAgo}`;
+
+        const row = document.createElement('div');
+        row.className = 'feed-row';
+        if (isNew) row.style.animationDelay = '0s';
+
+        row.innerHTML = `
+            <div class="feed-icon">${icon}</div>
+            <div class="feed-body">
+                <div class="feed-wallet">${badgeHtml}${wallet}</div>
+                <div class="feed-sub">${soldWord} · ${timeAgo}</div>
+            </div>
+            <div class="feed-right">
+                <div class="feed-amount">${amount.toLocaleString()} π</div>
+                <div class="feed-usd">≈ $${usd}</div>
+            </div>
+            <div class="feed-time">${timeStr}</div>
+        `;
+        return row;
+    },
+
+    _preloadFeed() {
+        const list = document.getElementById('live-feed-list');
+        // Load 12 historical entries (older times first → newest at top)
+        const entries = [];
+        for (let i = 0; i < 12; i++) {
+            const wallet = this._randWallet();
+            const amount = this._randAmount();
+            const secs   = this._randTime();
+            entries.push({ wallet, amount, secs });
+            this.feed.totalPi  += amount;
+            this.feed.totalOps += 1;
+        }
+        // Sort descending by time (newest first)
+        entries.sort((a, b) => a.secs - b.secs);
+        entries.forEach(e => {
+            const row = this._buildRow(e.wallet, e.amount, e.secs, false);
+            row.style.animation = 'none'; // no animation for preloaded
+            list.appendChild(row);
+        });
+        this._updateStats();
+    },
+
+    _updateStats() {
+        const el1 = document.getElementById('stat-count');
+        const el2 = document.getElementById('stat-total');
+        if (el1) el1.textContent = this.feed.totalOps.toLocaleString();
+        if (el2) el2.textContent = this.feed.totalPi.toLocaleString();
+    },
+
+    _addNewRow() {
+        const list = document.getElementById('live-feed-list');
+        if (!list) return;
+
+        const wallet = this._randWallet();
+        const amount = this._randAmount();
+        const secs   = Math.floor(Math.random() * 30) + 3; // 3–32 sec ago (fresh)
+
+        const row = this._buildRow(wallet, amount, secs, true);
+        list.insertBefore(row, list.firstChild);
+
+        this.feed.totalPi  += amount;
+        this.feed.totalOps += 1;
+        this._updateStats();
+
+        // Trim if too many rows
+        while (list.children.length > this.feed.MAX_ROWS) {
+            list.removeChild(list.lastChild);
+        }
+
+        // Flash stat vals
+        const s1 = document.getElementById('stat-count');
+        const s2 = document.getElementById('stat-total');
+        [s1, s2].forEach(el => {
+            if (!el) return;
+            el.style.color = 'var(--gold-light)';
+            el.style.transform = 'scale(1.15)';
+            setTimeout(() => {
+                el.style.color = 'var(--gold)';
+                el.style.transform = 'scale(1)';
+            }, 400);
+        });
+    },
+
+    // update row times every minute
+    _tickTimes() {
+        const list = document.getElementById('live-feed-list');
+        if (!list) return;
+        const t = this.i18n[this.state.lang];
+        const rows = list.querySelectorAll('.feed-row');
+        rows.forEach(row => {
+            const timeEl = row.querySelector('.feed-time');
+            const subEl  = row.querySelector('.feed-sub');
+            if (!timeEl) return;
+            // Read current seconds from data attr
+            let secs = parseInt(row.dataset.secs || '60') + 30;
+            row.dataset.secs = secs;
+            const timeStr = this._formatTime(secs, t);
+            const soldWord = t.tickerSold;
+            const timeAgo  = this.state.lang === 'ar' ? `${t.timeAgo} ${timeStr}` : `${timeStr} ${t.timeAgo}`;
+            timeEl.textContent = timeStr;
+            if (subEl) subEl.textContent = `${soldWord} · ${timeAgo}`;
+        });
+    },
+
+    updateTicker() { /* replaced by live feed */ },
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const t = this.i18n[this.state.lang];
+        const amount = parseFloat(document.getElementById('piAmount').value);
+        const wallet = document.getElementById('userWallet').value.trim();
+        const file = document.getElementById('receiptFile').files[0];
+
+        if (isNaN(amount) || amount < this.config.minPi) {
+            alert(t.minError); return;
+        }
+        if (!wallet) {
+            alert(t.lblUserWallet); return;
+        }
+        if (!file) {
+            alert(t.lblReceipt); return;
+        }
+
+        const fb = document.getElementById('feedbackArea');
+        document.getElementById('succ-title').textContent = t.succTitle;
+        document.getElementById('succ-1').textContent = t.succMsg1;
+        document.getElementById('succ-2').textContent = t.succMsg2;
+        document.getElementById('succ-3').textContent = t.succMsg3;
+        document.getElementById('succ-4').textContent = t.succMsg4;
+        fb.style.display = 'block';
+        fb.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('btn-submit').disabled = true;
+    },
+
+    initCanvas() {
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let W, H, pts = [];
+
+        const resize = () => {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+        };
+        window.addEventListener('resize', resize);
+        resize();
+
+        for (let i = 0; i < 40; i++) {
+            pts.push({
+                x: Math.random() * 1000, y: Math.random() * 1000,
+                vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5,
+                r: Math.random() * 2 + 1
+            });
+        }
+
+        const draw = () => {
+            ctx.clearRect(0, 0, W, H);
+            pts.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > W) p.vx *= -1;
+                if (p.y < 0 || p.y > H) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(212,160,23,0.08)';
+                ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        };
+        draw();
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => app.init());
+</script>
+</body>
+</html>
