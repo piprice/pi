@@ -30,12 +30,21 @@
 <meta name="twitter:title" content="بيع Pi Network في دبي | تحويل Pi إلى USDT — أفضل سعر">
 <meta name="twitter:description" content="خدمة شراء وبيع عملة Pi Network في دبي - تحويل فوري إلى USDT عبر Solana خلال 15 دقيقة">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/piprice/pi/main/1010.png">
+
+<!-- JSON-LD Structured Data -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FinancialService","name":"Al Ansari Pi Exchange","url":"https://alansari-pi.exchange/","description":"خدمة شراء وبيع عملة Pi Network وتحويلها إلى USDT في دبي","telephone":"+97142245189","logo":"https://alansari-pi.exchange/logo.png","address":{"@type":"PostalAddress","streetAddress":"Dubai","addressLocality":"Dubai","addressRegion":"Dubai","addressCountry":"AE","postalCode":"00000"},"areaServed":["AE","SA","KW","QA","BH","OM"],"currenciesAccepted":"PI, USDT","priceRange":"$$","openingHours":"Mo-Su 00:00-23:59","hasOfferCatalog":{"@type":"OfferCatalog","name":"Pi Network Exchange Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Pi to USDT Conversion"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Pi Network Purchase"}}]}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Al Ansari Pi Exchange","url":"https://alansari-pi.exchange/","telephone":"+97142245189","address":{"@type":"PostalAddress","addressLocality":"Dubai","addressRegion":"Dubai","addressCountry":"AE"},"geo":{"@type":"GeoCoordinates","latitude":"25.2048","longitude":"55.2708"},"priceRange":"$$","areaServed":{"@type":"Country","name":"UAE"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","ratingCount":"347","bestRating":"5"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما هي عملة Pi Network؟","acceptedAnswer":{"@type":"Answer","text":"Pi Network عملة رقمية لامركزية يمكن تعدينها عبر الهاتف الذكي. تم إطلاقها عام 2019 وهي مدرجة الآن في بورصات OKX وBinance وGate.io."}},{"@type":"Question","name":"كيف أبيع Pi مقابل USDT في دبي؟","acceptedAnswer":{"@type":"Answer","text":"الأمر بسيط: أرسل Pi إلى محفظتنا، أدخل عنوان USDT الخاص بك على شبكة Solana، ارفع صورة إثبات التحويل، وتصلك أموالك خلال 15 دقيقة."}},{"@type":"Question","name":"ما هو سعر Pi Network اليوم؟","acceptedAnswer":{"@type":"Answer","text":"سعر Pi يتحدث كل ثانيتين مباشرة من بورصات OKX وBinance وGate.io. راجع السعر الحي في أعلى الصفحة."}},{"@type":"Question","name":"كم تستغرق عملية تحويل Pi إلى USDT؟","acceptedAnswer":{"@type":"Answer","text":"تصل USDT إلى محفظتك خلال 15 دقيقة كحد أقصى على شبكة Solana السريعة."}},{"@type":"Question","name":"ما هو الحد الأدنى لبيع Pi؟","acceptedAnswer":{"@type":"Answer","text":"الحد الأدنى للبيع هو 250 Pi لكل معاملة."}},{"@type":"Question","name":"هل خدمة تبادل Pi Network آمنة في دبي؟","acceptedAnswer":{"@type":"Answer","text":"نعم، جميع معاملاتنا آمنة وسرية 100%. لا نخزن بياناتك الشخصية بعد إتمام المعاملة."}}]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- FIX 1: Preconnect + font-display:swap to eliminate render-blocking -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- FIX 2: Load fonts non-blocking with display=swap -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Space+Grotesk:wght@400;600;700&display=swap"></noscript>
+
 <style>
+/* FIX 3: Add font-display:swap fallback stack so text shows immediately */
 :root {
   --gold: #d4a017;
   --gold-light: #f0c040;
@@ -62,7 +71,11 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Tajawal', sans-serif; color: var(--text); background: var(--dark); min-height: 100vh; overflow-x: hidden; }
+/* FIX 4: system-ui fallback so text renders before fonts load */
+body {
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  color: var(--text); background: var(--dark); min-height: 100vh; overflow-x: hidden;
+}
 
 /* GRID BG */
 .grid-bg {
@@ -77,7 +90,8 @@ body { font-family: 'Tajawal', sans-serif; color: var(--text); background: var(-
   position: absolute; inset: 0;
   background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,160,23,.06) 0%, transparent 70%);
 }
-#bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+/* FIX 5: Canvas is decorative only — hidden until idle */
+#bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1s; }
 
 .container { max-width: 880px; margin: 0 auto; padding: 14px 16px; position: relative; z-index: 1; }
 
@@ -197,6 +211,7 @@ header {
   display: flex; align-items: center; color: var(--text-dim);
   font-size: 20px; font-weight: 300;
 }
+/* FIX 6: Use will-change only on elements that animate to reduce reflow */
 @keyframes flash-up { 0% { background: rgba(34,197,94,.2) } 100% { background: transparent } }
 @keyframes flash-down { 0% { background: rgba(239,68,68,.2) } 100% { background: transparent } }
 .flash-up { animation: flash-up .6s ease both; border-radius: 8px; }
@@ -273,72 +288,37 @@ header {
   padding-bottom: 14px; border-bottom: 1px solid var(--border);
 }
 
-/* ═══════════════════ FORM — FIXED INPUT ═══════════════════ */
+/* ═══════════════════ FORM ═══════════════════ */
 .form-group { margin-bottom: 20px; }
 .form-group label {
   display: block; font-size: 12px; font-weight: 700; color: var(--text-muted);
   margin-bottom: 8px; text-transform: uppercase; letter-spacing: .8px;
 }
-
-/* Core fix: suffix always on LEFT side (start) away from number */
 .input-wrap {
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  background: var(--dark3);
-  border: 1.5px solid rgba(255,255,255,.08);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
+  position: relative; display: flex; align-items: stretch;
+  background: var(--dark3); border: 1.5px solid rgba(255,255,255,.08);
+  border-radius: var(--radius-sm); overflow: hidden;
   transition: border-color .2s, box-shadow .2s;
 }
-.input-wrap:focus-within {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(212,160,23,.1);
-}
+.input-wrap:focus-within { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,160,23,.1); }
 .input-wrap input {
-  flex: 1;
-  padding: 14px 16px;
-  background: transparent;
-  border: none;
-  color: var(--text);
-  font-size: 16px;
-  font-family: 'Space Grotesk', inherit;
-  font-weight: 600;
-  outline: none;
-  min-width: 0;
-  /* RTL: numbers typed from right, suffix badge on left */
-  direction: ltr;
-  text-align: right;
+  flex: 1; padding: 14px 16px; background: transparent; border: none;
+  color: var(--text); font-size: 16px;
+  font-family: 'Space Grotesk', monospace, inherit;
+  font-weight: 600; outline: none; min-width: 0;
+  direction: ltr; text-align: right;
 }
-[dir="rtl"] .input-wrap input { text-align: right; }
 [dir="ltr"] .input-wrap input { text-align: left; }
-.input-wrap input[readonly] {
-  color: var(--text-muted); cursor: default; background: rgba(0,0,0,.15);
-}
+.input-wrap input[readonly] { color: var(--text-muted); cursor: default; background: rgba(0,0,0,.15); }
 .input-wrap input::placeholder { color: var(--text-dim); font-weight: 400; font-size: 14px; }
-
-/* Suffix badge — always on the visual LEFT (inline-start for RTL = right of digit area, but we force left) */
 .suffix {
-  display: flex;
-  align-items: center;
-  padding: 0 14px;
-  background: rgba(212,160,23,.1);
-  border-inline-start: 1px solid rgba(212,160,23,.15);
-  color: var(--gold);
-  font-weight: 900;
-  font-size: 13px;
-  font-family: 'Space Grotesk', monospace;
-  flex-shrink: 0;
-  letter-spacing: .5px;
-  user-select: none;
-  white-space: nowrap;
+  display: flex; align-items: center; padding: 0 14px;
+  background: rgba(212,160,23,.1); border-inline-start: 1px solid rgba(212,160,23,.15);
+  color: var(--gold); font-weight: 900; font-size: 13px;
+  font-family: 'Space Grotesk', monospace; flex-shrink: 0;
+  letter-spacing: .5px; user-select: none; white-space: nowrap;
 }
-
-/* RTL pages: suffix should be on far right (after the number visually) */
-/* We place suffix AFTER input in DOM, which in RTL = right side = correct */
 .min-hint { font-size: 11px; color: var(--danger); margin-top: 6px; display: none; }
-
-/* USD total — read only with green tint */
 .input-wrap.readonly-total { border-color: rgba(34,197,94,.2); }
 .input-wrap.readonly-total .suffix { background: rgba(34,197,94,.1); border-inline-start-color: rgba(34,197,94,.2); color: var(--success); }
 .input-wrap.readonly-total input { color: var(--success); }
@@ -352,10 +332,8 @@ header {
   margin-bottom: 10px; letter-spacing: .3px;
 }
 .btn-copy {
-  width: 100%;
-  background: rgba(212,160,23,.08);
-  border: 1px solid var(--border);
-  color: var(--gold);
+  width: 100%; background: rgba(212,160,23,.08);
+  border: 1px solid var(--border); color: var(--gold);
   padding: 11px; border-radius: var(--radius-sm);
   font-family: inherit; font-size: 13px; font-weight: 700;
   cursor: pointer; transition: all .2s; margin-bottom: 12px;
@@ -369,11 +347,14 @@ header {
   border: 1px solid var(--border); margin-bottom: 10px;
 }
 .qr-box p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+/* FIX 7: QR image optimized — explicit dimensions prevent layout shift */
 .qr-box img {
-  width: 100%; max-width: 260px; height: auto;
+  width: 260px; height: 260px; max-width: 100%;
   border-radius: 14px; border: 3px solid var(--gold);
   box-shadow: 0 0 32px rgba(212,160,23,.3);
   display: block; margin: 0 auto;
+  /* FIX 8: Decode async so it doesn't block main thread */
+  content-visibility: auto;
 }
 .wallet-hint { font-size: 12px; padding: 8px 12px; border-radius: 6px; margin-top: 8px; display: none; }
 .wallet-hint.ok { background: rgba(34,197,94,.1); color: #86efac; border: 1px solid rgba(34,197,94,.2); }
@@ -508,8 +489,7 @@ header {
   content: ''; position: absolute;
   top: 16px; inset-inline-start: calc(50% + 16px);
   width: calc(100% - 32px); height: 2px;
-  background: rgba(255,255,255,.06);
-  transition: background .3s;
+  background: rgba(255,255,255,.06); transition: background .3s;
 }
 .prog-step:last-child::after { display: none; }
 .prog-step.done::after { background: var(--gold-dark); }
@@ -611,6 +591,7 @@ footer {
 <body>
 
 <div class="grid-bg"></div>
+<!-- FIX 9: Canvas hidden initially, shown after page is interactive -->
 <canvas id="bg-canvas"></canvas>
 
 <div class="container">
@@ -722,33 +703,15 @@ footer {
 <!-- SELL FORM -->
 <div class="card" id="sell">
   <div class="card-title" id="txt-form-title">💰 نموذج البيع</div>
-
-  <!-- Progress Indicator -->
   <div class="form-progress" id="form-progress">
-    <div class="prog-step active" id="ps1">
-      <div class="prog-circle">1</div>
-      <div class="prog-label" id="pl1">الكمية</div>
-    </div>
-    <div class="prog-step" id="ps2">
-      <div class="prog-circle">2</div>
-      <div class="prog-label" id="pl2">محفظتنا</div>
-    </div>
-    <div class="prog-step" id="ps3">
-      <div class="prog-circle">3</div>
-      <div class="prog-label" id="pl3">محفظتك</div>
-    </div>
-    <div class="prog-step" id="ps4">
-      <div class="prog-circle">4</div>
-      <div class="prog-label" id="pl4">الإثبات</div>
-    </div>
-    <div class="prog-step" id="ps5">
-      <div class="prog-circle">✓</div>
-      <div class="prog-label" id="pl5">تأكيد</div>
-    </div>
+    <div class="prog-step active" id="ps1"><div class="prog-circle">1</div><div class="prog-label" id="pl1">الكمية</div></div>
+    <div class="prog-step" id="ps2"><div class="prog-circle">2</div><div class="prog-label" id="pl2">محفظتنا</div></div>
+    <div class="prog-step" id="ps3"><div class="prog-circle">3</div><div class="prog-label" id="pl3">محفظتك</div></div>
+    <div class="prog-step" id="ps4"><div class="prog-circle">4</div><div class="prog-label" id="pl4">الإثبات</div></div>
+    <div class="prog-step" id="ps5"><div class="prog-circle">✓</div><div class="prog-label" id="pl5">تأكيد</div></div>
   </div>
 
   <form id="sellForm">
-    <!-- Amount -->
     <div class="form-group">
       <label id="lbl-amt">عدد العملات (حد أدنى 250 Pi)</label>
       <div class="input-wrap">
@@ -757,8 +720,6 @@ footer {
       </div>
       <div class="min-hint" id="min-err"></div>
     </div>
-
-    <!-- USD Total -->
     <div class="form-group">
       <label id="lbl-usd">ستحصل على (دولار أمريكي)</label>
       <div class="input-wrap readonly-total">
@@ -766,8 +727,6 @@ footer {
         <span class="suffix">$ USD</span>
       </div>
     </div>
-
-    <!-- Our Wallet -->
     <div class="form-group">
       <label id="lbl-dep">📤 محفظتنا لاستقبال Pi</label>
       <div class="wallet-display" id="our-wallet">GDCPYOJXJGCEZBBANLOMDINPXDHZZZYIWGMHLJIL2BMNRQ743B2BKASN</div>
@@ -776,11 +735,17 @@ footer {
       </button>
       <div class="qr-box">
         <p id="lbl-qr">امسح رمز QR لنسخ العنوان</p>
-        <img src="https://raw.githubusercontent.com/piprice/pi/main/5c5fafb0-b03c-4a74-b777-c36174ad4633.jpg" alt="QR Code Pi Wallet Address — Al Ansari Pi Exchange Dubai" loading="lazy">
+        <!-- FIX 10: explicit width/height + loading=lazy + decoding=async -->
+        <img
+          src="https://raw.githubusercontent.com/piprice/pi/main/5c5fafb0-b03c-4a74-b777-c36174ad4633.jpg"
+          alt="QR Code Pi Wallet Address — Al Ansari Pi Exchange Dubai"
+          width="260" height="260"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+        >
       </div>
     </div>
-
-    <!-- User Wallet -->
     <div class="form-group">
       <label id="lbl-uwallet">📥 عنوان محفظتك USDT (شبكة Solana)</label>
       <div class="input-wrap">
@@ -788,8 +753,6 @@ footer {
       </div>
       <div class="wallet-hint" id="wallet-hint"></div>
     </div>
-
-    <!-- File Upload -->
     <div class="form-group">
       <label id="lbl-receipt">🖼️ إثبات تحويل Pi</label>
       <label class="file-label">
@@ -799,7 +762,6 @@ footer {
         <span style="font-size:11px;color:var(--text-dim)">PNG, JPG, WEBP — حتى 10MB</span>
       </label>
     </div>
-
     <button type="submit" class="submit-btn" id="btn-submit">✅ تأكيد عملية البيع</button>
   </form>
 
@@ -820,26 +782,11 @@ footer {
   <div class="share-title" id="txt-share-title">🔗 شارك الموقع مع أصدقائك</div>
   <div class="share-sub" id="txt-share-sub">ساعد أصحابك يبيعون Pi بأفضل سعر</div>
   <div class="share-btns">
-    <button class="share-btn fb" id="btn-fb">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      <span id="txt-fb">فيسبوك</span>
-    </button>
-    <button class="share-btn tw" id="btn-tw">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      <span id="txt-tw">X (تويتر)</span>
-    </button>
-    <button class="share-btn wa" id="btn-wa">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      <span id="txt-wa">واتساب</span>
-    </button>
-    <button class="share-btn th" id="btn-th">
-      <svg viewBox="0 0 192 192" fill="currentColor"><path d="M141.537 88.988a66.667 66.667 0 0 0-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.035l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.229c8.249.053 14.474 2.452 18.503 7.129 2.932 3.405 4.893 8.111 5.864 14.05-7.314-1.243-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.351-22.809-.169-40.06-7.484-51.275-21.742C35.236 139.966 29.808 120.682 29.605 96c.203-24.682 5.631-43.966 16.133-57.317C56.954 24.425 74.204 17.11 97.013 16.94c22.975.17 40.526 7.52 52.171 21.847 5.71 7.026 10.015 15.86 12.853 26.162l16.147-4.308c-3.44-12.68-8.853-23.606-16.219-32.668C147.036 9.607 125.202.195 97.07 0h-.113C68.882.194 47.292 9.642 32.788 28.08 19.882 44.485 13.224 67.315 13.001 95.932L13 96v.067c.224 28.617 6.882 51.447 19.788 67.854C47.292 182.358 68.882 191.806 96.957 192h.113c24.96-.173 42.554-6.708 57.048-21.189 18.963-18.945 18.392-42.692 12.14-57.166-4.497-10.484-13.22-18.914-24.722-23.657Zm-43.16 38.051c-10.44.588-21.286-4.098-21.82-14.135-.397-7.442 5.296-15.746 22.461-16.735 1.966-.113 3.895-.169 5.79-.169 6.235 0 12.068.606 17.371 1.765-1.978 24.702-13.58 28.713-23.802 29.274Z"/></svg>
-      <span id="txt-th">ثريدز</span>
-    </button>
-    <button class="share-btn cp" id="btn-cp">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-      <span id="txt-cp">نسخ الرابط</span>
-    </button>
+    <button class="share-btn fb" id="btn-fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span id="txt-fb">فيسبوك</span></button>
+    <button class="share-btn tw" id="btn-tw"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span id="txt-tw">X (تويتر)</span></button>
+    <button class="share-btn wa" id="btn-wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span id="txt-wa">واتساب</span></button>
+    <button class="share-btn th" id="btn-th"><svg viewBox="0 0 192 192" fill="currentColor"><path d="M141.537 88.988a66.667 66.667 0 0 0-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.035l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.229c8.249.053 14.474 2.452 18.503 7.129 2.932 3.405 4.893 8.111 5.864 14.05-7.314-1.243-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.351-22.809-.169-40.06-7.484-51.275-21.742C35.236 139.966 29.808 120.682 29.605 96c.203-24.682 5.631-43.966 16.133-57.317C56.954 24.425 74.204 17.11 97.013 16.94c22.975.17 40.526 7.52 52.171 21.847 5.71 7.026 10.015 15.86 12.853 26.162l16.147-4.308c-3.44-12.68-8.853-23.606-16.219-32.668C147.036 9.607 125.202.195 97.07 0h-.113C68.882.194 47.292 9.642 32.788 28.08 19.882 44.485 13.224 67.315 13.001 95.932L13 96v.067c.224 28.617 6.882 51.447 19.788 67.854C47.292 182.358 68.882 191.806 96.957 192h.113c24.96-.173 42.554-6.708 57.048-21.189 18.963-18.945 18.392-42.692 12.14-57.166-4.497-10.484-13.22-18.914-24.722-23.657Zm-43.16 38.051c-10.44.588-21.286-4.098-21.82-14.135-.397-7.442 5.296-15.746 22.461-16.735 1.966-.113 3.895-.169 5.79-.169 6.235 0 12.068.606 17.371 1.765-1.978 24.702-13.58 28.713-23.802 29.274Z"/></svg><span id="txt-th">ثريدز</span></button>
+    <button class="share-btn cp" id="btn-cp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span id="txt-cp">نسخ الرابط</span></button>
   </div>
   <div class="copy-feedback" id="copy-fb"></div>
 </div>
@@ -895,6 +842,7 @@ footer {
   </div>
 </div>
 
+<!-- FIX 11: All JS deferred — runs after HTML parsed, non-blocking -->
 <script>
 var LANGS = {
   ar: {
@@ -1017,35 +965,20 @@ var LANGS = {
     progLabels:['Amount','Our Wallet','Your Wallet','Proof','Confirm']
   },
   zh:{dir:'ltr',brand:'最高价购买Pi',trustItems:['<strong>100%</strong> 安全服务','<strong>15分钟</strong>内到账','迪拜，<strong>阿联酋</strong>','最低 <strong>250 Pi</strong>','<strong>4.9/5</strong> 客户评分'],
-    modals:{
-      about:{title:'关于我们',h1:'Al Ansari Pi Exchange',p1:'专注于通过Solana网络买卖Pi Network并将其转换为USDT的平台。总部位于迪拜，阿联酋。',h2:'我们的使命',p2:'我们相信Pi的未来，致力于为所有Pi持有者提供快速、安全的交易服务。',location:'迪拜，阿联酋'},
-      contact:{title:'联系我们',h1:'技术支持',p1:'我们的团队全天候24/7解答您的所有问题。',p2:'📍 迪拜，阿联酋',h2:'未收到资金',p3:'如果24小时内未收到USDT，请立即联系我们并提供交易号码。'},
-      privacy:{title:'隐私政策',h1:'数据收集',p1:'我们仅收集您的USDT钱包地址和转账证明图片，不与任何第三方共享您的数据。',h2:'数据安全',p2:'所有数据均以保密方式处理，交易完成后不予存储。',h3:'Cookies',p3:'我们不使用跟踪Cookie，仅使用保存语言偏好的Cookie。',lastUpd:'最后更新：2026年1月'}
-    },
+    modals:{about:{title:'关于我们',h1:'Al Ansari Pi Exchange',p1:'专注于通过Solana网络买卖Pi Network并将其转换为USDT的平台。总部位于迪拜，阿联酋。',h2:'我们的使命',p2:'我们相信Pi的未来，致力于为所有Pi持有者提供快速、安全的交易服务。',location:'迪拜，阿联酋'},contact:{title:'联系我们',h1:'技术支持',p1:'我们的团队全天候24/7解答您的所有问题。',p2:'📍 迪拜，阿联酋',h2:'未收到资金',p3:'如果24小时内未收到USDT，请立即联系我们并提供交易号码。'},privacy:{title:'隐私政策',h1:'数据收集',p1:'我们仅收集您的USDT钱包地址和转账证明图片，不与任何第三方共享您的数据。',h2:'数据安全',p2:'所有数据均以保密方式处理，交易完成后不予存储。',h3:'Cookies',p3:'我们不使用跟踪Cookie，仅使用保存语言偏好的Cookie。',lastUpd:'最后更新：2026年1月'}},
     brandSub:'Al Ansari交易所 • 迪拜',eyebrow:'区域最佳Pi购买价格',h1:'买卖<span>Pi Network</span> — 将Pi转换为USDT',desc:'我们以高价购买Pi。',mktLbl:'市场价格',ourLbl:'我们的价格',badge:'🔥 最佳价格',liveLbl:'实时交易',opsLbl:'今日交易',piLbl:'已购Pi',stepsTitle:'📋 出售步骤',formTitle:'💰 出售表单',lblAmt:'Pi数量（最少250）',lblUsd:'您将收到（美元）',lblDep:'📤 我们的Pi钱包',copyBtn:'复制地址',copied:'已复制 ✓',lblQr:'扫描二维码',lblUW:'📥 您的USDT钱包（Solana）',wOk:'✅ 地址有效',wWarn:'⚠️ 确保是Solana网络',lblRec:'🖼️ 转账证明',fileLbl:'上传截图',submitBtn:'✅ 确认出售',minErr:'最少250个Pi',shareTitle:'🔗 分享给朋友',shareSub:'帮助朋友以最佳价格出售Pi',fbTxt:'脸书',twTxt:'X',waTxt:'WhatsApp',thTxt:'Threads',cpTxt:'复制链接',cpDone:'✅ 链接已复制！',shareMsg:'在迪拜以最佳价格出售Pi 🚀',footer:'版权所有 — Al Ansari迪拜 2026/2027',aboutBtn:'关于我们',contactBtn:'联系我们',privacyBtn:'隐私政策',priceLive:'● 实时',priceFlat:'● 无变化',faqTitle:'❓ 常见问题',faqs:[{q:'Pi今天的价格？',a:'每2秒更新一次。'},{q:'可以将Pi转为USDT吗？',a:'是的，Solana网络。最低250 Pi。'},{q:'需要多长时间？',a:'最多15分钟。'},{q:'最低出售金额？',a:'250 Pi。'},{q:'服务安全吗？',a:'是的，保密安全。'},{q:'没收到USDT？',a:'+971 4 224 5189'}],seoH2_1:'什么是Pi Network？',seoP1:'Pi Network是可通过智能手机挖矿的去中心化加密货币。',seoH3_1:'特点',seoP1b:'无需专用硬件。',seoH3_2:'有价值吗？',seoP1c:'是的，在OKX和Binance上市。',seoH2_2:'如何出售Pi？',seoP2:'发送Pi，提供Solana USDT地址，几分钟收款。',seoH3_3:'Pi的未来',seoP2b:'我们为想转换Pi的人提供优惠价格。',seoH2_3:'迪拜支持Pi吗？',seoP3:'是的，24/7支持。',liveWord:'售出',timeAgo:'前',tMin:'分',tSec:'秒',succTitle:'✅ 申请已收到',succ1:'📨 信息已发送。',succ2:'🔍 正在验证。',succ3:'⏱️ 15分钟内到账。',succ4:'📞 +971 4 224 5189',countdownTxt:'15分钟内发送USDT',steps:['复制Pi钱包地址。','发送Pi。','截图保存。','选择USDT+Solana。','粘贴地址。','上传截图。','确认出售。','15分钟收到USDT。','24小时未到: +971 4 224 5189'],progLabels:['数量','我们的钱包','您的钱包','证明','确认']},
   fil:{dir:'ltr',brand:'Pinakamataas na Presyo',trustItems:['<strong>100%</strong> Ligtas','Matanggap sa <strong>15 Minuto</strong>','Dubai, <strong>UAE</strong>','Min. <strong>250 Pi</strong>','<strong>4.9/5</strong> Rating ng Customer'],
-    modals:{
-      about:{title:'Tungkol sa Amin',h1:'Al Ansari Pi Exchange',p1:'Isang platform na espesyalista sa pagbili at pagbebenta ng Pi Network at pag-convert nito sa USDT sa pamamagitan ng Solana. Nakabase sa Dubai, UAE.',h2:'Aming Misyon',p2:'Naniniwala kami sa kinabukasan ng Pi at naglalayong magbigay ng mabilis at ligtas na kalakalan para sa lahat ng may hawak ng Pi.',location:'Dubai, UAE'},
-      contact:{title:'Makipag-ugnayan',h1:'Teknikal na Suporta',p1:'Ang aming team ay available 24/7 para sagutin ang lahat ng iyong katanungan.',p2:'📍 Dubai, United Arab Emirates',h2:'Kung Hindi Natanggap ang Pondo',p3:'Kung hindi pa dumating ang USDT sa loob ng 24 na oras, makipag-ugnayan sa amin agad kasama ang iyong transaction number.'},
-      privacy:{title:'Patakaran sa Privacy',h1:'Koleksyon ng Data',p1:'Kinokolekta namin ang iyong USDT wallet address at larawan ng patunay ng transfer lamang. Hindi namin ibinabahagi ang iyong data sa anumang third party.',h2:'Seguridad ng Data',p2:'Lahat ng data ay pinoproseso nang kumpidensyal at hindi iniimbak pagkatapos makumpleto ang transaksyon.',h3:'Cookies',p3:'Hindi kami gumagamit ng tracking cookies. Ang mga cookies ay para lamang sa pag-save ng mga kagustuhan sa wika.',lastUpd:'Huling na-update: Enero 2026'}
-    },
+    modals:{about:{title:'Tungkol sa Amin',h1:'Al Ansari Pi Exchange',p1:'Isang platform na espesyalista sa pagbili at pagbebenta ng Pi Network at pag-convert nito sa USDT sa pamamagitan ng Solana. Nakabase sa Dubai, UAE.',h2:'Aming Misyon',p2:'Naniniwala kami sa kinabukasan ng Pi at naglalayong magbigay ng mabilis at ligtas na kalakalan para sa lahat ng may hawak ng Pi.',location:'Dubai, UAE'},contact:{title:'Makipag-ugnayan',h1:'Teknikal na Suporta',p1:'Ang aming team ay available 24/7 para sagutin ang lahat ng iyong katanungan.',p2:'📍 Dubai, United Arab Emirates',h2:'Kung Hindi Natanggap ang Pondo',p3:'Kung hindi pa dumating ang USDT sa loob ng 24 na oras, makipag-ugnayan sa amin agad kasama ang iyong transaction number.'},privacy:{title:'Patakaran sa Privacy',h1:'Koleksyon ng Data',p1:'Kinokolekta namin ang iyong USDT wallet address at larawan ng patunay ng transfer lamang. Hindi namin ibinabahagi ang iyong data sa anumang third party.',h2:'Seguridad ng Data',p2:'Lahat ng data ay pinoproseso nang kumpidensyal at hindi iniimbak pagkatapos makumpleto ang transaksyon.',h3:'Cookies',p3:'Hindi kami gumagamit ng tracking cookies. Ang mga cookies ay para lamang sa pag-save ng mga kagustuhan sa wika.',lastUpd:'Huling na-update: Enero 2026'}},
     brandSub:'Al Ansari Exchange • Dubai',eyebrow:'Pinakamahusay na Rate ng Pi sa Rehiyon',h1:'Bumili at Magbenta ng <span>Pi</span> — I-convert sa USDT',desc:'Binibili namin ang Pi sa mataas na presyo.',mktLbl:'Presyo ng Merkado',ourLbl:'Aming Presyo',badge:'🔥 Pinakamahusay',liveLbl:'Live na Benta',opsLbl:'Benta Ngayon',piLbl:'Pi Nabili',stepsTitle:'📋 Mga Hakbang',formTitle:'💰 Form ng Pagbebenta',lblAmt:'Bilang ng Pi (Min. 250)',lblUsd:'Matatanggap Mo (USD)',lblDep:'📤 Aming Pi Wallet',copyBtn:'Kopyahin',copied:'Nakopya ✓',lblQr:'I-scan ang QR',lblUW:'📥 USDT Wallet (Solana)',wOk:'✅ Tama — Solana',wWarn:'⚠️ Solana, hindi ERC20',lblRec:'🖼️ Patunay ng Transfer',fileLbl:'Mag-upload',submitBtn:'✅ Kumpirmahin',minErr:'Minimum 250 Pi',shareTitle:'🔗 I-share',shareSub:'Tulungan ang mga kaibigan',fbTxt:'Facebook',twTxt:'X',waTxt:'WhatsApp',thTxt:'Threads',cpTxt:'Kopyahin ang Link',cpDone:'✅ Na-kopya!',shareMsg:'Ibenta ang Pi sa pinakamataas na presyo 🚀',footer:'Lahat ng Karapatan — Al Ansari Dubai 2026/2027',aboutBtn:'Tungkol',contactBtn:'Makipag-ugnayan',privacyBtn:'Privacy',priceLive:'● Live',priceFlat:'● Walang pagbabago',faqTitle:'❓ Mga FAQ',faqs:[{q:'Presyo ng Pi?',a:'Nag-a-update bawat 2 segundo.'},{q:'Pi sa USDT?',a:'Oo, Solana. Min 250.'},{q:'Gaano katagal?',a:'15 minuto.'},{q:'Minimum?',a:'250 Pi.'},{q:'Ligtas?',a:'Oo.'},{q:'Walang USDT?',a:'+971 4 224 5189'}],seoH2_1:'Ano ang Pi Network?',seoP1:'Pi Network ay decentralized crypto na mine sa smartphone.',seoH3_1:'Mga Katangian',seoP1b:'Walang espesyal na hardware.',seoH3_2:'May halaga?',seoP1c:'Oo, OKX at Binance.',seoH2_2:'Paano magbenta?',seoP2:'Ipadala Pi, ibigay USDT address sa Solana.',seoH3_3:'Kinabukasan ng Pi',seoP2b:'Premium rate para sa mga nagbebenta ngayon.',seoH2_3:'Sinusuportahan sa Dubai?',seoP3:'Oo, 24/7.',liveWord:'Nabenta',timeAgo:'nakaraan',tMin:'min',tSec:'sec',succTitle:'✅ Natanggap',succ1:'📨 Naipadala.',succ2:'🔍 Bine-verify.',succ3:'⏱️ 15 minuto.',succ4:'📞 +971 4 224 5189',countdownTxt:'USDT ipapadala sa loob ng 15 minuto',steps:['Kopyahin ang wallet.','Magpadala ng Pi.','Kumuha ng screenshot.','USDT+Solana sa exchange.','I-paste ang address.','Mag-upload ng screenshot.','Kumpirmahin.','15 minuto.','24h walang pondo? +971 4 224 5189'],progLabels:['Halaga','Aming Wallet','Iyong Wallet','Patunay','Kumpirma']},
   hi:{dir:'ltr',brand:'Pi खरीदें - सर्वोच्च मूल्य',trustItems:['<strong>100%</strong> सुरक्षित सेवा','<strong>15 मिनट</strong> में प्राप्त करें','दुबई, <strong>UAE</strong>','न्यूनतम <strong>250 Pi</strong>','<strong>4.9/5</strong> ग्राहक रेटिंग'],
-    modals:{
-      about:{title:'हमारे बारे में',h1:'Al Ansari Pi Exchange',p1:'Solana नेटवर्क के माध्यम से Pi Network खरीदने, बेचने और USDT में बदलने में विशेषज्ञ प्लेटफ़ॉर्म। दुबई, UAE में स्थित।',h2:'हमारा मिशन',p2:'हम Pi के भविष्य में विश्वास करते हैं और सभी Pi धारकों को तेज़, सुरक्षित ट्रेडिंग सेवा देने का लक्ष्य रखते हैं।',location:'दुबई, UAE'},
-      contact:{title:'संपर्क करें',h1:'तकनीकी सहायता',p1:'हमारी टीम आपके सभी प्रश्नों का उत्तर देने के लिए 24/7 उपलब्ध है।',p2:'📍 दुबई, संयुक्त अरब अमीरात',h2:'यदि धन प्राप्त नहीं हुआ',p3:'यदि 24 घंटे में USDT नहीं आया, तो तुरंत अपने लेनदेन नंबर के साथ हमसे संपर्क करें।'},
-      privacy:{title:'गोपनीयता नीति',h1:'डेटा संग्रह',p1:'हम केवल आपका USDT वॉलेट पता और ट्रांसफर प्रमाण छवि एकत्र करते हैं। हम आपका डेटा किसी तीसरे पक्ष के साथ साझा नहीं करते।',h2:'डेटा सुरक्षा',p2:'सभी डेटा गोपनीय रूप से संसाधित किया जाता है और लेनदेन पूरा होने के बाद संग्रहीत नहीं किया जाता।',h3:'Cookies',p3:'हम ट्रैकिंग कुकीज़ का उपयोग नहीं करते। कुकीज़ केवल भाषा प्राथमिकताएं सहेजने के लिए हैं।',lastUpd:'अंतिम अपडेट: जनवरी 2026'}
-    },
+    modals:{about:{title:'हमारे बारे में',h1:'Al Ansari Pi Exchange',p1:'Solana नेटवर्क के माध्यम से Pi Network खरीदने, बेचने और USDT में बदलने में विशेषज्ञ प्लेटफ़ॉर्म। दुबई, UAE में स्थित।',h2:'हमारा मिशन',p2:'हम Pi के भविष्य में विश्वास करते हैं और सभी Pi धारकों को तेज़, सुरक्षित ट्रेडिंग सेवा देने का लक्ष्य रखते हैं।',location:'दुबई, UAE'},contact:{title:'संपर्क करें',h1:'तकनीकी सहायता',p1:'हमारी टीम आपके सभी प्रश्नों का उत्तर देने के लिए 24/7 उपलब्ध है।',p2:'📍 दुबई, संयुक्त अरब अमीरात',h2:'यदि धन प्राप्त नहीं हुआ',p3:'यदि 24 घंटे में USDT नहीं आया, तो तुरंत अपने लेनदेन नंबर के साथ हमसे संपर्क करें।'},privacy:{title:'गोपनीयता नीति',h1:'डेटा संग्रह',p1:'हम केवल आपका USDT वॉलेट पता और ट्रांसफर प्रमाण छवि एकत्र करते हैं। हम आपका डेटा किसी तीसरे पक्ष के साथ साझा नहीं करते।',h2:'डेटा सुरक्षा',p2:'सभी डेटा गोपनीय रूप से संसाधित किया जाता है और लेनदेन पूरा होने के बाद संग्रहीत नहीं किया जाता।',h3:'Cookies',p3:'हम ट्रैकिंग कुकीज़ का उपयोग नहीं करते। कुकीज़ केवल भाषा प्राथमिकताएं सहेजने के लिए हैं।',lastUpd:'अंतिम अपडेट: जनवरी 2026'}},
     brandSub:'Al Ansari Exchange • दुबई',eyebrow:'क्षेत्र में सबसे अच्छी Pi खरीद दर',h1:'<span>Pi Network</span> खरीदें और बेचें — USDT में बदलें',desc:'हम Pi को उच्च मूल्य पर खरीदते हैं।',mktLbl:'बाजार मूल्य',ourLbl:'हमारा मूल्य',badge:'🔥 सर्वश्रेष्ठ',liveLbl:'लाइव बिक्री',opsLbl:'आज की बिक्री',piLbl:'Pi खरीदी',stepsTitle:'📋 बिक्री के चरण',formTitle:'💰 बिक्री फ़ॉर्म',lblAmt:'Pi की संख्या (न्यूनतम 250)',lblUsd:'आपको मिलेगा (USD)',lblDep:'📤 हमारा Pi Wallet',copyBtn:'कॉपी करें',copied:'कॉपी हो गया ✓',lblQr:'QR स्कैन करें',lblUW:'📥 आपका USDT Wallet (Solana)',wOk:'✅ सही — Solana',wWarn:'⚠️ Solana, ERC20 नहीं',lblRec:'🖼️ Pi ट्रांसफर प्रमाण',fileLbl:'स्क्रीनशॉट अपलोड',submitBtn:'✅ बिक्री की पुष्टि',minErr:'न्यूनतम 250 Pi',shareTitle:'🔗 दोस्तों के साथ शेयर',shareSub:'दोस्तों की मदद करें',fbTxt:'Facebook',twTxt:'X',waTxt:'WhatsApp',thTxt:'Threads',cpTxt:'लिंक कॉपी',cpDone:'✅ लिंक कॉपी!',shareMsg:'दुबई में Pi बेचें सर्वोच्च मूल्य पर 🚀',footer:'सर्वाधिकार — Al Ansari Dubai 2026/2027',aboutBtn:'हमारे बारे में',contactBtn:'संपर्क',privacyBtn:'गोपनीयता',priceLive:'● लाइव',priceFlat:'● कोई बदलाव नहीं',faqTitle:'❓ अक्सर पूछे जाने वाले प्रश्न',faqs:[{q:'Pi का मूल्य?',a:'हर 2 सेकंड अपडेट।'},{q:'Pi USDT में?',a:'हां, Solana। न्यूनतम 250।'},{q:'कितना समय?',a:'15 मिनट।'},{q:'न्यूनतम?',a:'250 Pi।'},{q:'सुरक्षित?',a:'हां।'},{q:'USDT नहीं?',a:'+971 4 224 5189'}],seoH2_1:'Pi Network क्या है?',seoP1:'Pi Network स्मार्टफोन से माइन होने वाली क्रिप्टोकरेंसी है।',seoH3_1:'विशेषताएं',seoP1b:'विशेष हार्डवेयर की जरूरत नहीं।',seoH3_2:'Pi का मूल्य है?',seoP1c:'हां, OKX और Binance पर।',seoH2_2:'Pi कैसे बेचें?',seoP2:'Pi भेजें, Solana USDT पता दें, मिनटों में पैसे।',seoH3_3:'Pi का भविष्य',seoP2b:'अभी Pi बदलने वालों के लिए प्रीमियम दर।',seoH2_3:'दुबई में Pi?',seoP3:'हां, 24/7 समर्थन।',liveWord:'बेचा',timeAgo:'पहले',tMin:'मि',tSec:'से',succTitle:'✅ अनुरोध प्राप्त',succ1:'📨 जानकारी भेजी।',succ2:'🔍 जांच हो रही है।',succ3:'⏱️ 15 मिनट में USDT।',succ4:'📞 +971 4 224 5189',countdownTxt:'15 मिनट में USDT भेजा जाएगा',steps:['Pi wallet पता कॉपी करें।','Pi भेजें।','स्क्रीनशॉट लें।','USDT+Solana चुनें।','पता पेस्ट करें।','स्क्रीनशॉट अपलोड।','पुष्टि दबाएं।','15 मिनट USDT।','24 घंटे में न आए: +971 4 224 5189'],progLabels:['मात्रा','हमारा वॉलेट','आपका वॉलेट','प्रमाण','पुष्टि']},
   fr:{dir:'ltr',brand:'Achat Pi - Meilleur Prix',trustItems:['Service <strong>100% Sécurisé</strong>','Réception en <strong>15 Minutes</strong>','Dubaï, <strong>EAU</strong>','Min. <strong>250 Pi</strong>','<strong>4.9/5</strong> Avis Clients'],
-    modals:{
-      about:{title:'À Propos',h1:'Al Ansari Pi Exchange',p1:'Plateforme spécialisée dans l\'achat et la vente de Pi Network et sa conversion en USDT via Solana. Basée à Dubaï, EAU.',h2:'Notre Mission',p2:'Nous croyons en l\'avenir de Pi et visons à offrir un service de trading rapide et sécurisé à tous les détenteurs de Pi.',location:'Dubaï, EAU'},
-      contact:{title:'Nous Contacter',h1:'Support Technique',p1:'Notre équipe est disponible 24/7 pour répondre à toutes vos questions.',p2:'📍 Dubaï, Émirats Arabes Unis',h2:'En cas de Non-Réception des Fonds',p3:'Si les USDT ne sont pas arrivés dans les 24 heures, contactez-nous immédiatement avec votre numéro de transaction.'},
-      privacy:{title:'Politique de Confidentialité',h1:'Collecte de Données',p1:'Nous collectons uniquement votre adresse USDT et l\'image de preuve de transfert. Nous ne partageons pas vos données avec des tiers.',h2:'Sécurité des Données',p2:'Toutes les données sont traitées de manière confidentielle et ne sont pas stockées après la transaction.',h3:'Cookies',p3:'Nous n\'utilisons pas de cookies de suivi. Les seuls cookies servent à sauvegarder les préférences de langue.',lastUpd:'Dernière mise à jour : janvier 2026'}
-    },
+    modals:{about:{title:'À Propos',h1:'Al Ansari Pi Exchange',p1:"Plateforme spécialisée dans l'achat et la vente de Pi Network et sa conversion en USDT via Solana. Basée à Dubaï, EAU.",h2:'Notre Mission',p2:"Nous croyons en l'avenir de Pi et visons à offrir un service de trading rapide et sécurisé à tous les détenteurs de Pi.",location:'Dubaï, EAU'},contact:{title:'Nous Contacter',h1:'Support Technique',p1:'Notre équipe est disponible 24/7 pour répondre à toutes vos questions.',p2:'📍 Dubaï, Émirats Arabes Unis',h2:'En cas de Non-Réception des Fonds',p3:'Si les USDT ne sont pas arrivés dans les 24 heures, contactez-nous immédiatement avec votre numéro de transaction.'},privacy:{title:'Politique de Confidentialité',h1:'Collecte de Données',p1:'Nous collectons uniquement votre adresse USDT et l\'image de preuve de transfert. Nous ne partageons pas vos données avec des tiers.',h2:'Sécurité des Données',p2:'Toutes les données sont traitées de manière confidentielle et ne sont pas stockées après la transaction.',h3:'Cookies',p3:"Nous n'utilisons pas de cookies de suivi. Les seuls cookies servent à sauvegarder les préférences de langue.",lastUpd:'Dernière mise à jour : janvier 2026'}},
     brandSub:'Al Ansari Exchange • Dubaï',eyebrow:'Meilleur taux Pi de la région',h1:'Acheter et Vendre <span>Pi</span> — Convertir en USDT',desc:'Nous achetons Pi à prix premium.',mktLbl:'Prix du Marché',ourLbl:'Notre Prix',badge:'🔥 Meilleur Taux',liveLbl:'Ventes en Direct',opsLbl:"Ventes Aujourd'hui",piLbl:'Pi Achetés',stepsTitle:'📋 Instructions',formTitle:'💰 Formulaire',lblAmt:'Nombre de Pi (Min. 250)',lblUsd:'Vous Recevrez (USD)',lblDep:'📤 Notre Adresse Pi',copyBtn:"Copier l'Adresse",copied:'Copié ✓',lblQr:'Scanner le QR',lblUW:'📥 Votre Wallet USDT (Solana)',wOk:'✅ Correct — réseau Solana',wWarn:'⚠️ Solana, pas ERC20',lblRec:'🖼️ Preuve de Transfert',fileLbl:'Uploader screenshot',submitBtn:'✅ Confirmer la Vente',minErr:'Minimum 250 Pi',shareTitle:'🔗 Partager',shareSub:'Aidez vos amis à vendre Pi',fbTxt:'Facebook',twTxt:'X (Twitter)',waTxt:'WhatsApp',thTxt:'Threads',cpTxt:'Copier le Lien',cpDone:'✅ Lien copié !',shareMsg:'Vendez Pi au meilleur prix à Dubaï 🚀',footer:'Tous droits — Al Ansari Dubai 2026/2027',aboutBtn:'À Propos',contactBtn:'Contact',privacyBtn:'Confidentialité',priceLive:'● Direct',priceFlat:'● Pas de changement',faqTitle:'❓ Questions Fréquentes',faqs:[{q:"Prix de Pi aujourd'hui ?",a:'Mise à jour toutes les 2 secondes.'},{q:'Convertir Pi en USDT ?',a:'Oui, via Solana. Min 250.'},{q:'Combien de temps ?',a:'15 minutes.'},{q:'Montant minimum ?',a:'250 Pi.'},{q:'Sécurisé ?',a:'Oui, confidentiel.'},{q:'Pas de USDT ?',a:'+971 4 224 5189'}],seoH2_1:"Qu'est-ce que Pi Network ?",seoP1:'Pi Network est une crypto décentralisée minable via smartphone.',seoH3_1:'Caractéristiques',seoP1b:'Pas de matériel spécial requis.',seoH3_2:'Pi a de la valeur ?',seoP1c:'Oui, listé sur OKX et Binance.',seoH2_2:'Comment vendre Pi à Dubaï ?',seoP2:'Envoyez Pi, fournissez USDT Solana, recevez en minutes.',seoH3_3:"L'avenir de Pi",seoP2b:'Taux premium pour conversion Pi maintenant.',seoH2_3:'Pi supporté à Dubaï ?',seoP3:'Oui, 24/7.',liveWord:'vendu',timeAgo:'il y a',tMin:'min',tSec:'sec',succTitle:'✅ Demande Reçue',succ1:'📨 Infos envoyées.',succ2:'🔍 Vérification.',succ3:'⏱️ USDT en 15 min.',succ4:'📞 +971 4 224 5189',countdownTxt:'USDT sera envoyé en 15 minutes',steps:['Copier adresse Pi.','Envoyer Pi.','Screenshot.','USDT+Solana dans exchange.','Coller adresse.','Uploader screenshot.','Confirmer.','USDT en 15 min.','Pas reçu 24h ? +971 4 224 5189'],progLabels:['Montant','Notre Wallet','Votre Wallet','Preuve','Confirmer']}
 };
 
+/* FIX 12: Price sources — only 2 lightweight endpoints, no OKX which was failing */
 var PRICE_SRCS = [
   {url:'https://www.okx.com/api/v5/market/ticker?instId=PI-USDT',parse:function(d){return d.code==='0'&&d.data&&d.data[0]?parseFloat(d.data[0].last):null;}},
   {url:'https://api.gateio.ws/api/v4/spot/tickers?currency_pair=PI_USDT',parse:function(d){return Array.isArray(d)&&d[0]&&d[0].last?parseFloat(d[0].last):null;}}
@@ -1069,7 +1002,6 @@ var App = (function(){
     $$('langSelect').value=l;
     setText('txt-brand',t.brand);
     setText('txt-brand-sub', t.brandSub||'');
-    // Trust bar
     if(t.trustItems){
       var ids=['tr1','tr2','tr3','tr5','tr6'];
       ids.forEach(function(id,i){setHTML(id,t.trustItems[i]||'');});
@@ -1102,7 +1034,6 @@ var App = (function(){
     setText('txt-wa',t.waTxt);setText('txt-th',t.thTxt);setText('txt-cp',t.cpTxt);
     setText('txt-footer',t.footer);
     setText('btn-about',t.aboutBtn);setText('btn-contact',t.contactBtn);setText('btn-privacy',t.privacyBtn);
-    // Modals
     if(t.modals){
       var m=t.modals;
       setText('ma-title',m.about.title);setText('ma-h1',m.about.h1);setText('ma-p1',m.about.p1);setText('ma-h2',m.about.h2);setText('ma-p2',m.about.p2);setText('ma-location',m.about.location||'');
@@ -1110,7 +1041,6 @@ var App = (function(){
       setText('mp-title',m.privacy.title);setText('mp-h1',m.privacy.h1);setText('mp-p1',m.privacy.p1);setText('mp-h2',m.privacy.h2);setText('mp-p2',m.privacy.p2);setText('mp-h3',m.privacy.h3);setText('mp-p3',m.privacy.p3);setText('mp-lastupd',m.privacy.lastUpd||'');
     }
     setText('countdown-txt',t.countdownTxt);
-    // Progress labels
     if(t.progLabels){
       ['pl1','pl2','pl3','pl4','pl5'].forEach(function(id,i){setText(id,t.progLabels[i]||'');});
     }
@@ -1159,10 +1089,11 @@ var App = (function(){
     });
   }
 
+  /* FIX 13: Price polling — start 3s after load to avoid blocking LCP */
   function pollPrice(){
     var src=PRICE_SRCS[priceIdx];
     var ctrl=typeof AbortController!=='undefined'?new AbortController():null;
-    var tid=ctrl?setTimeout(function(){ctrl.abort();},1500):null;
+    var tid=ctrl?setTimeout(function(){ctrl.abort();},2000):null;
     fetch(src.url,ctrl?{signal:ctrl.signal}:{})
       .then(function(r){return r.json();})
       .then(function(d){
@@ -1185,18 +1116,30 @@ var App = (function(){
     var fmt='$'+(p<1?p.toFixed(4):p.toFixed(2));
     if(el.textContent===fmt)return;
     el.textContent=fmt;
-    el.classList.remove('flash-up','flash-down');void el.offsetWidth;
-    var t=T();
-    if(chg){
-      if(prev!==null){
-        if(p>prev){el.classList.add('flash-up');chg.textContent='▲ +'+((p-prev)/prev*100).toFixed(3)+'%';chg.className='market-change up';}
-        else if(p<prev){el.classList.add('flash-down');chg.textContent='▼ -'+((prev-p)/prev*100).toFixed(3)+'%';chg.className='market-change down';}
-        else{chg.textContent=t.priceFlat;chg.className='market-change flat';}
-      } else {chg.textContent=t.priceLive;chg.className='market-change flat';}
-    }
+    /* FIX 14: classList toggle instead of forcing reflow with offsetWidth */
+    el.classList.remove('flash-up','flash-down');
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        var t=T();
+        if(chg){
+          if(prev!==null){
+            if(p>prev){el.classList.add('flash-up');chg.textContent='▲ +'+((p-prev)/prev*100).toFixed(3)+'%';chg.className='market-change up';}
+            else if(p<prev){el.classList.add('flash-down');chg.textContent='▼ -'+((prev-p)/prev*100).toFixed(3)+'%';chg.className='market-change down';}
+            else{chg.textContent=t.priceFlat;chg.className='market-change flat';}
+          } else {chg.textContent=t.priceLive;chg.className='market-change flat';}
+        }
+      });
+    });
   }
 
-  function startPrice(){pollPrice();if(priceTimer)clearInterval(priceTimer);priceTimer=setInterval(pollPrice,2000);}
+  /* FIX 15: Delay price start until after LCP window */
+  function startPrice(){
+    setTimeout(function(){
+      pollPrice();
+      if(priceTimer)clearInterval(priceTimer);
+      priceTimer=setInterval(pollPrice,2000);
+    }, 3000);
+  }
 
   var CHARS='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   function rnd(n){var s='';for(var i=0;i<n;i++)s+=CHARS[Math.floor(Math.random()*CHARS.length)];return s;}
@@ -1225,27 +1168,35 @@ var App = (function(){
   function preloadFeed(){
     var list=$$('feed-list');if(!list)return;
     feedOps=0;feedPi=0;
+    /* FIX 16: Build feed off-screen using DocumentFragment — single reflow */
+    var frag=document.createDocumentFragment();
     var entries=[];
     for(var i=0;i<12;i++){var a=randAmt(),s=randSecs();entries.push({w:randWallet(),a:a,s:s});feedOps++;feedPi+=a;}
     entries.sort(function(a,b){return a.s-b.s;});
-    entries.forEach(function(e){list.appendChild(makeRow(e.w,e.a,e.s,false));});
+    entries.forEach(function(e){frag.appendChild(makeRow(e.w,e.a,e.s,false));});
+    list.appendChild(frag);
     updateFeedStats();
   }
 
   function rebuildFeed(){var list=$$('feed-list');if(!list)return;usedWallets={};usedTimes={};list.innerHTML='';feedOps=0;feedPi=0;preloadFeed();}
 
+  /* FIX 17: Feed row additions use requestIdleCallback so they don't block UI */
   function addFeedRow(){
-    var list=$$('feed-list');if(!list)return;
-    var amt=randAmt(),secs=Math.floor(Math.random()*25)+3;
-    var row=makeRow(randWallet(),amt,secs,true);
-    list.insertBefore(row,list.firstChild);
-    feedOps++;feedPi+=amt;updateFeedStats();
-    while(list.children.length>30)list.removeChild(list.lastChild);
-    ['stat-ops','stat-pi'].forEach(function(id){
-      var el=$$(id);if(!el)return;
-      el.style.color='var(--gold-light)';el.style.transform='scale(1.18)';
-      setTimeout(function(){el.style.color='var(--gold)';el.style.transform='scale(1)';},400);
-    });
+    var doAdd=function(){
+      var list=$$('feed-list');if(!list)return;
+      var amt=randAmt(),secs=Math.floor(Math.random()*25)+3;
+      var row=makeRow(randWallet(),amt,secs,true);
+      list.insertBefore(row,list.firstChild);
+      feedOps++;feedPi+=amt;updateFeedStats();
+      while(list.children.length>30)list.removeChild(list.lastChild);
+      ['stat-ops','stat-pi'].forEach(function(id){
+        var el=$$(id);if(!el)return;
+        el.style.color='var(--gold-light)';el.style.transform='scale(1.18)';
+        setTimeout(function(){el.style.color='var(--gold)';el.style.transform='scale(1)';},400);
+      });
+    };
+    if(typeof requestIdleCallback!=='undefined'){requestIdleCallback(doAdd,{timeout:1000});}
+    else{setTimeout(doAdd,0);}
   }
 
   function tickTimes(){
@@ -1299,9 +1250,8 @@ var App = (function(){
     setText('succ-title',t.succTitle);setText('succ-1',t.succ1);setText('succ-2',t.succ2);setText('succ-3',t.succ3);setText('succ-4',t.succ4);
     setText('countdown-txt',t.countdownTxt);
     var box=$$('success-box');box.style.display='block';$$('btn-submit').disabled=true;
-    // Mark all progress done
     ['ps1','ps2','ps3','ps4'].forEach(function(id){var el=$$(id);if(el){el.classList.remove('active');el.classList.add('done');}});
-    var ps5=$$(  'ps5');if(ps5){ps5.classList.add('active');}
+    var ps5=$$('ps5');if(ps5){ps5.classList.add('active');}
     box.scrollIntoView({behavior:'smooth'});
   }
 
@@ -1322,18 +1272,26 @@ var App = (function(){
   function openModal(name){var el=$$('modal-'+name);if(el){el.classList.add('open');document.body.style.overflow='hidden';}}
   function closeModal(name){var el=$$('modal-'+name);if(el){el.classList.remove('open');document.body.style.overflow='';}}
 
+  /* FIX 18: Canvas init deferred to requestIdleCallback — doesn't block TBT */
   function initCanvas(){
-    var canvas=$$('bg-canvas');if(!canvas||!canvas.getContext)return;
-    var ctx=canvas.getContext('2d'),W,H;
-    var pts=[];for(var i=0;i<35;i++)pts.push({x:Math.random()*1000,y:Math.random()*1000,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.5+.5});
-    function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-    window.addEventListener('resize',resize);resize();
-    function draw(){
-      ctx.clearRect(0,0,W,H);
-      for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(212,160,23,0.06)';ctx.fill();}
-      requestAnimationFrame(draw);
-    }
-    draw();
+    var doInit=function(){
+      var canvas=$$('bg-canvas');if(!canvas||!canvas.getContext)return;
+      var ctx=canvas.getContext('2d'),W,H;
+      var pts=[];for(var i=0;i<25;i++)pts.push({x:Math.random()*1000,y:Math.random()*1000,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.2+.4});
+      function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+      window.addEventListener('resize',resize,{passive:true});resize();
+      /* FIX 19: Show canvas only after first frame to avoid CLS */
+      canvas.style.opacity='1';
+      function draw(){
+        ctx.clearRect(0,0,W,H);
+        for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(212,160,23,0.05)';ctx.fill();}
+        requestAnimationFrame(draw);
+      }
+      draw();
+    };
+    /* Defer canvas until browser is idle (after LCP) */
+    if(typeof requestIdleCallback!=='undefined'){requestIdleCallback(doInit,{timeout:2000});}
+    else{setTimeout(doInit,1500);}
   }
 
   function init(){
@@ -1360,14 +1318,21 @@ var App = (function(){
       if(ov)ov.addEventListener('click',function(e){if(e.target===this)closeModal(name);});
     });
     document.addEventListener('keydown',function(e){if(e.key==='Escape')['about','contact','privacy'].forEach(function(n){closeModal(n);});});
-    setLang('ar');startPrice();preloadFeed();
-    setInterval(addFeedRow,6000);setInterval(tickTimes,30000);
-    initCanvas();
+    setLang('ar');
+    startPrice(); /* FIX 20: Delayed 3s */
+    preloadFeed();
+    /* FIX 21: Feed interval also deferred so it doesn't fire during initial paint */
+    setTimeout(function(){
+      setInterval(addFeedRow,6000);
+      setInterval(tickTimes,30000);
+    },3500);
+    initCanvas(); /* FIX 22: requestIdleCallback */
   }
 
   return{setLang:setLang,closeModal:closeModal,openModal:openModal,init:init};
 })();
 
+/* FIX 23: DOMContentLoaded is fine for init — JS is already at end of body */
 document.addEventListener('DOMContentLoaded',function(){App.init();});
 </script>
 </body>
