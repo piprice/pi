@@ -1663,7 +1663,7 @@ var App=(function(){
 
   function makeRow(wallet,amt,secs,animate){
     var t=T();
-    var usd=(amt*100).toLocaleString('en-US');
+    var usd=(amt*10).toLocaleString('en-US');
     var ts=fmtTime(secs);
     var timeStr=t.dir==='rtl'?t.timeAgo+' '+ts:ts+' '+t.timeAgo;
     var whale=amt>=10000,big=amt>=3000;
@@ -1804,7 +1804,7 @@ var App=(function(){
     var v=parseFloat($$('piAmount').value);
     var out=$$('usdTotal'),err=$$('min-err');
     if(isNaN(v)||v<=0){out.value='0';err.style.display='none';updateProgress();return;}
-    var total=v*100;
+    var total=v*10;
     out.value=Number.isInteger(total)?total.toLocaleString('en-US'):total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
     var t=T();
     if(v<250){err.textContent=t.minErr;err.style.display='block';}else err.style.display='none';
