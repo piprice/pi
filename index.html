@@ -833,43 +833,6 @@ header {
 .share-btn.cp{background:rgba(212,160,23,0.1);border:1px solid var(--border);color:var(--gold)}
 .copy-feedback{font-size:12px;color:var(--success);margin-top:12px;min-height:18px;transition:opacity 0.3s;opacity:0}
 
-/* ═══════════════════════════════════════════
-   ✅ FIX 3: SEO Rich Text Section
-═══════════════════════════════════════════ */
-.seo-rich-text {
-  background:var(--dark2);border:1px solid rgba(255,255,255,0.04);
-  border-radius:var(--radius);padding:32px 28px;margin-bottom:14px;
-}
-.seo-rich-text h2 {
-  font-size:18px;font-weight:700;color:var(--gold);
-  margin-bottom:12px;margin-top:28px;padding-bottom:8px;
-  border-bottom:1px solid rgba(212,160,23,0.15);
-  display:flex;align-items:center;gap:10px;
-}
-.seo-rich-text h2:first-child{margin-top:0}
-.seo-rich-text h2::before{content:'';display:block;width:3px;height:20px;background:var(--gold);border-radius:3px;flex-shrink:0}
-.seo-rich-text h3{font-size:14px;font-weight:700;color:var(--gold-light);margin:16px 0 8px;opacity:0.9}
-.seo-rich-text p{font-size:13.5px;color:var(--text-muted);line-height:1.9;margin-bottom:10px}
-.seo-rich-text ul{list-style:none;padding:0;margin:0 0 12px}
-.seo-rich-text ul li{
-  font-size:13px;color:var(--text-muted);line-height:1.8;
-  padding:4px 0;padding-inline-start:20px;position:relative;
-}
-.seo-rich-text ul li::before{
-  content:'◆';position:absolute;inset-inline-start:0;
-  color:var(--gold);font-size:8px;top:8px;
-}
-.seo-rich-text a{color:var(--gold);text-decoration:underline;text-decoration-color:rgba(212,160,23,0.35)}
-.seo-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:16px 0}
-.seo-info-box{
-  background:var(--dark3);border:1px solid rgba(212,160,23,0.12);
-  border-radius:var(--radius-sm);padding:16px;
-  transition:border-color var(--transition);
-}
-.seo-info-box:hover{border-color:rgba(212,160,23,0.3)}
-.seo-info-box .box-icon{font-size:22px;margin-bottom:8px}
-.seo-info-box .box-title{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:4px}
-.seo-info-box .box-text{font-size:12px;color:var(--text-muted);line-height:1.7}
 
 /* ═══════════════════════════════════════════
    FOOTER
@@ -969,9 +932,7 @@ footer {
   .container{padding:10px}
   .feed-header{padding:12px 14px}
   .feed-row{padding:10px 14px}
-  .ticker-bar{display:none}
-  .seo-rich-text{padding:20px 14px}
-}
+  .ticker-bar{display:none}}
 
 @media(max-width:360px){
   .hero-card h1{font-size:18px}
@@ -1274,80 +1235,6 @@ footer {
   </div>
 </div>
 
-<!-- ✅ FIX 3: Rich SEO Text Section — increases text-to-code ratio above 10% -->
-<div class="seo-rich-text reveal" id="seo-rich-content">
-  <h2>Pi Network في دبي والإمارات — دليل شامل</h2>
-  <p>عملة Pi Network هي إحدى أبرز العملات الرقمية اللامركزية التي يمكن تعدينها عبر الهاتف الذكي دون الحاجة إلى أجهزة متخصصة أو استهلاك طاقة كبيرة. تأسست على يد فريق من خريجي جامعة ستانفورد، وتهدف إلى جعل العملات الرقمية متاحة للجميع حول العالم.</p>
-  <p>في دبي والإمارات العربية المتحدة، يتزايد الاهتمام بعملة Pi يوماً بعد يوم، حيث أصبحت من أكثر العملات الرقمية بحثاً وتداولاً بين المستخدمين العرب. نحن في الانصاري للصرافة نقدم أفضل خدمة لتحويل Pi إلى USDT بسعر تنافسي $10 لكل Pi.</p>
-
-  <div class="seo-info-grid">
-    <div class="seo-info-box">
-      <div class="box-icon">⚡</div>
-      <div class="box-title">تحويل فوري خلال 15 دقيقة</div>
-      <div class="box-text">نضمن وصول USDT إلى محفظتك على شبكة Solana خلال 15 دقيقة كحد أقصى من لحظة تأكيد الطلب.</div>
-    </div>
-    <div class="seo-info-box">
-      <div class="box-icon">🔒</div>
-      <div class="box-title">أمان وسرية تامة</div>
-      <div class="box-text">جميع عمليات التحويل تتم بموجب بروتوكولات أمان صارمة. لا نحتفظ ببياناتك بعد إتمام العملية.</div>
-    </div>
-    <div class="seo-info-box">
-      <div class="box-icon">💰</div>
-      <div class="box-title">أعلى سعر في السوق</div>
-      <div class="box-text">نقدم $10 لكل Pi — أعلى من السعر الحالي في السوق. نؤمن بالقيمة المستقبلية لعملة Pi Network.</div>
-    </div>
-    <div class="seo-info-box">
-      <div class="box-icon">📞</div>
-      <div class="box-title">دعم على مدار الساعة</div>
-      <div class="box-text">فريق دعم متخصص متاح 24 ساعة، 7 أيام في الأسبوع للرد على استفساراتك وحل أي مشكلة فورياً.</div>
-    </div>
-  </div>
-
-  <h2>لماذا تبيع Pi Network الآن؟</h2>
-  <p>مع إدراج Pi Network على منصات التداول الكبرى مثل OKX وMEXC وGate.io، أصبح بإمكان حاملي Pi تحويل عملاتهم إلى USDT بكل سهولة ويسر. السعر الحالي للـ Pi يتحدث لحظياً، مما يوفر فرصاً ممتازة للربح خاصة مع السعر التشجيعي الذي نقدمه.</p>
-  <p>عملة Pi Network متاحة الآن للتداول الحر، وقد انضم ملايين المستخدمين حول العالم لمنظومة Pi. في الإمارات العربية المتحدة ودبي تحديداً، نلاحظ تزايداً ملحوظاً في عدد حاملي Pi الراغبين في تحويل عملاتهم إلى عملات مستقرة كـ USDT.</p>
-
-  <h3>مميزات شبكة Solana لتحويل USDT</h3>
-  <ul>
-    <li>رسوم تحويل منخفضة جداً — أقل من $0.01 لكل معاملة</li>
-    <li>سرعة تأكيد فائقة — أقل من 5 ثوانٍ لإتمام التحويل</li>
-    <li>شبكة آمنة ومستقرة تعمل على مدار الساعة</li>
-    <li>متوافقة مع جميع المحافظ الرقمية الشهيرة</li>
-    <li>شبكة Solana من أسرع شبكات البلوكتشين في العالم</li>
-  </ul>
-
-  <h2>كيفية حفظ عنوان Solana USDT بشكل صحيح</h2>
-  <p>للحصول على عنوان USDT على شبكة Solana، اتبع الخطوات التالية: افتح تطبيق محفظتك الرقمية (مثل Phantom أو Solflare أو Trust Wallet)، اختر الإيداع أو الاستلام، ابحث عن USDT، تأكد من اختيار شبكة Solana (SOL) وليس شبكة ERC20 أو BEP20، انسخ العنوان الظاهر وضعه في نموذج البيع أعلاه.</p>
-  <p>تنبيه هام: تأكد دائماً أن عنوان USDT المُدخل هو لشبكة Solana تحديداً. استخدام عنوان شبكة أخرى (مثل Ethereum) قد يؤدي إلى ضياع الأموال ولا يمكن استرجاعها.</p>
-
-  <h2>Pi Network في الإمارات — الوضع القانوني والتنظيمي</h2>
-  <p>تعمل دبي والإمارات العربية المتحدة على تطوير إطار تنظيمي شامل للعملات الرقمية، وتعد من أكثر الدول ترحيباً بتقنية البلوكتشين في المنطقة العربية. هيئة تنظيم الأصول الافتراضية VARA تعمل على ضمان بيئة آمنة وشفافة لتداول العملات الرقمية بما فيها Pi Network.</p>
-  <p>نلتزم نحن في الانصاري للصرافة بجميع الأنظمة واللوائح المحلية والدولية المتعلقة بتداول العملات الرقمية، ونوفر خدماتنا بشكل قانوني ومرخص في إمارة دبي.</p>
-
-  <h3>الحد الأدنى والأقصى للتحويل</h3>
-  <ul>
-    <li>الحد الأدنى للبيع: 250 Pi لكل معاملة</li>
-    <li>لا يوجد حد أقصى محدد للتحويل</li>
-    <li>العمليات الكبيرة (أكثر من 10,000 Pi) تستلزم التواصل المسبق</li>
-    <li>يمكن إجراء عدة عمليات في اليوم الواحد</li>
-  </ul>
-
-  <h2>أسعار Pi Network مقابل العملات الأخرى</h2>
-  <p>يمكنك متابعة سعر Pi Network مقابل الدولار الأمريكي (Pi/USD) والدرهم الإماراتي (Pi/AED) بشكل لحظي من خلال شاشة الأسعار أعلى الصفحة. يتم تحديث السعر كل ثانيتين مباشرة من منصة OKX، أكبر منصات تداول العملات الرقمية في العالم.</p>
-  <p>لحساب قيمة Pi الخاصة بك بالدرهم الإماراتي، اضرب السعر بالدولار في سعر صرف الدرهم (حوالي 3.67 درهم لكل دولار). على سبيل المثال: 1000 Pi × $10 = $10,000 ≈ 36,700 درهم إماراتي.</p>
-
-  <h3>مقارنة أسعار منصات تداول Pi</h3>
-  <ul>
-    <li>OKX: سعر السوق الفعلي المتحدث لحظياً</li>
-    <li>MEXC: متاح للتداول بسعر السوق</li>
-    <li>Gate.io: متاح مع رسوم تداول تنافسية</li>
-    <li>الانصاري للصرافة: سعر خاص $10 — أعلى من جميع المنصات</li>
-  </ul>
-
-  <h2>الأسئلة الأكثر شيوعاً حول Pi في دبي</h2>
-  <p>يتساءل كثير من حاملي Pi عن أفضل طريقة لبيع Pi في دبي والإمارات. الإجابة البسيطة: أرسل Pi إلى محفظتنا، وستصلك USDT خلال 15 دقيقة على شبكة Solana. لا تحتاج إلى زيارة أي مكتب أو إجراء أي إجراءات معقدة — كل شيء يتم إلكترونياً بسهولة تامة.</p>
-  <p>للتواصل معنا مباشرة أو في حالة وجود أي استفسار، يمكنك الاتصال بنا على الرقم <strong>+971 4 224 5189</strong> أو زيارة مكتبنا في دبي. فريقنا متاح على مدار الساعة طوال أيام الأسبوع لخدمتك.</p>
-</div>
 
 <!-- SHARE -->
 <div class="share-section reveal">
@@ -1365,6 +1252,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-links">
+    <button class="footer-link" id="btn-guide">📖 الدليل الشامل</button>
     <button class="footer-link" id="btn-about">من نحن</button>
     <button class="footer-link" id="btn-contact">اتصل بنا</button>
     <button class="footer-link" id="btn-privacy">سياسة الخصوصية</button>
@@ -1377,6 +1265,62 @@ footer {
 </div>
 
 <!-- MODALS -->
+
+<div class="modal-overlay" id="modal-guide">
+  <div class="modal-box" style="max-width:640px">
+    <button class="modal-close" onclick="App.closeModal('guide')">✕</button>
+    <div class="modal-title" id="mg-title">📖 Pi Network — الدليل الشامل</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px">
+      <div style="background:var(--dark3);border:1px solid rgba(212,160,23,0.15);border-radius:10px;padding:12px">
+        <div style="font-size:18px;margin-bottom:4px">⚡</div>
+        <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:3px" id="mg-b1t"></div>
+        <div style="font-size:11.5px;color:var(--text-muted);line-height:1.6" id="mg-b1p"></div>
+      </div>
+      <div style="background:var(--dark3);border:1px solid rgba(212,160,23,0.15);border-radius:10px;padding:12px">
+        <div style="font-size:18px;margin-bottom:4px">🔒</div>
+        <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:3px" id="mg-b2t"></div>
+        <div style="font-size:11.5px;color:var(--text-muted);line-height:1.6" id="mg-b2p"></div>
+      </div>
+      <div style="background:var(--dark3);border:1px solid rgba(212,160,23,0.15);border-radius:10px;padding:12px">
+        <div style="font-size:18px;margin-bottom:4px">💰</div>
+        <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:3px" id="mg-b3t"></div>
+        <div style="font-size:11.5px;color:var(--text-muted);line-height:1.6" id="mg-b3p"></div>
+      </div>
+      <div style="background:var(--dark3);border:1px solid rgba(212,160,23,0.15);border-radius:10px;padding:12px">
+        <div style="font-size:18px;margin-bottom:4px">📞</div>
+        <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:3px" id="mg-b4t"></div>
+        <div style="font-size:11.5px;color:var(--text-muted);line-height:1.6" id="mg-b4p"></div>
+      </div>
+    </div>
+
+    <h3 id="mg-h1"></h3>
+    <p id="mg-p1"></p>
+    <p id="mg-p1b"></p>
+
+    <h3 id="mg-h2"></h3>
+    <p id="mg-p2"></p>
+
+    <h3 id="mg-h3"></h3>
+    <p id="mg-p3"></p>
+    <p id="mg-p3warn" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:8px;padding:8px 12px;font-size:12px;color:#fca5a5;margin-top:6px"></p>
+
+    <h3 id="mg-h4"></h3>
+    <p id="mg-p4"></p>
+
+    <h3 id="mg-h5"></h3>
+    <p id="mg-p5"></p>
+
+    <h3 id="mg-h6"></h3>
+    <p id="mg-p6"></p>
+    <p id="mg-p6b" style="font-size:12px;color:var(--text-muted)"></p>
+
+    <div style="text-align:center;margin-top:20px;padding:16px;background:rgba(212,160,23,0.06);border:1px solid rgba(212,160,23,0.15);border-radius:10px">
+      <p id="mg-cta" style="font-size:13px;font-weight:700;color:var(--text);margin:0 0 12px"></p>
+      <a href="tel:+97142245189" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--dark);border-radius:30px;padding:11px 24px;font-weight:900;font-size:13px;text-decoration:none">📞 +971 4 224 5189</a>
+    </div>
+  </div>
+</div>
 <div class="modal-overlay" id="modal-about"><div class="modal-box"><button class="modal-close" onclick="App.closeModal('about')">✕</button><div class="modal-title" id="ma-title">من نحن</div><h3 id="ma-h1">Al Ansari Pi Exchange</h3><p id="ma-p1"></p><h3 id="ma-h2"></h3><p id="ma-p2"></p><p>📞 <a href="tel:+97142245189">+971 4 224 5189</a> &nbsp; 📍 <span id="ma-location"></span></p></div></div>
 <div class="modal-overlay" id="modal-contact"><div class="modal-box"><button class="modal-close" onclick="App.closeModal('contact')">✕</button><div class="modal-title" id="mc-title">اتصل بنا</div><h3 id="mc-h1"></h3><p id="mc-p1"></p><p>📞 <a href="tel:+97142245189"><strong>+971 4 224 5189</strong></a></p><p id="mc-p2"></p><h3 id="mc-h2"></h3><p id="mc-p3"></p></div></div>
 <div class="modal-overlay" id="modal-privacy"><div class="modal-box"><button class="modal-close" onclick="App.closeModal('privacy')">✕</button><div class="modal-title" id="mp-title">سياسة الخصوصية</div><h3 id="mp-h1"></h3><p id="mp-p1"></p><h3 id="mp-h2"></h3><p id="mp-p2"></p><h3 id="mp-h3"></h3><p id="mp-p3"></p><p style="font-size:11px;margin-top:10px;color:var(--text-muted)" id="mp-lastupd"></p></div></div>
@@ -1405,6 +1349,197 @@ fil:[{name:'Maria Santos',loc:'Maynila, Pilipinas',stars:5,text:'Napakabilis ng 
 hi:[{name:'राहुल वर्मा',loc:'मुंबई, भारत',stars:5,text:'अविश्वसनीय रूप से तेज़ सेवा! USDT 11 मिनट में आ गया। अब तक का सबसे अच्छा Pi एक्सचेंज!',amount:'1,100 Pi',date:'2 दिन पहले',initial:'र'},{name:'प्रिया सिंह',loc:'दिल्ली, भारत',stars:5,text:'प्रक्रिया सरल और पारदर्शी थी। प्रति Pi $10 का मूल्य अद्भुत है।',amount:'950 Pi',date:'5 दिन पहले',initial:'प्'},{name:'अमित पटेल',loc:'गुजरात, भारत',stars:5,text:'पेशेवर टीम, तत्काल प्रतिक्रिया, समय पर धन प्राप्त। कोई छुपी फीस नहीं।',amount:'4,200 Pi',date:'1 हफ्ते पहले',initial:'अ'}],
 fr:[{name:'Pierre Dubois',loc:'Paris, France',stars:5,text:"Service incroyablement rapide ! USDT reçu en 11 minutes. Meilleur exchange Pi que j'ai trouvé. Bravo !",amount:'1,300 Pi',date:'Il y a 2 jours',initial:'P'},{name:'Marie Leroy',loc:'Lyon, France',stars:5,text:'Processus simple et transparent. 100$ par Pi est une offre incroyable. Je reviendrai certainement !',amount:'870 Pi',date:'Il y a 5 jours',initial:'M'},{name:'Antoine Bernard',loc:'Marseille, France',stars:5,text:'Equipe professionnelle, réponse immédiate, fonds reçus à temps. Aucun frais caché.',amount:'3,900 Pi',date:'Il y a 1 semaine',initial:'A'},{name:'Sophie Martin',loc:'Bordeaux, France',stars:5,text:"Sceptique au début mais tout s'est parfaitement déroulé. USDT en 13 minutes. Très fiable !",amount:'690 Pi',date:'Il y a 3 jours',initial:'S'}]
 };
+var GUIDE_TRANS = {
+  ar:{
+    title:'📖 Pi Network في دبي والإمارات — دليل شامل',
+    b1t:'تحويل خلال 15 دقيقة',
+    b1p:'USDT يصل إلى محفظتك على Solana في أقل من 15 دقيقة.',
+    b2t:'أمان وسرية تامة',
+    b2p:'لا نحتفظ ببياناتك بعد إتمام العملية.',
+    b3t:'أعلى سعر — $10 / Pi',
+    b3p:'سعرنا أعلى من السوق. نؤمن بمستقبل Pi.',
+    b4t:'دعم 24/7',
+    b4p:'فريق متخصص متاح على مدار الساعة.',
+    h1:'لماذا تبيع Pi Network الآن؟',
+    p1:'مع إدراج Pi على OKX وMEXC وGate.io، أصبح التحويل إلى USDT سهلاً. سعرنا الخاص $10/Pi أعلى من جميع المنصات.',
+    p1b:'في الإمارات ودبي يتزايد عدد حاملي Pi الراغبين في تحويل عملاتهم إلى عملات مستقرة. خدمتنا متاحة 24/7 بدون رسوم خفية.',
+    h2:'مميزات شبكة Solana',
+    p2:'رسوم أقل من $0.01 • تأكيد خلال 5 ثوانٍ • متوافقة مع Phantom وTrust Wallet وSolflare • من أسرع شبكات البلوكتشين.',
+    h3:'كيف تحصل على عنوان Solana USDT؟',
+    p3:'افتح محفظتك ← إيداع/استلام ← ابحث USDT ← اختر شبكة Solana (SOL) فقط — وليس ERC20 أو BEP20.',
+    p3warn:'⚠️ استخدام عنوان شبكة أخرى قد يؤدي إلى ضياع الأموال نهائياً.',
+    h4:'الوضع القانوني في الإمارات',
+    p4:'دبي من أكثر الدول ترحيباً بالبلوكتشين. نعمل بموجب أنظمة هيئة VARA ونلتزم بجميع اللوائح المحلية.',
+    h5:'الحدود والشروط',
+    p5:'الحد الأدنى: 250 Pi • لا حد أقصى • العمليات فوق 10,000 Pi تستلزم التواصل المسبق.',
+    h6:'مقارنة الأسعار',
+    p6:'OKX / MEXC / Gate.io: سعر السوق مع رسوم • الانصاري للصرافة: سعر خاص $10 — الأعلى في المنطقة.',
+    p6b:'مثال: 1000 Pi × $10 = $10,000 ≈ 36,700 درهم إماراتي',
+    cta:'🚀 ابدأ الآن وبيع Pi بأعلى سعر',
+    guideBtn:'📖 الدليل الشامل',
+  },
+  en:{
+    title:'📖 Pi Network in Dubai & UAE — Complete Guide',
+    b1t:'15-Minute Transfer',
+    b1p:'USDT reaches your Solana wallet in under 15 minutes.',
+    b2t:'Full Security & Privacy',
+    b2p:'We do not store your data after the transaction.',
+    b3t:'Best Price — $10 / Pi',
+    b3p:'Our rate beats the market. We believe in Pi\'s future.',
+    b4t:'24/7 Support',
+    b4p:'Dedicated team available around the clock.',
+    h1:'Why Sell Pi Network Now?',
+    p1:'With Pi listed on OKX, MEXC, and Gate.io, converting to USDT is easy. Our special price of $10/Pi beats all platforms.',
+    p1b:'Demand in Dubai and UAE is growing. Our service is available 24/7 with no hidden fees.',
+    h2:'Why Solana Network?',
+    p2:'Fees under $0.01 • Confirmation in 5 seconds • Compatible with Phantom, Trust Wallet, Solflare • One of the fastest blockchains.',
+    h3:'How to Get a Solana USDT Address?',
+    p3:'Open your wallet → Deposit/Receive → Search USDT → Select Solana (SOL) only — not ERC20 or BEP20.',
+    p3warn:'⚠️ Using a different network address may result in permanent loss of funds.',
+    h4:'Legal Status in UAE',
+    p4:'Dubai is one of the most crypto-friendly countries. We operate under VARA regulations with full legal compliance.',
+    h5:'Limits & Terms',
+    p5:'Minimum: 250 Pi • No maximum limit • Transactions above 10,000 Pi require prior contact.',
+    h6:'Price Comparison',
+    p6:'OKX / MEXC / Gate.io: market price with fees • Al Ansari Exchange: special $10 — highest in the region.',
+    p6b:'Example: 1000 Pi × $10 = $10,000 ≈ AED 36,700',
+    cta:'🚀 Start now and sell Pi at the best price',
+    guideBtn:'📖 Full Guide',
+  },
+  zh:{
+    title:'📖 Pi Network 迪拜和阿联酋 — 完整指南',
+    b1t:'15分钟转账',
+    b1p:'USDT在15分钟内到达您的Solana钱包。',
+    b2t:'完全安全保密',
+    b2p:'交易完成后我们不保留您的数据。',
+    b3t:'最高价格 — $10 / Pi',
+    b3p:'我们的价格高于市场。我们相信Pi的未来。',
+    b4t:'24/7 支持',
+    b4p:'专业团队全天候服务。',
+    h1:'为什么现在出售Pi？',
+    p1:'Pi已在OKX、MEXC、Gate.io上市，转为USDT非常简单。我们的特价$10/Pi高于所有平台。',
+    p1b:'迪拜和阿联酋需求不断增长。我们的服务24/7可用，无隐藏费用。',
+    h2:'为什么选择Solana网络？',
+    p2:'手续费不到$0.01 • 5秒确认 • 兼容Phantom、Trust Wallet、Solflare • 最快的区块链之一。',
+    h3:'如何获取Solana USDT地址？',
+    p3:'打开钱包 → 充值/接收 → 搜索USDT → 仅选择Solana (SOL) — 不要ERC20或BEP20。',
+    p3warn:'⚠️ 使用其他网络地址可能导致资金永久丢失。',
+    h4:'阿联酋法律状态',
+    p4:'迪拜是最友好的加密货币国家之一。我们在VARA法规下运营，完全合规。',
+    h5:'限额与条款',
+    p5:'最低：250 Pi • 无上限 • 超过10,000 Pi需提前联系。',
+    h6:'价格比较',
+    p6:'OKX / MEXC / Gate.io：市场价格加手续费 • Al Ansari Exchange：特价$10 — 全区最高。',
+    p6b:'示例：1000 Pi × $10 = $10,000 ≈ 36,700迪拉姆',
+    cta:'🚀 立即开始，以最高价格出售Pi',
+    guideBtn:'📖 完整指南',
+  },
+  fil:{
+    title:'📖 Pi Network sa Dubai at UAE — Kumpletong Gabay',
+    b1t:'15-Minutong Transfer',
+    b1p:'USDT darating sa iyong Solana wallet sa loob ng 15 minuto.',
+    b2t:'Buong Seguridad at Privacy',
+    b2p:'Hindi namin iniingatan ang iyong data pagkatapos ng transaksyon.',
+    b3t:'Pinakamataas — $10 / Pi',
+    b3p:'Ang aming presyo ay mas mataas kaysa sa merkado.',
+    b4t:'24/7 Suporta',
+    b4p:'Dedikadong koponan available anumang oras.',
+    h1:'Bakit Magbenta ng Pi Ngayon?',
+    p1:'Ang Pi ay nakalista na sa OKX, MEXC, at Gate.io. Ang aming espesyal na presyong $10/Pi ay mas mataas sa lahat ng platform.',
+    p1b:'Lumalaki ang demand sa Dubai at UAE. Available ang aming serbisyo 24/7 nang walang nakatagong bayad.',
+    h2:'Bakit Solana Network?',
+    p2:'Bayad na wala sa $0.01 • Kumpirmasyon sa 5 segundo • Compatible sa Phantom, Trust Wallet, Solflare.',
+    h3:'Paano Makakuha ng Solana USDT Address?',
+    p3:'Buksan ang wallet → Deposit/Receive → Hanapin ang USDT → Piliin lamang ang Solana (SOL) — hindi ERC20 o BEP20.',
+    p3warn:'⚠️ Ang paggamit ng ibang network address ay maaaring magdulot ng permanenteng pagkawala ng pondo.',
+    h4:'Legal na Katayuan sa UAE',
+    p4:'Ang Dubai ay isa sa pinaka-friendly na bansa sa crypto. Nagpapatakbo kami sa ilalim ng VARA regulations.',
+    h5:'Mga Limitasyon at Tuntunin',
+    p5:'Minimum: 250 Pi • Walang maximum • Ang mga transaksyon na higit sa 10,000 Pi ay nangangailangan ng paunang pakikipag-ugnayan.',
+    h6:'Paghahambing ng Presyo',
+    p6:'OKX / MEXC / Gate.io: presyo ng merkado na may bayad • Al Ansari Exchange: espesyal na $10 — pinakamataas sa rehiyon.',
+    p6b:'Halimbawa: 1000 Pi × $10 = $10,000 ≈ AED 36,700',
+    cta:'🚀 Magsimula na at ibenta ang Pi sa pinakamataas na presyo',
+    guideBtn:'📖 Kumpletong Gabay',
+  },
+  hi:{
+    title:'📖 Pi Network दुबई और UAE — संपूर्ण गाइड',
+    b1t:'15 मिनट में ट्रांसफर',
+    b1p:'USDT 15 मिनट में आपके Solana वॉलेट में पहुंच जाता है।',
+    b2t:'पूर्ण सुरक्षा और गोपनीयता',
+    b2p:'लेन-देन के बाद हम आपका डेटा स्टोर नहीं करते।',
+    b3t:'सर्वोच्च मूल्य — $10 / Pi',
+    b3p:'हमारी दर बाजार से अधिक है। हम Pi के भविष्य में विश्वास करते हैं।',
+    b4t:'24/7 सहायता',
+    b4p:'समर्पित टीम हर समय उपलब्ध।',
+    h1:'अभी Pi क्यों बेचें?',
+    p1:'Pi अब OKX, MEXC, और Gate.io पर सूचीबद्ध है। हमारा विशेष मूल्य $10/Pi सभी प्लेटफॉर्म से अधिक है।',
+    p1b:'दुबई और UAE में मांग बढ़ रही है। हमारी सेवा 24/7 उपलब्ध है, कोई छुपे हुए शुल्क नहीं।',
+    h2:'Solana नेटवर्क क्यों?',
+    p2:'$0.01 से कम शुल्क • 5 सेकंड में पुष्टि • Phantom, Trust Wallet, Solflare के साथ संगत।',
+    h3:'Solana USDT पता कैसे प्राप्त करें?',
+    p3:'वॉलेट खोलें → जमा/प्राप्त करें → USDT खोजें → केवल Solana (SOL) चुनें — ERC20 या BEP20 नहीं।',
+    p3warn:'⚠️ दूसरे नेटवर्क के पते का उपयोग करने से धन स्थायी रूप से खो सकता है।',
+    h4:'UAE में कानूनी स्थिति',
+    p4:'दुबई सबसे क्रिप्टो-अनुकूल देशों में से एक है। हम VARA नियमों के तहत काम करते हैं।',
+    h5:'सीमाएं और शर्तें',
+    p5:'न्यूनतम: 250 Pi • कोई अधिकतम नहीं • 10,000 Pi से अधिक के लेन-देन के लिए पूर्व संपर्क आवश्यक।',
+    h6:'मूल्य तुलना',
+    p6:'OKX / MEXC / Gate.io: शुल्क सहित बाजार मूल्य • Al Ansari Exchange: विशेष $10 — क्षेत्र में सर्वोच्च।',
+    p6b:'उदाहरण: 1000 Pi × $10 = $10,000 ≈ 36,700 दिरहम',
+    cta:'🚀 अभी शुरू करें और Pi को सर्वोच्च मूल्य पर बेचें',
+    guideBtn:'📖 पूरी गाइड',
+  },
+  fr:{
+    title:'📖 Pi Network à Dubaï et UAE — Guide Complet',
+    b1t:'Transfert en 15 Minutes',
+    b1p:'USDT arrive dans votre wallet Solana en moins de 15 minutes.',
+    b2t:'Sécurité et Confidentialité',
+    b2p:'Nous ne conservons pas vos données après la transaction.',
+    b3t:'Meilleur Prix — $10 / Pi',
+    b3p:'Notre taux dépasse le marché. Nous croyons en l\'avenir de Pi.',
+    b4t:'Support 24/7',
+    b4p:'Équipe dédiée disponible 24h/24.',
+    h1:'Pourquoi Vendre Pi Maintenant?',
+    p1:'Pi est listé sur OKX, MEXC et Gate.io. Notre prix spécial de $10/Pi dépasse toutes les plateformes.',
+    p1b:'La demande à Dubaï et UAE est en croissance. Notre service est disponible 24/7 sans frais cachés.',
+    h2:'Pourquoi Solana?',
+    p2:'Frais inférieurs à $0.01 • Confirmation en 5 secondes • Compatible avec Phantom, Trust Wallet, Solflare.',
+    h3:'Comment Obtenir une Adresse USDT Solana?',
+    p3:'Ouvrez votre wallet → Dépôt/Réception → Cherchez USDT → Sélectionnez uniquement Solana (SOL) — pas ERC20 ni BEP20.',
+    p3warn:'⚠️ Utiliser une adresse d\'un autre réseau peut entraîner une perte permanente de fonds.',
+    h4:'Statut Légal aux UAE',
+    p4:'Dubaï est l\'un des pays les plus crypto-friendly. Nous opérons selon les régulations VARA.',
+    h5:'Limites et Conditions',
+    p5:'Minimum : 250 Pi • Pas de maximum • Les transactions au-delà de 10 000 Pi nécessitent un contact préalable.',
+    h6:'Comparaison des Prix',
+    p6:'OKX / MEXC / Gate.io : prix marché avec frais • Al Ansari Exchange : prix spécial $10 — le plus élevé de la région.',
+    p6b:'Exemple : 1000 Pi × $10 = $10 000 ≈ 36 700 AED',
+    cta:'🚀 Commencez maintenant et vendez Pi au meilleur prix',
+    guideBtn:'📖 Guide Complet',
+  },
+};
+
+function updateGuideModal(lang) {
+  var g = GUIDE_TRANS[lang] || GUIDE_TRANS['ar'];
+  var s = function(id, val) { var el = document.getElementById(id); if(el && val !== undefined) el.textContent = val; };
+  s('mg-title', g.title);
+  s('mg-b1t', g.b1t); s('mg-b1p', g.b1p);
+  s('mg-b2t', g.b2t); s('mg-b2p', g.b2p);
+  s('mg-b3t', g.b3t); s('mg-b3p', g.b3p);
+  s('mg-b4t', g.b4t); s('mg-b4p', g.b4p);
+  s('mg-h1', g.h1); s('mg-p1', g.p1); s('mg-p1b', g.p1b);
+  s('mg-h2', g.h2); s('mg-p2', g.p2);
+  s('mg-h3', g.h3); s('mg-p3', g.p3); s('mg-p3warn', g.p3warn);
+  s('mg-h4', g.h4); s('mg-p4', g.p4);
+  s('mg-h5', g.h5); s('mg-p5', g.p5);
+  s('mg-h6', g.h6); s('mg-p6', g.p6); s('mg-p6b', g.p6b);
+  s('mg-cta', g.cta);
+  // update guide button label in footer
+  var btn = document.getElementById('btn-guide');
+  if(btn) btn.textContent = g.guideBtn || '📖';
+}
+
 var REVIEWS_LABELS={ar:{title:'⭐ آراء العملاء',count:'347 تقييم'},en:{title:'⭐ Customer Reviews',count:'347 reviews'},zh:{title:'⭐ 客户评价',count:'347 条评价'},fil:{title:'⭐ Mga Review ng Customer',count:'347 mga review'},hi:{title:'⭐ ग्राहक समीक्षाएं',count:'347 समीक्षाएं'},fr:{title:'⭐ Avis Clients',count:'347 avis'}};
 
 /* ═══════════════════════════════════════════
@@ -1848,7 +1983,7 @@ var App=(function(){
     setText('txt-share-title',t.shareTitle);setText('txt-share-sub',t.shareSub);
     setText('txt-fb',t.fbTxt);setText('txt-tw',t.twTxt);setText('txt-wa',t.waTxt);setText('txt-cp',t.cpTxt);
     setText('txt-footer',t.footer);
-    setText('btn-about',t.aboutBtn);setText('btn-contact',t.contactBtn);setText('btn-privacy',t.privacyBtn);
+    setText('btn-about',t.aboutBtn);setText('btn-contact',t.contactBtn);setText('btn-privacy',t.privacyBtn);if(typeof updateGuideModal==='function')updateGuideModal(lang);
     setText('txt-partners-title',t.partnersTitle||'🤝 شركاء المنصات');
     setText('txt-cert-label',t.certLabel||'منصتنا معتمدة من');
     setText('txt-vara-title',t.varaTitle);setText('txt-vara-sub',t.varaSub);
@@ -1970,11 +2105,11 @@ var App=(function(){
     var rf=$$('receiptFile');if(rf)rf.addEventListener('change',function(){var txt=$$('file-lbl-txt');if(txt&&this.files[0])txt.textContent='✅ '+this.files[0].name;updateProgress();});
 
     ['fb','tw','wa','cp'].forEach(function(p){var btn=$$('btn-'+p);if(btn)btn.addEventListener('click',function(){share(p);});});
-    ['about','contact','privacy'].forEach(function(name){
+    ['about','contact','privacy','guide'].forEach(function(name){
       var btn=$$('btn-'+name);if(btn)btn.addEventListener('click',function(){openModal(name);});
       var ov=$$('modal-'+name);if(ov)ov.addEventListener('click',function(e){if(e.target===this)closeModal(name);});
     });
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')['about','contact','privacy'].forEach(function(n){closeModal(n);});});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')['about','contact','privacy','guide'].forEach(function(n){closeModal(n);});});
 
     var urlLang=new URLSearchParams(window.location.search).get('lang');
     var savedLang;try{savedLang=localStorage.getItem('pi_lang');}catch(e){}
