@@ -245,7 +245,12 @@ function setBlogLang(lang){
 }
 
 // التهيئة عند تحميل الصفحة
-let lang = localStorage.getItem("lang") || "ar";
+let lang =
+localStorage.getItem("lang") ||
+localStorage.getItem("language") ||
+localStorage.getItem("siteLang") ||
+"ar";
+
 setBlogLang(lang);
 
 </script>
