@@ -1,126 +1,68 @@
 # ══════════════════════════════════════════════
 # robots.txt — piprice.store
-# آخر تحديث: 2026-03-07
+# آخر تحديث: 2026-03-10
 # ══════════════════════════════════════════════
 
-# ── Google (الأهم) ──
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
-
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Googlebot-Mobile
-Allow: /
-
-User-agent: AdsBot-Google
-Allow: /
-
-# ── Bing & Microsoft ──
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-User-agent: msnbot
-Allow: /
-
-# ── Yahoo ──
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
-
-# ── Yandex (روسيا) ──
-User-agent: YandexBot
-Allow: /
-Crawl-delay: 2
-
-# ── Baidu (الصين — مهم لأن الموقع يدعم الصينية) ──
-User-agent: Baiduspider
-Allow: /
-Crawl-delay: 2
-
-# ── DuckDuckGo ──
-User-agent: DuckDuckBot
-Allow: /
-
-# ── Applebot (Safari / Siri) ──
-User-agent: Applebot
-Allow: /
-
-# ── LinkedIn ──
-User-agent: LinkedInBot
-Allow: /
-
-# ── Facebook / WhatsApp / Threads (لعرض Preview جميل) ──
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
-
-# ── بوتات SEO التحليلية (Semrush, Ahrefs, Moz) ──
-User-agent: SemrushBot
-Allow: /
-
-User-agent: AhrefsBot
-Allow: /
-
-User-agent: MJ12bot
-Allow: /
-
-User-agent: DotBot
-Allow: /
-
-# ── منع بوتات ضارة وسارقة المحتوى ──
+# ── 1. منع بوتات الذكاء الاصطناعي وسارقة المحتوى (AI & Scrapers) ──
 User-agent: GPTBot
 Disallow: /
-
 User-agent: ChatGPT-User
 Disallow: /
-
 User-agent: CCBot
 Disallow: /
-
 User-agent: anthropic-ai
 Disallow: /
-
 User-agent: ClaudeBot
 Disallow: /
-
 User-agent: Bytespider
 Disallow: /
-
 User-agent: PetalBot
 Disallow: /
-
 User-agent: SeznamBot
 Disallow: /
-
 User-agent: MegaIndex
 Disallow: /
 
-# ── السماح الكامل لبقية البوتات ──
-User-agent: *
+# ── 2. محركات البحث الرئيسية (Search Engines) ──
+# جوجل (يتجاهل أمر Crawl-delay لذلك تم حذفه لتجنب الأخطاء في الكونسول)
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Googlebot-Mobile
+User-agent: AdsBot-Google
+Allow: /
+
+# بينج ومايكروسوفت
+User-agent: Bingbot
+User-agent: msnbot
+Allow: /
+Crawl-delay: 1
+
+# ياندكس و بايدو وياهو
+User-agent: YandexBot
+User-agent: Baiduspider
+User-agent: Slurp
 Allow: /
 Crawl-delay: 2
 
-Sitemap: https://piprice.store/sitemap.xml
+# ── 3. بوتات وسائل التواصل الاجتماعي (Social Media) ──
+# لضمان ظهور الصورة المصغرة (Preview) بشكل سليم عند مشاركة الروابط
+User-agent: facebookexternalhit
+User-agent: Twitterbot
+User-agent: WhatsApp
+User-agent: LinkedInBot
+Allow: /
 
-# السماح لأرشفة المدونة
+# ── 4. القواعد العامة لباقي البوتات (Global Rules) ──
 User-agent: *
+Allow: /
 Allow: /blog/
+Allow: /pages/
+Allow: /*?lang=
+Crawl-delay: 2
+
 # ══════════════════════════════════════════════
-# Sitemaps
+# خرائط الموقع (Sitemaps)
 # ══════════════════════════════════════════════
 Sitemap: https://piprice.store/sitemap.xml
 Sitemap: https://piprice.store/sitemap-pages.xml
 Sitemap: https://piprice.store/sitemap-langs.xml
-
-# ══════════════════════════════════════════════
-# Host canonical
-# ══════════════════════════════════════════════
-Host: piprice.store
