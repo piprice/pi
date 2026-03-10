@@ -8,4 +8,9 @@
     <loc>https://piprice.store/sitemap-langs.xml</loc>
     <lastmod>2026-03-07</lastmod>
   </sitemap>
+  <!-- هنا ضفنا قسم المدونة -->
+  <sitemap>
+    <loc>https://piprice.store/sitemap-blog.xml</loc>
+    <lastmod>2024-05-20</lastmod>
+  </sitemap>
 </sitemapindex>
