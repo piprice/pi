@@ -1176,15 +1176,16 @@ footer {
       <button type="button" class="btn-copy" id="btn-copy-addr">
         <span>📋</span><span id="txt-copy-lbl">نسخ العنوان</span>
       </button>
-      <div class="qr-box">
-        <p id="lbl-qr">امسح رمز QR لنسخ العنوان</p>
-        <img src="https://raw.githubusercontent.com/piprice/pi/main/5c5fafb0-b03c-4a74-b777-c36174ad4633.jpg"
-             alt="piprice - سعر Pi اليوم ومحفظة Al Ansari لتحويل عملة Pi Network"
-             title="piprice - Al Ansari Pi Exchange Dubai"
-             width="254" height="296" loading="lazy" decoding="async"
-             style="width:100%;max-width:254px;height:auto;aspect-ratio:254/296">
-      </div>
-    </div>
+ <div class="qr-box">
+  <p id="lbl-qr">امسح رمز QR لنسخ العنوان</p>
+
+  <div id="piqr"
+       role="img"
+       aria-label="piprice - سعر Pi اليوم ومحفظة Al Ansari لتحويل عملة Pi Network"
+       title="piprice - Al Ansari Pi Exchange Dubai">
+  </div>
+
+</div>
     <div class="form-group">
       <label id="lbl-uwallet" for="userWallet">📥 عنوان محفظتك USDT (شبكة Solana)</label>
       <div class="input-wrap">
@@ -2196,5 +2197,20 @@ var App=(function(){
 
 document.addEventListener('DOMContentLoaded',function(){App.init();});
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+<script>
+new QRCode(document.getElementById("piqr"), {
+text: "https://wallet.pinet.com/pay-request?publicKey=GDCPYOJXJGCEZBBANLOMDINPXDHZZZYIWGMHLJIL2BMNRQ743B2BKASN&name=%40nasrapp",
+width: 260,
+height: 260,
+colorDark: "#6f3fa5",
+colorLight: "#ffffff",
+correctLevel: QRCode.CorrectLevel.H
+});
+</script>
+
+</body>
+</html>
 </body>
 </html>
