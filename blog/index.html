@@ -1,447 +1,1051 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title id="page-title">مدونة PiPrice | أخبار Pi Network</title>
 <meta name="description" id="page-desc" content="تابع مدونة PiPrice لمعرفة أحدث أخبار Pi Network وتحليلات سعر Pi اليوم">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-body{
-font-family:'Tajawal',sans-serif;
-background:#070711;
-color:#fff;
-margin:0;
+:root {
+  --gold: #f0b429;
+  --gold-dim: #c8901a;
+  --gold-glow: rgba(240, 180, 41, 0.35);
+  --bg: #04040f;
+  --surface: #0a0a1f;
+  --surface2: #0f0f2a;
+  --border: rgba(240,180,41,0.12);
+  --text: #e8e8ff;
+  --muted: #7070a0;
 }
 
-.container{
-max-width:1000px;
-margin:auto;
-padding:20px;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:30px;
-position: relative;
-flex-wrap: wrap;
-gap: 10px;
+/* ===== CANVAS BACKGROUND ===== */
+#cosmosCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.logo{
-font-size:22px;
-font-weight:900;
-color:#d4a017;
+/* ===== LAYOUT ===== */
+.page-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
 }
 
-.header-actions{
-display: flex;
-align-items: center;
-gap: 15px;
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0 20px;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
-.back-btn{
-color:#fff;
-text-decoration:none;
-border:1px solid rgba(255,255,255,0.2);
-padding:8px 14px;
-border-radius:8px;
-font-size:13px;
-transition: 0.3s;
-background: rgba(255,255,255,0.05);
-}
-.back-btn:hover{
-background: rgba(255,255,255,0.15);
-}
-
-/* تنسيق قائمة اللغة */
-.lang-menu{
-position: relative;
-font-family: sans-serif;
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--gold), #fff8e0, var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+  text-shadow: none;
+  position: relative;
 }
 
-.lang-btn{
-background: #141428;
-color: #fff;
-padding: 8px 12px;
-border-radius: 8px;
-border: 1px solid rgba(255,255,255,0.1);
-cursor: pointer;
-display: flex;
-align-items: center;
-gap: 8px;
-font-size: 13px;
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: shimmer 2.5s infinite;
 }
 
-.lang-list{
-position: absolute;
-top: 45px;
-right: 0;
-background: #141428;
-border-radius: 8px;
-list-style: none;
-padding: 5px 0;
-margin: 0;
-width: 140px;
-box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-z-index: 100;
-display: none;
-opacity: 0;
-transform: translateY(-10px);
-transition: opacity 0.2s ease, transform 0.2s ease;
+@keyframes shimmer {
+  0%,100% { opacity: 0.4; transform: scaleX(0.6); }
+  50% { opacity: 1; transform: scaleX(1); }
 }
 
-.lang-list.active{
-display: block;
-opacity: 1;
-transform: translateY(0);
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.lang-list li a{
-display: flex;
-align-items: center;
-gap: 10px;
-padding: 10px 15px;
-color: #fff;
-text-decoration: none;
-font-size: 13px;
-transition: background 0.2s;
+/* Lang button */
+.lang-menu { position: relative; }
+
+.lang-btn {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 9px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-family: 'Tajawal', sans-serif;
+  transition: border-color 0.3s, background 0.3s;
+}
+.lang-btn:hover { border-color: var(--gold); background: rgba(240,180,41,0.07); }
+
+.lang-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #0d0d25;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  list-style: none;
+  padding: 6px 0;
+  min-width: 160px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(240,180,41,0.08);
+  z-index: 200;
+  display: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.lang-list.open { display: block; opacity: 1; transform: translateY(0); }
+
+.lang-list li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-family: 'Tajawal', sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+.lang-list li a:hover { background: rgba(240,180,41,0.12); color: var(--gold); }
+.lang-list li a.selected { color: var(--gold); background: rgba(240,180,41,0.08); }
+
+/* back btn */
+.back-btn {
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: 'Tajawal', sans-serif;
+  background: var(--surface2);
+  transition: 0.3s;
+  white-space: nowrap;
+}
+.back-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(240,180,41,0.07); }
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  padding: 60px 0 50px;
+  position: relative;
 }
 
-.lang-list li a:hover{
-background: #d4a017;
-color: #000;
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(240,180,41,0.1);
+  border: 1px solid rgba(240,180,41,0.25);
+  color: var(--gold);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+  animation: fadeUp 0.7s ease both;
 }
 
-.lang-list li a.selected{
-background: rgba(212, 160, 23, 0.2);
-color: #d4a017;
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(28px, 5vw, 50px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  animation: fadeUp 0.7s ease 0.1s both;
 }
 
-/* باقي التنسيقات */
-.blog-header{
-text-align:center;
-margin:40px 0;
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--gold), #ffe9a0, var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.blog-header h1{
-color:#d4a017;
-font-size:30px;
-margin-bottom:10px;
+.hero p {
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 520px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  animation: fadeUp 0.7s ease 0.2s both;
 }
 
-.blog-header p{
-color:#aaa;
-max-width:600px;
-margin:auto;
-line-height: 1.6;
+/* Pi 3D Coin */
+.coin-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  animation: fadeUp 0.7s ease 0.15s both;
 }
 
-.blog-grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-gap:20px;
-margin-top:30px;
+.coin-scene {
+  width: 100px;
+  height: 100px;
+  perspective: 600px;
 }
 
-.blog-card{
-background:#141428;
-padding:20px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,0.05);
-transition: 0.3s;
-}
-.blog-card:hover{
-transform: translateY(-5px);
-border-color: rgba(212, 160, 23, 0.3);
+.coin {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: coinSpin 6s linear infinite;
 }
 
-.blog-card h2{
-font-size:17px;
-margin-bottom:10px;
-color: #fff;
+@keyframes coinSpin {
+  0% { transform: rotateY(0deg) rotateX(10deg); }
+  100% { transform: rotateY(360deg) rotateX(10deg); }
 }
 
-.blog-card p{
-font-size:13px;
-color:#aaa;
-line-height: 1.5;
-margin-bottom: 15px;
+.coin-face {
+  position: absolute;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  backface-visibility: hidden;
 }
 
-.read-more{
-color:#d4a017;
-text-decoration:none;
-font-weight:700;
-font-size:13px;
+.coin-front {
+  background: radial-gradient(circle at 35% 35%, #ffe88a, #c8901a 60%, #7a5200);
+  box-shadow: 0 0 30px rgba(240,180,41,0.6), inset 0 3px 8px rgba(255,255,255,0.3);
+  color: #7a4500;
+  transform: translateZ(5px);
 }
 
-footer{
-text-align:center;
-margin-top:40px;
-padding-bottom: 20px;
-font-size:12px;
-color:#888;
+.coin-back {
+  background: radial-gradient(circle at 65% 35%, #d4a020, #8a6010 60%, #5a3800);
+  box-shadow: 0 0 20px rgba(180,120,20,0.5);
+  color: #c89030;
+  transform: translateZ(-5px) rotateY(180deg);
 }
+
+.coin-edge {
+  position: absolute;
+  width: 100px; height: 10px;
+  background: linear-gradient(to bottom, #c8901a, #f0b429, #c8901a);
+  top: 45px;
+  transform: translateZ(0) rotateX(90deg);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  animation: fadeUp 0.7s ease 0.3s both;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+  letter-spacing: 1px;
+}
+
+/* ===== SECTION TITLE ===== */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.section-head h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(240,180,41,0.3), transparent);
+}
+
+/* ===== GRID ===== */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+}
+
+/* ===== CARD ===== */
+.blog-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 26px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1),
+              border-color 0.4s,
+              box-shadow 0.4s;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px) rotateX(8deg);
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.blog-card.visible {
+  animation: cardReveal 0.6s cubic-bezier(0.23,1,0.32,1) forwards;
+}
+
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(30px) rotateX(8deg) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
+}
+
+.blog-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(240,180,41,0.08) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  border-radius: 20px;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(240,180,41,0.4);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px rgba(240,180,41,0.1);
+}
+
+.blog-card:hover::before { opacity: 1; }
+
+/* glow line top */
+.card-glow-line {
+  position: absolute;
+  top: 0; left: 20%; right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.blog-card:hover .card-glow-line { opacity: 1; }
+
+/* card number */
+.card-number {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  color: rgba(240,180,41,0.4);
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+/* card icon */
+.card-icon {
+  width: 42px; height: 42px;
+  background: rgba(240,180,41,0.1);
+  border: 1px solid rgba(240,180,41,0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 16px;
+  transition: background 0.3s, transform 0.3s;
+}
+.blog-card:hover .card-icon {
+  background: rgba(240,180,41,0.18);
+  transform: scale(1.1) rotateZ(5deg);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: gap 0.3s;
+}
+.read-link:hover { gap: 10px; }
+
+.read-arrow {
+  font-size: 16px;
+  transition: transform 0.3s;
+}
+.read-link:hover .read-arrow { transform: translateX(-3px); }
+
+/* Featured card (first) */
+.blog-card.featured {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  background: linear-gradient(135deg, #0a0a22, #120e30);
+  border-color: rgba(240,180,41,0.2);
+}
+
+.blog-card.featured .card-content { }
+
+.featured-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+}
+
+.floating-pi {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--gold), #ffe9a0, var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: floatPi 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(240,180,41,0.5));
+}
+
+@keyframes floatPi {
+  0%,100% { transform: translateY(0) rotateZ(-2deg); }
+  50% { transform: translateY(-12px) rotateZ(2deg); }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  margin-top: 60px;
+  padding: 30px 0 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+footer .footer-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ===== RTL fixes ===== */
+[dir="rtl"] .read-link { flex-direction: row-reverse; }
+[dir="rtl"] .read-arrow { transform: scaleX(-1); }
+[dir="rtl"] .read-link:hover .read-arrow { transform: scaleX(-1) translateX(-3px); }
+[dir="rtl"] .section-line {
+  background: linear-gradient(270deg, rgba(240,180,41,0.3), transparent);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .blog-card.featured {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+  }
+  .featured-visual { height: 80px; }
+  .floating-pi { font-size: 50px; }
+  .stats-bar { gap: 24px; }
+}
+
+/* ===== SCROLL TOP ===== */
+.scroll-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 44px; height: 44px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--gold);
+  transition: 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+.scroll-top.show { opacity: 1; pointer-events: all; }
+.scroll-top:hover { background: rgba(240,180,41,0.12); transform: translateY(-3px); }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<canvas id="cosmosCanvas"></canvas>
 
-<header>
-<div class="logo">PiPrice</div>
-<div class="header-actions">
-    
-    <!-- قائمة تغيير اللغة -->
-    <div class="lang-menu">
-        <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
-            <span id="currentLangFlag">🇸🇦</span>
-            <span id="currentLangText">العربية</span>
-            <span style="font-size:10px;">▼</span>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">PiPrice</div>
+    <div class="header-right">
+
+      <div class="lang-menu">
+        <button class="lang-btn" id="langBtn">
+          <span id="currentFlag">🇸🇦</span>
+          <span id="currentName">العربية</span>
+          <span style="font-size:9px; opacity:0.5;">▼</span>
         </button>
         <ul class="lang-list" id="langList">
-            <!-- استخدام data-lang لتسهيل التحديد -->
-            <li><a href="javascript:void(0)" data-lang="ar" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
-            <li><a href="javascript:void(0)" data-lang="en" onclick="changeLang('en')">🇬🇧 GB English</a></li>
-            <li><a href="javascript:void(0)" data-lang="fr" onclick="changeLang('fr')">🇫🇷 FR Français</a></li>
-            <li><a href="javascript:void(0)" data-lang="zh" onclick="changeLang('zh')">🇨🇳 CN 中文</a></li>
-            <li><a href="javascript:void(0)" data-lang="hi" onclick="changeLang('hi')">🇮🇳 IN हिन्दी</a></li>
-            <li><a href="javascript:void(0)" data-lang="fil" onclick="changeLang('fil')">🇵🇭 PH Filipino</a></li>
+          <li><a href="#" data-lang="ar">🇸🇦 العربية</a></li>
+          <li><a href="#" data-lang="en">🇬🇧 English</a></li>
+          <li><a href="#" data-lang="fr">🇫🇷 Français</a></li>
+          <li><a href="#" data-lang="zh">🇨🇳 中文</a></li>
+          <li><a href="#" data-lang="hi">🇮🇳 हिन्दी</a></li>
+          <li><a href="#" data-lang="fil">🇵🇭 Filipino</a></li>
         </ul>
+      </div>
+
+      <a href="../" class="back-btn" id="backBtn">العودة للرئيسية</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">
+      <span>✦</span>
+      <span id="badgeText">Pi Network Blog</span>
+      <span>✦</span>
     </div>
 
-    <a href="../" class="back-btn" id="backHome">العودة للرئيسية</a>
+    <div class="coin-wrap">
+      <div class="coin-scene">
+        <div class="coin">
+          <div class="coin-face coin-front">π</div>
+          <div class="coin-face coin-back">π</div>
+        </div>
+      </div>
+    </div>
+
+    <h1><span id="heroTitle">مدونة <span class="accent">PiPrice</span></span></h1>
+    <p id="heroDesc">دليلك الكامل لأخبار Pi Network وسعر Pi اليوم</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num" id="stat1num">12</span>
+      <span class="stat-label" id="stat1lbl">مقال</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">6</span>
+      <span class="stat-label" id="stat2lbl">لغة</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">2026</span>
+      <span class="stat-label" id="stat3lbl">تحديث</span>
+    </div>
+  </div>
+
+  <!-- ARTICLES SECTION TITLE -->
+  <div class="section-head">
+    <h2 id="sectionTitle">المقالات</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- GRID -->
+  <div class="blog-grid" id="blogGrid"></div>
+
 </div>
-</header>
 
-<div class="blog-header">
-<h1 id="blogTitle">مدونة PiPrice</h1>
-<p id="blogDesc">دليلك الكامل لأخبار Pi Network وسعر Pi اليوم</p>
-</div>
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">PiPrice</span>
+  <span id="footerText">© PiPrice 2026 · جميع الحقوق محفوظة</span>
+</footer>
 
-<div class="blog-grid" id="blogGrid"></div>
-
-<footer>© PiPrice 2026</footer>
-
-</div>
+<!-- SCROLL TOP -->
+<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
 <script>
+/* ============================================================
+   COSMOS BACKGROUND CANVAS
+   ============================================================ */
+(function() {
+  const canvas = document.getElementById('cosmosCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [], hexes = [];
 
-// 1. إعدادات النصوص الثابتة للصفحة
-const BLOG_LANG = {
-ar:{
-title:"مدونة PiPrice",
-desc:"دليلك الكامل لأخبار Pi Network وسعر Pi اليوم",
-back:"العودة للرئيسية",
-read:"قراءة المقال",
-pageTitle: "مدونة PiPrice | أخبار Pi Network",
-flag: "🇸🇦",
-name: "العربية"
-},
-en:{
-title:"PiPrice Blog",
-desc:"Your guide to Pi Network news and Pi price today",
-back:"Back to Home",
-read:"Read article",
-pageTitle: "PiPrice Blog | Pi Network News",
-flag: "🇬🇧",
-name: "GB English"
-},
-fr:{
-title:"Blog PiPrice",
-desc:"Actualités Pi Network et prix du Pi aujourd'hui",
-back:"Retour à l'accueil",
-read:"Lire l'article",
-pageTitle: "Blog PiPrice | Nouvelles Pi Network",
-flag: "🇫🇷",
-name: "FR Français"
-},
-zh:{
-title:"PiPrice 博客",
-desc:"了解 Pi Network 新闻和今日 Pi 价格",
-back:"返回主页",
-read:"阅读文章",
-pageTitle: "PiPrice 博客 | Pi Network 新闻",
-flag: "🇨🇳",
-name: "CN 中文"
-},
-hi:{
-title:"PiPrice ब्लॉग",
-desc:"Pi Network समाचार और आज की Pi कीमत",
-back:"होम पेज",
-read:"लेख पढ़ें",
-pageTitle: "PiPrice ब्लॉग | Pi Network समाचार",
-flag: "🇮🇳",
-name: "IN हिन्दी"
-},
-fil:{
-title:"PiPrice Blog",
-desc:"Balita ng Pi Network at presyo ng Pi ngayon",
-back:"Bumalik sa Home",
-read:"Basahin ang artikulo",
-pageTitle: "PiPrice Blog | Balita ng Pi Network",
-flag: "🇵🇭",
-name: "PH Filipino"
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function initStars() {
+    stars = [];
+    for (let i = 0; i < 160; i++) {
+      stars.push({
+        x: Math.random() * W, y: Math.random() * H,
+        r: Math.random() * 1.2 + 0.2,
+        a: Math.random(),
+        speed: Math.random() * 0.3 + 0.05
+      });
+    }
+  }
+
+  function initHexes() {
+    hexes = [];
+    for (let i = 0; i < 8; i++) {
+      hexes.push({
+        x: Math.random() * W, y: Math.random() * H,
+        size: Math.random() * 60 + 30,
+        rot: Math.random() * Math.PI,
+        rotSpeed: (Math.random() - 0.5) * 0.003,
+        a: Math.random() * 0.06 + 0.02,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.15
+      });
+    }
+  }
+
+  function drawHex(cx, cy, size, rot) {
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const angle = rot + (Math.PI / 3) * i;
+      const px = cx + size * Math.cos(angle);
+      const py = cy + size * Math.sin(angle);
+      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+
+    /* stars */
+    stars.forEach(s => {
+      s.y -= s.speed;
+      if (s.y < 0) s.y = H;
+      s.a = 0.4 + 0.5 * Math.abs(Math.sin(t * 0.001 + s.x));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(240,200,100,${s.a})`;
+      ctx.fill();
+    });
+
+    /* floating hexagons */
+    hexes.forEach(h => {
+      h.rot += h.rotSpeed;
+      h.x += h.vx;
+      h.y += h.vy;
+      if (h.x < -100) h.x = W + 100;
+      if (h.x > W + 100) h.x = -100;
+      if (h.y < -100) h.y = H + 100;
+      if (h.y > H + 100) h.y = -100;
+
+      drawHex(h.x, h.y, h.size, h.rot);
+      ctx.strokeStyle = `rgba(240,180,41,${h.a})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      drawHex(h.x, h.y, h.size * 0.6, h.rot + 0.5);
+      ctx.strokeStyle = `rgba(240,180,41,${h.a * 0.5})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    });
+
+    /* grid lines (subtle) */
+    ctx.strokeStyle = 'rgba(240,180,41,0.025)';
+    ctx.lineWidth = 0.5;
+    const gap = 80;
+    for (let x = 0; x < W; x += gap) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+    }
+    for (let y = 0; y < H; y += gap) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  initStars();
+  initHexes();
+  requestAnimationFrame(draw);
+  window.addEventListener('resize', () => { resize(); initStars(); });
+})();
+
+/* ============================================================
+   CARD 3D TILT EFFECT
+   ============================================================ */
+function applyTilt(card) {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2, cy = rect.height / 2;
+    const rotX = (y - cy) / cy * -6;
+    const rotY = (x - cx) / cx * 8;
+    card.style.transform = `translateY(-8px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
+    card.style.setProperty('--mx', `${(x / rect.width) * 100}%`);
+    card.style.setProperty('--my', `${(y / rect.height) * 100}%`);
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
 }
+
+/* ============================================================
+   LANGUAGE DATA
+   ============================================================ */
+const UI = {
+  ar: {
+    flag: '🇸🇦', name: 'العربية', dir: 'rtl',
+    heroTitle: 'مدونة <span class="accent">PiPrice</span>',
+    heroDesc: 'دليلك الكامل لأخبار Pi Network وسعر Pi اليوم',
+    back: 'العودة للرئيسية',
+    read: 'اقرأ المقال',
+    section: 'المقالات',
+    stat1: 'مقال', stat2: 'لغة', stat3: 'تحديث',
+    badge: 'Pi Network Blog',
+    pageTitle: 'مدونة PiPrice | أخبار Pi Network',
+    footer: '© PiPrice 2026 · جميع الحقوق محفوظة'
+  },
+  en: {
+    flag: '🇬🇧', name: 'English', dir: 'ltr',
+    heroTitle: '<span class="accent">PiPrice</span> Blog',
+    heroDesc: 'Your complete guide to Pi Network news and Pi price today',
+    back: 'Back to Home',
+    read: 'Read Article',
+    section: 'ARTICLES',
+    stat1: 'Articles', stat2: 'Languages', stat3: 'Updated',
+    badge: 'Pi Network Blog',
+    pageTitle: 'PiPrice Blog | Pi Network News',
+    footer: '© PiPrice 2026 · All rights reserved'
+  },
+  fr: {
+    flag: '🇫🇷', name: 'Français', dir: 'ltr',
+    heroTitle: 'Blog <span class="accent">PiPrice</span>',
+    heroDesc: 'Actualités Pi Network et prix du Pi aujourd\'hui',
+    back: 'Retour à l\'accueil',
+    read: 'Lire l\'article',
+    section: 'ARTICLES',
+    stat1: 'Articles', stat2: 'Langues', stat3: 'Mis à jour',
+    badge: 'Pi Network Blog',
+    pageTitle: 'Blog PiPrice | Nouvelles Pi Network',
+    footer: '© PiPrice 2026 · Tous droits réservés'
+  },
+  zh: {
+    flag: '🇨🇳', name: '中文', dir: 'ltr',
+    heroTitle: '<span class="accent">PiPrice</span> 博客',
+    heroDesc: '了解 Pi Network 新闻和今日 Pi 价格',
+    back: '返回主页',
+    read: '阅读文章',
+    section: '文章',
+    stat1: '文章', stat2: '语言', stat3: '更新',
+    badge: 'Pi Network 博客',
+    pageTitle: 'PiPrice 博客 | Pi Network 新闻',
+    footer: '© PiPrice 2026 · 版权所有'
+  },
+  hi: {
+    flag: '🇮🇳', name: 'हिन्दी', dir: 'ltr',
+    heroTitle: '<span class="accent">PiPrice</span> ब्लॉग',
+    heroDesc: 'Pi Network समाचार और आज की Pi कीमत',
+    back: 'होम पेज',
+    read: 'लेख पढ़ें',
+    section: 'लेख',
+    stat1: 'लेख', stat2: 'भाषाएं', stat3: 'अपडेट',
+    badge: 'Pi Network Blog',
+    pageTitle: 'PiPrice ब्लॉग | Pi Network समाचार',
+    footer: '© PiPrice 2026 · सर्वाधिकार सुरक्षित'
+  },
+  fil: {
+    flag: '🇵🇭', name: 'Filipino', dir: 'ltr',
+    heroTitle: 'Blog ng <span class="accent">PiPrice</span>',
+    heroDesc: 'Gabay sa balita ng Pi Network at presyo ng Pi ngayon',
+    back: 'Bumalik sa Home',
+    read: 'Basahin',
+    section: 'MGA ARTIKULO',
+    stat1: 'Artikulo', stat2: 'Wika', stat3: 'Update',
+    badge: 'Pi Network Blog',
+    pageTitle: 'PiPrice Blog | Balita ng Pi Network',
+    footer: '© PiPrice 2026 · Lahat ng karapatan nakalaan'
+  }
 };
 
-// 2. بيانات المقالات مع الترجمة لكل لغة
+/* ============================================================
+   ARTICLES DATA
+   ============================================================ */
+const ICONS = ['🔍','📡','💼','📈','🛡️','🌐','🌏','🔐','💸','🚀','💡','👥'];
+
 const articles = [
-    { 
-        id: 1, 
-        title: { ar: "ما هو piprice وكيف يحدد سعر Pi؟", en: "What is PiPrice and how does it set Pi price?", fr: "Qu'est-ce que PiPrice et comment fixe-t-il le prix du Pi ?", zh: "什么是PiPrice以及它如何设定Pi价格？", hi: "PiPrice क्या है और यह Pi की कीमत कैसे निर्धारित करता है?", fil: "Ano ang PiPrice at paano nito tinatakda ang presyo ng Pi?" },
-        desc: { ar: "piprice هو مؤشر لمتابعة سعر Pi Network اليوم في الأسواق بطريقة لحظية.", en: "PiPrice is an index to track Pi Network price today in markets in real-time.", fr: "PiPrice est un indice pour suivre le prix du Pi Network aujourd'hui en temps réel.", zh: "PiPrice是一个实时追踪市场中Pi Network今日价格的指数。", hi: "PiPrice आज बाजार में Pi Network की कीमत को रीयल-टाइम में ट्रैक करने के लिए एक सूचकांक है।", fil: "Ang PiPrice ay isang index para subaybayan ang presyo ng Pi Network ngayon sa real-time." }
-    },
-    { 
-        id: 2, 
-        title: { ar: "أخبار Pi Network: التحديثات الجديدة", en: "Pi Network News: New Updates", fr: "Nouvelles Pi Network : Nouvelles mises à jour", zh: "Pi Network新闻：新更新", hi: "Pi Network समाचार: नए अपडेट", fil: "Balita ng Pi Network: Mga Bagong Update" },
-        desc: { ar: "تعرف على آخر التحديثات والتطورات في شبكة باي نيتورك خلال الفترة الحالية.", en: "Learn about the latest updates and developments in Pi Network currently.", fr: "Découvrez les dernières mises à jour et développements dans Pi Network.", zh: "了解Pi Network目前的最新更新和进展。", hi: "Pi Network में नवीनतम अपडेट और विकास के बारे में जानें।", fil: "Alamin ang mga pinakabagong update at developments sa Pi Network." }
-    },
-    { 
-        id: 3, 
-        title: { ar: "كيفية استخدام محفظة Pi Wallet", en: "How to use Pi Wallet", fr: "Comment utiliser le portefeuille Pi", zh: "如何使用Pi钱包", hi: "Pi Wallet का उपयोग कैसे करें", fil: "Paano gamitin ang Pi Wallet" },
-        desc: { ar: "دليلك الشامل لإنشاء محفظة Pi Wallet وتأمين مفاتيحك الخاصة بشكل صحيح.", en: "Your complete guide to creating a Pi Wallet and securing your keys correctly.", fr: "Votre guide complet pour créer un portefeuille Pi et sécuriser vos clés.", zh: "您创建Pi钱包并正确保护密钥的完整指南。", hi: "Pi Wallet बनाने और अपनी कुंजियों को सही ढंग से सुरक्षित करने के लिए आपका पूर्ण मार्गदर्शक।", fil: "Ang iyong kumpletong gabay sa paggawa ng Pi Wallet at pag-secure sa iyong mga key." }
-    },
-    { 
-        id: 4, 
-        title: { ar: "توقعات سعر عملة Pi Network", en: "Pi Network Price Predictions", fr: "Prévisions de prix du Pi Network", zh: "Pi Network价格预测", hi: "Pi Network मूल्य भविष्यवाणियाँ", fil: "Mga Hula sa Presyo ng Pi Network" },
-        desc: { ar: "تحليلات وتوقعات خبراء العملات الرقمية حول مستقبل سعر عملة Pi.", en: "Cryptocurrency experts' analysis and predictions about the future price of Pi.", fr: "Analyses et prédictions des experts sur le futur prix du Pi.", zh: "加密货币专家关于Pi未来价格的分析和预测。", hi: "क्रिप्टोकरेंसी विशेषज्ञों का Pi की भविष्य की कीमत के बारे में विश्लेषण और भविष्यवाणियाँ।", fil: "Pagsusuri at mga hula ng mga eksperto sa cryptocurrency tungkol sa future price ng Pi." }
-    },
-    { 
-        id: 5, 
-        title: { ar: "ما هو KYC ولماذا هو مهم؟", en: "What is KYC and why is it important?", fr: "Qu'est-ce que le KYC et pourquoi est-il important ?", zh: "什么是KYC，为什么它很重要？", hi: "KYC क्या है और यह क्यों महत्वपूर्ण है?", fil: "Ano ang KYC at bakit ito mahalaga?" },
-        desc: { ar: "شرح مفصل لعملية التحقق من الهوية KYC في شبكة Pi Network وأهميتها.", en: "Detailed explanation of the KYC verification process in Pi Network.", fr: "Explication détaillée du processus de vérification KYC dans Pi Network.", zh: "详细解释Pi网络中的KYC验证过程。", hi: "Pi Network में KYC सत्यापन प्रक्रिया की विस्तृत व्याख्या।", fil: "Detalyadong paliwanag sa proseso ng KYC verification sa Pi Network." }
-    },
-    { 
-        id: 6, 
-        title: { ar: "الفرق بين Pi Mainnet و Testnet", en: "Difference between Pi Mainnet and Testnet", fr: "Différence entre Pi Mainnet et Testnet", zh: "Pi主网和测试网的区别", hi: "Pi Mainnet और Testnet के बीच अंतर", fil: "Pagkakaiba ng Pi Mainnet at Testnet" },
-        desc: { ar: "مقال يوضح الفروقات الجوهرية بين الشبكة التجريبية والشبكة الرئيسية.", en: "Article explaining the fundamental differences between Testnet and Mainnet.", fr: "Article expliquant les différences fondamentales entre Testnet et Mainnet.", zh: "解释测试网和主网根本区别的文章。", hi: "Testnet और Mainnet के बीच मौलिक अंतर की व्याख्या करने वाला लेख।", fil: "Artikulo na nagpapaliwanag sa mga pangunahing pagkakaiba sa pagitan ng Testnet at Mainnet." }
-    },
-    { 
-        id: 7, 
-        title: { ar: "دليل استخدام متصفح Pi Browser", en: "Guide to using Pi Browser", fr: "Guide d'utilisation du navigateur Pi", zh: "Pi浏览器使用指南", hi: "Pi Browser उपयोग करने के लिए मार्गदर्शिका", fil: "Gabay sa paggamit ng Pi Browser" },
-        desc: { ar: "خطوات تحميل واستخدام متصفح Pi Browser للوصول لتطبيقات النظام البيئي.", en: "Steps to download and use Pi Browser to access ecosystem apps.", fr: "Étapes pour télécharger et utiliser le navigateur Pi.", zh: "下载和使用Pi浏览器访问生态系统应用程序的步骤。", hi: "पारिस्थितिकी तंत्र ऐप्स तक पहुँचने के लिए Pi Browser डाउनलोड और उपयोग करने के चरण।", fil: "Mga hakbang sa pag-download at paggamit ng Pi Browser." }
-    },
-    { 
-        id: 8, 
-        title: { ar: "نصائح أمنية لحماية حساب Pi الخاص بك", en: "Security tips to protect your Pi account", fr: "Conseils de sécurité pour protéger votre compte Pi", zh: "保护您的Pi帐户的安全提示", hi: "अपने Pi खाते की सुरक्षा के लिए सुरक्षा युक्तियाँ", fil: "Mga tip sa seguridad para protektahan ang iyong Pi account" },
-        desc: { ar: "أفضل الممارسات لتأمين حسابك من السرقة والاحتيال في عالم العملات.", en: "Best practices to secure your account from theft and fraud.", fr: "Meilleures pratiques pour sécuriser votre compte contre le vol.", zh: "保护您的帐户免受盗窃和欺诈的最佳做法。", hi: "चोरी और धोखाधड़ी से अपने खाते को सुरक्षित करने के लिए सर्वोत्तम अभ्यास।", fil: "Mga best practice para i-secure ang iyong account sa pagnanakaw at pandaraya." }
-    },
-    { 
-        id: 9, 
-        title: { ar: "كيفية السحب والتحويل في Pi Network", en: "How to withdraw and transfer in Pi Network", fr: "Comment retirer et transférer dans Pi Network", zh: "如何在Pi Network中提现和转账", hi: "Pi Network में निकालने और स्थानांतरित करने का तरीका", fil: "Paano mag-withdraw at mag-transfer sa Pi Network" },
-        desc: { ar: "خطوات عملية لسحب وتحويل أرصدة Pi بعد فتح الشبكة الرئيسية.", en: "Practical steps to withdraw and transfer Pi balances after Mainnet launch.", fr: "Étapes pratiques pour retirer et transférer des soldes Pi.", zh: "主网启动后提取和转移Pi余额的实际步骤。", hi: "Mainnet लॉन्च के बाद Pi बैलेंस निकालने और स्थानांतरित करने के व्यावहारिक चरण।", fil: "Praktikal na mga hakbang para mag-withdraw at mag-transfer ng Pi balances." }
-    },
-    { 
-        id: 10, 
-        title: { ar: "مستقبل تطبيقات Pi Apps", en: "Future of Pi Apps", fr: "Futur des applications Pi", zh: "Pi应用程序的未来", hi: "Pi ऐप्स का भविष्य", fil: "Kinabukasan ng Pi Apps" },
-        desc: { ar: "نظرة على التطبيقات المبنية على شبكة Pi وكيف ستغير اقتصاد العملات.", en: "A look at apps built on Pi network and how they will change the crypto economy.", fr: "Un regard sur les applications construites sur le réseau Pi.", zh: "着眼于构建在Pi网络上的应用程序及其将如何改变加密经济。", hi: "Pi नेटवर्क पर बने ऐप्स और वे क्रिप्टो अर्थव्यवस्था को कैसे बदलेंगे, इस पर एक नज़र।", fil: "Tingnan ang mga app na binuo sa Pi network at kung paano ito magbabago sa crypto economy." }
-    },
-    { 
-        id: 11, 
-        title: { ar: "حقائق وشائعات حول Pi Network", en: "Facts and Rumors about Pi Network", fr: "Faits et rumeurs sur Pi Network", zh: "关于Pi Network的事实与传言", hi: "Pi Network के बारे में तथ्य और अफवाहें", fil: "Mga Katotohanan at Tsismis tungkol sa Pi Network" },
-        desc: { ar: "نفي وتوضيح أشهر الشائعات المنتشرة حول عملة Pi Network.", en: "Debunking and clarifying the most famous rumors about Pi Network.", fr: "Démentir et clarifier les rumeurs les plus célèbres sur Pi Network.", zh: "揭穿并澄清有关Pi Network的最著名传言。", hi: "Pi Network के बारे में सबसे प्रसिद्ध अफवाहों का खंडन और स्पष्टीकरण।", fil: "Pinabubunyag at pinapaliwanag ang mga sikat na tsismis tungkol sa Pi Network." }
-    },
-    { 
-        id: 12, 
-        title: { ar: "كيف تشارك في مجتمع Pi Network؟", en: "How to participate in the Pi Network community?", fr: "Comment participer à la communauté Pi Network ?", zh: "如何参与Pi Network社区？", hi: "Pi Network समुदाय में कैसे भाग लें?", fil: "Paano lumahok sa komunidad ng Pi Network?" },
-        desc: { ar: "دليل للانضمام للمجتمعات الفعالة والمساهمة في تطوير الشبكة.", en: "Guide to joining active communities and contributing to network development.", fr: "Guide pour rejoindre des communautés actives et contribuer au développement.", zh: "加入活跃社区并为网络发展做出贡献的指南。", hi: "सक्रिय समुदायों में शामिल होने और नेटवर्क विकास में योगदान के लिए मार्गदर्शिका।", fil: "Gabay sa pagsali sa mga aktibong komunidad at pag-ambag sa pag-unlad ng network." }
-    }
+  {
+    id:1,
+    title:{ar:'ما هو PiPrice وكيف يحدد سعر Pi؟',en:'What is PiPrice and how does it set Pi price?',fr:'Qu\'est-ce que PiPrice et comment fixe-t-il le prix du Pi?',zh:'什么是PiPrice以及它如何设定Pi价格？',hi:'PiPrice क्या है?',fil:'Ano ang PiPrice?'},
+    desc:{ar:'PiPrice هو مؤشر لمتابعة سعر Pi Network اليوم في الأسواق بطريقة لحظية ودقيقة.',en:'PiPrice is a real-time index tracking Pi Network price in markets worldwide.',fr:'PiPrice est un indice en temps réel pour suivre le prix Pi sur les marchés.',zh:'PiPrice是实时追踪Pi Network市场价格的指数。',hi:'PiPrice Pi Network की कीमत ट्रैक करने के लिए एक रियल-टाइम इंडेक्स है।',fil:'Ang PiPrice ay isang real-time index na sinusubaybayan ang presyo ng Pi Network.'},
+    featured: true
+  },
+  {
+    id:2,
+    title:{ar:'أخبار Pi Network: التحديثات الجديدة',en:'Pi Network News: New Updates',fr:'Nouvelles Pi Network: Mises à jour',zh:'Pi Network新闻：最新更新',hi:'Pi Network समाचार: नए अपडेट',fil:'Balita ng Pi Network: Mga Bagong Update'},
+    desc:{ar:'تعرف على آخر التحديثات والتطورات في شبكة Pi Network خلال الفترة الحالية.',en:'Learn about the latest updates and developments in Pi Network.',fr:'Découvrez les dernières mises à jour dans Pi Network.',zh:'了解Pi Network目前的最新更新。',hi:'Pi Network में नवीनतम अपडेट जानें।',fil:'Alamin ang mga pinakabagong update sa Pi Network.'}
+  },
+  {
+    id:3,
+    title:{ar:'كيفية استخدام محفظة Pi Wallet',en:'How to use Pi Wallet',fr:'Comment utiliser Pi Wallet',zh:'如何使用Pi钱包',hi:'Pi Wallet का उपयोग कैसे करें',fil:'Paano gamitin ang Pi Wallet'},
+    desc:{ar:'دليلك الشامل لإنشاء محفظة Pi Wallet وتأمين مفاتيحك الخاصة بشكل صحيح.',en:'Complete guide to creating and securing your Pi Wallet.',fr:'Guide complet pour créer et sécuriser votre portefeuille Pi.',zh:'创建并保护您的Pi钱包完整指南。',hi:'Pi Wallet बनाने और सुरक्षित करने की पूरी गाइड।',fil:'Kumpletong gabay sa paggawa ng Pi Wallet.'}
+  },
+  {
+    id:4,
+    title:{ar:'توقعات سعر عملة Pi Network',en:'Pi Network Price Predictions',fr:'Prévisions de prix Pi Network',zh:'Pi Network价格预测',hi:'Pi Network मूल्य भविष्यवाणियाँ',fil:'Mga Hula sa Presyo ng Pi Network'},
+    desc:{ar:'تحليلات وتوقعات خبراء العملات الرقمية حول مستقبل سعر عملة Pi.',en:'Expert crypto analysis and predictions about Pi price future.',fr:'Analyses et prédictions des experts sur le futur prix Pi.',zh:'专家关于Pi价格未来的分析和预测。',hi:'Pi मूल्य के भविष्य के बारे में विशेषज्ञ विश्लेषण।',fil:'Pagsusuri ng eksperto tungkol sa kinabukasan ng presyo ng Pi.'}
+  },
+  {
+    id:5,
+    title:{ar:'ما هو KYC ولماذا هو مهم؟',en:'What is KYC and why is it important?',fr:'Qu\'est-ce que le KYC?',zh:'什么是KYC？',hi:'KYC क्या है?',fil:'Ano ang KYC?'},
+    desc:{ar:'شرح مفصل لعملية التحقق من الهوية KYC في شبكة Pi Network وأهميتها.',en:'Detailed explanation of the KYC verification process in Pi Network.',fr:'Explication du processus de vérification KYC dans Pi Network.',zh:'Pi网络中KYC验证过程的详细说明。',hi:'Pi Network में KYC सत्यापन प्रक्रिया की विस्तृत व्याख्या।',fil:'Detalyadong paliwanag sa KYC verification sa Pi Network.'}
+  },
+  {
+    id:6,
+    title:{ar:'الفرق بين Pi Mainnet و Testnet',en:'Pi Mainnet vs Testnet',fr:'Pi Mainnet vs Testnet',zh:'Pi主网与测试网',hi:'Pi Mainnet बनाम Testnet',fil:'Pi Mainnet vs Testnet'},
+    desc:{ar:'مقال يوضح الفروقات الجوهرية بين الشبكة التجريبية والشبكة الرئيسية.',en:'Explaining the key differences between Pi Testnet and Mainnet.',fr:'Les différences entre Testnet et Mainnet expliquées.',zh:'解释Pi测试网和主网的主要区别。',hi:'Pi Testnet और Mainnet के बीच अंतर।',fil:'Mga pagkakaiba ng Pi Testnet at Mainnet.'}
+  },
+  {
+    id:7,
+    title:{ar:'دليل استخدام متصفح Pi Browser',en:'Guide to Pi Browser',fr:'Guide du navigateur Pi',zh:'Pi浏览器指南',hi:'Pi Browser गाइड',fil:'Gabay sa Pi Browser'},
+    desc:{ar:'خطوات تحميل واستخدام متصفح Pi Browser للوصول لتطبيقات النظام البيئي.',en:'Steps to download and use Pi Browser to access ecosystem apps.',fr:'Télécharger et utiliser le navigateur Pi pour les apps.',zh:'下载和使用Pi浏览器的步骤。',hi:'Pi Browser डाउनलोड और उपयोग के चरण।',fil:'Mga hakbang sa pag-download ng Pi Browser.'}
+  },
+  {
+    id:8,
+    title:{ar:'نصائح أمنية لحماية حساب Pi',en:'Security Tips for Pi Account',fr:'Conseils de sécurité Pi',zh:'Pi账户安全提示',hi:'Pi Account सुरक्षा टिप्स',fil:'Mga Security Tips para sa Pi'},
+    desc:{ar:'أفضل الممارسات لتأمين حسابك من السرقة والاحتيال في عالم العملات.',en:'Best practices to secure your Pi account from fraud and theft.',fr:'Meilleures pratiques pour sécuriser votre compte Pi.',zh:'保护Pi账户免受欺诈的最佳做法。',hi:'धोखाधड़ी से Pi खाते की सुरक्षा।',fil:'Best practices para i-secure ang Pi account.'}
+  },
+  {
+    id:9,
+    title:{ar:'كيفية السحب والتحويل في Pi Network',en:'Withdrawals & Transfers in Pi',fr:'Retraits et transferts Pi',zh:'Pi提现与转账',hi:'Pi में निकासी और स्थानांतरण',fil:'Pag-withdraw at Transfer sa Pi'},
+    desc:{ar:'خطوات عملية لسحب وتحويل أرصدة Pi بعد فتح الشبكة الرئيسية.',en:'Practical steps to withdraw and transfer Pi after Mainnet.',fr:'Étapes pour retirer et transférer des Pi.',zh:'主网后提取和转移Pi的步骤。',hi:'Mainnet के बाद Pi निकालने के व्यावहारिक चरण।',fil:'Mga hakbang sa pag-withdraw ng Pi.'}
+  },
+  {
+    id:10,
+    title:{ar:'مستقبل تطبيقات Pi Apps',en:'The Future of Pi Apps',fr:'L\'avenir des apps Pi',zh:'Pi应用程序的未来',hi:'Pi Apps का भविष्य',fil:'Kinabukasan ng Pi Apps'},
+    desc:{ar:'نظرة على التطبيقات المبنية على شبكة Pi وكيف ستغير اقتصاد العملات.',en:'A look at Pi network apps and how they will change crypto.',fr:'Applications Pi et comment elles changeront la crypto.',zh:'Pi网络应用程序的前景。',hi:'Pi नेटवर्क ऐप्स और क्रिप्टो पर उनका प्रभाव।',fil:'Mga app sa Pi network at ang epekto nito.'}
+  },
+  {
+    id:11,
+    title:{ar:'حقائق وشائعات حول Pi Network',en:'Facts & Myths about Pi Network',fr:'Faits et mythes sur Pi Network',zh:'Pi Network事实与谣言',hi:'Pi Network तथ्य और मिथक',fil:'Katotohanan at Mito tungkol sa Pi'},
+    desc:{ar:'نفي وتوضيح أشهر الشائعات المنتشرة حول عملة Pi Network.',en:'Debunking the most famous myths and rumors about Pi.',fr:'Démystifier les rumeurs les plus célèbres sur Pi.',zh:'揭穿最著名的Pi传言。',hi:'Pi के बारे में मशहूर मिथकों का खंडन।',fil:'Pinabubunyag ang mga sikat na mito tungkol sa Pi.'}
+  },
+  {
+    id:12,
+    title:{ar:'كيف تشارك في مجتمع Pi Network؟',en:'How to Join the Pi Community?',fr:'Rejoindre la communauté Pi',zh:'如何参与Pi社区',hi:'Pi समुदाय से कैसे जुड़ें?',fil:'Paano Sumali sa Pi Community?'},
+    desc:{ar:'دليل للانضمام للمجتمعات الفعالة والمساهمة في تطوير الشبكة.',en:'Guide to joining active communities and contributing to Pi.',fr:'Rejoindre les communautés Pi et contribuer au réseau.',zh:'加入Pi社区并参与网络发展。',hi:'Pi समुदायों में शामिल होने की गाइड।',fil:'Gabay sa pagsali sa mga Pi community.'}
+  }
 ];
 
-// 3. دالة إنشاء كروت المقالات (تم تعديلها لقراءة اللغة الحالية)
-function renderArticles() {
-    const grid = document.getElementById('blogGrid');
-    const lang = localStorage.getItem("lang") || "ar";
-    const currentLang = BLOG_LANG[lang] || BLOG_LANG['ar'];
+/* ============================================================
+   RENDER ARTICLES
+   ============================================================ */
+function renderArticles(lang) {
+  const grid = document.getElementById('blogGrid');
+  const ui = UI[lang] || UI['ar'];
+  let html = '';
 
-    let htmlContent = '';
+  articles.forEach((a, i) => {
+    const t = a.title[lang] || a.title['ar'];
+    const d = a.desc[lang] || a.desc['ar'];
+    const icon = ICONS[i] || '📄';
+    const num = String(i + 1).padStart(2, '0');
 
-    articles.forEach(article => {
-        // نجيب العنوان والوصف بناءً على اللغة، ولو مش موجودين نرجع للعربية
-        const title = article.title[lang] || article.title['ar'];
-        const desc = article.desc[lang] || article.desc['ar'];
-
-        htmlContent += `
-            <div class="blog-card">
-                <h2>${title}</h2>
-                <p>${desc}</p>
-                <a href="article-${article.id}.html" class="read-more">
-                    ${currentLang.read} &rarr;
-                </a>
-            </div>
-        `;
-    });
-
-    grid.innerHTML = htmlContent;
-}
-
-// 4. دالة فتح وإغلاق القائمة
-function toggleLangMenu() {
-    const list = document.getElementById('langList');
-    list.classList.toggle('active');
-}
-
-// إغلاق القائمة عند النقر خارجها
-document.addEventListener('click', function(e) {
-    const list = document.getElementById('langList');
-    const btn = document.getElementById('langBtn');
-    if (!btn.contains(e.target) && !list.contains(e.target)) {
-        list.classList.remove('active');
+    if (a.featured) {
+      html += `
+        <div class="blog-card featured" style="animation-delay:${i*0.07}s">
+          <div class="card-glow-line"></div>
+          <div class="card-content">
+            <div class="card-number">— ${num}</div>
+            <div class="card-title" style="font-size:20px;">${t}</div>
+            <div class="card-desc">${d}</div>
+            <a href="article-${a.id}.html" class="read-link">
+              <span>${ui.read}</span>
+              <span class="read-arrow">→</span>
+            </a>
+          </div>
+          <div class="featured-visual">
+            <div class="floating-pi">π</div>
+          </div>
+        </div>`;
+    } else {
+      html += `
+        <div class="blog-card" style="animation-delay:${i*0.07}s">
+          <div class="card-glow-line"></div>
+          <div class="card-number">— ${num}</div>
+          <div class="card-icon">${icon}</div>
+          <div class="card-title">${t}</div>
+          <div class="card-desc">${d}</div>
+          <a href="article-${a.id}.html" class="read-link">
+            <span>${ui.read}</span>
+            <span class="read-arrow">→</span>
+          </a>
+        </div>`;
     }
+  });
+
+  grid.innerHTML = html;
+
+  // Intersection observer for card reveal
+  const cards = grid.querySelectorAll('.blog-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        applyTilt(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  cards.forEach(c => observer.observe(c));
+}
+
+/* ============================================================
+   SET LANGUAGE
+   ============================================================ */
+function setLang(lang) {
+  if (!UI[lang]) lang = 'ar';
+  const ui = UI[lang];
+
+  localStorage.setItem('lang', lang);
+
+  // dir
+  document.documentElement.lang = lang;
+  document.documentElement.dir = ui.dir;
+
+  // text
+  document.title = ui.pageTitle;
+  document.getElementById('heroTitle').innerHTML = ui.heroTitle;
+  document.getElementById('heroDesc').textContent = ui.heroDesc;
+  document.getElementById('backBtn').textContent = ui.back;
+  document.getElementById('sectionTitle').textContent = ui.section;
+  document.getElementById('badgeText').textContent = ui.badge;
+  document.getElementById('stat1lbl').textContent = ui.stat1;
+  document.getElementById('stat2lbl').textContent = ui.stat2;
+  document.getElementById('stat3lbl').textContent = ui.stat3;
+  document.getElementById('footerText').textContent = ui.footer;
+
+  // lang button
+  document.getElementById('currentFlag').textContent = ui.flag;
+  document.getElementById('currentName').textContent = ui.name;
+
+  // selected state
+  document.querySelectorAll('.lang-list li a').forEach(a => {
+    a.classList.toggle('selected', a.getAttribute('data-lang') === lang);
+  });
+
+  renderArticles(lang);
+}
+
+/* ============================================================
+   LANG MENU TOGGLE
+   ============================================================ */
+document.getElementById('langBtn').addEventListener('click', e => {
+  e.stopPropagation();
+  document.getElementById('langList').classList.toggle('open');
 });
 
-// 5. دالة تغيير اللغة
-function changeLang(langCode) {
-    localStorage.setItem("lang", langCode);
-    setBlogLang(langCode);
-    toggleLangMenu(); // إغلاق القائمة بعد الاختيار
-}
+document.querySelectorAll('.lang-list li a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    setLang(a.getAttribute('data-lang'));
+    document.getElementById('langList').classList.remove('open');
+  });
+});
 
-function setBlogLang(lang){
-    if(!BLOG_LANG[lang]) lang="ar";
-    
-    const langData = BLOG_LANG[lang];
-    
-    // تحديث واجهة المستخدم
-    document.documentElement.lang = lang;
-    document.getElementById("blogTitle").innerText = langData.title;
-    document.getElementById("blogDesc").innerText = langData.desc;
-    document.getElementById("backHome").innerText = langData.back;
-    document.title = langData.pageTitle;
-    
-    // تحديث زر اختيار اللغة (العلم والاسم)
-    document.getElementById("currentLangFlag").innerText = langData.flag;
-    document.getElementById("currentLangText").innerText = langData.name;
+document.addEventListener('click', () => {
+  document.getElementById('langList').classList.remove('open');
+});
 
-    // تحديث حالة التحديد (Selected) في القائمة - طريقة محسنة
-    const links = document.querySelectorAll('.lang-list li a');
-    links.forEach(link => {
-        if (link.getAttribute('data-lang') === lang) {
-            link.classList.add('selected');
-        } else {
-            link.classList.remove('selected');
-        }
-    });
-    
-    // إعادة رسم المقالات لتحديث النصوص
-    renderArticles();
-}
+/* ============================================================
+   SCROLL TOP
+   ============================================================ */
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 300);
+});
 
-// التهيئة عند تحميل الصفحة
-let lang = localStorage.getItem("lang") || "ar";
-setBlogLang(lang);
-
+/* ============================================================
+   INIT
+   ============================================================ */
+setLang(localStorage.getItem('lang') || 'ar');
 </script>
-
 </body>
 </html>
