@@ -1331,11 +1331,11 @@ footer {
 <footer>
   <div class="footer-links">
     <button class="footer-link" id="btn-guide">📖 الدليل الشامل</button>
-<a href="/blog/" class="footer-link" id="btn-blog">📝 المدونة</a>
-  <a href="/pages/about.html" class="footer-link" id="btn-about" target="_blank">من نحن</a>
-<a href="/pages/ContactUs.html" class="footer-link" id="btn-contact" target="_blank">اتصل بنا</a>
-<a href="/pages/PrivacyPolicy.html" class="footer-link" id="btn-privacy" target="_blank">سياسة الخصوصية</a>
-    <a href="/pages/404.html" class="footer-link" id="btn-404" target="_blank"404</a>
+    <a href="/blog/" class="footer-link" id="btn-blog">📝 المدونة</a>
+    <a href="/pages/about.html" class="footer-link" id="btn-about">من نحن</a>
+    <a href="/pages/ContactUs.html" class="footer-link" id="btn-contact">اتصل بنا</a>
+    <a href="/pages/PrivacyPolicy.html" class="footer-link" id="btn-privacy">سياسة الخصوصية</a>
+    <a href="/pages/404.html" class="footer-link" id="btn-404">404</a>
   </div>
   <p id="txt-footer">جميع الحقوق محفوظة — الأنصاري للصرافة دبي 2026/2027</p>
 </footer>
@@ -2027,8 +2027,20 @@ var App=(function(){
   function setLang(l){
     if(!LANGS[l])l='ar';
     lang=l;
+    
     try{localStorage.setItem('pi_lang',l);}catch(e){}
     try{var url=new URL(window.location.href);url.searchParams.set('lang',l);window.history.replaceState(null,'',url.toString());}catch(e){}
+
+    // ---- التعديل الجديد: تحديث التفرعات (الروابط في الفوتر) لتشمل رمز اللغة دائماً ----
+    document.querySelectorAll('a.footer-link').forEach(function(link) {
+      try {
+        var u = new URL(link.href);
+        u.searchParams.set('lang', l);
+        link.href = u.toString();
+      } catch(e) {}
+    });
+    // -----------------------------------------------------------------------------------
+
     var t=T();
     document.documentElement.lang=l;
     document.body.setAttribute('dir',t.dir);
@@ -2216,7 +2228,7 @@ document.addEventListener('DOMContentLoaded',function(){App.init();});
 
 <script>
 new QRCode(document.getElementById("piqr"), {
-  text: "https://wallet.pinet.com/pay-request?publicKey=GDCPYOJXJGCEZBBANLOMDINPXDHZZZYIWGMHLJIL2BMNRQ743B2BKASN&name=%40nasrapp",
+  text: "https://wallet.pinet.com/pay-request?publicKey=GDCPYOJXJGCEZBBANLOM গণতান্ত্রিক&name=%40nasrapp",
   width: 260,
   height: 260,
   colorDark: "#000000",
