@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- تغيير العنوان والوصف ديناميكياً عبر الجافاسكربت -->
 <title id="page-title">مدونة PiPrice | أخبار Pi Network</title>
 <meta name="description" id="page-desc" content="تابع مدونة PiPrice لمعرفة أحدث أخبار Pi Network وتحليلات سعر Pi اليوم">
 
@@ -31,12 +30,21 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 margin-bottom:30px;
+position: relative; /* لترتيب العناصر */
+flex-wrap: wrap;
+gap: 10px;
 }
 
 .logo{
 font-size:22px;
 font-weight:900;
 color:#d4a017;
+}
+
+.header-actions{
+display: flex;
+align-items: center;
+gap: 15px;
 }
 
 .back-btn{
@@ -47,11 +55,77 @@ padding:8px 14px;
 border-radius:8px;
 font-size:13px;
 transition: 0.3s;
+background: rgba(255,255,255,0.05);
 }
 .back-btn:hover{
-    background: rgba(255,255,255,0.1);
+background: rgba(255,255,255,0.15);
 }
 
+/* تنسيق قائمة اللغة */
+.lang-menu{
+position: relative;
+font-family: sans-serif;
+}
+
+.lang-btn{
+background: #141428;
+color: #fff;
+padding: 8px 12px;
+border-radius: 8px;
+border: 1px solid rgba(255,255,255,0.1);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 8px;
+font-size: 13px;
+}
+
+.lang-list{
+position: absolute;
+top: 45px;
+right: 0; /* محاذاة لليمين لتناسب الغة العربية */
+background: #141428;
+border-radius: 8px;
+list-style: none;
+padding: 5px 0;
+margin: 0;
+width: 140px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+z-index: 100;
+display: none; /* مخفية افتراضياً */
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.lang-list.active{
+display: block;
+opacity: 1;
+transform: translateY(0);
+}
+
+.lang-list li a{
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 15px;
+color: #fff;
+text-decoration: none;
+font-size: 13px;
+transition: background 0.2s;
+}
+
+.lang-list li a:hover{
+background: #d4a017; /* لون ذهبي عند التمرير */
+color: #000;
+}
+
+.lang-list li a.selected{
+background: rgba(212, 160, 23, 0.2);
+color: #d4a017;
+}
+
+/* باقي التنسيقات */
 .blog-header{
 text-align:center;
 margin:40px 0;
@@ -85,8 +159,8 @@ border:1px solid rgba(255,255,255,0.05);
 transition: 0.3s;
 }
 .blog-card:hover{
-    transform: translateY(-5px);
-    border-color: rgba(212, 160, 23, 0.3);
+transform: translateY(-5px);
+border-color: rgba(212, 160, 23, 0.3);
 }
 
 .blog-card h2{
@@ -125,7 +199,28 @@ color:#888;
 
 <header>
 <div class="logo">PiPrice</div>
-<a href="../" class="back-btn" id="backHome">العودة للرئيسية</a>
+<div class="header-actions">
+    
+    <!-- قائمة تغيير اللغة -->
+    <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
+            <!-- سيتم تحديث المحتوى بواسطة الجافاسكربت -->
+            <span id="currentLangFlag">🇸🇦</span>
+            <span id="currentLangText">العربية</span>
+            <span style="font-size:10px;">▼</span>
+        </button>
+        <ul class="lang-list" id="langList">
+            <li><a href="javascript:void(0)" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
+            <li><a href="javascript:void(0)" onclick="changeLang('en')">🇬🇧 GB English</a></li>
+            <li><a href="javascript:void(0)" onclick="changeLang('fr')">🇫🇷 FR Français</a></li>
+            <li><a href="javascript:void(0)" onclick="changeLang('zh')">🇨🇳 CN 中文</a></li>
+            <li><a href="javascript:void(0)" onclick="changeLang('hi')">🇮🇳 IN हिन्दी</a></li>
+            <li><a href="javascript:void(0)" onclick="changeLang('fil')">🇵🇭 PH Filipino</a></li>
+        </ul>
+    </div>
+
+    <a href="../" class="back-btn" id="backHome">العودة للرئيسية</a>
+</div>
 </header>
 
 <div class="blog-header">
@@ -133,7 +228,6 @@ color:#888;
 <p id="blogDesc">دليلك الكامل لأخبار Pi Network وسعر Pi اليوم</p>
 </div>
 
-<!-- هنا يتم عرض المقالات تلقائياً -->
 <div class="blog-grid" id="blogGrid"></div>
 
 <footer>© PiPrice 2026</footer>
@@ -142,53 +236,65 @@ color:#888;
 
 <script>
 
-// 1. إعدادات اللغة
+// 1. إعدادات اللغة والترجمة
 const BLOG_LANG = {
 ar:{
 title:"مدونة PiPrice",
 desc:"دليلك الكامل لأخبار Pi Network وسعر Pi اليوم",
 back:"العودة للرئيسية",
 read:"قراءة المقال",
-pageTitle: "مدونة PiPrice | أخبار Pi Network"
+pageTitle: "مدونة PiPrice | أخبار Pi Network",
+flag: "🇸🇦",
+name: "العربية"
 },
 en:{
 title:"PiPrice Blog",
 desc:"Your guide to Pi Network news and Pi price today",
 back:"Back to Home",
 read:"Read article",
-pageTitle: "PiPrice Blog | Pi Network News"
+pageTitle: "PiPrice Blog | Pi Network News",
+flag: "🇬🇧",
+name: "GB English"
 },
 fr:{
 title:"Blog PiPrice",
 desc:"Actualités Pi Network et prix du Pi aujourd'hui",
 back:"Retour à l'accueil",
 read:"Lire l'article",
-pageTitle: "Blog PiPrice | Nouvelles Pi Network"
+pageTitle: "Blog PiPrice | Nouvelles Pi Network",
+flag: "🇫🇷",
+name: "FR Français"
 },
 zh:{
 title:"PiPrice 博客",
 desc:"了解 Pi Network 新闻和今日 Pi 价格",
 back:"返回主页",
 read:"阅读文章",
-pageTitle: "PiPrice 博客 | Pi Network 新闻"
+pageTitle: "PiPrice 博客 | Pi Network 新闻",
+flag: "🇨🇳",
+name: "CN 中文"
 },
 hi:{
 title:"PiPrice ब्लॉग",
 desc:"Pi Network समाचार और आज की Pi कीमत",
 back:"होम पेज",
 read:"लेख पढ़ें",
-pageTitle: "PiPrice ब्लॉग | Pi Network समाचार"
+pageTitle: "PiPrice ब्लॉग | Pi Network समाचार",
+flag: "🇮🇳",
+name: "IN हिन्दी"
 },
 fil:{
 title:"PiPrice Blog",
 desc:"Balita ng Pi Network at presyo ng Pi ngayon",
 back:"Bumalik sa Home",
 read:"Basahin ang artikulo",
-pageTitle: "PiPrice Blog | Balita ng Pi Network"
+pageTitle: "PiPrice Blog | Balita ng Pi Network",
+flag: "🇵🇭",
+name: "PH Filipino"
 }
 };
 
-// 2. بيانات المقالات (12 مقالة)
+// 2. بيانات المقالات
 const articles = [
     { id: 1, title: "ما هو piprice وكيف يحدد سعر Pi؟", desc: "piprice هو مؤشر لمتابعة سعر Pi Network اليوم في الأسواق بطريقة لحظية." },
     { id: 2, title: "أخبار Pi Network: التحديثات الجديدة", desc: "تعرف على آخر التحديثات والتطورات في شبكة باي نيتورك خلال الفترة الحالية." },
@@ -227,30 +333,60 @@ function renderArticles() {
     grid.innerHTML = htmlContent;
 }
 
-// 4. دالة تغيير اللغة
+// 4. دالة فتح وإغلاق القائمة
+function toggleLangMenu() {
+    const list = document.getElementById('langList');
+    list.classList.toggle('active');
+}
+
+// إغلاق القائمة عند النقر خارجها
+document.addEventListener('click', function(e) {
+    const list = document.getElementById('langList');
+    const btn = document.getElementById('langBtn');
+    if (!btn.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('active');
+    }
+});
+
+// 5. دالة تغيير اللغة
+function changeLang(langCode) {
+    localStorage.setItem("lang", langCode);
+    setBlogLang(langCode);
+    toggleLangMenu(); // إغلاق القائمة بعد الاختيار
+}
+
 function setBlogLang(lang){
     if(!BLOG_LANG[lang]) lang="ar";
     
-    // تحديث النصوص الثابتة
-    document.documentElement.lang = lang;
-    document.getElementById("blogTitle").innerText = BLOG_LANG[lang].title;
-    document.getElementById("blogDesc").innerText = BLOG_LANG[lang].desc;
-    document.getElementById("backHome").innerText = BLOG_LANG[lang].back;
+    const langData = BLOG_LANG[lang];
     
-    // تحديث عنوان الصفحة في المتصفح (SEO)
-    document.title = BLOG_LANG[lang].pageTitle;
+    // تحديث واجهة المستخدم
+    document.documentElement.lang = lang;
+    document.getElementById("blogTitle").innerText = langData.title;
+    document.getElementById("blogDesc").innerText = langData.desc;
+    document.getElementById("backHome").innerText = langData.back;
+    document.title = langData.pageTitle;
+    
+    // تحديث زر اختيار اللغة (العلم والاسم)
+    document.getElementById("currentLangFlag").innerText = langData.flag;
+    document.getElementById("currentLangText").innerText = langData.name;
+
+    // تحديث حالة التحديد (Selected) في القائمة
+    const links = document.querySelectorAll('.lang-list li a');
+    links.forEach(link => {
+        link.classList.remove('selected');
+        // التحقق من اللغة المضغوطة (بسيطة شوية عشان الكود يشتغل)
+        if (link.onclick.toString().includes(`'${lang}'`)) {
+            link.classList.add('selected');
+        }
+    });
     
     // إعادة رسم المقالات لتحديث زر "قراءة المقال"
     renderArticles();
 }
 
 // التهيئة عند تحميل الصفحة
-let lang =
-localStorage.getItem("lang") ||
-localStorage.getItem("language") ||
-localStorage.getItem("siteLang") ||
-"ar";
-
+let lang = localStorage.getItem("lang") || "ar";
 setBlogLang(lang);
 
 </script>
