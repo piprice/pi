@@ -4,86 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>خطوات إنشاء محفظة Pi Network بأمان | مدونة PiPrice</title>
-
-<meta name="description" content="تعرف على الطريقة الصحيحة لإنشاء محفظة Pi Network بأمان وكيف تحافظ على مفاتيحك الخاصة لحماية عملاتك الرقمية.">
+<!-- العناوين الافتراضية -->
+<title id="page-title">خطوات إنشاء محفظة Pi Network بأمان | مدونة PiPrice</title>
+<meta name="description" id="page-desc" content="تعرف على الطريقة الصحيحة لإنشاء محفظة Pi Network بأمان وكيف تحافظ على مفاتيحك الخاصة لحماية عملاتك الرقمية.">
 
 <meta name="keywords" content="محفظة pi network, إنشاء محفظة pi, أمان العملات الرقمية, piprice, pi wallet, passphrase, كيفية إنشاء محفظة pi">
-
 <link rel="canonical" href="https://piprice.store/blog/article-7.html">
-
 <meta name="robots" content="index, follow">
-
 <meta name="theme-color" content="#d4a017">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a07810'/%3E%3Cstop offset='50%25' stop-color='%23d4a017'/%3E%3Cstop offset='100%25' stop-color='%23f0c040'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='900' fill='%23080810'%CF%80%3C/text%3E%3C/svg%3E">
 
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Article",
- "mainEntityOfPage":{
-   "@type":"WebPage",
-   "@id":"https://piprice.store/blog/article-7.html"
- },
- "headline":"خطوات إنشاء محفظة Pi Network بأمان",
- "description":"شرح كيفية إنشاء محفظة Pi Network بطريقة آمنة لحماية عملاتك الرقمية.",
- "image":"https://raw.githubusercontent.com/piprice/pi/main/1010.png",
- "author":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "url":"https://piprice.store"
- },
- "publisher":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "logo":{
-     "@type":"ImageObject",
-     "url":"https://raw.githubusercontent.com/piprice/pi/main/1010.png"
-   }
- },
- "datePublished":"2026-03-10",
- "dateModified":"2026-03-10"
-}
-</script>
-
 <style>
-
 :root{
 --gold:#d4a017;
 --gold-light:#f0c040;
 --gold-dark:#a07810;
-
 --dark:#06060f;
 --dark2:#0d0d1c;
 --dark3:#141428;
-
 --surface:#18182e;
-
 --border:rgba(212,160,23,0.15);
-
 --text:#f0f0ff;
 --text-muted:#9090bb;
-
 --radius:18px;
-
 --shadow:0 12px 40px rgba(0,0,0,0.5);
-
 --font:'Tajawal',system-ui,sans-serif;
-
 --transition:0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
-*,*::before,*::after{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
 body{
 font-family:var(--font);
@@ -142,17 +96,91 @@ font-weight:900;
 color:var(--gold);
 }
 
+.nav-actions{
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
 .nav-links a{
 color:var(--text);
 text-decoration:none;
 font-size:14px;
 font-weight:700;
-margin-right:15px;
+/* دعم الاتجاهين */
+margin-inline-end:15px;
 transition:color var(--transition);
 }
 
-.nav-links a:hover{
-color:var(--gold);
+.nav-links a:hover{color:var(--gold);}
+
+/* قائمة اللغة */
+.lang-menu{
+position: relative;
+font-family: sans-serif;
+}
+
+.lang-btn{
+background: #141428;
+color: #fff;
+padding: 6px 10px;
+border-radius: 8px;
+border: 1px solid rgba(255,255,255,0.1);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+font-size: 12px;
+}
+
+.lang-list{
+position: absolute;
+top: 45px;
+left: 0;
+background: #141428;
+border-radius: 8px;
+list-style: none;
+padding: 5px 0;
+margin: 0;
+width: 140px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+z-index: 100;
+display: none;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+[dir="rtl"] .lang-list{
+left: auto;
+right: 0;
+}
+
+.lang-list.active{
+display: block;
+opacity: 1;
+transform: translateY(0);
+}
+
+.lang-list li a{
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 15px;
+color: #fff;
+text-decoration: none;
+font-size: 13px;
+transition: background 0.2s;
+}
+
+.lang-list li a:hover{
+background: #d4a017;
+color: #000;
+}
+
+.lang-list li a.selected{
+background: rgba(212, 160, 23, 0.2);
+color: #d4a017;
 }
 
 .breadcrumbs{
@@ -165,7 +193,6 @@ margin-bottom:20px;
 color:var(--gold);
 text-decoration:none;
 }
-
 .breadcrumbs a:hover{
 text-decoration:underline;
 }
@@ -192,10 +219,9 @@ color:var(--text-muted);
 margin-bottom:30px;
 padding-bottom:20px;
 border-bottom:1px solid var(--border);
-}
-
-.article-meta span{
-margin-left:15px;
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
 }
 
 .article-content h2{
@@ -212,8 +238,8 @@ margin-bottom:20px;
 }
 
 .article-content ul{
-margin:0 20px 20px 0;
-padding:0;
+margin:0 0 20px 0;
+padding-inline-start: 40px;
 color:var(--text-muted);
 font-size:16px;
 }
@@ -232,15 +258,15 @@ margin-top:40px;
 }
 
 .cta-box h3{
-color:var(--gold);
-font-size:20px;
-margin-bottom:10px;
+color: var(--gold);
+font-size: 20px;
+margin-bottom: 10px;
 }
 
 .cta-box p{
-color:var(--text);
-font-size:15px;
-margin-bottom:20px;
+color: var(--text);
+font-size: 15px;
+margin-bottom: 20px;
 }
 
 .cta-btn{
@@ -255,10 +281,8 @@ text-decoration:none;
 box-shadow:0 6px 20px rgba(212,160,23,0.4);
 transition:transform 0.2s;
 }
-
 .cta-btn:hover{
 transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(212,160,23,0.6);
 }
 
 footer{
@@ -268,7 +292,6 @@ color:var(--text-muted);
 font-size:12px;
 border-top:1px solid rgba(255,255,255,0.04);
 }
-
 </style>
 </head>
 
@@ -277,142 +300,420 @@ border-top:1px solid rgba(255,255,255,0.04);
 <div class="container">
 
 <header>
-
 <a href="../index.html" class="brand">
 <div class="pi-logo">π</div>
 <div class="brand-name">PiPrice</div>
 </a>
 
-<div class="nav-links">
-<a href="index.html">المدونة</a>
-<a href="../index.html">الرئيسية</a>
-</div>
+<div class="nav-actions">
+    <div class="nav-links">
+        <a href="index.html" id="navBlog">المدونة</a>
+        <a href="../index.html" id="navHome">الرئيسية</a>
+    </div>
 
+    <!-- زر تغيير اللغة -->
+    <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
+            <span id="currentLangFlag">🇸🇦</span>
+            <span id="currentLangText">العربية</span>
+            <span style="font-size:8px;">▼</span>
+        </button>
+        <ul class="lang-list" id="langList">
+            <li><a href="javascript:void(0)" data-lang="ar" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
+            <li><a href="javascript:void(0)" data-lang="en" onclick="changeLang('en')">🇬🇧 English</a></li>
+            <li><a href="javascript:void(0)" data-lang="fr" onclick="changeLang('fr')">🇫🇷 Français</a></li>
+            <li><a href="javascript:void(0)" data-lang="zh" onclick="changeLang('zh')">🇨🇳 中文</a></li>
+            <li><a href="javascript:void(0)" data-lang="hi" onclick="changeLang('hi')">🇮🇳 हिन्दी</a></li>
+            <li><a href="javascript:void(0)" data-lang="fil" onclick="changeLang('fil')">🇵🇭 Filipino</a></li>
+        </ul>
+    </div>
+</div>
 </header>
 
-<div class="breadcrumbs">
-
-<a href="../index.html">الرئيسية</a> » 
-<a href="index.html">المدونة</a> »
-خطوات إنشاء محفظة Pi بأمان
-
+<div class="breadcrumbs" id="breadcrumb">
+<a href="../index.html" id="breadHome">الرئيسية</a> » 
+<a href="index.html" id="breadBlog">المدونة</a> »
+<span id="breadTitle">خطوات إنشاء محفظة Pi بأمان</span>
 </div>
 
 <article class="article-content">
 
-<h1 class="article-title">
+<h1 class="article-title" id="articleH1">
 خطوات إنشاء محفظة Pi Network بأمان
 </h1>
 
 <div class="article-meta">
-<span>📅 10 مارس 2026</span>
-<span>✍️ PiPrice</span>
-<span>⏱️ وقت القراءة: 5 دقائق</span>
+<span id="metaDate">📅 10 مارس 2026</span>
+<span id="metaAuthor">✍️ PiPrice</span>
+<span id="metaRead">⏱️ 5 دقائق</span>
 </div>
 
-<p>
-
-تعتبر محفظة <strong>Pi Network</strong> جزءًا أساسيًا من النظام البيئي للعملة، حيث يتم تخزين العملات الرقمية الخاصة بالمستخدمين فيها بعد انتقالها إلى شبكة Mainnet. لذلك من المهم معرفة الطريقة الصحيحة لإنشاء المحفظة وحمايتها من أي مخاطر أمنية.
-
-</p>
-
-<h2>
-ما هي محفظة Pi Network؟
-</h2>
-
-<p>
-
-محفظة Pi هي أداة رقمية تسمح للمستخدمين بتخزين وإرسال واستقبال عملة Pi بشكل آمن. تعتمد هذه المحفظة على تقنية البلوكشين، مما يعني أن كل معاملة يتم تسجيلها بشكل دائم على الشبكة.
-
-</p>
-
-<h2>
-خطوات إنشاء محفظة Pi
-</h2>
-
-<ul>
-
-<li>فتح تطبيق Pi Network.</li>
-
-<li>الدخول إلى قسم Pi Browser.</li>
-
-<li>اختيار Pi Wallet.</li>
-
-<li>إنشاء محفظة جديدة.</li>
-
-<li>حفظ عبارة الاسترداد <strong>(Passphrase)</strong>.</li>
-
-</ul>
-
-<h2>
-أهمية عبارة الاسترداد
-</h2>
-
-<p>
-
-عند إنشاء المحفظة، سيظهر لك مجموعة من الكلمات تُعرف باسم Passphrase. هذه الكلمات تمثل المفتاح الخاص بمحفظتك، ولذلك يجب الاحتفاظ بها في مكان آمن وعدم مشاركتها مع أي شخص.
-
-</p>
-
-<p>
-
-في حال فقدان هذه الكلمات، قد لا تتمكن من استعادة محفظتك مرة أخرى.
-
-</p>
-
-<h2>
-نصائح لحماية محفظتك
-</h2>
-
-<ul>
-
-<li>لا تشارك عبارة الاسترداد مع أي شخص.</li>
-
-<li>قم بتخزينها في مكان آمن خارج الإنترنت.</li>
-
-<li>استخدم جهازًا آمنًا عند الدخول إلى المحفظة.</li>
-
-<li>تجنب الروابط والمواقع غير الموثوقة.</li>
-
-</ul>
-
-<h2>
-كيف تنقل العملات إلى محفظة Pi؟
-</h2>
-
-<p>
-
-بعد إكمال التحقق من الهوية <strong>(KYC)</strong> داخل تطبيق Pi، يمكن نقل العملات التي قمت بتعدينها إلى محفظة Mainnet الخاصة بك. هذه العملية تتم تلقائيًا عند الموافقة على الحساب.
-
-</p>
-
-<div class="cta-box">
-
-<h3>
-تابع سعر Pi Network الآن
-</h3>
-
-<p>
-استخدم مؤشر piprice لمعرفة السعر التقريبي للعملة ومتابعة حركة السوق.
-</p>
-
-<a href="../index.html" class="cta-btn">
-عرض سعر Pi الآن
-</a>
-
+<div id="articleBody">
+    <!-- المحتوى يتم تحميله بالجافاسكربت -->
 </div>
 
 </article>
 
 <footer>
-
-<p>
-© 2026 PiPrice — جميع الحقوق محفوظة
-</p>
-
+<p id="footerCopy">© 2026 PiPrice — جميع الحقوق محفوظة</p>
 </footer>
 
 </div>
 
+<script>
+// 1. بيانات الترجمة الكاملة للمقال السابع
+const DATA = {
+    ar: {
+        dir: "rtl",
+        flag: "🇸🇦",
+        name: "العربية",
+        title: "خطوات إنشاء محفظة Pi Network بأمان | مدونة PiPrice",
+        desc: "تعرف على الطريقة الصحيحة لإنشاء محفظة Pi Network بأمان وكيف تحافظ على مفاتيحك الخاصة لحماية عملاتك الرقمية.",
+        navBlog: "المدونة",
+        navHome: "الرئيسية",
+        breadHome: "الرئيسية",
+        breadBlog: "المدونة",
+        breadTitle: "خطوات إنشاء محفظة Pi بأمان",
+        metaDate: "📅 10 مارس 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 دقائق",
+        h1: "خطوات إنشاء محفظة Pi Network بأمان",
+        body: `
+            <p>تعتبر محفظة <strong>Pi Network</strong> جزءًا أساسيًا من النظام البيئي للعملة، حيث يتم تخزين العملات الرقمية الخاصة بالمستخدمين فيها بعد انتقالها إلى شبكة Mainnet. لذلك من المهم معرفة الطريقة الصحيحة لإنشاء المحفظة وحمايتها من أي مخاطر أمنية.</p>
+            <h2>ما هي محفظة Pi Network؟</h2>
+            <p>محفظة Pi هي أداة رقمية تسمح للمستخدمين بتخزين وإرسال واستقبال عملة Pi بشكل آمن. تعتمد هذه المحفظة على تقنية البلوكشين، مما يعني أن كل معاملة يتم تسجيلها بشكل دائم على الشبكة.</p>
+            <h2>خطوات إنشاء محفظة Pi</h2>
+            <ul>
+                <li>فتح تطبيق Pi Network.</li>
+                <li>الدخول إلى قسم Pi Browser.</li>
+                <li>اختيار Pi Wallet.</li>
+                <li>إنشاء محفظة جديدة.</li>
+                <li>حفظ عبارة الاسترداد <strong>(Passphrase)</strong>.</li>
+            </ul>
+            <h2>أهمية عبارة الاسترداد</h2>
+            <p>عند إنشاء المحفظة، سيظهر لك مجموعة من الكلمات تُعرف باسم Passphrase. هذه الكلمات تمثل المفتاح الخاص بمحفظتك، ولذلك يجب الاحتفاظ بها في مكان آمن وعدم مشاركتها مع أي شخص.</p>
+            <p>في حال فقدان هذه الكلمات، قد لا تتمكن من استعادة محفظتك مرة أخرى.</p>
+            <h2>نصائح لحماية محفظتك</h2>
+            <ul>
+                <li>لا تشارك عبارة الاسترداد مع أي شخص.</li>
+                <li>قم بتخزينها في مكان آمن خارج الإنترنت.</li>
+                <li>استخدم جهازًا آمنًا عند الدخول إلى المحفظة.</li>
+                <li>تجنب الروابط والمواقع غير الموثوقة.</li>
+            </ul>
+            <h2>كيف تنقل العملات إلى محفظة Pi؟</h2>
+            <p>بعد إكمال التحقق من الهوية <strong>(KYC)</strong> داخل تطبيق Pi، يمكن نقل العملات التي قمت بتعدينها إلى محفظة Mainnet الخاصة بك. هذه العملية تتم تلقائيًا عند الموافقة على الحساب.</p>
+            <div class="cta-box">
+                <h3>تابع سعر Pi Network الآن</h3>
+                <p>استخدم مؤشر piprice لمعرفة السعر التقريبي للعملة ومتابعة حركة السوق.</p>
+                <a href="../index.html" class="cta-btn">عرض سعر Pi الآن</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — جميع الحقوق محفوظة"
+    },
+    en: {
+        dir: "ltr",
+        flag: "🇬🇧",
+        name: "English",
+        title: "Steps to Create a Pi Network Wallet Safely | PiPrice Blog",
+        desc: "Learn the correct way to create a Pi Network wallet safely and how to keep your private keys secure to protect your digital currencies.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Steps to Create a Pi Wallet Safely",
+        metaDate: "📅 March 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 min read",
+        h1: "Steps to Create a Pi Network Wallet Safely",
+        body: `
+            <p>The <strong>Pi Network</strong> wallet is an essential part of the currency ecosystem, where users' digital currencies are stored after moving to the Mainnet network. Therefore, it is important to know the correct way to create the wallet and protect it from any security risks.</p>
+            <h2>What is a Pi Network Wallet?</h2>
+            <p>Pi wallet is a digital tool that allows users to store, send, and receive Pi currency securely. This wallet relies on blockchain technology, which means every transaction is permanently recorded on the network.</p>
+            <h2>Steps to Create a Pi Wallet</h2>
+            <ul>
+                <li>Open the Pi Network app.</li>
+                <li>Go to the Pi Browser section.</li>
+                <li>Select Pi Wallet.</li>
+                <li>Create a new wallet.</li>
+                <li>Save the <strong>Passphrase</strong>.</li>
+            </ul>
+            <h2>Importance of the Passphrase</h2>
+            <p>When creating the wallet, you will be shown a set of words known as Passphrase. These words represent the private key to your wallet, so they must be kept in a safe place and not shared with anyone.</p>
+            <p>If you lose these words, you may not be able to recover your wallet again.</p>
+            <h2>Tips to Protect Your Wallet</h2>
+            <ul>
+                <li>Do not share the passphrase with anyone.</li>
+                <li>Store it in a safe place offline.</li>
+                <li>Use a secure device when accessing the wallet.</li>
+                <li>Avoid untrusted links and websites.</li>
+            </ul>
+            <h2>How to Transfer Coins to Pi Wallet?</h2>
+            <p>After completing identity verification <strong>(KYC)</strong> within the Pi app, the coins you have mined can be transferred to your Mainnet wallet. This process happens automatically when the account is approved.</p>
+            <div class="cta-box">
+                <h3>Track Pi Network Price Now</h3>
+                <p>Use the piprice indicator to know the approximate price of the currency and track market movement.</p>
+                <a href="../index.html" class="cta-btn">View Pi Price Now</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — All Rights Reserved"
+    },
+    fr: {
+        dir: "ltr",
+        flag: "🇫🇷",
+        name: "Français",
+        title: "Étapes pour créer un portefeuille Pi Network en toute sécurité | Blog PiPrice",
+        desc: "Découvrez la bonne façon de créer un portefeuille Pi Network en toute sécurité et comment garder vos clés privées sécurisées pour protéger vos cryptomonnaies.",
+        navBlog: "Blog",
+        navHome: "Accueil",
+        breadHome: "Accueil",
+        breadBlog: "Blog",
+        breadTitle: "Étapes pour créer un portefeuille Pi en sécurité",
+        metaDate: "📅 10 mars 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 min de lecture",
+        h1: "Étapes pour créer un portefeuille Pi Network en toute sécurité",
+        body: `
+            <p>Le portefeuille <strong>Pi Network</strong> est une partie essentielle de l'écosystème de la devise, où les cryptomonnaies des utilisateurs sont stockées après leur passage sur le réseau Mainnet. Il est donc important de connaître la bonne façon de créer le portefeuille et de le protéger contre tout risque de sécurité.</p>
+            <h2>Qu'est-ce qu'un portefeuille Pi Network ?</h2>
+            <p>Le portefeuille Pi est un outil numérique qui permet aux utilisateurs de stocker, d'envoyer et de recevoir la devise Pi en toute sécurité. Ce portefeuille repose sur la technologie blockchain, ce qui signifie que chaque transaction est enregistrée de manière permanente sur le réseau.</p>
+            <h2>Étapes pour créer un portefeuille Pi</h2>
+            <ul>
+                <li>Ouvrir l'application Pi Network.</li>
+                <li>Aller à la section Pi Browser.</li>
+                <li>Sélectionner Pi Wallet.</li>
+                <li>Créer un nouveau portefeuille.</li>
+                <li>Enregistrer la <strong>Passphrase</strong>.</li>
+            </ul>
+            <h2>Importance de la Passphrase</h2>
+            <p>Lors de la création du portefeuille, un ensemble de mots connu sous le nom de Passphrase vous sera présenté. Ces mots représentent la clé privée de votre portefeuille, ils doivent donc être conservés dans un endroit sûr et ne pas être partagés avec qui que ce soit.</p>
+            <p>Si vous perdez ces mots, vous ne pourrez peut-être pas récupérer votre portefeuille.</p>
+            <h2>Conseils pour protéger votre portefeuille</h2>
+            <ul>
+                <li>Ne partagez pas la passphrase avec qui que ce soit.</li>
+                <li>Conservez-la dans un endroit sûr hors ligne.</li>
+                <li>Utilisez un appareil sécurisé pour accéder au portefeuille.</li>
+                <li>Évitez les liens et sites Web non fiables.</li>
+            </ul>
+            <h2>Comment transférer des pièces vers le portefeuille Pi ?</h2>
+            <p>Après avoir terminé la vérification d'identité <strong>(KYC)</strong> dans l'application Pi, les pièces que vous avez minées peuvent être transférées vers votre portefeuille Mainnet. Ce processus se fait automatiquement lorsque le compte est approuvé.</p>
+            <div class="cta-box">
+                <h3>Suivez le prix de Pi Network maintenant</h3>
+                <p>Utilisez l'indicateur piprice pour connaître le prix approximatif de la devise et suivre le mouvement du marché.</p>
+                <a href="../index.html" class="cta-btn">Voir le prix du Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Tous droits réservés"
+    },
+    zh: {
+        dir: "ltr",
+        flag: "🇨🇳",
+        name: "中文",
+        title: "安全创建 Pi Network 钱包的步骤 | PiPrice 博客",
+        desc: "了解安全创建 Pi Network 钱包的正确方法，以及如何保护您的私钥以保护您的加密货币。",
+        navBlog: "博客",
+        navHome: "首页",
+        breadHome: "首页",
+        breadBlog: "博客",
+        breadTitle: "安全创建 Pi 钱包的步骤",
+        metaDate: "📅 2026年3月10日",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5分钟阅读",
+        h1: "安全创建 Pi Network 钱包的步骤",
+        body: `
+            <p><strong>Pi Network</strong> 钱包是货币生态系统的重要组成部分，用户的数字货币在转移到主网后存储在其中。因此，了解创建钱包的正确方法并保护其免受任何安全风险非常重要。</p>
+            <h2>什么是 Pi Network 钱包？</h2>
+            <p>Pi 钱包是一个数字工具，允许用户安全地存储、发送和接收 Pi 货币。该钱包依赖区块链技术，这意味着每笔交易都会永久记录在网络中。</p>
+            <h2>创建 Pi 钱包的步骤</h2>
+            <ul>
+                <li>打开 Pi Network 应用程序。</li>
+                <li>进入 Pi Browser 部分。</li>
+                <li>选择 Pi Wallet。</li>
+                <li>创建一个新钱包。</li>
+                <li>保存 <strong>Passphrase</strong>。</li>
+            </ul>
+            <h2>Passphrase 的重要性</h2>
+            <p>创建钱包时，您将看到一组称为 Passphrase 的单词。这些单词代表您钱包的私钥，因此必须保存在安全的地方，不要与任何人分享。</p>
+            <p>如果您丢失了这些单词，您可能无法再次恢复您的钱包。</p>
+            <h2>保护钱包的提示</h2>
+            <ul>
+                <li>不要与任何人分享 Passphrase。</li>
+                <li>将其存储在离线的安全地方。</li>
+                <li>访问钱包时使用安全的设备。</li>
+                <li>避免不受信任的链接和网站。</li>
+            </ul>
+            <h2>如何将代币转移到 Pi 钱包？</h2>
+            <p>在 Pi 应用程序中完成身份验证 <strong>(KYC)</strong> 后，您挖取的代币可以转移到您的主网钱包中。此过程在账户获得批准后自动完成。</p>
+            <div class="cta-box">
+                <h3>立即追踪 Pi Network 价格</h3>
+                <p>使用 piprice 指标了解货币的大致价格并跟踪市场走势。</p>
+                <a href="../index.html" class="cta-btn">查看 Pi 价格</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — 版权所有"
+    },
+    hi: {
+        dir: "ltr",
+        flag: "🇮🇳",
+        name: "हिन्दी",
+        title: "安全创建 Pi Network 钱包的步骤 | PiPrice 博客",
+        desc: "सुरक्षित रूप से Pi Network वॉलेट बनाने का सही तरीका जानें और अपनी डिजिटल मुद्राओं की सुरक्षा के लिए अपनी निजी कुंजियों को कैसे सुरक्षित रखें।",
+        navBlog: "ब्लॉग",
+        navHome: "होम",
+        breadHome: "होम",
+        breadBlog: "ब्लॉग",
+        breadTitle: "安全创建 Pi 钱包的步骤",
+        metaDate: "📅 10 मार्च 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 मिनट पढ़ें",
+        h1: "安全创建 Pi Network 钱包的步骤",
+        body: `
+            <p><strong>Pi Network</strong> वॉलेट मुद्रा के पारिस्थितिकी तंत्र का एक आवश्यक हिस्सा है, जहां Mainnet नेटवर्क पर जाने के बाद उपयोगकर्ताओं की डिजिटल मुद्राएं संग्रहीत की जाती हैं। इसलिए, वॉलेट बनाने का सही तरीका जानना और इसे किसी भी सुरक्षा जोखिम से बचाना महत्वपूर्ण है।</p>
+            <h2>Pi Network वॉलेट क्या है?</h2>
+            <p>Pi वॉलेट एक डिजिटल टूल है जो उपयोगकर्ताओं को Pi मुद्रा को सुरक्षित रूप से संग्रहीत, भेजने और प्राप्त करने की अनुमति देता है। यह वॉलेट ब्लॉकचेन तकनीक पर निर्भर करता है, जिसका अर्थ है कि प्रत्येक लेनदेन स्थायी रूप से नेटवर्क पर दर्ज किया जाता है।</p>
+            <h2>Pi वॉलेट बनाने के चरण</h2>
+            <ul>
+                <li>Pi Network ऐप खोलें।</li>
+                <li>Pi Browser अनुभाग पर जाएं।</li>
+                <li>Pi Wallet चुनें।</li>
+                <li>एक नया वॉलेट बनाएं।</li>
+                <li><strong>Passphrase</strong> को सहेजें।</li>
+            </ul>
+            <h2>Passphrase का महत्व</h2>
+            <p>वॉलेट बनाते समय, आपको Passphrase के रूप में जाने जाने वाले शब्दों का एक सेट दिखाया जाएगा। ये शब्द आपके वॉलेट की निजी कुंजी का प्रतिनिधित्व करते हैं, इसलिए उन्हें एक सुरक्षित स्थान पर रखा जाना चाहिए और किसी के साथ साझा नहीं किया जाना चाहिए।</p>
+            <p>यदि आप ये शब्द खो देते हैं, तो आप अपना वॉलेट फिर से पुनर्प्राप्त नहीं कर सकते होंगे।</p>
+            <h2>अपने वॉलेट की सुरक्षा के लिए सुझाव</h2>
+            <ul>
+                <li>Passphrase को किसी के साथ साझा न करें।</li>
+                <li>इसे ऑफ़लाइन सुरक्षित स्थान पर स्टोर करें।</li>
+                <li>वॉलेट एक्सेस करते समय एक सुरक्षित डिवाइस का उपयोग करें।</li>
+                <li>अविश्वसनीय लिंक और वेबसाइटों से बचें।</li>
+            </ul>
+            <h2>सिक्कों को Pi वॉलेट में कैसे स्थानांतरित करें?</h2>
+            <p>Pi ऐप के भीतर पहचान सत्यापन <strong>(KYC)</strong> पूरा करने के बाद, आपके द्वारा माइन किए गए सिक्कों को आपके Mainnet वॉलेट में स्थानांतरित किया जा सकता है। यह प्रक्रिया तब स्वचालित रूप से होती है जब खाता स्वीकृत हो जाता है।</p>
+            <div class="cta-box">
+                <h3>अभी Pi Network की कीमत ट्रैक करें</h3>
+                <p>मुद्रा की अनुमानित कीमत जानने और बाजार की गति को ट्रैक करने के लिए piprice इंडिकेटर का उपयोग करें।</p>
+                <a href="../index.html" class="cta-btn">अभी Pi कीमत देखें</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — सर्वाधिकार सुरक्षित"
+    },
+    fil: {
+        dir: "ltr",
+        flag: "🇵🇭",
+        name: "Filipino",
+        title: "Mga Hakbang sa Paglikha ng Pi Network Wallet nang Ligtas | PiPrice Blog",
+        desc: "Alamin ang tamang paraan upang lumikha ng Pi Network wallet nang ligtas at kung paano panatilihin ang iyong mga pribadong key na secure para maprotektahan ang iyong mga digital currency.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Mga Hakbang sa Paglikha ng Pi Wallet nang Ligtas",
+        metaDate: "📅 Marso 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 minutong basahin",
+        h1: "Mga Hakbang sa Paglikha ng Pi Network Wallet nang Ligtas",
+        body: `
+            <p>Ang <strong>Pi Network</strong> wallet ay isang mahalagang bahagi ng ecosystem ng currency, kung saan ang mga digital currency ng mga user ay nakaimbak pagkatapos lumipat sa Mainnet network. Samakatuwid, mahalagang malaman ang tamang paraan upang lumikha ng wallet at protektahan ito mula sa anumang mga panganib sa seguridad.</p>
+            <h2>Ano ang Pi Network Wallet?</h2>
+            <p>Ang Pi wallet ay isang digital tool na nagpapahintulot sa mga user na mag-imbak, magpadala, at tumanggap ng Pi currency nang ligtas. Ang wallet na ito ay umaasa sa blockchain technology, na nangangahulugang bawat transaksyon ay permanenteng naitala sa network.</p>
+            <h2>Mga Hakbang sa Paglikha ng Pi Wallet</h2>
+            <ul>
+                <li>Buksan ang Pi Network app.</li>
+                <li>Pumunta sa Pi Browser section.</li>
+                <li>Piliin ang Pi Wallet.</li>
+                <li>Lumikha ng bagong wallet.</li>
+                <li>I-save ang <strong>Passphrase</strong>.</li>
+            </ul>
+            <h2>Ang kahalagahan ng Passphrase</h2>
+            <p>Kapag lumilikha ng wallet, ipapakita sa iyo ang isang set ng mga salita na kilala bilang Passphrase. Ang mga salitang ito ay kumakatawan sa pribadong key ng iyong wallet, kaya't dapat itong itago sa isang ligtas na lugar at hindi ibahagi sa kaninuman.</p>
+            <p>Kung mawawala mo ang mga salitang ito, maaaring hindi mo na ma-recover ang iyong wallet.</p>
+            <h2>Mga Tip para Protektahan ang Iyong Wallet</h2>
+            <ul>
+                <li>Huwag ibahagi ang passphrase sa kaninuman.</li>
+                <li>I-store ito sa isang ligtas na lugar offline.</li>
+                <li>Gumamit ng secure na device kapag na-access ang wallet.</li>
+                <li>Iwasan ang mga hindi pinagkakatiwalaang link at website.</li>
+            </ul>
+            <h2>Paano maglipat ng mga coin sa Pi Wallet?</h2>
+            <p>Pagkatapos kumpletuhin ang pag-verify ng pagkakakilanlan <strong>(KYC)</strong> sa loob ng Pi app, ang mga coin na na-mine mo ay maaaring ilipat sa iyong Mainnet wallet. Ang prosesong ito ay awtomatikong nangyayari kapag ang account ay naaprubahan.</p>
+            <div class="cta-box">
+                <h3>Subaybayan ang Presyo ng Pi Network Ngayon</h3>
+                <p>Gamitin ang piprice indicator upang malaman ang tinatayang presyo ng currency at subaybayan ang kilos ng merkado.</p>
+                <a href="../index.html" class="cta-btn">Tingnan ang Presyo ng Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Ang Lahat ng Karapatan Ay Nakalaan"
+    }
+};
+
+// 2. وظائف التحكم
+function toggleLangMenu() {
+    const list = document.getElementById('langList');
+    list.classList.toggle('active');
+}
+
+document.addEventListener('click', function(e) {
+    const list = document.getElementById('langList');
+    const btn = document.getElementById('langBtn');
+    if (!btn.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('active');
+    }
+});
+
+function changeLang(langCode) {
+    localStorage.setItem("lang", langCode);
+    applyLang(langCode);
+    toggleLangMenu();
+}
+
+function applyLang(lang) {
+    if (!DATA[lang]) lang = 'ar';
+    
+    const d = DATA[lang];
+    
+    // تحديث الهيكل والاتجاه
+    document.documentElement.lang = lang;
+    document.documentElement.dir = d.dir;
+    
+    // تحديث النصوص
+    document.getElementById('page-title').innerText = d.title;
+    document.getElementById('page-desc').content = d.desc;
+    
+    document.getElementById('currentLangFlag').innerText = d.flag;
+    document.getElementById('currentLangText').innerText = d.name;
+    
+    document.getElementById('navBlog').innerText = d.navBlog;
+    document.getElementById('navHome').innerText = d.navHome;
+    
+    document.getElementById('breadHome').innerText = d.breadHome;
+    document.getElementById('breadBlog').innerText = d.breadBlog;
+    document.getElementById('breadTitle').innerText = d.breadTitle;
+    
+    document.getElementById('metaDate').innerText = d.metaDate;
+    document.getElementById('metaAuthor').innerText = d.metaAuthor;
+    document.getElementById('metaRead').innerText = d.metaRead;
+    
+    document.getElementById('articleH1').innerText = d.h1;
+    document.getElementById('articleBody').innerHTML = d.body;
+    
+    document.getElementById('footerCopy').innerText = d.footer;
+    
+    // تحديث حالة الزر
+    const links = document.querySelectorAll('.lang-list li a');
+    links.forEach(link => {
+        if (link.getAttribute('data-lang') === lang) {
+            link.classList.add('selected');
+        } else {
+            link.classList.remove('selected');
+        }
+    });
+}
+
+// تحميل اللغة المحفوظة
+let savedLang = localStorage.getItem("lang") || "ar";
+applyLang(savedLang);
+
+</script>
 </body>
 </html>
