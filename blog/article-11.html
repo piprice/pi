@@ -4,86 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>كيف تربح من تداول Pi عبر piprice؟ | مدونة PiPrice</title>
-
-<meta name="description" content="تعرف على طرق الاستفادة من متابعة سعر Pi عبر piprice وكيف يمكن استخدام المؤشر لاتخاذ قرارات أفضل في السوق.">
+<!-- العناوين الافتراضية -->
+<title id="page-title">كيف تربح من تداول Pi عبر piprice؟ | مدونة PiPrice</title>
+<meta name="description" id="page-desc" content="تعرف على طرق الاستفادة من متابعة سعر Pi عبر piprice وكيف يمكن استخدام المؤشر لاتخاذ قرارات أفضل في السوق.">
 
 <meta name="keywords" content="تداول pi, ربح pi network, piprice, متابعة سعر pi, بيع pi, شراء pi, استثمار العملات الرقمية">
-
 <link rel="canonical" href="https://piprice.store/blog/article-11.html">
-
 <meta name="robots" content="index, follow">
-
 <meta name="theme-color" content="#d4a017">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a07810'/%3E%3Cstop offset='50%25' stop-color='%23d4a017'/%3E%3Cstop offset='100%25' stop-color='%23f0c040'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='900' fill='%23080810'%CF%80%3C/text%3E%3C/svg%3E">
 
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Article",
- "mainEntityOfPage":{
-   "@type":"WebPage",
-   "@id":"https://piprice.store/blog/article-11.html"
- },
- "headline":"كيف تربح من تداول Pi عبر piprice؟",
- "description":"تعرف على طرق الاستفادة من متابعة سعر Pi عبر piprice وكيف يمكن استخدام المؤشر لاتخاذ قرارات أفضل في السوق.",
- "image":"https://raw.githubusercontent.com/piprice/pi/main/1010.png",
- "author":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "url":"https://piprice.store"
- },
- "publisher":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "logo":{
-     "@type":"ImageObject",
-     "url":"https://raw.githubusercontent.com/piprice/pi/main/1010.png"
-   }
- },
- "datePublished":"2026-03-10",
- "dateModified":"2026-03-10"
-}
-</script>
-
 <style>
-
 :root{
 --gold:#d4a017;
 --gold-light:#f0c040;
 --gold-dark:#a07810;
-
 --dark:#06060f;
 --dark2:#0d0d1c;
 --dark3:#141428;
-
 --surface:#18182e;
-
 --border:rgba(212,160,23,0.15);
-
 --text:#f0f0ff;
 --text-muted:#9090bb;
-
 --radius:18px;
-
 --shadow:0 12px 40px rgba(0,0,0,0.5);
-
 --font:'Tajawal',system-ui,sans-serif;
-
 --transition:0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
-*,*::before,*::after{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
 body{
 font-family:var(--font);
@@ -142,17 +96,91 @@ font-weight:900;
 color:var(--gold);
 }
 
+.nav-actions{
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
 .nav-links a{
 color:var(--text);
 text-decoration:none;
 font-size:14px;
 font-weight:700;
-margin-right:15px;
+/* دعم الاتجاهين */
+margin-inline-end:15px;
 transition:color var(--transition);
 }
 
-.nav-links a:hover{
-color:var(--gold);
+.nav-links a:hover{color:var(--gold);}
+
+/* قائمة اللغة */
+.lang-menu{
+position: relative;
+font-family: sans-serif;
+}
+
+.lang-btn{
+background: #141428;
+color: #fff;
+padding: 6px 10px;
+border-radius: 8px;
+border: 1px solid rgba(255,255,255,0.1);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+font-size: 12px;
+}
+
+.lang-list{
+position: absolute;
+top: 45px;
+left: 0;
+background: #141428;
+border-radius: 8px;
+list-style: none;
+padding: 5px 0;
+margin: 0;
+width: 140px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+z-index: 100;
+display: none;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+[dir="rtl"] .lang-list{
+left: auto;
+right: 0;
+}
+
+.lang-list.active{
+display: block;
+opacity: 1;
+transform: translateY(0);
+}
+
+.lang-list li a{
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 15px;
+color: #fff;
+text-decoration: none;
+font-size: 13px;
+transition: background 0.2s;
+}
+
+.lang-list li a:hover{
+background: #d4a017;
+color: #000;
+}
+
+.lang-list li a.selected{
+background: rgba(212, 160, 23, 0.2);
+color: #d4a017;
 }
 
 .breadcrumbs{
@@ -165,7 +193,6 @@ margin-bottom:20px;
 color:var(--gold);
 text-decoration:none;
 }
-
 .breadcrumbs a:hover{
 text-decoration:underline;
 }
@@ -192,10 +219,9 @@ color:var(--text-muted);
 margin-bottom:30px;
 padding-bottom:20px;
 border-bottom:1px solid var(--border);
-}
-
-.article-meta span{
-margin-left:15px;
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
 }
 
 .article-content h2{
@@ -212,8 +238,8 @@ margin-bottom:20px;
 }
 
 .article-content ul{
-margin:0 20px 20px 0;
-padding:0;
+margin:0 0 20px 0;
+padding-inline-start: 40px;
 color:var(--text-muted);
 font-size:16px;
 }
@@ -232,15 +258,15 @@ margin-top:40px;
 }
 
 .cta-box h3{
-color:var(--gold);
-font-size:20px;
-margin-bottom:10px;
+color: var(--gold);
+font-size: 20px;
+margin-bottom: 10px;
 }
 
 .cta-box p{
-color:var(--text);
-font-size:15px;
-margin-bottom:20px;
+color: var(--text);
+font-size: 15px;
+margin-bottom: 20px;
 }
 
 .cta-btn{
@@ -255,10 +281,8 @@ text-decoration:none;
 box-shadow:0 6px 20px rgba(212,160,23,0.4);
 transition:transform 0.2s;
 }
-
 .cta-btn:hover{
 transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(212,160,23,0.6);
 }
 
 footer{
@@ -268,7 +292,6 @@ color:var(--text-muted);
 font-size:12px;
 border-top:1px solid rgba(255,255,255,0.04);
 }
-
 </style>
 </head>
 
@@ -277,102 +300,324 @@ border-top:1px solid rgba(255,255,255,0.04);
 <div class="container">
 
 <header>
-
 <a href="../index.html" class="brand">
 <div class="pi-logo">π</div>
 <div class="brand-name">PiPrice</div>
 </a>
 
-<div class="nav-links">
-<a href="index.html">المدونة</a>
-<a href="../index.html">الرئيسية</a>
-</div>
+<div class="nav-actions">
+    <div class="nav-links">
+        <a href="index.html" id="navBlog">المدونة</a>
+        <a href="../index.html" id="navHome">الرئيسية</a>
+    </div>
 
+    <!-- زر تغيير اللغة -->
+    <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
+            <span id="currentLangFlag">🇸🇦</span>
+            <span id="currentLangText">العربية</span>
+            <span style="font-size:8px;">▼</span>
+        </button>
+        <ul class="lang-list" id="langList">
+            <li><a href="javascript:void(0)" data-lang="ar" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
+            <li><a href="javascript:void(0)" data-lang="en" onclick="changeLang('en')">🇬🇧 English</a></li>
+            <li><a href="javascript:void(0)" data-lang="fr" onclick="changeLang('fr')">🇫🇷 Français</a></li>
+            <li><a href="javascript:void(0)" data-lang="zh" onclick="changeLang('zh')">🇨🇳 中文</a></li>
+            <li><a href="javascript:void(0)" data-lang="hi" onclick="changeLang('hi')">🇮🇳 हिन्दी</a></li>
+            <li><a href="javascript:void(0)" data-lang="fil" onclick="changeLang('fil')">🇵🇭 Filipino</a></li>
+        </ul>
+    </div>
+</div>
 </header>
 
-<div class="breadcrumbs">
-
-<a href="../index.html">الرئيسية</a> » 
-<a href="index.html">المدونة</a> »
-كيف تربح من تداول Pi عبر piprice؟
-
+<div class="breadcrumbs" id="breadcrumb">
+<a href="../index.html" id="breadHome">الرئيسية</a> » 
+<a href="index.html" id="breadBlog">المدونة</a> »
+<span id="breadTitle">كيف تربح من تداول Pi عبر piprice؟</span>
 </div>
 
 <article class="article-content">
 
-<h1 class="article-title">
+<h1 class="article-title" id="articleH1">
 كيف تربح من تداول Pi عبر piprice؟
 </h1>
 
 <div class="article-meta">
-<span>📅 10 مارس 2026</span>
-<span>✍️ PiPrice</span>
-<span>⏱️ وقت القراءة: 4 دقائق</span>
+<span id="metaDate">📅 10 مارس 2026</span>
+<span id="metaAuthor">✍️ PiPrice</span>
+<span id="metaRead">⏱️ 4 دقائق</span>
 </div>
 
-<p>
-
-يبحث الكثير من المستخدمين عن طرق للاستفادة من متابعة سعر <strong>Pi Network</strong>. أحد الأدوات التي تساعد في ذلك هو مؤشر <strong>piprice</strong> الذي يعرض السعر التقريبي للعملة بناءً على بيانات السوق.
-
-</p>
-
-<h2>
-متابعة السعر باستمرار
-</h2>
-
-<p>
-
-متابعة السعر بشكل مستمر تساعد المستخدمين على فهم حركة السوق واتخاذ قرارات أفضل عند البيع أو الشراء.
-
-</p>
-
-<h2>
-تحديد أفضل وقت للبيع
-</h2>
-
-<p>
-
-عندما يرتفع السعر في السوق قد يكون الوقت مناسبًا للبيع، بينما قد يفضل البعض الاحتفاظ بالعملة عند انخفاض السعر انتظارًا لارتفاعه مستقبلاً.
-
-</p>
-
-<h2>
-إدارة المخاطر
-</h2>
-
-<p>
-
-يجب دائمًا التعامل بحذر في سوق العملات الرقمية لأن الأسعار قد تتغير بسرعة. من المهم عدم المخاطرة بأموال لا يمكنك تحمل خسارتها.
-
-</p>
-
-<div class="cta-box">
-
-<h3>
-تابع السعر الآن
-</h3>
-
-<p>
-استخدم مؤشر piprice لمعرفة السعر التقريبي للعملة ومتابعة تحركات السوق.
-</p>
-
-<a href="../index.html" class="cta-btn">
-عرض سعر Pi الآن
-</a>
-
+<div id="articleBody">
+    <!-- المحتوى يتم تحميله بالجافاسكربت -->
 </div>
 
 </article>
 
 <footer>
-
-<p>
-© 2026 PiPrice — جميع الحقوق محفوظة
-</p>
-
+<p id="footerCopy">© 2026 PiPrice — جميع الحقوق محفوظة</p>
 </footer>
 
 </div>
 
+<script>
+// 1. بيانات الترجمة الكاملة للمقال الحادي عشر
+const DATA = {
+    ar: {
+        dir: "rtl",
+        flag: "🇸🇦",
+        name: "العربية",
+        title: "كيف تربح من تداول Pi عبر piprice؟ | مدونة PiPrice",
+        desc: "تعرف على طرق الاستفادة من متابعة سعر Pi عبر piprice وكيف يمكن استخدام المؤشر لاتخاذ قرارات أفضل في السوق.",
+        navBlog: "المدونة",
+        navHome: "الرئيسية",
+        breadHome: "الرئيسية",
+        breadBlog: "المدونة",
+        breadTitle: "كيف تربح من تداول Pi عبر piprice؟",
+        metaDate: "📅 10 مارس 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4 دقائق",
+        h1: "كيف تربح من تداول Pi عبر piprice؟",
+        body: `
+            <p>يبحث الكثير من المستخدمين عن طرق للاستفادة من متابعة سعر <strong>Pi Network</strong>. أحد الأدوات التي تساعد في ذلك هو مؤشر <strong>piprice</strong> الذي يعرض السعر التقريبي للعملة بناءً على بيانات السوق.</p>
+            <h2>متابعة السعر باستمرار</h2>
+            <p>متابعة السعر بشكل مستمر تساعد المستخدمين على فهم حركة السوق واتخاذ قرارات أفضل عند البيع أو الشراء.</p>
+            <h2>تحديد أفضل وقت للبيع</h2>
+            <p>عندما يرتفع السعر في السوق قد يكون الوقت مناسبًا للبيع، بينما قد يفضل البعض الاحتفاظ بالعملة عند انخفاض السعر انتظارًا لارتفاعه مستقبلاً.</p>
+            <h2>إدارة المخاطر</h2>
+            <p>يجب دائمًا التعامل بحذر في سوق العملات الرقمية لأن الأسعار قد تتغير بسرعة. من المهم عدم المخاطرة بأموال لا يمكنك تحمل خسارتها.</p>
+            <div class="cta-box">
+                <h3>تابع السعر الآن</h3>
+                <p>استخدم مؤشر piprice لمعرفة السعر التقريبي للعملة ومتابعة تحركات السوق.</p>
+                <a href="../index.html" class="cta-btn">عرض سعر Pi الآن</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — جميع الحقوق محفوظة"
+    },
+    en: {
+        dir: "ltr",
+        flag: "🇬🇧",
+        name: "English",
+        title: "How to Profit from Trading Pi via piprice? | PiPrice Blog",
+        desc: "Learn about ways to benefit from tracking Pi price via piprice and how the indicator can be used to make better market decisions.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "How to Profit from Trading Pi via piprice?",
+        metaDate: "📅 March 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4 min read",
+        h1: "How to Profit from Trading Pi via piprice?",
+        body: `
+            <p>Many users are looking for ways to benefit from tracking <strong>Pi Network</strong> price. One of the tools that helps with this is the <strong>piprice</strong> indicator, which displays the approximate price of the currency based on market data.</p>
+            <h2>Continuous Price Tracking</h2>
+            <p>Continuously tracking the price helps users understand market movement and make better decisions when buying or selling.</p>
+            <h2>Determining the Best Time to Sell</h2>
+            <p>When the price rises in the market, it may be a suitable time to sell, while some may prefer to hold the currency when the price drops in anticipation of future increases.</p>
+            <h2>Risk Management</h2>
+            <p>Always deal with caution in the cryptocurrency market because prices can change quickly. It's important not to risk money you cannot afford to lose.</p>
+            <div class="cta-box">
+                <h3>Track Price Now</h3>
+                <p>Use the piprice indicator to know the approximate price of the currency and track market movements.</p>
+                <a href="../index.html" class="cta-btn">View Pi Price Now</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — All Rights Reserved"
+    },
+    fr: {
+        dir: "ltr",
+        flag: "🇫🇷",
+        name: "Français",
+        title: "Comment profiter du trading de Pi via piprice ? | Blog PiPrice",
+        desc: "Découvrez les moyens de bénéficier du suivi du prix du Pi via piprice et comment l'indicateur peut être utilisé pour prendre de meilleures décisions sur le marché.",
+        navBlog: "Blog",
+        navHome: "Accueil",
+        breadHome: "Accueil",
+        breadBlog: "Blog",
+        breadTitle: "Comment profiter du trading de Pi via piprice ?",
+        metaDate: "📅 10 mars 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4 min de lecture",
+        h1: "Comment profiter du trading de Pi via piprice ?",
+        body: `
+            <p>De nombreux utilisateurs recherchent des moyens de bénéficier du suivi du prix de <strong>Pi Network</strong>. L'un des outils qui aide à cela est l'indicateur <strong>piprice</strong>, qui affiche le prix approximatif de la devise basé sur les données du marché.</p>
+            <h2>Suivi continu du prix</h2>
+            <p>Le suivi continu du prix aide les utilisateurs à comprendre le mouvement du marché et à prendre de meilleures décisions lors de l'achat ou de la vente.</p>
+            <h2>Déterminer le meilleur moment pour vendre</h2>
+            <p>Lorsque le prix augmente sur le marché, il peut être approprié de vendre, tandis que certains peuvent préférer conserver la devise lorsque le prix baisse dans l'attente d'augmentations futures.</p>
+            <h2>Gestion des risques</h2>
+            <p>Toujours faire preuve de prudence sur le marché des cryptomonnaies car les prix peuvent changer rapidement. Il est important de ne pas risquer de l'argent que vous ne pouvez pas vous permettre de perdre.</p>
+            <div class="cta-box">
+                <h3>Suivez le prix maintenant</h3>
+                <p>Utilisez l'indicateur piprice pour connaître le prix approximatif de la devise et suivre les mouvements du marché.</p>
+                <a href="../index.html" class="cta-btn">Voir le prix du Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Tous droits réservés"
+    },
+    zh: {
+        dir: "ltr",
+        flag: "🇨🇳",
+        name: "中文",
+        title: "如何通过 piprice 交易 Pi 获利？ | PiPrice 博客",
+        desc: "了解通过 piprice 跟踪 Pi 价格的方法，以及如何使用该指标在市场上做出更好的决策。",
+        navBlog: "博客",
+        navHome: "首页",
+        breadHome: "首页",
+        breadBlog: "博客",
+        breadTitle: "如何通过 piprice 交易 Pi 获利？",
+        metaDate: "📅 2026年3月10日",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4分钟阅读",
+        h1: "如何通过 piprice 交易 Pi 获利？",
+        body: `
+            <p>许多用户正在寻找从跟踪 <strong>Pi Network</strong> 价格中受益的方法。帮助实现这一点的工具之一是 <strong>piprice</strong> 指标，它根据市场数据显示货币的大致价格。</p>
+            <h2>持续跟踪价格</h2>
+            <p>持续跟踪价格可帮助用户了解市场走势，并在买入或卖出时做出更好的决策。</p>
+            <h2>确定最佳出售时间</h2>
+            <p>当市场价格下跌时，可能是出售的合适时机，而有些人可能更喜欢在价格下跌时持有货币以期待未来上涨。</p>
+            <h2>风险管理</h2>
+            <p>在加密货币市场上始终要谨慎行事，因为价格可能会快速变化。重要的是不要冒险使用您无法承受损失的资金。</p>
+            <div class="cta-box">
+                <h3>立即跟踪价格</h3>
+                <p>使用 piprice 指标了解货币的大致价格并跟踪市场走势。</p>
+                <a href="../index.html" class="cta-btn">查看 Pi 价格</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — 版权所有"
+    },
+    hi: {
+        dir: "ltr",
+        flag: "🇮🇳",
+        name: "हिन्दी",
+        title: "piprice के माध्यम से Pi ट्रेडिंग से कैसे लाभ कमाएं? | PiPrice ब्लॉग",
+        desc: "piprice के माध्यम से Pi मूल्य ट्रैकिंग से लाभ उठाने के तरीकों के बारे में जानें और बाजार में बेहतर निर्णय लेने के लिए संकेतक का उपयोग कैसे किया जा सकता है।",
+        navBlog: "ब्लॉग",
+        navHome: "होम",
+        breadHome: "होम",
+        breadBlog: "ब्लॉग",
+        breadTitle: "piprice के माध्यम से Pi ट्रेडिंग से कैसे लाभ कमाएं?",
+        metaDate: "📅 10 मार्च 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4 मिनट पढ़ें",
+        h1: "piprice के माध्यम से Pi ट्रेडिंग से कैसे लाभ कमाएं?",
+        body: `
+            <p>कई उपयोगकर्ता <strong>Pi Network</strong> मूल्य ट्रैकिंग से लाभ उठाने के तरीकों की तलाश कर रहे हैं। इसमें मदद करने वाले उपकरणों में से एक <strong>piprice</strong> इंडिकेटर है, जो बाजार डेटा के आधार पर मुद्रा की अनुमानित कीमत प्रदर्शित करता है।</p>
+            <h2>निरंतर मूल्य ट्रैकिंग</h2>
+            <p>निरंतर मूल्य ट्रैकिंग उपयोगकर्ताओं को बाजार की गति को समझने और खरीदने या बेचने के निर्णय लेने में मदद करती है।</p>
+            <h2>बिक्री का सही समय निर्धारित करें</h2>
+            <p>जब बाजार में कीमत बढ़ती है तो बिक्री का सही समय हो सकता है, जबकि कुछ लोग भविष्य में वृद्धि की उम्मीद में कीमत गिरने पर मुद्रा रखना पसंद कर सकते हैं।</p>
+            <h2>जोखिम प्रबंधन</h2>
+            <p>क्रिप्टोकरेंसी बाजार में हमेशा सावधानी बरतें क्योंकि कीमतें जल्दी बदल सकती हैं। ऐसे पैसे का जोखिम न लें जिसे आप खोना बर्दाश्त नहीं कर सकते।</p>
+            <div class="cta-box">
+                <h3>अभी कीमत ट्रैक करें</h3>
+                <p>मुद्रा की अनुमानित कीमत जानने और बाजार की गतिविधियों को ट्रैक करने के लिए piprice इंडिकेटर का उपयोग करें।</p>
+                <a href="../index.html" class="cta-btn">अभी Pi कीमत देखें</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — सर्वाधिकार सुरक्षित"
+    },
+    fil: {
+        dir: "ltr",
+        flag: "🇵🇭",
+        name: "Filipino",
+        title: "Paano kumita sa Pag-trade ng Pi sa pamamagitan ng piprice? | PiPrice Blog",
+        desc: "Alamin ang mga paraan upang makinabang mula sa pagsubaybay sa presyo ng Pi sa pamamagitan ng piprice at kung paano ang indicator ay maaaring gamitin upang gumawa ng mas mahusay na mga desisyon sa merkado.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Paano kumita sa Pag-trade ng Pi via piprice?",
+        metaDate: "📅 Marso 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4 minutong basahin",
+        h1: "Paano kumita sa Pag-trade ng Pi sa pamamagitan ng piprice?",
+        body: `
+            <p>Maraming user ang naghahanap ng mga paraan upang makinabang mula sa pagsubaybay sa presyo ng <strong>Pi Network</strong>. Isa sa mga tool na tumutulong dito ay ang <strong>piprice</strong> indicator, na nagpapakita ng tinatayang presyo ng currency batay sa data ng merkado.</p>
+            <h2>Patuloy na Pagsubaybay sa Presyo</h2>
+            <p>Ang patuloy na pagsubaybay sa presyo ay tumutulong sa mga user na maunawaan ang kilos ng merkado at gumawa ng mas mahusay na mga desisyon kapag bumibili o nagbebenta.</p>
+            <h2>Pagtatakda ng Pinakamahusay na Oras para Magbenta</h2>
+            <p>Kapag tumaas ang presyo sa merkado, maaaring ito ay angkop na oras para magbenta, habang ang iba ay maaaring mas gustong itago ang currency kapag bumaba ang presyo sa pag-asang tataas ito sa hinaharap.</p>
+            <h2>Pamamahala ng Panganib</h2>
+            <p>Laging maging maingat sa merkado ng cryptocurrency dahil ang mga presyo ay maaaring magbago nang mabilis. Mahalagang huwag magrisk ng pera na hindi mo kayang mawala.</p>
+            <div class="cta-box">
+                <h3>Subaybayan ang Presyo Ngayon</h3>
+                <p>Gamitin ang piprice indicator upang malaman ang tinatayang presyo ng currency at subaybayan ang mga kilos ng merkado.</p>
+                <a href="../index.html" class="cta-btn">Tingnan ang Presyo ng Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Ang Lahat ng Karapatan Ay Nakalaan"
+    }
+};
+
+// 2. وظائف التحكم
+function toggleLangMenu() {
+    const list = document.getElementById('langList');
+    list.classList.toggle('active');
+}
+
+document.addEventListener('click', function(e) {
+    const list = document.getElementById('langList');
+    const btn = document.getElementById('langBtn');
+    if (!btn.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('active');
+    }
+});
+
+function changeLang(langCode) {
+    localStorage.setItem("lang", langCode);
+    applyLang(langCode);
+    toggleLangMenu();
+}
+
+function applyLang(lang) {
+    if (!DATA[lang]) lang = 'ar';
+    
+    const d = DATA[lang];
+    
+    // تحديث الهيكل والاتجاه
+    document.documentElement.lang = lang;
+    document.documentElement.dir = d.dir;
+    
+    // تحديث النصوص
+    document.getElementById('page-title').innerText = d.title;
+    document.getElementById('page-desc').content = d.desc;
+    
+    document.getElementById('currentLangFlag').innerText = d.flag;
+    document.getElementById('currentLangText').innerText = d.name;
+    
+    document.getElementById('navBlog').innerText = d.navBlog;
+    document.getElementById('navHome').innerText = d.navHome;
+    
+    document.getElementById('breadHome').innerText = d.breadHome;
+    document.getElementById('breadBlog').innerText = d.breadBlog;
+    document.getElementById('breadTitle').innerText = d.breadTitle;
+    
+    document.getElementById('metaDate').innerText = d.metaDate;
+    document.getElementById('metaAuthor').innerText = d.metaAuthor;
+    document.getElementById('metaRead').innerText = d.metaRead;
+    
+    document.getElementById('articleH1').innerText = d.h1;
+    document.getElementById('articleBody').innerHTML = d.body;
+    
+    document.getElementById('footerCopy').innerText = d.footer;
+    
+    // تحديث حالة الزر
+    const links = document.querySelectorAll('.lang-list li a');
+    links.forEach(link => {
+        if (link.getAttribute('data-lang') === lang) {
+            link.classList.add('selected');
+        } else {
+            link.classList.remove('selected');
+        }
+    });
+}
+
+// تحميل اللغة المحفوظة
+let savedLang = localStorage.getItem("lang") || "ar";
+applyLang(savedLang);
+
+</script>
 </body>
 </html>
