@@ -4,61 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>دليل بيع Pi Network في دبي والإمارات | مدونة PiPrice</title>
-
-<meta name="description" content="تعرف على أفضل الطرق لبيع Pi Network في دبي والإمارات وتحويلها إلى USDT بسرعة وأمان باستخدام مؤشر piprice لمعرفة السعر الحقيقي.">
+<!-- العناوين الافتراضية -->
+<title id="page-title">دليل بيع Pi Network في دبي والإمارات | مدونة PiPrice</title>
+<meta name="description" id="page-desc" content="تعرف على أفضل الطرق لبيع Pi Network في دبي والإمارات وتحويلها إلى USDT بسرعة وأمان باستخدام مؤشر piprice لمعرفة السعر الحقيقي.">
 
 <meta name="keywords" content="بيع Pi Network, سعر Pi اليوم, piprice, بيع pi في دبي, تحويل pi الى usdt">
-
 <link rel="canonical" href="https://piprice.store/blog/article-2.html">
-
 <meta name="robots" content="index, follow">
-
 <meta name="theme-color" content="#d4a017">
-
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a07810'/%3E%3Cstop offset='50%25' stop-color='%23d4a017'/%3E%3Cstop offset='100%25' stop-color='%23f0c040'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='900' fill='%23080810'%3E%CF%80%3C/text%3E%3C/svg%3E">
 
-
-
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Article",
- "mainEntityOfPage":{
-   "@type":"WebPage",
-   "@id":"https://piprice.store/blog/article-2.html"
- },
- "headline":"دليل بيع Pi Network في دبي والإمارات",
- "description":"تعرف على أفضل الطرق لبيع Pi Network في دبي والإمارات وتحويلها إلى USDT بسرعة وأمان باستخدام مؤشر piprice.",
- "image":"https://raw.githubusercontent.com/piprice/pi/main/1010.png",
- "author":{
-   "@type":"Organization",
-   "name":"الأنصاري للصرافة",
-   "url":"https://piprice.store/"
- },
- "publisher":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "logo":{
-     "@type":"ImageObject",
-     "url":"https://raw.githubusercontent.com/piprice/pi/main/1010.png"
-   }
- },
- "datePublished":"2026-03-10",
- "dateModified":"2026-03-10"
-}
-</script>
-
-
 <style>
-
 :root{
 --gold:#d4a017;
 --gold-light:#f0c040;
@@ -135,16 +96,92 @@ font-weight:900;
 color:var(--gold);
 }
 
+.nav-actions{
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
 .nav-links a{
 color:var(--text);
 text-decoration:none;
 font-size:14px;
 font-weight:700;
-margin-right:15px;
+/* دعم الاتجاهين */
+margin-inline-end:15px;
 transition:color var(--transition);
 }
 
 .nav-links a:hover{color:var(--gold);}
+
+/* قائمة اللغة */
+.lang-menu{
+position: relative;
+font-family: sans-serif;
+}
+
+.lang-btn{
+background: #141428;
+color: #fff;
+padding: 6px 10px;
+border-radius: 8px;
+border: 1px solid rgba(255,255,255,0.1);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+font-size: 12px;
+}
+
+.lang-list{
+position: absolute;
+top: 45px;
+left: 0;
+background: #141428;
+border-radius: 8px;
+list-style: none;
+padding: 5px 0;
+margin: 0;
+width: 140px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+z-index: 100;
+display: none;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+[dir="rtl"] .lang-list{
+left: auto;
+right: 0;
+}
+
+.lang-list.active{
+display: block;
+opacity: 1;
+transform: translateY(0);
+}
+
+.lang-list li a{
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 15px;
+color: #fff;
+text-decoration: none;
+font-size: 13px;
+transition: background 0.2s;
+}
+
+.lang-list li a:hover{
+background: #d4a017;
+color: #000;
+}
+
+.lang-list li a.selected{
+background: rgba(212, 160, 23, 0.2);
+color: #d4a017;
+}
 
 .breadcrumbs{
 font-size:13px;
@@ -179,6 +216,9 @@ color:var(--text-muted);
 margin-bottom:30px;
 padding-bottom:20px;
 border-bottom:1px solid var(--border);
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
 }
 
 .article-content h2{
@@ -195,7 +235,8 @@ margin-bottom:20px;
 }
 
 .article-content ul{
-margin:0 20px 20px 0;
+margin:0 0 20px 0;
+padding-inline-start: 40px;
 color:var(--text-muted);
 font-size:16px;
 }
@@ -213,6 +254,18 @@ text-align:center;
 margin-top:40px;
 }
 
+.cta-box h3{
+color: var(--gold);
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+.cta-box p{
+color: var(--text);
+font-size: 15px;
+margin-bottom: 20px;
+}
+
 .cta-btn{
 display:inline-block;
 background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));
@@ -222,6 +275,11 @@ border-radius:30px;
 font-size:16px;
 font-weight:900;
 text-decoration:none;
+box-shadow: 0 6px 20px rgba(212,160,23,0.4);
+transition: transform 0.2s;
+}
+.cta-btn:hover{
+transform: translateY(-3px);
 }
 
 footer{
@@ -231,10 +289,8 @@ color:var(--text-muted);
 font-size:12px;
 border-top:1px solid rgba(255,255,255,0.04);
 }
-
 </style>
 </head>
-
 
 <body>
 
@@ -246,96 +302,349 @@ border-top:1px solid rgba(255,255,255,0.04);
 <div class="brand-name">PiPrice</div>
 </a>
 
-<div class="nav-links">
-<a href="index.html">المدونة</a>
-<a href="../index.html">الرئيسية</a>
+<div class="nav-actions">
+    <div class="nav-links">
+        <a href="index.html" id="navBlog">المدونة</a>
+        <a href="../index.html" id="navHome">الرئيسية</a>
+    </div>
+
+    <!-- زر تغيير اللغة -->
+    <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
+            <span id="currentLangFlag">🇸🇦</span>
+            <span id="currentLangText">العربية</span>
+            <span style="font-size:8px;">▼</span>
+        </button>
+        <ul class="lang-list" id="langList">
+            <li><a href="javascript:void(0)" data-lang="ar" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
+            <li><a href="javascript:void(0)" data-lang="en" onclick="changeLang('en')">🇬🇧 English</a></li>
+            <li><a href="javascript:void(0)" data-lang="fr" onclick="changeLang('fr')">🇫🇷 Français</a></li>
+            <li><a href="javascript:void(0)" data-lang="zh" onclick="changeLang('zh')">🇨🇳 中文</a></li>
+            <li><a href="javascript:void(0)" data-lang="hi" onclick="changeLang('hi')">🇮🇳 हिन्दी</a></li>
+            <li><a href="javascript:void(0)" data-lang="fil" onclick="changeLang('fil')">🇵🇭 Filipino</a></li>
+        </ul>
+    </div>
 </div>
 </header>
 
-
-<div class="breadcrumbs">
-<a href="../index.html">الرئيسية</a> » 
-<a href="index.html">المدونة</a> » 
-دليل بيع Pi Network في دبي والإمارات
+<div class="breadcrumbs" id="breadcrumb">
+<a href="../index.html" id="breadHome">الرئيسية</a> » 
+<a href="index.html" id="breadBlog">المدونة</a> » 
+<span id="breadTitle">دليل بيع Pi Network في دبي</span>
 </div>
-
-
 
 <article class="article-content">
 
-<h1 class="article-title">
+<h1 class="article-title" id="articleH1">
 دليل بيع Pi Network في دبي والإمارات
 </h1>
 
-
 <div class="article-meta">
-<span>📅 10 مارس 2026</span>
-<span>✍️ الأنصاري للصرافة</span>
-<span>⏱️ وقت القراءة: 3 دقائق</span>
+<span id="metaDate">📅 10 مارس 2026</span>
+<span id="metaAuthor">✍️ الأنصاري للصرافة</span>
+<span id="metaRead">⏱️ 3 دقائق</span>
 </div>
 
-
-<p>
-مع تزايد الاهتمام بعملة Pi Network في الشرق الأوسط، يبحث الكثير من المستخدمين في دبي والإمارات عن طرق آمنة وموثوقة لتحويل عملاتهم الرقمية إلى USDT أو عملات مستقرة أخرى. بيع Pi أصبح موضوعًا مهمًا خاصة مع اقتراب إطلاق الشبكة المفتوحة للمشروع.
-</p>
-
-
-<h2>
-هل يمكن بيع Pi Network حالياً؟
-</h2>
-
-<p>
-رغم أن مشروع Pi Network ما زال في مرحلة التطوير، إلا أن بعض المنصات بدأت بإتاحة تداول العملة بشكل محدود. لذلك يعتمد الكثير من المستخدمين على مؤشرات السعر مثل piprice لمعرفة القيمة التقريبية للعملة قبل تنفيذ أي عملية بيع.
-</p>
-
-
-<h2>
-الخطوات الأساسية لبيع Pi
-</h2>
-
-<ul>
-<li>إكمال عملية توثيق الهوية داخل تطبيق Pi.</li>
-<li>نقل العملات إلى محفظة Mainnet الخاصة بك.</li>
-<li>متابعة سعر Pi عبر مؤشر piprice.</li>
-<li>الاتفاق على التحويل مقابل USDT.</li>
-</ul>
-
-
-<h2>
-لماذا يفضل المتداولون USDT؟
-</h2>
-
-<p>
-عملة USDT تعتبر من أشهر العملات المستقرة المرتبطة بالدولار الأمريكي، لذلك يعتمد عليها الكثير من المتداولين عند تحويل أرباحهم من العملات الرقمية للحفاظ على قيمة أموالهم بعيدًا عن تقلبات السوق.
-</p>
-
-
-<div class="cta-box">
-
-<h3>
-ابدأ بيع Pi Network الآن
-</h3>
-
-<p>
-تابع سعر Pi عبر مؤشر piprice واحصل على أفضل سعر لتحويل عملاتك بسرعة وأمان.
-</p>
-
-<a href="../index.html#sell" class="cta-btn">
-بيع Pi الآن
-</a>
-
+<div id="articleBody">
+    <!-- المحتوى يتم تحميله بالجافاسكربت -->
 </div>
 
 </article>
 
-
 <footer>
-<p>
-جميع الحقوق محفوظة — الأنصاري للصرافة دبي 2026
-</p>
+<p id="footerCopy">جميع الحقوق محفوظة — الأنصاري للصرافة دبي 2026</p>
 </footer>
 
 </div>
 
+<script>
+// 1. بيانات الترجمة الكاملة للمقال الثاني
+const DATA = {
+    ar: {
+        dir: "rtl",
+        flag: "🇸🇦",
+        name: "العربية",
+        title: "دليل بيع Pi Network في دبي والإمارات | مدونة PiPrice",
+        desc: "تعرف على أفضل الطرق لبيع Pi Network في دبي والإمارات وتحويلها إلى USDT بسرعة وأمان باستخدام مؤشر piprice لمعرفة السعر الحقيقي.",
+        navBlog: "المدونة",
+        navHome: "الرئيسية",
+        breadHome: "الرئيسية",
+        breadBlog: "المدونة",
+        breadTitle: "دليل بيع Pi Network في دبي",
+        metaDate: "📅 10 مارس 2026",
+        metaAuthor: "✍️ الأنصاري للصرافة",
+        metaRead: "⏱️ 3 دقائق",
+        h1: "دليل بيع Pi Network في دبي والإمارات",
+        body: `
+            <p>مع تزايد الاهتمام بعملة <strong>Pi Network</strong> في الشرق الأوسط، يبحث الكثير من المستخدمين في دبي والإمارات عن طرق آمنة وموثوقة لتحويل عملاتهم الرقمية إلى USDT أو عملات مستقرة أخرى. بيع Pi أصبح موضوعًا مهمًا خاصة مع اقتراب إطلاق الشبكة المفتوحة للمشروع.</p>
+            <h2>هل يمكن بيع Pi Network حالياً؟</h2>
+            <p>رغم أن مشروع Pi Network ما زال في مرحلة التطوير، إلا أن بعض المنصات بدأت بإتاحة تداول العملة بشكل محدود. لذلك يعتمد الكثير من المستخدمين على مؤشرات السعر مثل <strong>piprice</strong> لمعرفة القيمة التقريبية للعملة قبل تنفيذ أي عملية بيع.</p>
+            <h2>الخطوات الأساسية لبيع Pi</h2>
+            <ul>
+                <li>إكمال عملية توثيق الهوية (KYC) داخل تطبيق Pi.</li>
+                <li>نقل العملات إلى محفظة Mainnet الخاصة بك.</li>
+                <li>متابعة سعر Pi عبر مؤشر piprice.</li>
+                <li>الاتفاق على التحويل مقابل USDT.</li>
+            </ul>
+            <h2>لماذا يفضل المتداولون USDT؟</h2>
+            <p>عملة USDT تعتبر من أشهر العملات المستقرة المرتبطة بالدولار الأمريكي، لذلك يعتمد عليها الكثير من المتداولين عند تحويل أرباحهم من العملات الرقمية للحفاظ على قيمة أموالهم بعيدًا عن تقلبات السوق.</p>
+            <div class="cta-box">
+                <h3>ابدأ بيع Pi Network الآن</h3>
+                <p>تابع سعر Pi عبر مؤشر piprice واحصل على أفضل سعر لتحويل عملاتك بسرعة وأمان.</p>
+                <a href="../index.html#sell" class="cta-btn">بيع Pi الآن</a>
+            </div>
+        `,
+        footer: "جميع الحقوق محفوظة — الأنصاري للصرافة دبي 2026"
+    },
+    en: {
+        dir: "ltr",
+        flag: "🇬🇧",
+        name: "English",
+        title: "Guide to Selling Pi Network in Dubai and UAE | PiPrice Blog",
+        desc: "Learn about the best ways to sell Pi Network in Dubai and UAE and convert it to USDT quickly and safely using the piprice indicator to know the real price.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Guide to Selling Pi in Dubai",
+        metaDate: "📅 March 10, 2026",
+        metaAuthor: "✍️ Al Ansari Exchange",
+        metaRead: "⏱️ 3 min read",
+        h1: "Guide to Selling Pi Network in Dubai and UAE",
+        body: `
+            <p>With the increasing interest in <strong>Pi Network</strong> in the Middle East, many users in Dubai and the UAE are looking for safe and reliable ways to convert their digital currencies into USDT or other stablecoins. Selling Pi has become an important topic, especially with the approaching launch of the project's open network.</p>
+            <h2>Can Pi Network be sold currently?</h2>
+            <p>Although the Pi Network project is still in the development phase, some platforms have started allowing limited trading of the currency. Therefore, many users rely on price indicators like <strong>piprice</strong> to know the approximate value of the currency before executing any sale.</p>
+            <h2>Basic Steps to Sell Pi</h2>
+            <ul>
+                <li>Complete the identity verification (KYC) process inside the Pi app.</li>
+                <li>Transfer coins to your Mainnet wallet.</li>
+                <li>Monitor Pi price via the piprice indicator.</li>
+                <li>Agree on the transfer in exchange for USDT.</li>
+            </ul>
+            <h2>Why do traders prefer USDT?</h2>
+            <p>USDT is considered one of the most famous stablecoins linked to the US Dollar, so many traders rely on it when converting their profits from cryptocurrencies to preserve the value of their funds away from market volatility.</p>
+            <div class="cta-box">
+                <h3>Start Selling Pi Network Now</h3>
+                <p>Track the Pi price via the piprice indicator and get the best price to convert your currencies quickly and safely.</p>
+                <a href="../index.html#sell" class="cta-btn">Sell Pi Now</a>
+            </div>
+        `,
+        footer: "All Rights Reserved — Al Ansari Exchange Dubai 2026"
+    },
+    fr: {
+        dir: "ltr",
+        flag: "🇫🇷",
+        name: "Français",
+        title: "Guide de vente de Pi Network à Dubaï et aux EAU | Blog PiPrice",
+        desc: "Découvrez les meilleures méthodes pour vendre Pi Network à Dubaï et aux EAU et le convertir en USDT rapidement et en toute sécurité en utilisant l'indicateur piprice.",
+        navBlog: "Blog",
+        navHome: "Accueil",
+        breadHome: "Accueil",
+        breadBlog: "Blog",
+        breadTitle: "Guide de vente de Pi à Dubaï",
+        metaDate: "📅 10 mars 2026",
+        metaAuthor: "✍️ Al Ansari Exchange",
+        metaRead: "⏱️ 3 min de lecture",
+        h1: "Guide de vente de Pi Network à Dubaï et aux EAU",
+        body: `
+            <p>Avec l'intérêt croissant pour <strong>Pi Network</strong> au Moyen-Orient, de nombreux utilisateurs à Dubaï et aux Émirats Arabes Unis recherchent des moyens sûrs et fiables pour convertir leurs crypto-monnaies en USDT ou d'autres stablecoins. La vente de Pi est devenue un sujet important, surtout avec l'approche du lancement du réseau ouvert du projet.</p>
+            <h2>Est-il possible de vendre Pi Network actuellement ?</h2>
+            <p>Bien que le projet Pi Network soit encore en phase de développement, certaines plateformes ont commencé à autoriser la négociation limitée de la devise. Par conséquent, de nombreux utilisateurs s'appuient sur des indicateurs de prix comme <strong>piprice</strong> pour connaître la valeur approximative de la devise avant d'exécuter toute vente.</p>
+            <h2>Étapes de base pour vendre Pi</h2>
+            <ul>
+                <li>Terminer le processus de vérification d'identité (KYC) dans l'application Pi.</li>
+                <li>Transférer les pièces vers votre portefeuille Mainnet.</li>
+                <li>Surveiller le prix du Pi via l'indicateur piprice.</li>
+                <li>Accepter le transfert en échange d'USDT.</li>
+            </ul>
+            <h2>Pourquoi les traders préfèrent-ils l'USDT ?</h2>
+            <p>L'USDT est considéré comme l'un des stablecoins les plus célèbres liés au dollar américain, de nombreux traders s'y fient donc lors de la conversion de leurs bénéfices de crypto-monnaies pour préserver la valeur de leurs fonds loin de la volatilité du marché.</p>
+            <div class="cta-box">
+                <h3>Commencez à vendre Pi Network maintenant</h3>
+                <p>Suivez le prix du Pi via l'indicateur piprice et obtenez le meilleur prix pour convertir vos devises rapidement et en toute sécurité.</p>
+                <a href="../index.html#sell" class="cta-btn">Vendre Pi maintenant</a>
+            </div>
+        `,
+        footer: "Tous droits réservés — Al Ansari Exchange Dubaï 2026"
+    },
+    zh: {
+        dir: "ltr",
+        flag: "🇨🇳",
+        name: "中文",
+        title: "在迪拜和阿联酋出售 Pi Network 指南 | PiPrice 博客",
+        desc: "了解在迪拜和阿联酋出售 Pi Network 并使用 piprice 指示器快速安全地将其转换为 USDT 的最佳方法。",
+        navBlog: "博客",
+        navHome: "首页",
+        breadHome: "首页",
+        breadBlog: "博客",
+        breadTitle: "在迪拜出售 Pi 指南",
+        metaDate: "📅 2026年3月10日",
+        metaAuthor: "✍️ Al Ansari Exchange",
+        metaRead: "⏱️ 3分钟阅读",
+        h1: "在迪拜和阿联酋出售 Pi Network 指南",
+        body: `
+            <p>随着中东地区对 <strong>Pi Network</strong> 兴趣的增加，迪拜和阿联酋的许多用户正在寻找安全可靠的方法将其数字货币转换为 USDT 或其他稳定币。出售 Pi 已成为一个重要话题，尤其是在该项目开放网络即将推出之际。</p>
+            <h2>目前可以出售 Pi Network 吗？</h2>
+            <p>尽管 Pi Network 项目仍处于开发阶段，但一些平台已开始允许对该货币进行有限交易。因此，许多用户依赖像 <strong>piprice</strong> 这样的价格指标在执行任何出售之前了解货币的大致价值。</p>
+            <h2>出售 Pi 的基本步骤</h2>
+            <ul>
+                <li>在 Pi 应用程序内完成身份验证 (KYC) 流程。</li>
+                <li>将硬币转移到您的主网钱包。</li>
+                <li>通过 piprice 指标监控 Pi 价格。</li>
+                <li>商定以 USDT 进行转账。</li>
+            </ul>
+            <h2>为什么交易者更喜欢 USDT？</h2>
+            <p>USDT 被认为是与美元挂钩的最著名的稳定币之一，因此许多交易者在将加密货币利润转换为稳定币以规避市场波动时依赖它。</p>
+            <div class="cta-box">
+                <h3>立即开始出售 Pi Network</h3>
+                <p>通过 piprice 指标跟踪 Pi 价格，并获得最佳价格以快速安全地转换您的货币。</p>
+                <a href="../index.html#sell" class="cta-btn">立即出售 Pi</a>
+            </div>
+        `,
+        footer: "版权所有 — Al Ansari Exchange 迪拜 2026"
+    },
+    hi: {
+        dir: "ltr",
+        flag: "🇮🇳",
+        name: "हिन्दी",
+        title: "दुबई और यूएई में Pi Network बेचने का गाइड | PiPrice ब्लॉग",
+        desc: "piprice इंडिकेटर का उपयोग करके वास्तविक मूल्य जानने के लिए दुबई और यूएई में Pi Network बेचने और इसे USDT में जल्दी और सुरक्षित रूप से परिवर्तित करने के सर्वोत्तम तरीकों के बारे में जानें।",
+        navBlog: "ब्लॉग",
+        navHome: "होम",
+        breadHome: "होम",
+        breadBlog: "ब्लॉग",
+        breadTitle: "दुबई में Pi बेचने का गाइड",
+        metaDate: "📅 10 मार्च 2026",
+        metaAuthor: "✍️ Al Ansari Exchange",
+        metaRead: "⏱️ 3 मिनट पढ़ें",
+        h1: "दुबई और यूएई में Pi Network बेचने का गाइड",
+        body: `
+            <p>मध्य पूर्व में <strong>Pi Network</strong> में बढ़ती रुचि के साथ, दुबई और यूएई में कई उपयोगकर्ता अपनी डिजिटल मुद्राओं को USDT या अन्य स्टेबलकॉइन में बदलने के लिए सुरक्षित और विश्वसनीय तरीकों की तलाश कर रहे हैं। Pi बेचना एक महत्वपूर्ण विषय बन गया है, खासकर परियोजना के ओपन नेटवर्क के लॉन्च के करीब आने के साथ।</p>
+            <h2>क्या वर्तमान में Pi Network बेचा जा सकता है?</h2>
+            <p>हालांकि Pi Network प्रोजेक्ट अभी भी विकास चरण में है, कुछ प्लेटफॉर्म ने मुद्रा के सीमित व्यापार की अनुमति देना शुरू कर दी है। इसलिए, कई उपयोगकर्ता किसी भी बिक्री को निष्पादित करने से पहले मुद्रा की अनुमानित मूल्य जानने के लिए <strong>piprice</strong> जैसे मूल्य संकेतकों पर भरोसा करते हैं।</p>
+            <h2>Pi बेचने के लिए बुनियादी कदम</h2>
+            <ul>
+                <li>Pi ऐप के अंदर पहचान सत्यापन (KYC) प्रक्रिया पूरी करें।</li>
+                <li>सिक्कों को अपने Mainnet वॉलेट में स्थानांतरित करें।</li>
+                <li>piprice इंडिकेटर के माध्यम से Pi की कीमत की निगरानी करें।</li>
+                <li>USDT के बदले हस्तांतरण पर सहमत हों।</li>
+            </ul>
+            <h2>व्यापारी USDT क्यों पसंद करते हैं?</h2>
+            <p>USDT को अमेरिकी डॉलर से जुड़े सबसे प्रसिद्ध स्टेबलकॉइन में से एक माना जाता है, इसलिए कई व्यापारी बाजार की अस्थिरता से दूर अपने धन के मूल्य को संरक्षित करने के लिए क्रिप्टोकरेंसी लाभ को परिवर्तित करते समय इस पर भरोसा करते हैं।</p>
+            <div class="cta-box">
+                <h3>अभी Pi Network बेचना शुरू करें</h3>
+                <p>piprice इंडिकेटर के माध्यम से Pi की कीमत ट्रैक करें और अपनी मुद्राओं को जल्दी और सुरक्षित रूप से परिवर्तित करने के लिए सर्वोत्तम मूल्य प्राप्त करें।</p>
+                <a href="../index.html#sell" class="cta-btn">अभी Pi बेचें</a>
+            </div>
+        `,
+        footer: "सर्वाधिकार सुरक्षित — Al Ansari Exchange दुबई 2026"
+    },
+    fil: {
+        dir: "ltr",
+        flag: "🇵🇭",
+        name: "Filipino",
+        title: "Gabay sa Pagbebenta ng Pi Network sa Dubai at UAE | PiPrice Blog",
+        desc: "Alamin ang mga pinakamahusay na paraan upang ibenta ang Pi Network sa Dubai at UAE at i-convert ito sa USDT nang mabilis at ligtas gamit ang piprice indicator.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Gabay sa Pagbebenta ng Pi sa Dubai",
+        metaDate: "📅 Marso 10, 2026",
+        metaAuthor: "✍️ Al Ansari Exchange",
+        metaRead: "⏱️ 3 minutong basahin",
+        h1: "Gabay sa Pagbebenta ng Pi Network sa Dubai at UAE",
+        body: `
+            <p>Sa pagtaas ng interes sa <strong>Pi Network</strong> sa Middle East, maraming mga user sa Dubai at UAE ang naghahanap ng mga ligtas at maaasahang paraan upang i-convert ang kanilang mga digital currency sa USDT o iba pang stablecoins. Ang pagbebenta ng Pi ay naging isang mahalagang paksa, lalo na sa paglapit ng paglulunsad ng open network ng proyekto.</p>
+            <h2>Maari bang ibenta ang Pi Network kasalukuyan?</h2>
+            <p>Bagama't ang proyekto ng Pi Network ay nasa yugto pa rin ng pag-unlad, nagpasimula na ang ilang mga platform na payagan ang limitadong trading ng currency. Samakatuwid, maraming mga user ang umaasa sa mga price indicator tulad ng <strong>piprice</strong> upang malaman ang tinatayang halaga ng currency bago isagawa ang anumang pagbebenta.</p>
+            <h2>Mga Pangunahing Hakbang sa Pagbebenta ng Pi</h2>
+            <ul>
+                <li>Kumpletuhin ang proseso ng pag-verify ng pagkakakilanlan (KYC) sa loob ng Pi app.</li>
+                <li>Ilipat ang mga barya sa iyong Mainnet wallet.</li>
+                <li>Bantayan ang presyo ng Pi sa pamamagitan ng piprice indicator.</li>
+                <li>Magkasundo sa paglilipat kapalit ng USDT.</li>
+            </ul>
+            <h2>Bakit ginugusto ng mga trader ang USDT?</h2>
+            <p>Ang USDT ay itinuturing na isa sa mga pinakatanyag na stablecoins na naka-link sa US Dollar, kaya't maraming mga trader ang umaasa dito kapag kino-convert ang kanilang mga kita mula sa cryptocurrencies upang mapanatili ang halaga ng kanilang mga pondo nang malayo sa market volatility.</p>
+            <div class="cta-box">
+                <h3>Magsimulang Magbenta ng Pi Network Ngayon</h3>
+                <p>Subaybayan ang presyo ng Pi sa pamamagitan ng piprice indicator at makakuha ng pinakamahusay na presyo upang i-convert ang iyong mga currency nang mabilis at ligtas.</p>
+                <a href="../index.html#sell" class="cta-btn">Ibenta ang Pi Ngayon</a>
+            </div>
+        `,
+        footer: "Lahat ng Karapatan Ay Nakalaan — Al Ansari Exchange Dubai 2026"
+    }
+};
+
+// 2. وظائف التحكم
+function toggleLangMenu() {
+    const list = document.getElementById('langList');
+    list.classList.toggle('active');
+}
+
+document.addEventListener('click', function(e) {
+    const list = document.getElementById('langList');
+    const btn = document.getElementById('langBtn');
+    if (!btn.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('active');
+    }
+});
+
+function changeLang(langCode) {
+    localStorage.setItem("lang", langCode);
+    applyLang(langCode);
+    toggleLangMenu();
+}
+
+function applyLang(lang) {
+    if (!DATA[lang]) lang = 'ar';
+    
+    const d = DATA[lang];
+    
+    // تحديث الهيكل والاتجاه
+    document.documentElement.lang = lang;
+    document.documentElement.dir = d.dir;
+    
+    // تحديث النصوص
+    document.getElementById('page-title').innerText = d.title;
+    document.getElementById('page-desc').content = d.desc;
+    
+    document.getElementById('currentLangFlag').innerText = d.flag;
+    document.getElementById('currentLangText').innerText = d.name;
+    
+    document.getElementById('navBlog').innerText = d.navBlog;
+    document.getElementById('navHome').innerText = d.navHome;
+    
+    document.getElementById('breadHome').innerText = d.breadHome;
+    document.getElementById('breadBlog').innerText = d.breadBlog;
+    document.getElementById('breadTitle').innerText = d.breadTitle;
+    
+    document.getElementById('metaDate').innerText = d.metaDate;
+    document.getElementById('metaAuthor').innerText = d.metaAuthor;
+    document.getElementById('metaRead').innerText = d.metaRead;
+    
+    document.getElementById('articleH1').innerText = d.h1;
+    document.getElementById('articleBody').innerHTML = d.body;
+    
+    document.getElementById('footerCopy').innerText = d.footer;
+    
+    // تحديث حالة الزر
+    const links = document.querySelectorAll('.lang-list li a');
+    links.forEach(link => {
+        if (link.getAttribute('data-lang') === lang) {
+            link.classList.add('selected');
+        } else {
+            link.classList.remove('selected');
+        }
+    });
+}
+
+// تحميل اللغة المحفوظة
+let savedLang = localStorage.getItem("lang") || "ar";
+applyLang(savedLang);
+
+</script>
 </body>
 </html>
