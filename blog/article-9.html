@@ -4,86 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>أهمية توثيق الهوية (KYC) في Pi Network | مدونة PiPrice</title>
-
-<meta name="description" content="تعرف على أهمية توثيق الهوية KYC في Pi Network وكيف يساعد في حماية الشبكة وتمكين المستخدمين من نقل عملاتهم إلى Mainnet.">
+<!-- العناوين الافتراضية -->
+<title id="page-title">أهمية توثيق الهوية (KYC) في Pi Network | مدونة PiPrice</title>
+<meta name="description" id="page-desc" content="تعرف على أهمية توثيق الهوية KYC في Pi Network وكيف يساعد في حماية الشبكة وتمكين المستخدمين من نقل عملاتهم إلى Mainnet.">
 
 <meta name="keywords" content="KYC pi network, توثيق pi network, نقل pi mainnet, piprice, توثيق الهوية, pi network kyc, التحقق من الهوية, ماينت بي">
-
 <link rel="canonical" href="https://piprice.store/blog/article-9.html">
-
 <meta name="robots" content="index, follow">
-
 <meta name="theme-color" content="#d4a017">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a07810'/%3E%3Cstop offset='50%25' stop-color='%23d4a017'/%3E%3Cstop offset='100%25' stop-color='%23f0c040'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='900' fill='%23080810'%CF%80%3C/text%3E%3C/svg%3E">
 
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Article",
- "mainEntityOfPage":{
-   "@type":"WebPage",
-   "@id":"https://piprice.store/blog/article-9.html"
- },
- "headline":"أهمية توثيق الهوية في Pi Network",
- "description":"شرح دور توثيق الهوية KYC في مشروع Pi Network وأهميته في حماية الشبكة ومنع الحسابات المزيفة.",
- "image":"https://raw.githubusercontent.com/piprice/pi/main/1010.png",
- "author":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "url":"https://piprice.store"
- },
- "publisher":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "logo":{
-     "@type":"ImageObject",
-     "url":"https://raw.githubusercontent.com/piprice/pi/main/1010.png"
-   }
- },
- "datePublished":"2026-03-10",
- "dateModified":"2026-03-10"
-}
-</script>
-
 <style>
-
 :root{
 --gold:#d4a017;
 --gold-light:#f0c040;
 --gold-dark:#a07810;
-
 --dark:#06060f;
 --dark2:#0d0d1c;
 --dark3:#141428;
-
 --surface:#18182e;
-
 --border:rgba(212,160,23,0.15);
-
 --text:#f0f0ff;
 --text-muted:#9090bb;
-
 --radius:18px;
-
 --shadow:0 12px 40px rgba(0,0,0,0.5);
-
 --font:'Tajawal',system-ui,sans-serif;
-
 --transition:0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
-*,*::before,*::after{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
 body{
 font-family:var(--font);
@@ -142,17 +96,91 @@ font-weight:900;
 color:var(--gold);
 }
 
+.nav-actions{
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
 .nav-links a{
 color:var(--text);
 text-decoration:none;
 font-size:14px;
 font-weight:700;
-margin-right:15px;
+/* دعم الاتجاهين */
+margin-inline-end:15px;
 transition:color var(--transition);
 }
 
-.nav-links a:hover{
-color:var(--gold);
+.nav-links a:hover{color:var(--gold);}
+
+/* قائمة اللغة */
+.lang-menu{
+position: relative;
+font-family: sans-serif;
+}
+
+.lang-btn{
+background: #141428;
+color: #fff;
+padding: 6px 10px;
+border-radius: 8px;
+border: 1px solid rgba(255,255,255,0.1);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+font-size: 12px;
+}
+
+.lang-list{
+position: absolute;
+top: 45px;
+left: 0;
+background: #141428;
+border-radius: 8px;
+list-style: none;
+padding: 5px 0;
+margin: 0;
+width: 140px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+z-index: 100;
+display: none;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+[dir="rtl"] .lang-list{
+left: auto;
+right: 0;
+}
+
+.lang-list.active{
+display: block;
+opacity: 1;
+transform: translateY(0);
+}
+
+.lang-list li a{
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 15px;
+color: #fff;
+text-decoration: none;
+font-size: 13px;
+transition: background 0.2s;
+}
+
+.lang-list li a:hover{
+background: #d4a017;
+color: #000;
+}
+
+.lang-list li a.selected{
+background: rgba(212, 160, 23, 0.2);
+color: #d4a017;
 }
 
 .breadcrumbs{
@@ -165,7 +193,6 @@ margin-bottom:20px;
 color:var(--gold);
 text-decoration:none;
 }
-
 .breadcrumbs a:hover{
 text-decoration:underline;
 }
@@ -192,10 +219,9 @@ color:var(--text-muted);
 margin-bottom:30px;
 padding-bottom:20px;
 border-bottom:1px solid var(--border);
-}
-
-.article-meta span{
-margin-left:15px;
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
 }
 
 .article-content h2{
@@ -212,8 +238,8 @@ margin-bottom:20px;
 }
 
 .article-content ul{
-margin:0 20px 20px 0;
-padding:0;
+margin:0 0 20px 0;
+padding-inline-start: 40px;
 color:var(--text-muted);
 font-size:16px;
 }
@@ -232,15 +258,15 @@ margin-top:40px;
 }
 
 .cta-box h3{
-color:var(--gold);
-font-size:20px;
-margin-bottom:10px;
+color: var(--gold);
+font-size: 20px;
+margin-bottom: 10px;
 }
 
 .cta-box p{
-color:var(--text);
-font-size:15px;
-margin-bottom:20px;
+color: var(--text);
+font-size: 15px;
+margin-bottom: 20px;
 }
 
 .cta-btn{
@@ -255,10 +281,8 @@ text-decoration:none;
 box-shadow:0 6px 20px rgba(212,160,23,0.4);
 transition:transform 0.2s;
 }
-
 .cta-btn:hover{
 transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(212,160,23,0.6);
 }
 
 footer{
@@ -268,7 +292,6 @@ color:var(--text-muted);
 font-size:12px;
 border-top:1px solid rgba(255,255,255,0.04);
 }
-
 </style>
 </head>
 
@@ -277,134 +300,384 @@ border-top:1px solid rgba(255,255,255,0.04);
 <div class="container">
 
 <header>
-
 <a href="../index.html" class="brand">
 <div class="pi-logo">π</div>
 <div class="brand-name">PiPrice</div>
 </a>
 
-<div class="nav-links">
-<a href="index.html">المدونة</a>
-<a href="../index.html">الرئيسية</a>
-</div>
+<div class="nav-actions">
+    <div class="nav-links">
+        <a href="index.html" id="navBlog">المدونة</a>
+        <a href="../index.html" id="navHome">الرئيسية</a>
+    </div>
 
+    <!-- زر تغيير اللغة -->
+    <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
+            <span id="currentLangFlag">🇸🇦</span>
+            <span id="currentLangText">العربية</span>
+            <span style="font-size:8px;">▼</span>
+        </button>
+        <ul class="lang-list" id="langList">
+            <li><a href="javascript:void(0)" data-lang="ar" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
+            <li><a href="javascript:void(0)" data-lang="en" onclick="changeLang('en')">🇬🇧 English</a></li>
+            <li><a href="javascript:void(0)" data-lang="fr" onclick="changeLang('fr')">🇫🇷 Français</a></li>
+            <li><a href="javascript:void(0)" data-lang="zh" onclick="changeLang('zh')">🇨🇳 中文</a></li>
+            <li><a href="javascript:void(0)" data-lang="hi" onclick="changeLang('hi')">🇮🇳 हिन्दी</a></li>
+            <li><a href="javascript:void(0)" data-lang="fil" onclick="changeLang('fil')">🇵🇭 Filipino</a></li>
+        </ul>
+    </div>
+</div>
 </header>
 
-<div class="breadcrumbs">
-
-<a href="../index.html">الرئيسية</a> » 
-<a href="index.html">المدونة</a> »
-أهمية توثيق الهوية (KYC) في Pi Network
-
+<div class="breadcrumbs" id="breadcrumb">
+<a href="../index.html" id="breadHome">الرئيسية</a> » 
+<a href="index.html" id="breadBlog">المدونة</a> »
+<span id="breadTitle">أهمية توثيق الهوية (KYC) في Pi Network</span>
 </div>
 
 <article class="article-content">
 
-<h1 class="article-title">
+<h1 class="article-title" id="articleH1">
 أهمية توثيق الهوية (KYC) في Pi Network
 </h1>
 
 <div class="article-meta">
-<span>📅 10 مارس 2026</span>
-<span>✍️ PiPrice</span>
-<span>⏱️ وقت القراءة: 5 دقائق</span>
+<span id="metaDate">📅 10 مارس 2026</span>
+<span id="metaAuthor">✍️ PiPrice</span>
+<span id="metaRead">⏱️ 5 دقائق</span>
 </div>
 
-<p>
-
-يعد توثيق الهوية أو ما يعرف باسم <strong>KYC</strong> أحد أهم المراحل في مشروع Pi Network. يهدف هذا الإجراء إلى التأكد من أن كل حساب في الشبكة يمثل شخصًا حقيقيًا، مما يساعد في بناء نظام اقتصادي عادل ومستقر داخل المشروع.
-
-</p>
-
-<h2>
-ما هو KYC؟
-</h2>
-
-<p>
-
-KYC هو اختصار لعبارة <strong>Know Your Customer</strong>، وهي عملية تستخدمها العديد من المنصات المالية للتحقق من هوية المستخدمين. في مشروع Pi Network، يتم استخدام هذه العملية للتأكد من أن المستخدمين الحقيقيين فقط هم من يمتلكون العملات.
-
-</p>
-
-<h2>
-لماذا يعتبر KYC مهمًا في Pi Network؟
-</h2>
-
-<p>
-
-بدون عملية التحقق من الهوية، قد يتمكن البعض من إنشاء حسابات متعددة لتعدين العملة بشكل غير عادل. لذلك يساعد KYC في منع الحسابات المزيفة والحفاظ على استقرار الشبكة.
-
-</p>
-
-<h2>
-فوائد إكمال توثيق الهوية
-</h2>
-
-<ul>
-
-<li>إمكانية نقل العملات إلى Mainnet.</li>
-
-<li>المشاركة في الاقتصاد الخاص بالشبكة.</li>
-
-<li>زيادة مستوى الأمان في الحساب.</li>
-
-<li>الوصول إلى التطبيقات داخل Pi Ecosystem.</li>
-
-</ul>
-
-<h2>
-خطوات إكمال KYC
-</h2>
-
-<p>
-
-لإكمال عملية التحقق، يحتاج المستخدم إلى تقديم صورة من الهوية الشخصية والتأكد من مطابقة البيانات مع الحساب داخل تطبيق Pi Network.
-
-</p>
-
-<p>
-
-بعد إرسال الطلب، تتم مراجعة البيانات من قبل النظام أو المدققين داخل الشبكة.
-
-</p>
-
-<h2>
-ماذا يحدث بعد قبول KYC؟
-</h2>
-
-<p>
-
-بعد الموافقة على التحقق من الهوية، يمكن للمستخدم نقل العملات التي قام بتعدينها إلى محفظة <strong>Mainnet</strong> الخاصة به. هذا يسمح باستخدام العملة داخل التطبيقات والخدمات التي تعتمد على شبكة Pi.
-
-</p>
-
-<div class="cta-box">
-
-<h3>
-تابع سعر Pi Network الآن
-</h3>
-
-<p>
-يمكنك متابعة سعر Pi التقريبي باستخدام مؤشر piprice لمعرفة حركة السوق.
-</p>
-
-<a href="../index.html" class="cta-btn">
-عرض سعر Pi الآن
-</a>
-
+<div id="articleBody">
+    <!-- المحتوى يتم تحميله بالجافاسكربت -->
 </div>
 
 </article>
 
 <footer>
-
-<p>
-© 2026 PiPrice — جميع الحقوق محفوظة
-</p>
-
+<p id="footerCopy">© 2026 PiPrice — جميع الحقوق محفوظة</p>
 </footer>
 
 </div>
 
+<script>
+// 1. بيانات الترجمة الكاملة للمقال التاسع
+const DATA = {
+    ar: {
+        dir: "rtl",
+        flag: "🇸🇦",
+        name: "العربية",
+        title: "أهمية توثيق الهوية (KYC) في Pi Network | مدونة PiPrice",
+        desc: "تعرف على أهمية توثيق الهوية KYC في Pi Network وكيف يساعد في حماية الشبكة وتمكين المستخدمين من نقل عملاتهم إلى Mainnet.",
+        navBlog: "المدونة",
+        navHome: "الرئيسية",
+        breadHome: "الرئيسية",
+        breadBlog: "المدونة",
+        breadTitle: "أهمية توثيق الهوية (KYC) في Pi Network",
+        metaDate: "📅 10 مارس 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 دقائق",
+        h1: "أهمية توثيق الهوية (KYC) في Pi Network",
+        body: `
+            <p>يعد توثيق الهوية أو ما يعرف باسم <strong>KYC</strong> أحد أهم المراحل في مشروع Pi Network. يهدف هذا الإجراء إلى التأكد من أن كل حساب في الشبكة يمثل شخصًا حقيقيًا، مما يساعد في بناء نظام اقتصادي عادل ومستقر داخل المشروع.</p>
+            <h2>ما هو KYC؟</h2>
+            <p>KYC هو اختصار لعبارة <strong>Know Your Customer</strong>، وهي عملية تستخدمها العديد من المنصات المالية للتحقق من هوية المستخدمين. في مشروع Pi Network، يتم استخدام هذه العملية للتأكد من أن المستخدمين الحقيقيين فقط هم من يمتلكون العملات.</p>
+            <h2>لماذا يعتبر KYC مهمًا في Pi Network؟</h2>
+            <p>بدون عملية التحقق من الهوية، قد يتمكن البعض من إنشاء حسابات متعددة لتعدين العملة بشكل غير عادل. لذلك يساعد KYC في منع الحسابات المزيفة والحفاظ على استقرار الشبكة.</p>
+            <h2>فوائد إكمال توثيق الهوية</h2>
+            <ul>
+                <li>إمكانية نقل العملات إلى Mainnet.</li>
+                <li>المشاركة في الاقتصاد الخاص بالشبكة.</li>
+                <li>زيادة مستوى الأمان في الحساب.</li>
+                <li>الوصول إلى التطبيقات داخل Pi Ecosystem.</li>
+            </ul>
+            <h2>خطوات إكمال KYC</h2>
+            <p>لإكمال عملية التحقق، يحتاج المستخدم إلى تقديم صورة من الهوية الشخصية والتأكد من مطابقة البيانات مع الحساب داخل تطبيق Pi Network.</p>
+            <p>بعد إرسال الطلب، تتم مراجعة البيانات من قبل النظام أو المدققين داخل الشبكة.</p>
+            <h2>ماذا يحدث بعد قبول KYC؟</h2>
+            <p>بعد الموافقة على التحقق من الهوية، يمكن للمستخدم نقل العملات التي قام بتعدينها إلى محفظة <strong>Mainnet</strong> الخاصة به. هذا يسمح باستخدام العملة داخل التطبيقات والخدمات التي تعتمد على شبكة Pi.</p>
+            <div class="cta-box">
+                <h3>تابع سعر Pi Network الآن</h3>
+                <p>يمكنك متابعة سعر Pi التقريبي باستخدام مؤشر piprice لمعرفة حركة السوق.</p>
+                <a href="../index.html" class="cta-btn">عرض سعر Pi الآن</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — جميع الحقوق محفوظة"
+    },
+    en: {
+        dir: "ltr",
+        flag: "🇬🇧",
+        name: "English",
+        title: "Importance of Identity Verification (KYC) in Pi Network | PiPrice Blog",
+        desc: "Learn about the importance of KYC identity verification in Pi Network and how it helps protect the network and enable users to transfer their coins to Mainnet.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Importance of Identity Verification (KYC) in Pi Network",
+        metaDate: "📅 March 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 min read",
+        h1: "Importance of Identity Verification (KYC) in Pi Network",
+        body: `
+            <p>Identity verification, known as <strong>KYC</strong>, is one of the most important stages in the Pi Network project. This procedure aims to ensure that every account on the network represents a real person, helping to build a fair and stable economic system within the project.</p>
+            <h2>What is KYC?</h2>
+            <p>KYC stands for <strong>Know Your Customer</strong>, a process used by many financial platforms to verify user identities. In the Pi Network project, this process is used to ensure that only real users own the coins.</p>
+            <h2>Why is KYC important in Pi Network?</h2>
+            <p>Without identity verification, some might be able to create multiple accounts to mine the currency unfairly. Therefore, KYC helps prevent fake accounts and maintain network stability.</p>
+            <h2>Benefits of completing identity verification</h2>
+            <ul>
+                <li>Ability to transfer coins to Mainnet.</li>
+                <li>Participation in the network economy.</li>
+                <li>Increased account security level.</li>
+                <li>Access to applications within the Pi Ecosystem.</li>
+            </ul>
+            <h2>Steps to complete KYC</h2>
+            <p>To complete the verification process, the user needs to provide a photo of their personal ID and ensure that the data matches the account in the Pi Network app.</p>
+            <p>After submitting the request, the data is reviewed by the system or validators within the network.</p>
+            <h2>What happens after KYC approval?</h2>
+            <p>After identity verification is approved, the user can transfer the coins they have mined to their <strong>Mainnet</strong> wallet. This allows using the currency within applications and services that rely on the Pi network.</p>
+            <div class="cta-box">
+                <h3>Track Pi Network Price Now</h3>
+                <p>You can track the approximate Pi price using the piprice indicator to know market movement.</p>
+                <a href="../index.html" class="cta-btn">View Pi Price Now</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — All Rights Reserved"
+    },
+    fr: {
+        dir: "ltr",
+        flag: "🇫🇷",
+        name: "Français",
+        title: "Importance de la vérification d'identité (KYC) dans Pi Network | Blog PiPrice",
+        desc: "Découvrez l'importance de la vérification d'identité KYC dans Pi Network et comment elle aide à protéger le réseau et permet aux utilisateurs de transférer leurs pièces vers Mainnet.",
+        navBlog: "Blog",
+        navHome: "Accueil",
+        breadHome: "Accueil",
+        breadBlog: "Blog",
+        breadTitle: "Importance de la vérification d'identité (KYC) dans Pi Network",
+        metaDate: "📅 10 mars 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 min de lecture",
+        h1: "Importance de la vérification d'identité (KYC) dans Pi Network",
+        body: `
+            <p>La vérification d'identité, connue sous le nom de <strong>KYC</strong>, est l'une des étapes les plus importantes du projet Pi Network. Cette procédure vise à garantir que chaque compte sur le réseau représente une personne réelle, contribuant à construire un système économique équitable et stable au sein du projet.</p>
+            <h2>Qu'est-ce que le KYC ?</h2>
+            <p>KYC est l'abréviation de <strong>Know Your Customer</strong>, un processus utilisé par de nombreuses plateformes financières pour vérifier l'identité des utilisateurs. Dans le projet Pi Network, ce processus est utilisé pour s'assurer que seuls les utilisateurs réels possèdent les pièces.</p>
+            <h2>Pourquoi le KYC est-il important dans Pi Network ?</h2>
+            <p>Sans vérification d'identité, certains pourraient créer plusieurs comptes pour miner la devise de manière injuste. Par conséquent, le KYC aide à prévenir les faux comptes et à maintenir la stabilité du réseau.</p>
+            <h2>Avantages de la vérification d'identité</h2>
+            <ul>
+                <li>Possibilité de transférer des pièces vers Mainnet.</li>
+                <li>Participation à l'économie du réseau.</li>
+                <li>Augmentation du niveau de sécurité du compte.</li>
+                <li>Accès aux applications dans l'écosystème Pi.</li>
+            </ul>
+            <h2>Étapes pour compléter le KYC</h2>
+            <p>Pour compléter le processus de vérification, l'utilisateur doit fournir une photo de sa pièce d'identité et s'assurer que les données correspondent au compte dans l'application Pi Network.</p>
+            <p>Après avoir soumis la demande, les données sont examinées par le système ou les validateurs du réseau.</p>
+            <h2>Que se passe-t-il après l'approbation du KYC ?</h2>
+            <p>Une fois la vérification d'identité approuvée, l'utilisateur peut transférer les pièces qu'il a minées vers son portefeuille <strong>Mainnet</strong>. Cela permet d'utiliser la devise dans les applications et services qui reposent sur le réseau Pi.</p>
+            <div class="cta-box">
+                <h3>Suivez le prix de Pi Network maintenant</h3>
+                <p>Vous pouvez suivre le prix approximatif du Pi en utilisant l'indicateur piprice pour connaître le mouvement du marché.</p>
+                <a href="../index.html" class="cta-btn">Voir le prix du Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Tous droits réservés"
+    },
+    zh: {
+        dir: "ltr",
+        flag: "🇨🇳",
+        name: "中文",
+        title: "Pi Network 中身份验证 (KYC) 的重要性 | PiPrice 博客",
+        desc: "了解 KYC 身份验证在 Pi Network 中的重要性，以及它如何帮助保护网络并使用户能够将其代币转移到主网。",
+        navBlog: "博客",
+        navHome: "首页",
+        breadHome: "首页",
+        breadBlog: "博客",
+        breadTitle: "Pi Network 中身份验证 (KYC) 的重要性",
+        metaDate: "📅 2026年3月10日",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5分钟阅读",
+        h1: "Pi Network 中身份验证 (KYC) 的重要性",
+        body: `
+            <p>身份验证，称为 <strong>KYC</strong>，是 Pi Network 项目中最重要的阶段之一。此程序旨在确保网络上的每个账户都代表一个真实的人，有助于在项目内建立公平稳定的经济系统。</p>
+            <h2>什么是 KYC？</h2>
+            <p>KYC 是 <strong>Know Your Customer</strong> 的缩写，是许多金融平台用来验证用户身份的过程。在 Pi Network 项目中，此过程用于确保只有真实用户拥有代币。</p>
+            <h2>为什么 KYC 在 Pi Network 中很重要？</h2>
+            <p>如果没有身份验证，有些人可能会创建多个账户来不公平地挖掘货币。因此，KYC 有助于防止虚假账户并维护网络稳定。</p>
+            <h2>完成身份验证的好处</h2>
+            <ul>
+                <li>能够将代币转移到主网。</li>
+                <li>参与网络经济。</li>
+                <li>提高账户安全级别。</li>
+                <li>访问 Pi 生态系统内的应用程序。</li>
+            </ul>
+            <h2>完成 KYC 的步骤</h2>
+            <p>要完成验证过程，用户需要提供个人身份证照片，并确保数据与 Pi Network 应用程序中的账户匹配。</p>
+            <p>提交请求后，数据将由系统或网络内的验证者审查。</p>
+            <h2>KYC 批准后会发生什么？</h2>
+            <p>身份验证获得批准后，用户可以将他们挖掘的代币转移到他们的 <strong>Mainnet</strong> 钱包。这允许在依赖 Pi 网络的应用程序和服务中使用货币。</p>
+            <div class="cta-box">
+                <h3>立即追踪 Pi Network 价格</h3>
+                <p>您可以使用 piprice 指标追踪 Pi 的大致价格，以了解市场走势。</p>
+                <a href="../index.html" class="cta-btn">查看 Pi 价格</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — 版权所有"
+    },
+    hi: {
+        dir: "ltr",
+        flag: "🇮🇳",
+        name: "हिन्दी",
+        title: "Pi Network में पहचान सत्यापन (KYC) का महत्व | PiPrice ब्लॉग",
+        desc: "Pi Network में KYC पहचान सत्यापन के महत्व के बारे में जानें और यह नेटवर्क की सुरक्षा कैसे करता है और उपयोगकर्ताओं को अपने सिक्कों को Mainnet में स्थानांतरित करने में सक्षम बनाता है।",
+        navBlog: "ब्लॉग",
+        navHome: "होम",
+        breadHome: "होम",
+        breadBlog: "ब्लॉग",
+        breadTitle: "Pi Network में पहचान सत्यापन (KYC) का महत्व",
+        metaDate: "📅 10 मार्च 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 मिनट पढ़ें",
+        h1: "Pi Network में पहचान सत्यापन (KYC) का महत्व",
+        body: `
+            <p>पहचान सत्यापन, जिसे <strong>KYC</strong> के नाम से जाना जाता है, Pi Network परियोजना के सबसे महत्वपूर्ण चरणों में से एक है। यह प्रक्रिया यह सुनिश्चित करने का लक्ष्य रखती है कि नेटवर्क पर प्रत्येक खाता एक वास्तविक व्यक्ति का प्रतिनिधित्व करता है, जो परियोजना के भीतर एक निष्पक्ष और स्थिर आर्थिक प्रणाली बनाने में मदद करता है।</p>
+            <h2>KYC क्या है?</h2>
+            <p>KYC <strong>Know Your Customer</strong> का संक्षिप्त रूप है, जो उपयोगकर्ता पहचान सत्यापित करने के लिए कई वित्तीय प्लेटफॉर्म द्वारा उपयोग की जाने वाली प्रक्रिया है। Pi Network परियोजना में, इस प्रक्रिया का उपयोग यह सुनिश्चित करने के लिए किया जाता है कि केवल वास्तविक उपयोगकर्ताओं के पास सिक्के हैं।</p>
+            <h2>KYC Pi Network में क्यों महत्वपूर्ण है?</h2>
+            <p>पहचान सत्यापन के बिना, कुछ लोग मुद्रा को अनुचित रूप से माइन करने के लिए कई खाते बना सकते हैं। इसलिए, KYC नकली खातों को रोकने और नेटवर्क स्थिरता बनाए रखने में मदद करता है।</p>
+            <h2>पहचान सत्यापन पूरा करने के लाभ</h2>
+            <ul>
+                <li>Mainnet में सिक्के स्थानांतरित करने की क्षमता।</li>
+                <li>नेटवर्क अर्थव्यवस्था में भागीदारी।</li>
+                <li>खाता सुरक्षा स्तर में वृद्धि।</li>
+                <li>Pi Ecosystem के भीतर अनुप्रयोगों तक पहुंच।</li>
+            </ul>
+            <h2>KYC पूरा करने के चरण</h2>
+            <p>सत्यापन प्रक्रिया को पूरा करने के लिए, उपयोगकर्ता को अपनी व्यक्तिगत पहचान की फोटो प्रदान करनी होगी और यह सुनिश्चित करना होगा कि डेटा Pi Network ऐप में खाते से मेल खाता है।</p>
+            <p>अनुरोध सबमिट करने के बाद, डेटा की समीक्षा सिस्टम या नेटवर्क के भीतर सत्यापनकर्ताओं द्वारा की जाती है।</p>
+            <h2>KYC अनुमोदन के बाद क्या होता है?</h2>
+            <p>पहचान सत्यापन अनुमोदित होने के बाद, उपयोगकर्ता अपने द्वारा माइन किए गए सिक्कों को अपने <strong>Mainnet</strong> वॉलेट में स्थानांतरित कर सकता है। यह Pi नेटवर्क पर निर्भर अनुप्रयोगों और सेवाओं के भीतर मुद्रा का उपयोग करने की अनुमति देता है।</p>
+            <div class="cta-box">
+                <h3>अभी Pi Network की कीमत ट्रैक करें</h3>
+                <p>आप बाजार की गति जानने के लिए piprice इंडिकेटर का उपयोग करके Pi की अनुमानित कीमत ट्रैक कर सकते हैं।</p>
+                <a href="../index.html" class="cta-btn">अभी Pi कीमत देखें</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — सर्वाधिकार सुरक्षित"
+    },
+    fil: {
+        dir: "ltr",
+        flag: "🇵🇭",
+        name: "Filipino",
+        title: "Ang kahalagahan ng Pag-verify ng Pagkakakilanlan (KYC) sa Pi Network | PiPrice Blog",
+        desc: "Alamin ang kahalagahan ng KYC identity verification sa Pi Network at kung paano ito nakakatulong sa pagprotekta sa network at pagpapahintulot sa mga user na ilipat ang kanilang mga coin sa Mainnet.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Ang kahalagahan ng KYC sa Pi Network",
+        metaDate: "📅 Marso 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 minutong basahin",
+        h1: "Ang kahalagahan ng Pag-verify ng Pagkakakilanlan (KYC) sa Pi Network",
+        body: `
+            <p>Ang pag-verify ng pagkakakilanlan, na kilala bilang <strong>KYC</strong>, ay isa sa mga pinakamahalagang yugto ng proyekto ng Pi Network. Ang prosesong ito ay naglalayong matiyak na ang bawat account sa network ay kumakatawan sa isang tunay na tao, na tumutulong sa pagbuo ng isang makatarungan at matatag na sistema ng ekonomiya sa loob ng proyekto.</p>
+            <h2>Ano ang KYC?</h2>
+            <p>Ang KYC ay ibig sabihin ng <strong>Know Your Customer</strong>, isang proseso na ginagamit ng maraming mga platform sa pananalapi upang i-verify ang mga pagkakakilanlan ng user. Sa proyekto ng Pi Network, ang prosesong ito ay ginagamit upang matiyak na ang mga tunay na user ay nagmamay-ari ng mga coin.</p>
+            <h2>Bakit mahalaga ang KYC sa Pi Network?</h2>
+            <p>Nang walang pag-verify ng pagkakakilanlan, ang ilan ay maaaring makagawa ng maraming account upang mine ang currency nang hindi patas. Samakatuwid, ang KYC ay tumutulong na maiwasan ang mga pekeng account at mapanatili ang katatagan ng network.</p>
+            <h2>Mga benepisyo ng pagkumpleto ng pag-verify ng pagkakakilanlan</h2>
+            <ul>
+                <li>Kakayahang maglipat ng mga coin sa Mainnet.</li>
+                <li>Paglahok sa ekonomiya ng network.</li>
+                <li>Nadagdang antas ng seguridad ng account.</li>
+                <li>Access sa mga aplikasyon sa loob ng Pi Ecosystem.</li>
+            </ul>
+            <h2>Mga hakbang upang kumpletuhin ang KYC</h2>
+            <p>Upang kumpletuhin ang proseso ng pag-verify, kailangang magbigay ang user ng larawan ng kanilang personal na ID at tiyaking tumutugma ang data sa account sa Pi Network app.</p>
+            <p>Pagkatapos isumite ang kahilingan, ang data ay susuriin ng system o mga validator sa loob ng network.</p>
+            <h2>Ano ang mangyayari pagkatapos maaprubahan ang KYC?</h2>
+            <p>Pagkatapos maaprubahan ang pag-verify ng pagkakakilanlan, ang user ay maaaring ilipat ang mga coin na na-mine nila sa kanilang <strong>Mainnet</strong> wallet. Ito ay nagpapahintulot sa paggamit ng currency sa loob ng mga application at serbisyo na umaasa sa Pi network.</p>
+            <div class="cta-box">
+                <h3>Subaybayan ang Presyo ng Pi Network Ngayon</h3>
+                <p>Maaari mong subaybayan ang tinatayang presyo ng Pi gamit ang piprice indicator upang malaman ang kilos ng merkado.</p>
+                <a href="../index.html" class="cta-btn">Tingnan ang Presyo ng Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Ang Lahat ng Karapatan Ay Nakalaan"
+    }
+};
+
+// 2. وظائف التحكم
+function toggleLangMenu() {
+    const list = document.getElementById('langList');
+    list.classList.toggle('active');
+}
+
+document.addEventListener('click', function(e) {
+    const list = document.getElementById('langList');
+    const btn = document.getElementById('langBtn');
+    if (!btn.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('active');
+    }
+});
+
+function changeLang(langCode) {
+    localStorage.setItem("lang", langCode);
+    applyLang(langCode);
+    toggleLangMenu();
+}
+
+function applyLang(lang) {
+    if (!DATA[lang]) lang = 'ar';
+    
+    const d = DATA[lang];
+    
+    // تحديث الهيكل والاتجاه
+    document.documentElement.lang = lang;
+    document.documentElement.dir = d.dir;
+    
+    // تحديث النصوص
+    document.getElementById('page-title').innerText = d.title;
+    document.getElementById('page-desc').content = d.desc;
+    
+    document.getElementById('currentLangFlag').innerText = d.flag;
+    document.getElementById('currentLangText').innerText = d.name;
+    
+    document.getElementById('navBlog').innerText = d.navBlog;
+    document.getElementById('navHome').innerText = d.navHome;
+    
+    document.getElementById('breadHome').innerText = d.breadHome;
+    document.getElementById('breadBlog').innerText = d.breadBlog;
+    document.getElementById('breadTitle').innerText = d.breadTitle;
+    
+    document.getElementById('metaDate').innerText = d.metaDate;
+    document.getElementById('metaAuthor').innerText = d.metaAuthor;
+    document.getElementById('metaRead').innerText = d.metaRead;
+    
+    document.getElementById('articleH1').innerText = d.h1;
+    document.getElementById('articleBody').innerHTML = d.body;
+    
+    document.getElementById('footerCopy').innerText = d.footer;
+    
+    // تحديث حالة الزر
+    const links = document.querySelectorAll('.lang-list li a');
+    links.forEach(link => {
+        if (link.getAttribute('data-lang') === lang) {
+            link.classList.add('selected');
+        } else {
+            link.classList.remove('selected');
+        }
+    });
+}
+
+// تحميل اللغة المحفوظة
+let savedLang = localStorage.getItem("lang") || "ar";
+applyLang(savedLang);
+
+</script>
 </body>
 </html>
