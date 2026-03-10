@@ -30,7 +30,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 margin-bottom:30px;
-position: relative; /* لترتيب العناصر */
+position: relative;
 flex-wrap: wrap;
 gap: 10px;
 }
@@ -83,7 +83,7 @@ font-size: 13px;
 .lang-list{
 position: absolute;
 top: 45px;
-right: 0; /* محاذاة لليمين لتناسب الغة العربية */
+right: 0;
 background: #141428;
 border-radius: 8px;
 list-style: none;
@@ -92,7 +92,7 @@ margin: 0;
 width: 140px;
 box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 z-index: 100;
-display: none; /* مخفية افتراضياً */
+display: none;
 opacity: 0;
 transform: translateY(-10px);
 transition: opacity 0.2s ease, transform 0.2s ease;
@@ -116,7 +116,7 @@ transition: background 0.2s;
 }
 
 .lang-list li a:hover{
-background: #d4a017; /* لون ذهبي عند التمرير */
+background: #d4a017;
 color: #000;
 }
 
@@ -204,18 +204,18 @@ color:#888;
     <!-- قائمة تغيير اللغة -->
     <div class="lang-menu">
         <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
-            <!-- سيتم تحديث المحتوى بواسطة الجافاسكربت -->
             <span id="currentLangFlag">🇸🇦</span>
             <span id="currentLangText">العربية</span>
             <span style="font-size:10px;">▼</span>
         </button>
         <ul class="lang-list" id="langList">
-            <li><a href="javascript:void(0)" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
-            <li><a href="javascript:void(0)" onclick="changeLang('en')">🇬🇧 GB English</a></li>
-            <li><a href="javascript:void(0)" onclick="changeLang('fr')">🇫🇷 FR Français</a></li>
-            <li><a href="javascript:void(0)" onclick="changeLang('zh')">🇨🇳 CN 中文</a></li>
-            <li><a href="javascript:void(0)" onclick="changeLang('hi')">🇮🇳 IN हिन्दी</a></li>
-            <li><a href="javascript:void(0)" onclick="changeLang('fil')">🇵🇭 PH Filipino</a></li>
+            <!-- استخدام data-lang لتسهيل التحديد -->
+            <li><a href="javascript:void(0)" data-lang="ar" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
+            <li><a href="javascript:void(0)" data-lang="en" onclick="changeLang('en')">🇬🇧 GB English</a></li>
+            <li><a href="javascript:void(0)" data-lang="fr" onclick="changeLang('fr')">🇫🇷 FR Français</a></li>
+            <li><a href="javascript:void(0)" data-lang="zh" onclick="changeLang('zh')">🇨🇳 CN 中文</a></li>
+            <li><a href="javascript:void(0)" data-lang="hi" onclick="changeLang('hi')">🇮🇳 IN हिन्दी</a></li>
+            <li><a href="javascript:void(0)" data-lang="fil" onclick="changeLang('fil')">🇵🇭 PH Filipino</a></li>
         </ul>
     </div>
 
@@ -236,7 +236,7 @@ color:#888;
 
 <script>
 
-// 1. إعدادات اللغة والترجمة
+// 1. إعدادات النصوص الثابتة للصفحة
 const BLOG_LANG = {
 ar:{
 title:"مدونة PiPrice",
@@ -294,23 +294,71 @@ name: "PH Filipino"
 }
 };
 
-// 2. بيانات المقالات
+// 2. بيانات المقالات مع الترجمة لكل لغة
 const articles = [
-    { id: 1, title: "ما هو piprice وكيف يحدد سعر Pi؟", desc: "piprice هو مؤشر لمتابعة سعر Pi Network اليوم في الأسواق بطريقة لحظية." },
-    { id: 2, title: "أخبار Pi Network: التحديثات الجديدة", desc: "تعرف على آخر التحديثات والتطورات في شبكة باي نيتورك خلال الفترة الحالية." },
-    { id: 3, title: "كيفية استخدام محفظة Pi Wallet", desc: "دليلك الشامل لإنشاء محفظة Pi Wallet وتأمين مفاتيحك الخاصة بشكل صحيح." },
-    { id: 4, title: "توقعات سعر عملة Pi Network", desc: "تحليلات وتوقعات خبراء العملات الرقمية حول مستقبل سعر عملة Pi." },
-    { id: 5, title: "ما هو KYC ولماذا هو مهم؟", desc: "شرح مفصل لعملية التحقق من الهوية KYC في شبكة Pi Network وأهميتها." },
-    { id: 6, title: "الفرق بين Pi Mainnet و Testnet", desc: "مقال يوضح الفروقات الجوهرية بين الشبكة التجريبية والشبكة الرئيسية." },
-    { id: 7, title: "دليل استخدام متصفح Pi Browser", desc: "خطوات تحميل واستخدام متصفح Pi Browser للوصول لتطبيقات النظام البيئي." },
-    { id: 8, title: "نصائح أمنية لحماية حساب Pi الخاص بك", desc: "أفضل الممارسات لتأمين حسابك من السرقة والاحتيال في عالم العملات." },
-    { id: 9, title: "كيفية السحب والتحويل في Pi Network", desc: "خطوات عملية لسحب وتحويل أرصدة Pi بعد فتح الشبكة الرئيسية." },
-    { id: 10, title: "مستقبل تطبيقات Pi Apps", desc: "نظرة على التطبيقات المبنية على شبكة Pi وكيف ستغير اقتصاد العملات." },
-    { id: 11, title: "حقائق وشائعات حول Pi Network", desc: "نفي وتوضيح أشهر الشائعات المنتشرة حول عملة Pi Network." },
-    { id: 12, title: "كيف تشارك في مجتمع Pi Network؟", desc: "دليل للانضمام للمجتمعات الفعالة والمساهمة في تطوير الشبكة." }
+    { 
+        id: 1, 
+        title: { ar: "ما هو piprice وكيف يحدد سعر Pi؟", en: "What is PiPrice and how does it set Pi price?", fr: "Qu'est-ce que PiPrice et comment fixe-t-il le prix du Pi ?", zh: "什么是PiPrice以及它如何设定Pi价格？", hi: "PiPrice क्या है और यह Pi की कीमत कैसे निर्धारित करता है?", fil: "Ano ang PiPrice at paano nito tinatakda ang presyo ng Pi?" },
+        desc: { ar: "piprice هو مؤشر لمتابعة سعر Pi Network اليوم في الأسواق بطريقة لحظية.", en: "PiPrice is an index to track Pi Network price today in markets in real-time.", fr: "PiPrice est un indice pour suivre le prix du Pi Network aujourd'hui en temps réel.", zh: "PiPrice是一个实时追踪市场中Pi Network今日价格的指数。", hi: "PiPrice आज बाजार में Pi Network की कीमत को रीयल-टाइम में ट्रैक करने के लिए एक सूचकांक है।", fil: "Ang PiPrice ay isang index para subaybayan ang presyo ng Pi Network ngayon sa real-time." }
+    },
+    { 
+        id: 2, 
+        title: { ar: "أخبار Pi Network: التحديثات الجديدة", en: "Pi Network News: New Updates", fr: "Nouvelles Pi Network : Nouvelles mises à jour", zh: "Pi Network新闻：新更新", hi: "Pi Network समाचार: नए अपडेट", fil: "Balita ng Pi Network: Mga Bagong Update" },
+        desc: { ar: "تعرف على آخر التحديثات والتطورات في شبكة باي نيتورك خلال الفترة الحالية.", en: "Learn about the latest updates and developments in Pi Network currently.", fr: "Découvrez les dernières mises à jour et développements dans Pi Network.", zh: "了解Pi Network目前的最新更新和进展。", hi: "Pi Network में नवीनतम अपडेट और विकास के बारे में जानें।", fil: "Alamin ang mga pinakabagong update at developments sa Pi Network." }
+    },
+    { 
+        id: 3, 
+        title: { ar: "كيفية استخدام محفظة Pi Wallet", en: "How to use Pi Wallet", fr: "Comment utiliser le portefeuille Pi", zh: "如何使用Pi钱包", hi: "Pi Wallet का उपयोग कैसे करें", fil: "Paano gamitin ang Pi Wallet" },
+        desc: { ar: "دليلك الشامل لإنشاء محفظة Pi Wallet وتأمين مفاتيحك الخاصة بشكل صحيح.", en: "Your complete guide to creating a Pi Wallet and securing your keys correctly.", fr: "Votre guide complet pour créer un portefeuille Pi et sécuriser vos clés.", zh: "您创建Pi钱包并正确保护密钥的完整指南。", hi: "Pi Wallet बनाने और अपनी कुंजियों को सही ढंग से सुरक्षित करने के लिए आपका पूर्ण मार्गदर्शक।", fil: "Ang iyong kumpletong gabay sa paggawa ng Pi Wallet at pag-secure sa iyong mga key." }
+    },
+    { 
+        id: 4, 
+        title: { ar: "توقعات سعر عملة Pi Network", en: "Pi Network Price Predictions", fr: "Prévisions de prix du Pi Network", zh: "Pi Network价格预测", hi: "Pi Network मूल्य भविष्यवाणियाँ", fil: "Mga Hula sa Presyo ng Pi Network" },
+        desc: { ar: "تحليلات وتوقعات خبراء العملات الرقمية حول مستقبل سعر عملة Pi.", en: "Cryptocurrency experts' analysis and predictions about the future price of Pi.", fr: "Analyses et prédictions des experts sur le futur prix du Pi.", zh: "加密货币专家关于Pi未来价格的分析和预测。", hi: "क्रिप्टोकरेंसी विशेषज्ञों का Pi की भविष्य की कीमत के बारे में विश्लेषण और भविष्यवाणियाँ।", fil: "Pagsusuri at mga hula ng mga eksperto sa cryptocurrency tungkol sa future price ng Pi." }
+    },
+    { 
+        id: 5, 
+        title: { ar: "ما هو KYC ولماذا هو مهم؟", en: "What is KYC and why is it important?", fr: "Qu'est-ce que le KYC et pourquoi est-il important ?", zh: "什么是KYC，为什么它很重要？", hi: "KYC क्या है और यह क्यों महत्वपूर्ण है?", fil: "Ano ang KYC at bakit ito mahalaga?" },
+        desc: { ar: "شرح مفصل لعملية التحقق من الهوية KYC في شبكة Pi Network وأهميتها.", en: "Detailed explanation of the KYC verification process in Pi Network.", fr: "Explication détaillée du processus de vérification KYC dans Pi Network.", zh: "详细解释Pi网络中的KYC验证过程。", hi: "Pi Network में KYC सत्यापन प्रक्रिया की विस्तृत व्याख्या।", fil: "Detalyadong paliwanag sa proseso ng KYC verification sa Pi Network." }
+    },
+    { 
+        id: 6, 
+        title: { ar: "الفرق بين Pi Mainnet و Testnet", en: "Difference between Pi Mainnet and Testnet", fr: "Différence entre Pi Mainnet et Testnet", zh: "Pi主网和测试网的区别", hi: "Pi Mainnet और Testnet के बीच अंतर", fil: "Pagkakaiba ng Pi Mainnet at Testnet" },
+        desc: { ar: "مقال يوضح الفروقات الجوهرية بين الشبكة التجريبية والشبكة الرئيسية.", en: "Article explaining the fundamental differences between Testnet and Mainnet.", fr: "Article expliquant les différences fondamentales entre Testnet et Mainnet.", zh: "解释测试网和主网根本区别的文章。", hi: "Testnet और Mainnet के बीच मौलिक अंतर की व्याख्या करने वाला लेख।", fil: "Artikulo na nagpapaliwanag sa mga pangunahing pagkakaiba sa pagitan ng Testnet at Mainnet." }
+    },
+    { 
+        id: 7, 
+        title: { ar: "دليل استخدام متصفح Pi Browser", en: "Guide to using Pi Browser", fr: "Guide d'utilisation du navigateur Pi", zh: "Pi浏览器使用指南", hi: "Pi Browser उपयोग करने के लिए मार्गदर्शिका", fil: "Gabay sa paggamit ng Pi Browser" },
+        desc: { ar: "خطوات تحميل واستخدام متصفح Pi Browser للوصول لتطبيقات النظام البيئي.", en: "Steps to download and use Pi Browser to access ecosystem apps.", fr: "Étapes pour télécharger et utiliser le navigateur Pi.", zh: "下载和使用Pi浏览器访问生态系统应用程序的步骤。", hi: "पारिस्थितिकी तंत्र ऐप्स तक पहुँचने के लिए Pi Browser डाउनलोड और उपयोग करने के चरण।", fil: "Mga hakbang sa pag-download at paggamit ng Pi Browser." }
+    },
+    { 
+        id: 8, 
+        title: { ar: "نصائح أمنية لحماية حساب Pi الخاص بك", en: "Security tips to protect your Pi account", fr: "Conseils de sécurité pour protéger votre compte Pi", zh: "保护您的Pi帐户的安全提示", hi: "अपने Pi खाते की सुरक्षा के लिए सुरक्षा युक्तियाँ", fil: "Mga tip sa seguridad para protektahan ang iyong Pi account" },
+        desc: { ar: "أفضل الممارسات لتأمين حسابك من السرقة والاحتيال في عالم العملات.", en: "Best practices to secure your account from theft and fraud.", fr: "Meilleures pratiques pour sécuriser votre compte contre le vol.", zh: "保护您的帐户免受盗窃和欺诈的最佳做法。", hi: "चोरी और धोखाधड़ी से अपने खाते को सुरक्षित करने के लिए सर्वोत्तम अभ्यास।", fil: "Mga best practice para i-secure ang iyong account sa pagnanakaw at pandaraya." }
+    },
+    { 
+        id: 9, 
+        title: { ar: "كيفية السحب والتحويل في Pi Network", en: "How to withdraw and transfer in Pi Network", fr: "Comment retirer et transférer dans Pi Network", zh: "如何在Pi Network中提现和转账", hi: "Pi Network में निकालने और स्थानांतरित करने का तरीका", fil: "Paano mag-withdraw at mag-transfer sa Pi Network" },
+        desc: { ar: "خطوات عملية لسحب وتحويل أرصدة Pi بعد فتح الشبكة الرئيسية.", en: "Practical steps to withdraw and transfer Pi balances after Mainnet launch.", fr: "Étapes pratiques pour retirer et transférer des soldes Pi.", zh: "主网启动后提取和转移Pi余额的实际步骤。", hi: "Mainnet लॉन्च के बाद Pi बैलेंस निकालने और स्थानांतरित करने के व्यावहारिक चरण।", fil: "Praktikal na mga hakbang para mag-withdraw at mag-transfer ng Pi balances." }
+    },
+    { 
+        id: 10, 
+        title: { ar: "مستقبل تطبيقات Pi Apps", en: "Future of Pi Apps", fr: "Futur des applications Pi", zh: "Pi应用程序的未来", hi: "Pi ऐप्स का भविष्य", fil: "Kinabukasan ng Pi Apps" },
+        desc: { ar: "نظرة على التطبيقات المبنية على شبكة Pi وكيف ستغير اقتصاد العملات.", en: "A look at apps built on Pi network and how they will change the crypto economy.", fr: "Un regard sur les applications construites sur le réseau Pi.", zh: "着眼于构建在Pi网络上的应用程序及其将如何改变加密经济。", hi: "Pi नेटवर्क पर बने ऐप्स और वे क्रिप्टो अर्थव्यवस्था को कैसे बदलेंगे, इस पर एक नज़र।", fil: "Tingnan ang mga app na binuo sa Pi network at kung paano ito magbabago sa crypto economy." }
+    },
+    { 
+        id: 11, 
+        title: { ar: "حقائق وشائعات حول Pi Network", en: "Facts and Rumors about Pi Network", fr: "Faits et rumeurs sur Pi Network", zh: "关于Pi Network的事实与传言", hi: "Pi Network के बारे में तथ्य और अफवाहें", fil: "Mga Katotohanan at Tsismis tungkol sa Pi Network" },
+        desc: { ar: "نفي وتوضيح أشهر الشائعات المنتشرة حول عملة Pi Network.", en: "Debunking and clarifying the most famous rumors about Pi Network.", fr: "Démentir et clarifier les rumeurs les plus célèbres sur Pi Network.", zh: "揭穿并澄清有关Pi Network的最著名传言。", hi: "Pi Network के बारे में सबसे प्रसिद्ध अफवाहों का खंडन और स्पष्टीकरण।", fil: "Pinabubunyag at pinapaliwanag ang mga sikat na tsismis tungkol sa Pi Network." }
+    },
+    { 
+        id: 12, 
+        title: { ar: "كيف تشارك في مجتمع Pi Network؟", en: "How to participate in the Pi Network community?", fr: "Comment participer à la communauté Pi Network ?", zh: "如何参与Pi Network社区？", hi: "Pi Network समुदाय में कैसे भाग लें?", fil: "Paano lumahok sa komunidad ng Pi Network?" },
+        desc: { ar: "دليل للانضمام للمجتمعات الفعالة والمساهمة في تطوير الشبكة.", en: "Guide to joining active communities and contributing to network development.", fr: "Guide pour rejoindre des communautés actives et contribuer au développement.", zh: "加入活跃社区并为网络发展做出贡献的指南。", hi: "सक्रिय समुदायों में शामिल होने और नेटवर्क विकास में योगदान के लिए मार्गदर्शिका।", fil: "Gabay sa pagsali sa mga aktibong komunidad at pag-ambag sa pag-unlad ng network." }
+    }
 ];
 
-// 3. دالة إنشاء كروت المقالات
+// 3. دالة إنشاء كروت المقالات (تم تعديلها لقراءة اللغة الحالية)
 function renderArticles() {
     const grid = document.getElementById('blogGrid');
     const lang = localStorage.getItem("lang") || "ar";
@@ -319,10 +367,14 @@ function renderArticles() {
     let htmlContent = '';
 
     articles.forEach(article => {
+        // نجيب العنوان والوصف بناءً على اللغة، ولو مش موجودين نرجع للعربية
+        const title = article.title[lang] || article.title['ar'];
+        const desc = article.desc[lang] || article.desc['ar'];
+
         htmlContent += `
             <div class="blog-card">
-                <h2>${article.title}</h2>
-                <p>${article.desc}</p>
+                <h2>${title}</h2>
+                <p>${desc}</p>
                 <a href="article-${article.id}.html" class="read-more">
                     ${currentLang.read} &rarr;
                 </a>
@@ -371,17 +423,17 @@ function setBlogLang(lang){
     document.getElementById("currentLangFlag").innerText = langData.flag;
     document.getElementById("currentLangText").innerText = langData.name;
 
-    // تحديث حالة التحديد (Selected) في القائمة
+    // تحديث حالة التحديد (Selected) في القائمة - طريقة محسنة
     const links = document.querySelectorAll('.lang-list li a');
     links.forEach(link => {
-        link.classList.remove('selected');
-        // التحقق من اللغة المضغوطة (بسيطة شوية عشان الكود يشتغل)
-        if (link.onclick.toString().includes(`'${lang}'`)) {
+        if (link.getAttribute('data-lang') === lang) {
             link.classList.add('selected');
+        } else {
+            link.classList.remove('selected');
         }
     });
     
-    // إعادة رسم المقالات لتحديث زر "قراءة المقال"
+    // إعادة رسم المقالات لتحديث النصوص
     renderArticles();
 }
 
