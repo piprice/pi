@@ -560,7 +560,6 @@ footer .footer-logo {
 
 <div class="page-wrap">
 
-  <!-- HEADER -->
   <header>
     <div class="logo">PiPrice</div>
     <div class="header-right">
@@ -585,7 +584,6 @@ footer .footer-logo {
     </div>
   </header>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-badge">
       <span>✦</span>
@@ -606,7 +604,6 @@ footer .footer-logo {
     <p id="heroDesc">دليلك الكامل لأخبار Pi Network وسعر Pi اليوم</p>
   </div>
 
-  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat-item">
       <span class="stat-num" id="stat1num">12</span>
@@ -622,24 +619,20 @@ footer .footer-logo {
     </div>
   </div>
 
-  <!-- ARTICLES SECTION TITLE -->
   <div class="section-head">
     <h2 id="sectionTitle">المقالات</h2>
     <div class="section-line"></div>
   </div>
 
-  <!-- GRID -->
   <div class="blog-grid" id="blogGrid"></div>
 
 </div>
 
-<!-- FOOTER -->
 <footer>
   <span class="footer-logo">PiPrice</span>
   <span id="footerText">© PiPrice 2026 · جميع الحقوق محفوظة</span>
 </footer>
 
-<!-- SCROLL TOP -->
 <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
 <script>
@@ -931,7 +924,8 @@ function renderArticles(lang) {
     const icon = ICONS[i] || '📄';
     const num = String(i + 1).padStart(2, '0');
 
-    const url = `https://piprice.store/blog/article-${a.id}.html`;
+    // تم إضافة ?lang= للرابط حتى تنتقل اللغة لصفحة المقال
+    const url = `https://piprice.store/blog/article-${a.id}.html?lang=${lang}`;
 
     if (a.featured) {
       html += `
@@ -990,7 +984,18 @@ function setLang(lang) {
   if (!UI[lang]) lang = 'ar';
   const ui = UI[lang];
 
-  localStorage.setItem('lang', lang);
+  try { localStorage.setItem('lang', lang); } catch(e) {}
+
+  // Update URL to reflect selected language without reloading
+  try {
+    const u = new URL(window.location.href);
+    u.searchParams.set('lang', lang);
+    window.history.replaceState(null, '', u.toString());
+  } catch(e) {}
+
+  // Update Back Button Link to hold current lang
+  const backBtn = document.getElementById('backBtn');
+  if(backBtn) backBtn.href = '../?lang=' + lang;
 
   // dir
   document.documentElement.lang = lang;
@@ -1000,7 +1005,7 @@ function setLang(lang) {
   document.title = ui.pageTitle;
   document.getElementById('heroTitle').innerHTML = ui.heroTitle;
   document.getElementById('heroDesc').textContent = ui.heroDesc;
-  document.getElementById('backBtn').textContent = ui.back;
+  if(backBtn) backBtn.textContent = ui.back;
   document.getElementById('sectionTitle').textContent = ui.section;
   document.getElementById('badgeText').textContent = ui.badge;
   document.getElementById('stat1lbl').textContent = ui.stat1;
@@ -1050,7 +1055,13 @@ window.addEventListener('scroll', () => {
 /* ============================================================
    INIT
    ============================================================ */
-setLang(localStorage.getItem('lang') || 'ar');
+// Read from URL first, then LocalStorage, fallback to 'ar'
+const urlParams = new URLSearchParams(window.location.search);
+const urlLang = urlParams.get('lang');
+const savedLang = localStorage.getItem('lang');
+const initLang = (urlLang && UI[urlLang]) ? urlLang : (savedLang && UI[savedLang]) ? savedLang : 'ar';
+
+setLang(initLang);
 </script>
 </body>
 </html>
