@@ -2,1050 +2,704 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">مدونة PiPrice | أخبار Pi Network</title>
-<meta name="description" id="page-desc" content="تابع مدونة PiPrice لمعرفة أحدث أخبار Pi Network وتحليلات سعر Pi اليوم">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- العناوين الافتراضية لمحركات البحث -->
+<title id="page-title">ما هو piprice وكيف يحدد سعر Pi Network اليوم؟ | مدونة PiPrice</title>
+<meta name="description" id="page-desc" content="تعرف على مفهوم piprice وكيف يتم تحديد سعر Pi Network اليوم في السوق العالمي، وكيف يمكنك متابعة سعر Pi المباشر وتحويله إلى USDT بسهولة.">
+
+<meta name="keywords" content="piprice, سعر Pi اليوم, Pi Network price, سعر pi network, بيع pi مقابل usdt, سعر pi بالدولار">
+<link rel="canonical" href="https://piprice.store/blog/article-1.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#d4a017">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a07810'/%3E%3Cstop offset='50%25' stop-color='%23d4a017'/%3E%3Cstop offset='100%25' stop-color='%23f0c040'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='900' fill='%23080810'%CF%80%3C/text%3E%3C/svg%3E">
 
 <style>
-:root {
-  --gold: #f0b429;
-  --gold-dim: #c8901a;
-  --gold-glow: rgba(240, 180, 41, 0.35);
-  --bg: #04040f;
-  --surface: #0a0a1f;
-  --surface2: #0f0f2a;
-  --border: rgba(240,180,41,0.12);
-  --text: #e8e8ff;
-  --muted: #7070a0;
+:root{
+--gold:#d4a017;
+--gold-light:#f0c040;
+--gold-dark:#a07810;
+--dark:#06060f;
+--dark2:#0d0d1c;
+--dark3:#141428;
+--surface:#18182e;
+--border:rgba(212,160,23,0.15);
+--text:#f0f0ff;
+--text-muted:#9090bb;
+--radius:18px;
+--shadow:0 12px 40px rgba(0,0,0,0.5);
+--font:'Tajawal',system-ui,sans-serif;
+--transition:0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Tajawal', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
+*,*::before,*::after{
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
-/* ===== CANVAS BACKGROUND ===== */
-#cosmosCanvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-  pointer-events: none;
+body{
+font-family:var(--font);
+color:var(--text);
+background:var(--dark);
+min-height:100vh;
+overflow-x:hidden;
+background-image: radial-gradient(ellipse 120% 60% at 50% -10%, rgba(212,160,23,0.07) 0%, transparent 60%);
+line-height:1.8;
 }
 
-/* ===== LAYOUT ===== */
-.page-wrap {
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px 60px;
+.container{
+max-width:850px;
+margin:0 auto;
+padding:20px;
+position:relative;
+z-index:1;
 }
 
-/* ===== HEADER ===== */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 28px 0 20px;
-  flex-wrap: wrap;
-  gap: 14px;
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(14,14,28,0.85);
+backdrop-filter:blur(24px);
+border:1px solid var(--border);
+border-radius:var(--radius);
+padding:12px 20px;
+margin-bottom:20px;
+box-shadow:var(--shadow);
 }
 
-.logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 26px;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--gold), #fff8e0, var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 2px;
-  text-shadow: none;
-  position: relative;
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+text-decoration:none;
 }
 
-.logo::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; left: 0;
-  width: 100%; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  animation: shimmer 2.5s infinite;
+.pi-logo{
+width:40px;
+height:40px;
+border-radius:50%;
+background:conic-gradient(from 0deg, #a07810, #d4a017, #f0c040, #d4a017, #a07810);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+font-weight:900;
+color:var(--dark);
 }
 
-@keyframes shimmer {
-  0%,100% { opacity: 0.4; transform: scaleX(0.6); }
-  50% { opacity: 1; transform: scaleX(1); }
+.brand-name{
+font-size:16px;
+font-weight:900;
+color:var(--gold);
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.nav-actions{
+display: flex;
+align-items: center;
+gap: 15px;
 }
 
-/* Lang button */
-.lang-menu { position: relative; }
-
-.lang-btn {
-  background: var(--surface2);
-  color: var(--text);
-  border: 1px solid var(--border);
-  padding: 9px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 13px;
-  font-family: 'Tajawal', sans-serif;
-  transition: border-color 0.3s, background 0.3s;
-}
-.lang-btn:hover { border-color: var(--gold); background: rgba(240,180,41,0.07); }
-
-.lang-list {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: #0d0d25;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  list-style: none;
-  padding: 6px 0;
-  min-width: 160px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(240,180,41,0.08);
-  z-index: 200;
-  display: none;
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.lang-list.open { display: block; opacity: 1; transform: translateY(0); }
-
-.lang-list li a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  color: var(--text);
-  text-decoration: none;
-  font-size: 13px;
-  font-family: 'Tajawal', sans-serif;
-  transition: background 0.2s, color 0.2s;
-}
-.lang-list li a:hover { background: rgba(240,180,41,0.12); color: var(--gold); }
-.lang-list li a.selected { color: var(--gold); background: rgba(240,180,41,0.08); }
-
-/* back btn */
-.back-btn {
-  color: var(--text);
-  text-decoration: none;
-  border: 1px solid var(--border);
-  padding: 9px 16px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-family: 'Tajawal', sans-serif;
-  background: var(--surface2);
-  transition: 0.3s;
-  white-space: nowrap;
-}
-.back-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(240,180,41,0.07); }
-
-/* ===== HERO ===== */
-.hero {
-  text-align: center;
-  padding: 60px 0 50px;
-  position: relative;
+.nav-links a{
+color:var(--text);
+text-decoration:none;
+font-size:14px;
+font-weight:700;
+/* استخدام logical properties لدعم RTL و LTR تلقائياً */
+margin-inline-end:15px; 
+transition:color var(--transition);
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: rgba(240,180,41,0.1);
-  border: 1px solid rgba(240,180,41,0.25);
-  color: var(--gold);
-  padding: 6px 16px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 500;
-  margin-bottom: 24px;
-  letter-spacing: 1px;
-  animation: fadeUp 0.7s ease both;
+.nav-links a:hover{
+color:var(--gold);
 }
 
-.hero h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(28px, 5vw, 50px);
-  font-weight: 900;
-  line-height: 1.15;
-  margin-bottom: 16px;
-  animation: fadeUp 0.7s ease 0.1s both;
+/* قائمة اللغة */
+.lang-menu{
+position: relative;
+font-family: sans-serif;
 }
 
-.hero h1 .accent {
-  background: linear-gradient(135deg, var(--gold), #ffe9a0, var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.lang-btn{
+background: #141428;
+color: #fff;
+padding: 6px 10px;
+border-radius: 8px;
+border: 1px solid rgba(255,255,255,0.1);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+font-size: 12px;
 }
 
-.hero p {
-  color: var(--muted);
-  font-size: 16px;
-  max-width: 520px;
-  margin: 0 auto 40px;
-  line-height: 1.7;
-  animation: fadeUp 0.7s ease 0.2s both;
+.lang-list{
+position: absolute;
+top: 45px;
+left: 0; /* محاذاة لليسار في RTL */
+background: #141428;
+border-radius: 8px;
+list-style: none;
+padding: 5px 0;
+margin: 0;
+width: 140px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+z-index: 100;
+display: none;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* Pi 3D Coin */
-.coin-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
-  animation: fadeUp 0.7s ease 0.15s both;
+/* تعديل محاذاة القائمة للغة العربية */
+[dir="rtl"] .lang-list{
+left: auto;
+right: 0;
 }
 
-.coin-scene {
-  width: 100px;
-  height: 100px;
-  perspective: 600px;
+.lang-list.active{
+display: block;
+opacity: 1;
+transform: translateY(0);
 }
 
-.coin {
-  width: 100px;
-  height: 100px;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: coinSpin 6s linear infinite;
+.lang-list li a{
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 15px;
+color: #fff;
+text-decoration: none;
+font-size: 13px;
+transition: background 0.2s;
 }
 
-@keyframes coinSpin {
-  0% { transform: rotateY(0deg) rotateX(10deg); }
-  100% { transform: rotateY(360deg) rotateX(10deg); }
+.lang-list li a:hover{
+background: #d4a017;
+color: #000;
 }
 
-.coin-face {
-  position: absolute;
-  width: 100px; height: 100px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 30px;
-  font-weight: 900;
-  backface-visibility: hidden;
+.lang-list li a.selected{
+background: rgba(212, 160, 23, 0.2);
+color: #d4a017;
 }
 
-.coin-front {
-  background: radial-gradient(circle at 35% 35%, #ffe88a, #c8901a 60%, #7a5200);
-  box-shadow: 0 0 30px rgba(240,180,41,0.6), inset 0 3px 8px rgba(255,255,255,0.3);
-  color: #7a4500;
-  transform: translateZ(5px);
+.breadcrumbs{
+font-size:13px;
+color:var(--text-muted);
+margin-bottom:20px;
 }
 
-.coin-back {
-  background: radial-gradient(circle at 65% 35%, #d4a020, #8a6010 60%, #5a3800);
-  box-shadow: 0 0 20px rgba(180,120,20,0.5);
-  color: #c89030;
-  transform: translateZ(-5px) rotateY(180deg);
+.breadcrumbs a{
+color:var(--gold);
+text-decoration:none;
+}
+.breadcrumbs a:hover{
+text-decoration:underline;
 }
 
-.coin-edge {
-  position: absolute;
-  width: 100px; height: 10px;
-  background: linear-gradient(to bottom, #c8901a, #f0b429, #c8901a);
-  top: 45px;
-  transform: translateZ(0) rotateX(90deg);
+.article-content{
+background:var(--surface);
+border:1px solid rgba(255,255,255,0.05);
+border-radius:var(--radius);
+padding:40px;
+margin-bottom:30px;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to { opacity: 1; transform: translateY(0); }
+.article-title{
+font-size:32px;
+color:var(--gold);
+margin-bottom:15px;
+font-weight:900;
+line-height:1.4;
 }
 
-/* ===== STATS BAR ===== */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  margin-bottom: 50px;
-  animation: fadeUp 0.7s ease 0.3s both;
+.article-meta{
+font-size:13px;
+color:var(--text-muted);
+margin-bottom:30px;
+padding-bottom:20px;
+border-bottom:1px solid var(--border);
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
 }
 
-.stat-item {
-  text-align: center;
+.article-content h2{
+font-size:22px;
+color:var(--gold-light);
+margin:35px 0 15px;
+font-weight:800;
 }
 
-.stat-num {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--gold);
-  display: block;
+.article-content p{
+font-size:16px;
+color:var(--text-muted);
+margin-bottom:20px;
 }
 
-.stat-label {
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 2px;
-  letter-spacing: 1px;
+.article-content ul{
+/* دعم RTL/LTR تلقائي للمسافات */
+margin:0 0 20px 0;
+padding-inline-start: 40px; 
+color:var(--text-muted);
+font-size:16px;
 }
 
-/* ===== SECTION TITLE ===== */
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 30px;
+.article-content li{
+margin-bottom:10px;
 }
 
-.section-head h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--gold);
-  letter-spacing: 2px;
+.cta-box{
+background: linear-gradient(135deg, rgba(212,160,23,0.15), rgba(212,160,23,0.05));
+border:1px solid var(--gold);
+border-radius:var(--radius);
+padding:30px;
+text-align:center;
+margin-top:40px;
 }
 
-.section-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(240,180,41,0.3), transparent);
+.cta-box h3{
+color:var(--gold);
+font-size:20px;
+margin-bottom:10px;
 }
 
-/* ===== GRID ===== */
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 22px;
+.cta-box p{
+color:var(--text);
+font-size:15px;
+margin-bottom:20px;
 }
 
-/* ===== CARD ===== */
-.blog-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 26px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1),
-              border-color 0.4s,
-              box-shadow 0.4s;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(30px) rotateX(8deg);
-  transform-style: preserve-3d;
-  perspective: 800px;
+.cta-btn{
+display:inline-block;
+background:linear-gradient(135deg,var(--gold-dark)0%,var(--gold)50%,var(--gold-light)100%);
+color:var(--dark);
+padding:12px 30px;
+border-radius:30px;
+font-size:16px;
+font-weight:900;
+text-decoration:none;
+box-shadow:0 6px 20px rgba(212,160,23,0.4);
+transition:transform 0.2s;
 }
 
-.blog-card.visible {
-  animation: cardReveal 0.6s cubic-bezier(0.23,1,0.32,1) forwards;
+.cta-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(212,160,23,0.6);
 }
 
-@keyframes cardReveal {
-  from { opacity: 0; transform: translateY(30px) rotateX(8deg) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
+footer{
+text-align:center;
+padding:26px;
+color:var(--text-muted);
+font-size:12px;
+border-top:1px solid rgba(255,255,255,0.04);
 }
-
-.blog-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(240,180,41,0.08) 0%, transparent 65%);
-  opacity: 0;
-  transition: opacity 0.4s;
-  border-radius: 20px;
-}
-
-.blog-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(240,180,41,0.4);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 40px rgba(240,180,41,0.1);
-}
-
-.blog-card:hover::before { opacity: 1; }
-
-/* glow line top */
-.card-glow-line {
-  position: absolute;
-  top: 0; left: 20%; right: 20%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  border-radius: 2px;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-.blog-card:hover .card-glow-line { opacity: 1; }
-
-/* card number */
-.card-number {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 11px;
-  color: rgba(240,180,41,0.4);
-  margin-bottom: 14px;
-  letter-spacing: 2px;
-}
-
-/* card icon */
-.card-icon {
-  width: 42px; height: 42px;
-  background: rgba(240,180,41,0.1);
-  border: 1px solid rgba(240,180,41,0.2);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  margin-bottom: 16px;
-  transition: background 0.3s, transform 0.3s;
-}
-.blog-card:hover .card-icon {
-  background: rgba(240,180,41,0.18);
-  transform: scale(1.1) rotateZ(5deg);
-}
-
-.card-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 10px;
-  line-height: 1.45;
-}
-
-.card-desc {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 20px;
-}
-
-.read-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--gold);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 700;
-  transition: gap 0.3s;
-}
-.read-link:hover { gap: 10px; }
-
-.read-arrow {
-  font-size: 16px;
-  transition: transform 0.3s;
-}
-.read-link:hover .read-arrow { transform: translateX(-3px); }
-
-/* Featured card (first) */
-.blog-card.featured {
-  grid-column: span 2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  align-items: center;
-  background: linear-gradient(135deg, #0a0a22, #120e30);
-  border-color: rgba(240,180,41,0.2);
-}
-
-.blog-card.featured .card-content { }
-
-.featured-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 140px;
-}
-
-.floating-pi {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 72px;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--gold), #ffe9a0, var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: floatPi 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 20px rgba(240,180,41,0.5));
-}
-
-@keyframes floatPi {
-  0%,100% { transform: translateY(0) rotateZ(-2deg); }
-  50% { transform: translateY(-12px) rotateZ(2deg); }
-}
-
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  margin-top: 60px;
-  padding: 30px 0 20px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 12px;
-}
-
-footer .footer-logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 8px;
-}
-
-/* ===== RTL fixes ===== */
-[dir="rtl"] .read-link { flex-direction: row-reverse; }
-[dir="rtl"] .read-arrow { transform: scaleX(-1); }
-[dir="rtl"] .read-link:hover .read-arrow { transform: scaleX(-1) translateX(-3px); }
-[dir="rtl"] .section-line {
-  background: linear-gradient(270deg, rgba(240,180,41,0.3), transparent);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 700px) {
-  .blog-card.featured {
-    grid-column: span 1;
-    grid-template-columns: 1fr;
-  }
-  .featured-visual { height: 80px; }
-  .floating-pi { font-size: 50px; }
-  .stats-bar { gap: 24px; }
-}
-
-/* ===== SCROLL TOP ===== */
-.scroll-top {
-  position: fixed;
-  bottom: 30px;
-  left: 30px;
-  width: 44px; height: 44px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 18px;
-  color: var(--gold);
-  transition: 0.3s;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 100;
-}
-.scroll-top.show { opacity: 1; pointer-events: all; }
-.scroll-top:hover { background: rgba(240,180,41,0.12); transform: translateY(-3px); }
 </style>
 </head>
+
 <body>
 
-<canvas id="cosmosCanvas"></canvas>
+<div class="container">
 
-<div class="page-wrap">
+<header>
+<a href="../index.html" class="brand">
+<div class="pi-logo">π</div>
+<div class="brand-name">PiPrice</div>
+</a>
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo">PiPrice</div>
-    <div class="header-right">
+<div class="nav-actions">
+    <div class="nav-links">
+        <a href="index.html" id="navBlog">المدونة</a>
+        <a href="../index.html" id="navHome">الرئيسية</a>
+    </div>
 
-      <div class="lang-menu">
-        <button class="lang-btn" id="langBtn">
-          <span id="currentFlag">🇸🇦</span>
-          <span id="currentName">العربية</span>
-          <span style="font-size:9px; opacity:0.5;">▼</span>
+    <!-- قائمة تغيير اللغة -->
+    <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
+            <span id="currentLangFlag">🇸🇦</span>
+            <span id="currentLangText">العربية</span>
+            <span style="font-size:8px;">▼</span>
         </button>
         <ul class="lang-list" id="langList">
-          <li><a href="#" data-lang="ar">🇸🇦 العربية</a></li>
-          <li><a href="#" data-lang="en">🇬🇧 English</a></li>
-          <li><a href="#" data-lang="fr">🇫🇷 Français</a></li>
-          <li><a href="#" data-lang="zh">🇨🇳 中文</a></li>
-          <li><a href="#" data-lang="hi">🇮🇳 हिन्दी</a></li>
-          <li><a href="#" data-lang="fil">🇵🇭 Filipino</a></li>
+            <li><a href="javascript:void(0)" data-lang="ar" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
+            <li><a href="javascript:void(0)" data-lang="en" onclick="changeLang('en')">🇬🇧 English</a></li>
+            <li><a href="javascript:void(0)" data-lang="fr" onclick="changeLang('fr')">🇫🇷 Français</a></li>
+            <li><a href="javascript:void(0)" data-lang="zh" onclick="changeLang('zh')">🇨🇳 中文</a></li>
+            <li><a href="javascript:void(0)" data-lang="hi" onclick="changeLang('hi')">🇮🇳 हिन्दी</a></li>
+            <li><a href="javascript:void(0)" data-lang="fil" onclick="changeLang('fil')">🇵🇭 Filipino</a></li>
         </ul>
-      </div>
-
-      <a href="../" class="back-btn" id="backBtn">العودة للرئيسية</a>
     </div>
-  </header>
+</div>
+</header>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-badge">
-      <span>✦</span>
-      <span id="badgeText">Pi Network Blog</span>
-      <span>✦</span>
-    </div>
+<div class="breadcrumbs" id="breadcrumb">
+<a href="../index.html" id="breadHome">الرئيسية</a> » 
+<a href="index.html" id="breadBlog">المدونة</a> »
+<span id="breadTitle">ما هو piprice...</span>
+</div>
 
-    <div class="coin-wrap">
-      <div class="coin-scene">
-        <div class="coin">
-          <div class="coin-face coin-front">π</div>
-          <div class="coin-face coin-back">π</div>
-        </div>
-      </div>
-    </div>
+<article class="article-content">
 
-    <h1><span id="heroTitle">مدونة <span class="accent">PiPrice</span></span></h1>
-    <p id="heroDesc">دليلك الكامل لأخبار Pi Network وسعر Pi اليوم</p>
-  </div>
+<h1 class="article-title" id="articleH1">
+ما هو piprice وكيف يحدد سعر Pi Network اليوم؟
+</h1>
 
-  <!-- STATS -->
-  <div class="stats-bar">
-    <div class="stat-item">
-      <span class="stat-num" id="stat1num">12</span>
-      <span class="stat-label" id="stat1lbl">مقال</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">6</span>
-      <span class="stat-label" id="stat2lbl">لغة</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">2026</span>
-      <span class="stat-label" id="stat3lbl">تحديث</span>
-    </div>
-  </div>
+<div class="article-meta">
+<span id="metaDate">📅 10 مارس 2026</span>
+<span id="metaAuthor">✍️ PiPrice</span>
+<span id="metaRead">⏱️ 4 دقائق</span>
+</div>
 
-  <!-- ARTICLES SECTION TITLE -->
-  <div class="section-head">
-    <h2 id="sectionTitle">المقالات</h2>
-    <div class="section-line"></div>
-  </div>
+<div id="articleBody">
+    <!-- المحتوى سيتم تحميله بالجافاسكربت -->
+</div>
 
-  <!-- GRID -->
-  <div class="blog-grid" id="blogGrid"></div>
+</article>
+
+<footer>
+<p id="footerCopy">© 2026 PiPrice — جميع الحقوق محفوظة</p>
+</footer>
 
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <span class="footer-logo">PiPrice</span>
-  <span id="footerText">© PiPrice 2026 · جميع الحقوق محفوظة</span>
-</footer>
-
-<!-- SCROLL TOP -->
-<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
-
 <script>
-/* ============================================================
-   COSMOS BACKGROUND CANVAS
-   ============================================================ */
-(function() {
-  const canvas = document.getElementById('cosmosCanvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, stars = [], hexes = [];
-
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function initStars() {
-    stars = [];
-    for (let i = 0; i < 160; i++) {
-      stars.push({
-        x: Math.random() * W, y: Math.random() * H,
-        r: Math.random() * 1.2 + 0.2,
-        a: Math.random(),
-        speed: Math.random() * 0.3 + 0.05
-      });
+// 1. بيانات الترجمة الكاملة للمقال
+const DATA = {
+    ar: {
+        dir: "rtl",
+        flag: "🇸🇦",
+        name: "العربية",
+        title: "ما هو piprice وكيف يحدد سعر Pi Network اليوم؟ | مدونة PiPrice",
+        desc: "تعرف على مفهوم piprice وكيف يتم تحديد سعر Pi Network اليوم في السوق العالمي، وكيف يمكنك متابعة سعر Pi المباشر وتحويله إلى USDT بسهولة.",
+        navBlog: "المدونة",
+        navHome: "الرئيسية",
+        breadHome: "الرئيسية",
+        breadBlog: "المدونة",
+        breadTitle: "ما هو piprice وكيف يحدد سعر Pi Network اليوم؟",
+        metaDate: "📅 10 مارس 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4 دقائق",
+        h1: "ما هو piprice وكيف يحدد سعر Pi Network اليوم؟",
+        body: `
+            <p>مع ازدياد الاهتمام بعملة <strong>Pi Network</strong> في السنوات الأخيرة، أصبح الكثير من المستخدمين يبحثون يوميًا عن <strong>سعر Pi اليوم</strong> والطريقة الأكثر دقة لمعرفة قيمتها في السوق. هنا يظهر مفهوم <strong>piprice</strong> كمؤشر رقمي يستخدم لمتابعة السعر التقريبي للعملة بناءً على بيانات منصات التداول العالمية.</p>
+            <h2>ما هو piprice؟</h2>
+            <p>piprice هو مؤشر يعتمد على تحليل الأسعار المتاحة لعملة Pi في منصات التداول التي توفر أزواج تداول مثل <strong>PI/USDT</strong>. يقوم هذا المؤشر بجمع البيانات من أكثر من منصة تداول ثم يعرض متوسط السعر في الوقت الحقيقي تقريبًا.</p>
+            <p>يساعد هذا النظام المستخدمين في معرفة القيمة الحالية للعملة بدقة أكبر بدلاً من الاعتماد على مصادر غير موثوقة أو أسعار غير محدثة.</p>
+            <h2>كيف يتم تحديد سعر Pi Network؟</h2>
+            <p>يتم تحديد سعر Pi بناءً على مجموعة من العوامل الأساسية داخل سوق العملات الرقمية، أهمها:</p>
+            <ul>
+                <li>العرض والطلب في السوق.</li>
+                <li>حجم التداول اليومي للعملة.</li>
+                <li>المنصات التي تدعم تداول Pi.</li>
+                <li>الأخبار والتحديثات المتعلقة بالمشروع.</li>
+            </ul>
+            <p>عندما يزيد الطلب على العملة في السوق، يرتفع السعر بشكل طبيعي. أما في حالة زيادة المعروض أو انخفاض حجم التداول فقد يتراجع السعر.</p>
+            <h2>لماذا يهتم المستخدمون بسعر Pi اليوم؟</h2>
+            <p>متابعة سعر Pi بشكل يومي تساعد المستخدمين على اتخاذ قرارات أفضل سواء في الاحتفاظ بالعملة أو بيعها. كما أن معرفة السعر الحقيقي للعملة يساعد في تجنب عمليات الاحتيال أو العروض غير الواقعية التي قد تظهر في بعض الأسواق.</p>
+            <p>ولهذا السبب يعتمد الكثير من المستخدمين على أدوات مثل <strong>piprice</strong> لمتابعة السعر المباشر ومقارنته مع الأسعار المتاحة في السوق.</p>
+            <h2>مستقبل عملة Pi Network</h2>
+            <p>لا يزال مشروع Pi Network في مرحلة التطوير المستمر، ومع توسع الشبكة وزيادة عدد المستخدمين حول العالم، يتوقع العديد من المحللين أن تلعب العملة دورًا مهمًا في سوق العملات الرقمية خلال السنوات القادمة.</p>
+            <p>لكن كما هو الحال مع جميع العملات الرقمية، يبقى السوق متغيرًا ويعتمد بشكل كبير على التطورات التقنية والاقتصادية المرتبطة بالمشروع.</p>
+            <div class="cta-box">
+                <h3>تابع سعر Pi Network الآن</h3>
+                <p>يمكنك متابعة سعر Pi المباشر باستخدام مؤشر piprice لمعرفة أحدث تحديثات السوق لحظة بلحظة.</p>
+                <a href="../index.html" class="cta-btn">عرض سعر Pi الآن</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — جميع الحقوق محفوظة"
+    },
+    en: {
+        dir: "ltr",
+        flag: "🇬🇧",
+        name: "English",
+        title: "What is piprice and how does it determine Pi Network price today? | PiPrice Blog",
+        desc: "Learn about the concept of piprice and how the Pi Network price is determined today in the global market, and how you can track the live Pi price and convert it to USDT easily.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "What is piprice and how it sets Pi price?",
+        metaDate: "📅 March 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4 min read",
+        h1: "What is piprice and how does it determine Pi Network price today?",
+        body: `
+            <p>With the increasing interest in <strong>Pi Network</strong> currency in recent years, many users are daily searching for <strong>Pi price today</strong> and the most accurate way to know its value in the market. Here appears the concept of <strong>piprice</strong> as a digital indicator used to track the approximate price of the currency based on data from global trading platforms.</p>
+            <h2>What is piprice?</h2>
+            <p>piprice is an indicator that relies on analyzing the prices available for Pi currency on trading platforms that provide trading pairs such as <strong>PI/USDT</strong>. This indicator collects data from more than one trading platform and then displays the average price in near real-time.</p>
+            <p>This system helps users know the current value of the currency more accurately instead of relying on unreliable sources or outdated prices.</p>
+            <h2>How is Pi Network price determined?</h2>
+            <p>The price of Pi is determined based on a set of fundamental factors within the cryptocurrency market, most notably:</p>
+            <ul>
+                <li>Supply and demand in the market.</li>
+                <li>Daily trading volume of the currency.</li>
+                <li>Platforms that support Pi trading.</li>
+                <li>News and updates related to the project.</li>
+            </ul>
+            <p>When the demand for the currency increases in the market, the price rises naturally. In the event of an increase in supply or a decrease in trading volume, the price may decline.</p>
+            <h2>Why do users care about Pi price today?</h2>
+            <p>Tracking the Pi price on a daily basis helps users make better decisions whether to hold the currency or sell it. Also, knowing the real price of the currency helps in avoiding fraud or unrealistic offers that may appear in some markets.</p>
+            <p>For this reason, many users rely on tools like <strong>piprice</strong> to track the live price and compare it with the prices available in the market.</p>
+            <h2>Future of Pi Network currency</h2>
+            <p>The Pi Network project is still in the continuous development stage, and with the expansion of the network and the increase in the number of users around the world, many analysts expect the currency to play an important role in the cryptocurrency market in the coming years.</p>
+            <p>However, as is the case with all cryptocurrencies, the market remains volatile and depends heavily on the technical and economic developments associated with the project.</p>
+            <div class="cta-box">
+                <h3>Track Pi Network Price Now</h3>
+                <p>You can track the live Pi price using the piprice indicator to know the latest market updates moment by moment.</p>
+                <a href="../index.html" class="cta-btn">View Pi Price Now</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — All Rights Reserved"
+    },
+    fr: {
+        dir: "ltr",
+        flag: "🇫🇷",
+        name: "Français",
+        title: "Qu'est-ce que piprice et comment détermine-t-il le prix du Pi Network aujourd'hui ? | Blog PiPrice",
+        desc: "Découvrez le concept de piprice et comment le prix du Pi Network est déterminé aujourd'hui sur le marché mondial, et comment vous pouvez suivre le prix du Pi en direct et le convertir en USDT facilement.",
+        navBlog: "Blog",
+        navHome: "Accueil",
+        breadHome: "Accueil",
+        breadBlog: "Blog",
+        breadTitle: "Qu'est-ce que piprice et comment il fixe le prix?",
+        metaDate: "📅 10 mars 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4 min de lecture",
+        h1: "Qu'est-ce que piprice et comment détermine-t-il le prix du Pi Network aujourd'hui ?",
+        body: `
+            <p>Avec l'intérêt croissant pour la devise <strong>Pi Network</strong> ces dernières années, de nombreux utilisateurs recherchent quotidiennement le <strong>prix du Pi aujourd'hui</strong> et la manière la plus précise de connaître sa valeur sur le marché. C'est là qu'intervient le concept de <strong>piprice</strong>, un indicateur numérique utilisé pour suivre le prix approximatif de la devise basé sur des données de plateformes de trading mondiales.</p>
+            <h2>Qu'est-ce que piprice ?</h2>
+            <p>piprice est un indicateur qui repose sur l'analyse des prix disponibles pour la devise Pi sur les plateformes de trading proposant des paires telles que <strong>PI/USDT</strong>. Cet indicateur collecte des données de plusieurs plateformes, puis affiche le prix moyen en temps quasi réel.</p>
+            <p>Ce système aide les utilisateurs à connaître la valeur actuelle de la devise avec plus de précision au lieu de s'appuyer sur des sources non fiables ou des prix non mis à jour.</p>
+            <h2>Comment le prix du Pi Network est-il déterminé ?</h2>
+            <p>Le prix du Pi est déterminé sur la base d'un ensemble de facteurs fondamentaux au sein du marché des crypto-monnaies, notamment :</p>
+            <ul>
+                <li>L'offre et la demande sur le marché.</li>
+                <li>Le volume de négociation quotidien de la devise.</li>
+                <li>Les plateformes prenant en charge le trading de Pi.</li>
+                <li>Les actualités et mises à jour liées au projet.</li>
+            </ul>
+            <p>Lorsque la demande pour la devise augmente sur le marché, le prix augmente naturellement. En cas d'augmentation de l'offre ou de baisse du volume des échanges, le prix peut baisser.</p>
+            <h2>Pourquoi les utilisateurs s'intéressent-ils au prix du Pi aujourd'hui ?</h2>
+            <p>Le suivi quotidien du prix du Pi aide les utilisateurs à prendre de meilleures décisions, qu'il s'agisse de conserver ou de vendre la devise. Connaître le prix réel permet également d'éviter les fraudes ou les offres irréalistes présentes sur certains marchés.</p>
+            <p>C'est pourquoi de nombreux utilisateurs s'appuient sur des outils comme <strong>piprice</strong> pour suivre le prix en direct et le comparer aux prix disponibles sur le marché.</p>
+            <h2>Avenir de la devise Pi Network</h2>
+            <p>Le projet Pi Network est encore en phase de développement continu. Avec l'expansion du réseau et l'augmentation du nombre d'utilisateurs dans le monde, de nombreux analystes s'attendent à ce que cette devise joue un rôle important sur le marché des crypto-monnaies dans les années à venir.</p>
+            <p>Cependant, comme pour toutes les crypto-monnaies, le marché reste volatil et dépend fortement des développements techniques et économiques liés au projet.</p>
+            <div class="cta-box">
+                <h3>Suivez le prix du Pi Network maintenant</h3>
+                <p>Vous pouvez suivre le prix du Pi en direct en utilisant l'indicateur piprice pour connaître les dernières mises à jour du marché instantanément.</p>
+                <a href="../index.html" class="cta-btn">Voir le prix du Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Tous droits réservés"
+    },
+    zh: {
+        dir: "ltr",
+        flag: "🇨🇳",
+        name: "中文",
+        title: "什么是piprice以及它如何确定今日Pi Network价格？ | PiPrice 博客",
+        desc: "了解piprice的概念以及今日Pi Network价格在全球市场中是如何确定的，以及如何轻松跟踪Pi实时价格并将其转换为USDT。",
+        navBlog: "博客",
+        navHome: "首页",
+        breadHome: "首页",
+        breadBlog: "博客",
+        breadTitle: "什么是piprice...",
+        metaDate: "📅 2026年3月10日",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4分钟阅读",
+        h1: "什么是piprice以及它如何确定今日Pi Network价格？",
+        body: `
+            <p>随着近年来对<strong>Pi Network</strong>货币的兴趣日益增加，许多用户每天都在寻找<strong>今日Pi价格</strong>以及了解其在市场价值的最准确方法。这里出现了<strong>piprice</strong>的概念，它是一个数字指标，用于根据全球交易平台的数据跟踪货币的大致价格。</p>
+            <h2>什么是piprice？</h2>
+            <p>piprice 是一个指标，依赖于分析提供如 <strong>PI/USDT</strong> 等交易对的交易平台上的 Pi 货币可用价格。该指标从多个交易平台收集数据，然后显示接近实时的平均价格。</p>
+            <p>该系统帮助用户更准确地了解货币的当前价值，而不是依赖不可靠的来源或未更新的价格。</p>
+            <h2>Pi Network价格是如何确定的？</h2>
+            <p>Pi的价格是根据加密货币市场中的一系列基本因素确定的，最重要的是：</p>
+            <ul>
+                <li>市场供需。</li>
+                <li>货币的每日交易量。</li>
+                <li>支持Pi交易的平公。</li>
+                <li>与项目相关的新闻和更新。</li>
+            </ul>
+            <p>当市场上对货币的需求增加时，价格自然会上涨。如果供应增加或交易量下降，价格可能会下跌。</p>
+            <h2>为什么用户关注今日Pi价格？</h2>
+            <p>每日跟踪Pi价格有助于用户做出更好的决定，无论是持有货币还是出售它。了解货币的真实价格也有助于避免某些市场中可能出现的欺诈或不切实际的报价。</p>
+            <p>因此，许多用户依赖像 <strong>piprice</strong> 这样的工具来跟踪实时价格并将其与市场上可用的价格进行比较。</p>
+            <h2>Pi Network货币的未来</h2>
+            <p>Pi Network项目仍处于持续开发阶段，随着网络的扩展和全球用户数量的增加，许多分析师预计该货币将在未来几年在加密货币市场中发挥重要作用。</p>
+            <p>然而，与所有加密货币一样，市场仍然波动，很大程度上取决于与项目相关的技术和经济发展。</p>
+            <div class="cta-box">
+                <h3>立即跟踪 Pi Network 价格</h3>
+                <p>您可以使用 piprice 指标跟踪 Pi 实时价格，即时了解最新的市场更新。</p>
+                <a href="../index.html" class="cta-btn">查看 Pi 价格</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — 版权所有"
+    },
+    hi: {
+        dir: "ltr",
+        flag: "🇮🇳",
+        name: "हिन्दी",
+        title: "piprice क्या है और यह आज Pi Network की कीमत कैसे निर्धारित करता है? | PiPrice ब्लॉग",
+        desc: "piprice की अवधारणा के बारे में जानें और आज वैश्विक बाजार में Pi Network की कीमत कैसे निर्धारित की जाती है, और आप आसानी से Pi की लाइव कीमत कैसे ट्रैक कर सकते हैं।",
+        navBlog: "ब्लॉग",
+        navHome: "होम",
+        breadHome: "होम",
+        breadBlog: "ब्लॉग",
+        breadTitle: "piprice क्या है...",
+        metaDate: "📅 10 मार्च 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4 मिनट पढ़ें",
+        h1: "piprice क्या है और यह आज Pi Network की कीमत कैसे निर्धारित करता है?",
+        body: `
+            <p>पिछले कुछ वर्षों में <strong>Pi Network</strong> मुद्रा में बढ़ती रुचि के साथ, कई उपयोगकर्ता रोज़ाना <strong>आज Pi की कीमत</strong> और बाजार में इसके मूल्य को जानने के सबसे सटीक तरीके की खोज कर रहे हैं। यहाँ <strong>piprice</strong> की अवधारणा एक डिजिटल संकेतक के रूप में सामने आती है, जिसका उपयोग वैश्विक ट्रेडिंग प्लेटफॉर्म के डेटा के आधार पर मुद्रा की अनुमानित कीमत को ट्रैक करने के लिए किया जाता है।</p>
+            <h2>piprice क्या है?</h2>
+            <p>piprice एक संकेतक है जो उन ट्रेडिंग प्लेटफॉर्म पर Pi मुद्रा के उपलब्ध मूल्यों के विश्लेषण पर निर्भर करता है जो <strong>PI/USDT</strong> जैसे ट्रेडिंग जोड़े प्रदान करते हैं। यह संकेतक एक से अधिक ट्रेडिंग प्लेटफॉर्म से डेटा एकत्र करता है और फिर लगभग वास्तविक समय में औसत मूल्य प्रदर्शित करता है।</p>
+            <p>यह प्रणाली उपयोगकर्ताओं को अविश्वसनीय स्रोतों या पुराने मूल्यों पर भरोसा करने के बजाय मुद्रा के वर्तमान मूल्य को अधिक सटीक रूप से जानने में मदद करती है।</p>
+            <h2>Pi Network की कीमत कैसे निर्धारित होती है?</h2>
+            <p>Pi की कीमत क्रिप्टोकरेंसी बाजार के भीतर कुछ बुनियादी कारकों के आधार पर निर्धारित होती है, जिनमें सबसे उल्लेखनीय हैं:</p>
+            <ul>
+                <li>बाजार में आपूर्ति और मांग।</li>
+                <li>मुद्रा की दैनिक ट्रेडिंग मात्रा।</li>
+                <li>वे प्लेटफॉर्म जो Pi ट्रेडिंग का समर्थन करते हैं।</li>
+                <li>परियोजना से संबंधित समाचार और अपडेट।</li>
+            </ul>
+            <p>जब बाजार में मुद्रा की मांग बढ़ती है, तो कीमत प्राकृतिक रूप से बढ़ जाती है। आपूर्ति में वृद्धि या ट्रेडिंग वॉल्यूम में कमी होने पर कीमत गिर सकती है।</p>
+            <h2>उपयोगकर्ता आज Pi की कीमत क्यों देखते हैं?</h2>
+            <p>Pi की कीमत को दैनिक रूप से ट्रैक करना उपयोगकर्ताओं को चाहे मुद्रा को होल्ड करना हो या बेचना हो, बेहतर निर्णय लेने में मदद करता है। मुद्रा की वास्तविक कीमत जानने से धोखाधड़ी या अवास्तविक ऑफ़र से बचने में भी मदद मिलती है।</p>
+            <p>इसी कारण से कई उपयोगकर्ता लाइव कीमत को ट्रैक करने और बाजार में उपलब्ध कीमतों से तुलना करने के लिए <strong>piprice</strong> जैसे टूल पर भरोसा करते हैं।</p>
+            <h2>Pi Network मुद्रा का भविष्य</h2>
+            <p>Pi Network परियोजना अभी भी निरंतर विकास के चरण में है, और नेटवर्क के विस्तार और दुनिया भर में उपयोगकर्ताओं की संख्या में वृद्धि के साथ, कई विश्लेषकों को उम्मीद है कि आने वाले वर्षों में यह मुद्रा क्रिप्टोकरेंसी बाजार में महत्वपूर्ण भूमिका निभाएगी।</p>
+            <p>हालांकि, सभी क्रिप्टोकरेंसी की तरह, बाजार अस्थिर बना रहता है और परियोजना से जुड़े तकनीकी और आर्थिक विकास पर बहुत अधिक निर्भर करता है।</p>
+            <div class="cta-box">
+                <h3>अभी Pi Network की कीमत ट्रैक करें</h3>
+                <p>आप पल-पल के बाजार अपडेट जानने के लिए piprice इंडिकेटर का उपयोग करके Pi की लाइव कीमत ट्रैक कर सकते हैं।</p>
+                <a href="../index.html" class="cta-btn">अभी Pi कीमत देखें</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — सर्वाधिकार सुरक्षित"
+    },
+    fil: {
+        dir: "ltr",
+        flag: "🇵🇭",
+        name: "Filipino",
+        title: "Ano ang piprice at paano nito tinatakda ang presyo ng Pi Network ngayon? | PiPrice Blog",
+        desc: "Alamin ang konsepto ng piprice at kung paano tinatakda ang presyo ng Pi Network ngayon sa global market, at kung paano mo madaling ma-track ang live price ng Pi at i-convert ito sa USDT.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Ano ang piprice...",
+        metaDate: "📅 Marso 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 4 na minutong basahin",
+        h1: "Ano ang piprice at paano nito tinatakda ang presyo ng Pi Network ngayon?",
+        body: `
+            <p>Sa pagtaas ng interes sa <strong>Pi Network</strong> currency sa nakaraang mga taon, maraming mga user ang araw-araw na naghahanap ng <strong>presyo ng Pi ngayong araw</strong> at ang pinaka-tumpak na paraan upang malaman ang halaga nito sa merkado. Dito lumalabas ang konsepto ng <strong>piprice</strong> bilang isang digital indicator na ginagamit upang subaybayan ang tinatayang presyo ng currency batay sa data mula sa mga global trading platform.</p>
+            <h2>Ano ang piprice?</h2>
+            <p>Ang piprice ay isang indicator na umaasa sa pagsusuri ng mga presyo na available para sa Pi currency sa mga trading platform na nagbibigay ng mga trading pairs tulad ng <strong>PI/USDT</strong>. Kinokolekta ng indicator na ito ang data mula sa higit sa isang trading platform at pagkatapos ay ipinapakita ang average na presyo sa malapit sa real-time.</p>
+            <p>Nakakatulong ang sistemang ito sa mga user na malaman ang kasalukuyang halaga ng currency nang mas tumpak sa halip na umasa sa mga hindi mapagkakatiwalaang pinagkukunan o mga hindi na-update na presyo.</p>
+            <h2>Paano tinatakda ang presyo ng Pi Network?</h2>
+            <p>Ang presyo ng Pi ay tinatakda batay sa isang set ng mga pangunahing kadahilanan sa loob ng cryptocurrency market, ang pinaka-kapansin-pansin ay:</p>
+            <ul>
+                <li>Supply at demand sa merkado.</li>
+                <li>Daily trading volume ng currency.</li>
+                <li>Mga platform na sumusuporta sa Pi trading.</li>
+                <li>Mga balita at update na nauugnay sa proyekto.</li>
+            </ul>
+            <p>Kapag tumaas ang demand para sa currency sa merkado, tumataas naturally ang presyo. Sa kaso ng pagtaas ng supply o pagbaba ng trading volume, maaaring bumaba ang presyo.</p>
+            <h2>Bakit nagmamalasakit ang mga user sa presyo ng Pi ngayong araw?</h2>
+            <p>Ang pag-track sa presyo ng Pi sa araw-araw ay nakakatulong sa mga user na gumawa ng mas mahusay na mga desisyon kung itatago o ibebenta ang currency. Ang pag-alam sa tunay na presyo ng currency ay nakakatulong din sa pag-iwas sa pandaraya o mga hindi makatotohanang alok na maaaring lumabas sa ilang mga merkado.</p>
+            <p>Sa dahilang ito, maraming mga user ang umaasa sa mga tool tulad ng <strong>piprice</strong> upang subaybayan ang live na presyo at ihambing ito sa mga presyong available sa merkado.</p>
+            <h2>Kinabukasan ng Pi Network currency</h2>
+            <p>Ang proyekto ng Pi Network ay nasa yugto pa rin ng patuloy na pag-unlad, at sa pagpapalawak ng network at pagtaas ng bilang ng mga user sa buong mundo, inaasahan ng maraming analyst na ang currency ay maglalaro ng mahalagang papel sa cryptocurrency market sa mga darating na taon.</p>
+            <p>Gayunpaman, tulad ng kaso sa lahat ng mga cryptocurrency, ang merkado ay nananatiling volatile at lubos na nakadepende sa mga teknikal at ekonomikong development na nauugnay sa proyekto.</p>
+            <div class="cta-box">
+                <h3>Subaybayan ang Presyo ng Pi Network Ngayon</h3>
+                <p>Maaari mong subaybayan ang live na presyo ng Pi gamit ang piprice indicator upang malaman ang pinakabagong mga update sa merkado sandali-sandali.</p>
+                <a href="../index.html" class="cta-btn">Tingnan ang Presyo ng Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Ang Lahat ng Karapatan Ay Nakalaan"
     }
-  }
-
-  function initHexes() {
-    hexes = [];
-    for (let i = 0; i < 8; i++) {
-      hexes.push({
-        x: Math.random() * W, y: Math.random() * H,
-        size: Math.random() * 60 + 30,
-        rot: Math.random() * Math.PI,
-        rotSpeed: (Math.random() - 0.5) * 0.003,
-        a: Math.random() * 0.06 + 0.02,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: (Math.random() - 0.5) * 0.15
-      });
-    }
-  }
-
-  function drawHex(cx, cy, size, rot) {
-    ctx.beginPath();
-    for (let i = 0; i < 6; i++) {
-      const angle = rot + (Math.PI / 3) * i;
-      const px = cx + size * Math.cos(angle);
-      const py = cy + size * Math.sin(angle);
-      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-    }
-    ctx.closePath();
-  }
-
-  function draw(t) {
-    ctx.clearRect(0, 0, W, H);
-
-    /* stars */
-    stars.forEach(s => {
-      s.y -= s.speed;
-      if (s.y < 0) s.y = H;
-      s.a = 0.4 + 0.5 * Math.abs(Math.sin(t * 0.001 + s.x));
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(240,200,100,${s.a})`;
-      ctx.fill();
-    });
-
-    /* floating hexagons */
-    hexes.forEach(h => {
-      h.rot += h.rotSpeed;
-      h.x += h.vx;
-      h.y += h.vy;
-      if (h.x < -100) h.x = W + 100;
-      if (h.x > W + 100) h.x = -100;
-      if (h.y < -100) h.y = H + 100;
-      if (h.y > H + 100) h.y = -100;
-
-      drawHex(h.x, h.y, h.size, h.rot);
-      ctx.strokeStyle = `rgba(240,180,41,${h.a})`;
-      ctx.lineWidth = 1;
-      ctx.stroke();
-
-      drawHex(h.x, h.y, h.size * 0.6, h.rot + 0.5);
-      ctx.strokeStyle = `rgba(240,180,41,${h.a * 0.5})`;
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
-    });
-
-    /* grid lines (subtle) */
-    ctx.strokeStyle = 'rgba(240,180,41,0.025)';
-    ctx.lineWidth = 0.5;
-    const gap = 80;
-    for (let x = 0; x < W; x += gap) {
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
-    }
-    for (let y = 0; y < H; y += gap) {
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  resize();
-  initStars();
-  initHexes();
-  requestAnimationFrame(draw);
-  window.addEventListener('resize', () => { resize(); initStars(); });
-})();
-
-/* ============================================================
-   CARD 3D TILT EFFECT
-   ============================================================ */
-function applyTilt(card) {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width / 2, cy = rect.height / 2;
-    const rotX = (y - cy) / cy * -6;
-    const rotY = (x - cx) / cx * 8;
-    card.style.transform = `translateY(-8px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
-    card.style.setProperty('--mx', `${(x / rect.width) * 100}%`);
-    card.style.setProperty('--my', `${(y / rect.height) * 100}%`);
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
-}
-
-/* ============================================================
-   LANGUAGE DATA
-   ============================================================ */
-const UI = {
-  ar: {
-    flag: '🇸🇦', name: 'العربية', dir: 'rtl',
-    heroTitle: 'مدونة <span class="accent">PiPrice</span>',
-    heroDesc: 'دليلك الكامل لأخبار Pi Network وسعر Pi اليوم',
-    back: 'العودة للرئيسية',
-    read: 'اقرأ المقال',
-    section: 'المقالات',
-    stat1: 'مقال', stat2: 'لغة', stat3: 'تحديث',
-    badge: 'Pi Network Blog',
-    pageTitle: 'مدونة PiPrice | أخبار Pi Network',
-    footer: '© PiPrice 2026 · جميع الحقوق محفوظة'
-  },
-  en: {
-    flag: '🇬🇧', name: 'English', dir: 'ltr',
-    heroTitle: '<span class="accent">PiPrice</span> Blog',
-    heroDesc: 'Your complete guide to Pi Network news and Pi price today',
-    back: 'Back to Home',
-    read: 'Read Article',
-    section: 'ARTICLES',
-    stat1: 'Articles', stat2: 'Languages', stat3: 'Updated',
-    badge: 'Pi Network Blog',
-    pageTitle: 'PiPrice Blog | Pi Network News',
-    footer: '© PiPrice 2026 · All rights reserved'
-  },
-  fr: {
-    flag: '🇫🇷', name: 'Français', dir: 'ltr',
-    heroTitle: 'Blog <span class="accent">PiPrice</span>',
-    heroDesc: 'Actualités Pi Network et prix du Pi aujourd\'hui',
-    back: 'Retour à l\'accueil',
-    read: 'Lire l\'article',
-    section: 'ARTICLES',
-    stat1: 'Articles', stat2: 'Langues', stat3: 'Mis à jour',
-    badge: 'Pi Network Blog',
-    pageTitle: 'Blog PiPrice | Nouvelles Pi Network',
-    footer: '© PiPrice 2026 · Tous droits réservés'
-  },
-  zh: {
-    flag: '🇨🇳', name: '中文', dir: 'ltr',
-    heroTitle: '<span class="accent">PiPrice</span> 博客',
-    heroDesc: '了解 Pi Network 新闻和今日 Pi 价格',
-    back: '返回主页',
-    read: '阅读文章',
-    section: '文章',
-    stat1: '文章', stat2: '语言', stat3: '更新',
-    badge: 'Pi Network 博客',
-    pageTitle: 'PiPrice 博客 | Pi Network 新闻',
-    footer: '© PiPrice 2026 · 版权所有'
-  },
-  hi: {
-    flag: '🇮🇳', name: 'हिन्दी', dir: 'ltr',
-    heroTitle: '<span class="accent">PiPrice</span> ब्लॉग',
-    heroDesc: 'Pi Network समाचार और आज की Pi कीमत',
-    back: 'होम पेज',
-    read: 'लेख पढ़ें',
-    section: 'लेख',
-    stat1: 'लेख', stat2: 'भाषाएं', stat3: 'अपडेट',
-    badge: 'Pi Network Blog',
-    pageTitle: 'PiPrice ब्लॉग | Pi Network समाचार',
-    footer: '© PiPrice 2026 · सर्वाधिकार सुरक्षित'
-  },
-  fil: {
-    flag: '🇵🇭', name: 'Filipino', dir: 'ltr',
-    heroTitle: 'Blog ng <span class="accent">PiPrice</span>',
-    heroDesc: 'Gabay sa balita ng Pi Network at presyo ng Pi ngayon',
-    back: 'Bumalik sa Home',
-    read: 'Basahin',
-    section: 'MGA ARTIKULO',
-    stat1: 'Artikulo', stat2: 'Wika', stat3: 'Update',
-    badge: 'Pi Network Blog',
-    pageTitle: 'PiPrice Blog | Balita ng Pi Network',
-    footer: '© PiPrice 2026 · Lahat ng karapatan nakalaan'
-  }
 };
 
-/* ============================================================
-   ARTICLES DATA
-   ============================================================ */
-const ICONS = ['🔍','📡','💼','📈','🛡️','🌐','🌏','🔐','💸','🚀','💡','👥'];
+// 2. وظائف التحكم
+function toggleLangMenu() {
+    const list = document.getElementById('langList');
+    list.classList.toggle('active');
+}
 
-const articles = [
-  {
-    id:1,
-    title:{ar:'ما هو PiPrice وكيف يحدد سعر Pi؟',en:'What is PiPrice and how does it set Pi price?',fr:'Qu\'est-ce que PiPrice et comment fixe-t-il le prix du Pi?',zh:'什么是PiPrice以及它如何设定Pi价格？',hi:'PiPrice क्या है?',fil:'Ano ang PiPrice?'},
-    desc:{ar:'PiPrice هو مؤشر لمتابعة سعر Pi Network اليوم في الأسواق بطريقة لحظية ودقيقة.',en:'PiPrice is a real-time index tracking Pi Network price in markets worldwide.',fr:'PiPrice est un indice en temps réel pour suivre le prix Pi sur les marchés.',zh:'PiPrice是实时追踪Pi Network市场价格的指数。',hi:'PiPrice Pi Network की कीमत ट्रैक करने के लिए एक रियल-टाइम इंडेक्स है।',fil:'Ang PiPrice ay isang real-time index na sinusubaybayan ang presyo ng Pi Network.'},
-    featured: true
-  },
-  {
-    id:2,
-    title:{ar:'أخبار Pi Network: التحديثات الجديدة',en:'Pi Network News: New Updates',fr:'Nouvelles Pi Network: Mises à jour',zh:'Pi Network新闻：最新更新',hi:'Pi Network समाचार: नए अपडेट',fil:'Balita ng Pi Network: Mga Bagong Update'},
-    desc:{ar:'تعرف على آخر التحديثات والتطورات في شبكة Pi Network خلال الفترة الحالية.',en:'Learn about the latest updates and developments in Pi Network.',fr:'Découvrez les dernières mises à jour dans Pi Network.',zh:'了解Pi Network目前的最新更新。',hi:'Pi Network में नवीनतम अपडेट जानें।',fil:'Alamin ang mga pinakabagong update sa Pi Network.'}
-  },
-  {
-    id:3,
-    title:{ar:'كيفية استخدام محفظة Pi Wallet',en:'How to use Pi Wallet',fr:'Comment utiliser Pi Wallet',zh:'如何使用Pi钱包',hi:'Pi Wallet का उपयोग कैसे करें',fil:'Paano gamitin ang Pi Wallet'},
-    desc:{ar:'دليلك الشامل لإنشاء محفظة Pi Wallet وتأمين مفاتيحك الخاصة بشكل صحيح.',en:'Complete guide to creating and securing your Pi Wallet.',fr:'Guide complet pour créer et sécuriser votre portefeuille Pi.',zh:'创建并保护您的Pi钱包完整指南。',hi:'Pi Wallet बनाने और सुरक्षित करने की पूरी गाइड।',fil:'Kumpletong gabay sa paggawa ng Pi Wallet.'}
-  },
-  {
-    id:4,
-    title:{ar:'توقعات سعر عملة Pi Network',en:'Pi Network Price Predictions',fr:'Prévisions de prix Pi Network',zh:'Pi Network价格预测',hi:'Pi Network मूल्य भविष्यवाणियाँ',fil:'Mga Hula sa Presyo ng Pi Network'},
-    desc:{ar:'تحليلات وتوقعات خبراء العملات الرقمية حول مستقبل سعر عملة Pi.',en:'Expert crypto analysis and predictions about Pi price future.',fr:'Analyses et prédictions des experts sur le futur prix Pi.',zh:'专家关于Pi价格未来的分析和预测。',hi:'Pi मूल्य के भविष्य के बारे में विशेषज्ञ विश्लेषण।',fil:'Pagsusuri ng eksperto tungkol sa kinabukasan ng presyo ng Pi.'}
-  },
-  {
-    id:5,
-    title:{ar:'ما هو KYC ولماذا هو مهم؟',en:'What is KYC and why is it important?',fr:'Qu\'est-ce que le KYC?',zh:'什么是KYC？',hi:'KYC क्या है?',fil:'Ano ang KYC?'},
-    desc:{ar:'شرح مفصل لعملية التحقق من الهوية KYC في شبكة Pi Network وأهميتها.',en:'Detailed explanation of the KYC verification process in Pi Network.',fr:'Explication du processus de vérification KYC dans Pi Network.',zh:'Pi网络中KYC验证过程的详细说明。',hi:'Pi Network में KYC सत्यापन प्रक्रिया की विस्तृत व्याख्या।',fil:'Detalyadong paliwanag sa KYC verification sa Pi Network.'}
-  },
-  {
-    id:6,
-    title:{ar:'الفرق بين Pi Mainnet و Testnet',en:'Pi Mainnet vs Testnet',fr:'Pi Mainnet vs Testnet',zh:'Pi主网与测试网',hi:'Pi Mainnet बनाम Testnet',fil:'Pi Mainnet vs Testnet'},
-    desc:{ar:'مقال يوضح الفروقات الجوهرية بين الشبكة التجريبية والشبكة الرئيسية.',en:'Explaining the key differences between Pi Testnet and Mainnet.',fr:'Les différences entre Testnet et Mainnet expliquées.',zh:'解释Pi测试网和主网的主要区别。',hi:'Pi Testnet और Mainnet के बीच अंतर।',fil:'Mga pagkakaiba ng Pi Testnet at Mainnet.'}
-  },
-  {
-    id:7,
-    title:{ar:'دليل استخدام متصفح Pi Browser',en:'Guide to Pi Browser',fr:'Guide du navigateur Pi',zh:'Pi浏览器指南',hi:'Pi Browser गाइड',fil:'Gabay sa Pi Browser'},
-    desc:{ar:'خطوات تحميل واستخدام متصفح Pi Browser للوصول لتطبيقات النظام البيئي.',en:'Steps to download and use Pi Browser to access ecosystem apps.',fr:'Télécharger et utiliser le navigateur Pi pour les apps.',zh:'下载和使用Pi浏览器的步骤。',hi:'Pi Browser डाउनलोड और उपयोग के चरण।',fil:'Mga hakbang sa pag-download ng Pi Browser.'}
-  },
-  {
-    id:8,
-    title:{ar:'نصائح أمنية لحماية حساب Pi',en:'Security Tips for Pi Account',fr:'Conseils de sécurité Pi',zh:'Pi账户安全提示',hi:'Pi Account सुरक्षा टिप्स',fil:'Mga Security Tips para sa Pi'},
-    desc:{ar:'أفضل الممارسات لتأمين حسابك من السرقة والاحتيال في عالم العملات.',en:'Best practices to secure your Pi account from fraud and theft.',fr:'Meilleures pratiques pour sécuriser votre compte Pi.',zh:'保护Pi账户免受欺诈的最佳做法。',hi:'धोखाधड़ी से Pi खाते की सुरक्षा।',fil:'Best practices para i-secure ang Pi account.'}
-  },
-  {
-    id:9,
-    title:{ar:'كيفية السحب والتحويل في Pi Network',en:'Withdrawals & Transfers in Pi',fr:'Retraits et transferts Pi',zh:'Pi提现与转账',hi:'Pi में निकासी और स्थानांतरण',fil:'Pag-withdraw at Transfer sa Pi'},
-    desc:{ar:'خطوات عملية لسحب وتحويل أرصدة Pi بعد فتح الشبكة الرئيسية.',en:'Practical steps to withdraw and transfer Pi after Mainnet.',fr:'Étapes pour retirer et transférer des Pi.',zh:'主网后提取和转移Pi的步骤。',hi:'Mainnet के बाद Pi निकालने के व्यावहारिक चरण।',fil:'Mga hakbang sa pag-withdraw ng Pi.'}
-  },
-  {
-    id:10,
-    title:{ar:'مستقبل تطبيقات Pi Apps',en:'The Future of Pi Apps',fr:'L\'avenir des apps Pi',zh:'Pi应用程序的未来',hi:'Pi Apps का भविष्य',fil:'Kinabukasan ng Pi Apps'},
-    desc:{ar:'نظرة على التطبيقات المبنية على شبكة Pi وكيف ستغير اقتصاد العملات.',en:'A look at Pi network apps and how they will change crypto.',fr:'Applications Pi et comment elles changeront la crypto.',zh:'Pi网络应用程序的前景。',hi:'Pi नेटवर्क ऐप्स और क्रिप्टो पर उनका प्रभाव।',fil:'Mga app sa Pi network at ang epekto nito.'}
-  },
-  {
-    id:11,
-    title:{ar:'حقائق وشائعات حول Pi Network',en:'Facts & Myths about Pi Network',fr:'Faits et mythes sur Pi Network',zh:'Pi Network事实与谣言',hi:'Pi Network तथ्य और मिथक',fil:'Katotohanan at Mito tungkol sa Pi'},
-    desc:{ar:'نفي وتوضيح أشهر الشائعات المنتشرة حول عملة Pi Network.',en:'Debunking the most famous myths and rumors about Pi.',fr:'Démystifier les rumeurs les plus célèbres sur Pi.',zh:'揭穿最著名的Pi传言。',hi:'Pi के बारे में मशहूर मिथकों का खंडन।',fil:'Pinabubunyag ang mga sikat na mito tungkol sa Pi.'}
-  },
-  {
-    id:12,
-    title:{ar:'كيف تشارك في مجتمع Pi Network؟',en:'How to Join the Pi Community?',fr:'Rejoindre la communauté Pi',zh:'如何参与Pi社区',hi:'Pi समुदाय से कैसे जुड़ें?',fil:'Paano Sumali sa Pi Community?'},
-    desc:{ar:'دليل للانضمام للمجتمعات الفعالة والمساهمة في تطوير الشبكة.',en:'Guide to joining active communities and contributing to Pi.',fr:'Rejoindre les communautés Pi et contribuer au réseau.',zh:'加入Pi社区并参与网络发展。',hi:'Pi समुदायों में शामिल होने की गाइड।',fil:'Gabay sa pagsali sa mga Pi community.'}
-  }
-];
-
-/* ============================================================
-   RENDER ARTICLES
-   ============================================================ */
-function renderArticles(lang) {
-  const grid = document.getElementById('blogGrid');
-  const ui = UI[lang] || UI['ar'];
-  let html = '';
-
-  articles.forEach((a, i) => {
-    const t = a.title[lang] || a.title['ar'];
-    const d = a.desc[lang] || a.desc['ar'];
-    const icon = ICONS[i] || '📄';
-    const num = String(i + 1).padStart(2, '0');
-
-    if (a.featured) {
-      html += `
-        <div class="blog-card featured" style="animation-delay:${i*0.07}s">
-          <div class="card-glow-line"></div>
-          <div class="card-content">
-            <div class="card-number">— ${num}</div>
-            <div class="card-title" style="font-size:20px;">${t}</div>
-            <div class="card-desc">${d}</div>
-            <a href="https://piprice.store/blog/article-${a.id}.html" class="read-link">
-              <span>${ui.read}</span>
-              <span class="read-arrow">→</span>
-            </a>
-          </div>
-          <div class="featured-visual">
-            <div class="floating-pi">π</div>
-          </div>
-        </div>`;
-    } else {
-      html += `
-        <div class="blog-card" style="animation-delay:${i*0.07}s">
-          <div class="card-glow-line"></div>
-          <div class="card-number">— ${num}</div>
-          <div class="card-icon">${icon}</div>
-          <div class="card-title">${t}</div>
-          <div class="card-desc">${d}</div>
-          <a href="https://piprice.store/blog/article-${a.id}.html" class="read-link">
-            <span>${ui.read}</span>
-            <span class="read-arrow">→</span>
-          </a>
-        </div>`;
+document.addEventListener('click', function(e) {
+    const list = document.getElementById('langList');
+    const btn = document.getElementById('langBtn');
+    if (!btn.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('active');
     }
-  });
+});
 
-  grid.innerHTML = html;
+function changeLang(langCode) {
+    localStorage.setItem("lang", langCode);
+    applyLang(langCode);
+    toggleLangMenu();
+}
 
-  // Intersection observer for card reveal
-  const cards = grid.querySelectorAll('.blog-card');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        applyTilt(entry.target);
-        observer.unobserve(entry.target);
-      }
+function applyLang(lang) {
+    if (!DATA[lang]) lang = 'ar';
+    
+    const d = DATA[lang];
+    
+    // تحديث الهيكل والاتجاه
+    document.documentElement.lang = lang;
+    document.documentElement.dir = d.dir;
+    
+    // تحديث النصوص
+    document.getElementById('page-title').innerText = d.title;
+    document.getElementById('page-desc').content = d.desc;
+    
+    document.getElementById('currentLangFlag').innerText = d.flag;
+    document.getElementById('currentLangText').innerText = d.name;
+    
+    document.getElementById('navBlog').innerText = d.navBlog;
+    document.getElementById('navHome').innerText = d.navHome;
+    
+    document.getElementById('breadHome').innerText = d.breadHome;
+    document.getElementById('breadBlog').innerText = d.breadBlog;
+    document.getElementById('breadTitle').innerText = d.breadTitle;
+    
+    document.getElementById('metaDate').innerText = d.metaDate;
+    document.getElementById('metaAuthor').innerText = d.metaAuthor;
+    document.getElementById('metaRead').innerText = d.metaRead;
+    
+    document.getElementById('articleH1').innerText = d.h1;
+    document.getElementById('articleBody').innerHTML = d.body;
+    
+    document.getElementById('footerCopy').innerText = d.footer;
+    
+    // تحديث حالة الزر
+    const links = document.querySelectorAll('.lang-list li a');
+    links.forEach(link => {
+        if (link.getAttribute('data-lang') === lang) {
+            link.classList.add('selected');
+        } else {
+            link.classList.remove('selected');
+        }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-  cards.forEach(c => observer.observe(c));
 }
 
-/* ============================================================
-   SET LANGUAGE
-   ============================================================ */
-function setLang(lang) {
-  if (!UI[lang]) lang = 'ar';
-  const ui = UI[lang];
+// تحميل اللغة المحفوظة
+let savedLang = localStorage.getItem("lang") || "ar";
+applyLang(savedLang);
 
-  localStorage.setItem('lang', lang);
-
-  // dir
-  document.documentElement.lang = lang;
-  document.documentElement.dir = ui.dir;
-
-  // text
-  document.title = ui.pageTitle;
-  document.getElementById('heroTitle').innerHTML = ui.heroTitle;
-  document.getElementById('heroDesc').textContent = ui.heroDesc;
-  document.getElementById('backBtn').textContent = ui.back;
-  document.getElementById('sectionTitle').textContent = ui.section;
-  document.getElementById('badgeText').textContent = ui.badge;
-  document.getElementById('stat1lbl').textContent = ui.stat1;
-  document.getElementById('stat2lbl').textContent = ui.stat2;
-  document.getElementById('stat3lbl').textContent = ui.stat3;
-  document.getElementById('footerText').textContent = ui.footer;
-
-  // lang button
-  document.getElementById('currentFlag').textContent = ui.flag;
-  document.getElementById('currentName').textContent = ui.name;
-
-  // selected state
-  document.querySelectorAll('.lang-list li a').forEach(a => {
-    a.classList.toggle('selected', a.getAttribute('data-lang') === lang);
-  });
-
-  renderArticles(lang);
-}
-
-/* ============================================================
-   LANG MENU TOGGLE
-   ============================================================ */
-document.getElementById('langBtn').addEventListener('click', e => {
-  e.stopPropagation();
-  document.getElementById('langList').classList.toggle('open');
-});
-
-document.querySelectorAll('.lang-list li a').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    setLang(a.getAttribute('data-lang'));
-    document.getElementById('langList').classList.remove('open');
-  });
-});
-
-document.addEventListener('click', () => {
-  document.getElementById('langList').classList.remove('open');
-});
-
-/* ============================================================
-   SCROLL TOP
-   ============================================================ */
-window.addEventListener('scroll', () => {
-  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 300);
-});
-
-/* ============================================================
-   INIT
-   ============================================================ */
-setLang(localStorage.getItem('lang') || 'ar');
 </script>
 </body>
 </html>
