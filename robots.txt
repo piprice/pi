@@ -108,6 +108,11 @@ User-agent: *
 Allow: /
 Crawl-delay: 2
 
+Sitemap: https://piprice.store/sitemap.xml
+
+# السماح لأرشفة المدونة
+User-agent: *
+Allow: /blog/
 # ══════════════════════════════════════════════
 # Sitemaps
 # ══════════════════════════════════════════════
