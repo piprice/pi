@@ -4,86 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>الأمان والموثوقية في بيع Pi Network | مدونة PiPrice</title>
-
-<meta name="description" content="تعرف على أهم النصائح لضمان الأمان عند بيع Pi Network وكيف يمكن تجنب المخاطر والاحتيال في معاملات العملات الرقمية.">
+<!-- العناوين الافتراضية -->
+<title id="page-title">الأمان والموثوقية في بيع Pi Network | مدونة PiPrice</title>
+<meta name="description" id="page-desc" content="تعرف على أهم النصائح لضمان الأمان عند بيع Pi Network وكيف يمكن تجنب المخاطر والاحتيال في معاملات العملات الرقمية.">
 
 <meta name="keywords" content="بيع pi network, أمان العملات الرقمية, تجنب الاحتيال, piprice, بيع pi بأمان, كيفية بيع pi, محافظ رقمية آمنة">
-
 <link rel="canonical" href="https://piprice.store/blog/article-6.html">
-
 <meta name="robots" content="index, follow">
-
 <meta name="theme-color" content="#d4a017">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a07810'/%3E%3Cstop offset='50%25' stop-color='%23d4a017'/%3E%3Cstop offset='100%25' stop-color='%23f0c040'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='900' fill='%23080810'%CF%80%3C/text%3E%3C/svg%3E">
 
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Article",
- "mainEntityOfPage":{
-   "@type":"WebPage",
-   "@id":"https://piprice.store/blog/article-6.html"
- },
- "headline":"الأمان والموثوقية في بيع Pi Network",
- "description":"دليل شامل حول كيفية بيع Pi Network بأمان وتجنب عمليات الاحتيال في سوق العملات الرقمية.",
- "image":"https://raw.githubusercontent.com/piprice/pi/main/1010.png",
- "author":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "url":"https://piprice.store"
- },
- "publisher":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "logo":{
-     "@type":"ImageObject",
-     "url":"https://raw.githubusercontent.com/piprice/pi/main/1010.png"
-   }
- },
- "datePublished":"2026-03-10",
- "dateModified":"2026-03-10"
-}
-</script>
-
 <style>
-
 :root{
 --gold:#d4a017;
 --gold-light:#f0c040;
 --gold-dark:#a07810;
-
 --dark:#06060f;
 --dark2:#0d0d1c;
 --dark3:#141428;
-
 --surface:#18182e;
-
 --border:rgba(212,160,23,0.15);
-
 --text:#f0f0ff;
 --text-muted:#9090bb;
-
 --radius:18px;
-
 --shadow:0 12px 40px rgba(0,0,0,0.5);
-
 --font:'Tajawal',system-ui,sans-serif;
-
 --transition:0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
-*,*::before,*::after{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
 body{
 font-family:var(--font);
@@ -142,17 +96,91 @@ font-weight:900;
 color:var(--gold);
 }
 
+.nav-actions{
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
 .nav-links a{
 color:var(--text);
 text-decoration:none;
 font-size:14px;
 font-weight:700;
-margin-right:15px;
+/* دعم الاتجاهين */
+margin-inline-end:15px;
 transition:color var(--transition);
 }
 
-.nav-links a:hover{
-color:var(--gold);
+.nav-links a:hover{color:var(--gold);}
+
+/* قائمة اللغة */
+.lang-menu{
+position: relative;
+font-family: sans-serif;
+}
+
+.lang-btn{
+background: #141428;
+color: #fff;
+padding: 6px 10px;
+border-radius: 8px;
+border: 1px solid rgba(255,255,255,0.1);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+font-size: 12px;
+}
+
+.lang-list{
+position: absolute;
+top: 45px;
+left: 0;
+background: #141428;
+border-radius: 8px;
+list-style: none;
+padding: 5px 0;
+margin: 0;
+width: 140px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+z-index: 100;
+display: none;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+[dir="rtl"] .lang-list{
+left: auto;
+right: 0;
+}
+
+.lang-list.active{
+display: block;
+opacity: 1;
+transform: translateY(0);
+}
+
+.lang-list li a{
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 15px;
+color: #fff;
+text-decoration: none;
+font-size: 13px;
+transition: background 0.2s;
+}
+
+.lang-list li a:hover{
+background: #d4a017;
+color: #000;
+}
+
+.lang-list li a.selected{
+background: rgba(212, 160, 23, 0.2);
+color: #d4a017;
 }
 
 .breadcrumbs{
@@ -165,7 +193,6 @@ margin-bottom:20px;
 color:var(--gold);
 text-decoration:none;
 }
-
 .breadcrumbs a:hover{
 text-decoration:underline;
 }
@@ -192,10 +219,9 @@ color:var(--text-muted);
 margin-bottom:30px;
 padding-bottom:20px;
 border-bottom:1px solid var(--border);
-}
-
-.article-meta span{
-margin-left:15px;
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
 }
 
 .article-content h2{
@@ -212,8 +238,8 @@ margin-bottom:20px;
 }
 
 .article-content ul{
-margin:0 20px 20px 0;
-padding:0;
+margin:0 0 20px 0;
+padding-inline-start: 40px;
 color:var(--text-muted);
 font-size:16px;
 }
@@ -232,15 +258,15 @@ margin-top:40px;
 }
 
 .cta-box h3{
-color:var(--gold);
-font-size:20px;
-margin-bottom:10px;
+color: var(--gold);
+font-size: 20px;
+margin-bottom: 10px;
 }
 
 .cta-box p{
-color:var(--text);
-font-size:15px;
-margin-bottom:20px;
+color: var(--text);
+font-size: 15px;
+margin-bottom: 20px;
 }
 
 .cta-btn{
@@ -255,10 +281,8 @@ text-decoration:none;
 box-shadow:0 6px 20px rgba(212,160,23,0.4);
 transition:transform 0.2s;
 }
-
 .cta-btn:hover{
 transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(212,160,23,0.6);
 }
 
 footer{
@@ -268,7 +292,6 @@ color:var(--text-muted);
 font-size:12px;
 border-top:1px solid rgba(255,255,255,0.04);
 }
-
 </style>
 </head>
 
@@ -277,134 +300,384 @@ border-top:1px solid rgba(255,255,255,0.04);
 <div class="container">
 
 <header>
-
 <a href="../index.html" class="brand">
 <div class="pi-logo">π</div>
 <div class="brand-name">PiPrice</div>
 </a>
 
-<div class="nav-links">
-<a href="index.html">المدونة</a>
-<a href="../index.html">الرئيسية</a>
-</div>
+<div class="nav-actions">
+    <div class="nav-links">
+        <a href="index.html" id="navBlog">المدونة</a>
+        <a href="../index.html" id="navHome">الرئيسية</a>
+    </div>
 
+    <!-- زر تغيير اللغة -->
+    <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
+            <span id="currentLangFlag">🇸🇦</span>
+            <span id="currentLangText">العربية</span>
+            <span style="font-size:8px;">▼</span>
+        </button>
+        <ul class="lang-list" id="langList">
+            <li><a href="javascript:void(0)" data-lang="ar" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
+            <li><a href="javascript:void(0)" data-lang="en" onclick="changeLang('en')">🇬🇧 English</a></li>
+            <li><a href="javascript:void(0)" data-lang="fr" onclick="changeLang('fr')">🇫🇷 Français</a></li>
+            <li><a href="javascript:void(0)" data-lang="zh" onclick="changeLang('zh')">🇨🇳 中文</a></li>
+            <li><a href="javascript:void(0)" data-lang="hi" onclick="changeLang('hi')">🇮🇳 हिन्दी</a></li>
+            <li><a href="javascript:void(0)" data-lang="fil" onclick="changeLang('fil')">🇵🇭 Filipino</a></li>
+        </ul>
+    </div>
+</div>
 </header>
 
-<div class="breadcrumbs">
-
-<a href="../index.html">الرئيسية</a> » 
-<a href="index.html">المدونة</a> »
-الأمان والموثوقية في بيع Pi Network
-
+<div class="breadcrumbs" id="breadcrumb">
+<a href="../index.html" id="breadHome">الرئيسية</a> » 
+<a href="index.html" id="breadBlog">المدونة</a> »
+<span id="breadTitle">الأمان والموثوقية في بيع Pi Network</span>
 </div>
 
 <article class="article-content">
 
-<h1 class="article-title">
+<h1 class="article-title" id="articleH1">
 الأمان والموثوقية في بيع Pi Network
 </h1>
 
 <div class="article-meta">
-<span>📅 10 مارس 2026</span>
-<span>✍️ PiPrice</span>
-<span>⏱️ وقت القراءة: 5 دقائق</span>
+<span id="metaDate">📅 10 مارس 2026</span>
+<span id="metaAuthor">✍️ PiPrice</span>
+<span id="metaRead">⏱️ 5 دقائق</span>
 </div>
 
-<p>
-
-مع تزايد الاهتمام بعملة <strong>Pi Network</strong>، بدأ العديد من المستخدمين حول العالم في البحث عن طرق لتحويل عملاتهم إلى عملات رقمية أخرى مثل USDT. ومع ذلك، فإن عملية بيع العملات الرقمية تتطلب درجة عالية من الحذر لضمان الأمان وتجنب الوقوع في عمليات الاحتيال.
-
-</p>
-
-<h2>
-لماذا يعتبر الأمان مهمًا في معاملات العملات الرقمية؟
-</h2>
-
-<p>
-
-العملات الرقمية تعتمد على تقنية البلوكشين، وهي تقنية آمنة بطبيعتها. ولكن المشكلة لا تكون عادة في الشبكة نفسها، بل في التعامل مع أطراف غير موثوقة أو منصات غير معروفة.
-
-</p>
-
-<p>
-
-لذلك من المهم دائمًا التأكد من مصدر المعاملة قبل إرسال أي عملات رقمية.
-
-</p>
-
-<h2>
-أهم النصائح لبيع Pi بأمان
-</h2>
-
-<ul>
-
-<li>التعامل فقط مع منصات أو وسطاء موثوقين.</li>
-
-<li>التأكد من السعر الحقيقي للعملة عبر مؤشرات مثل <strong>piprice</strong>.</li>
-
-<li>عدم إرسال العملات قبل استلام المقابل.</li>
-
-<li>استخدام محافظ رقمية آمنة.</li>
-
-</ul>
-
-<h2>
-تجنب العروض غير الواقعية
-</h2>
-
-<p>
-
-في بعض الأحيان قد يعرض بعض الأشخاص أسعارًا مرتفعة جدًا لشراء Pi. هذه العروض قد تكون محاولة للاحتيال، لذلك من المهم مقارنة السعر مع السعر الحقيقي في السوق.
-
-</p>
-
-<h2>
-التحقق من عنوان المحفظة
-</h2>
-
-<p>
-
-قبل إرسال أي عملة رقمية، تأكد دائمًا من أن عنوان المحفظة صحيح. إرسال العملات إلى عنوان خاطئ قد يؤدي إلى فقدانها بشكل دائم، حيث لا يمكن التراجع عن المعاملة في شبكة البلوكشين.
-
-</p>
-
-<h2>
-استخدام المحافظ الآمنة
-</h2>
-
-<p>
-
-يفضل استخدام محافظ معروفة مثل <strong>Trust Wallet</strong> أو <strong>Phantom</strong> عند استقبال العملات الرقمية. هذه المحافظ توفر طبقات حماية إضافية مثل كلمات الاسترداد والتشفير.
-
-</p>
-
-<div class="cta-box">
-
-<h3>
-تابع سعر Pi Network الآن
-</h3>
-
-<p>
-استخدم مؤشر piprice لمعرفة السعر المباشر للعملة قبل تنفيذ أي عملية بيع.
-</p>
-
-<a href="../index.html" class="cta-btn">
-عرض سعر Pi الآن
-</a>
-
+<div id="articleBody">
+    <!-- المحتوى يتم تحميله بالجافاسكربت -->
 </div>
 
 </article>
 
 <footer>
-
-<p>
-© 2026 PiPrice — جميع الحقوق محفوظة
-</p>
-
+<p id="footerCopy">© 2026 PiPrice — جميع الحقوق محفوظة</p>
 </footer>
 
 </div>
 
+<script>
+// 1. بيانات الترجمة الكاملة للمقال السادس
+const DATA = {
+    ar: {
+        dir: "rtl",
+        flag: "🇸🇦",
+        name: "العربية",
+        title: "الأمان والموثوقية في بيع Pi Network | مدونة PiPrice",
+        desc: "تعرف على أهم النصائح لضمان الأمان عند بيع Pi Network وكيف يمكن تجنب المخاطر والاحتيال في معاملات العملات الرقمية.",
+        navBlog: "المدونة",
+        navHome: "الرئيسية",
+        breadHome: "الرئيسية",
+        breadBlog: "المدونة",
+        breadTitle: "الأمان والموثوقية في بيع Pi Network",
+        metaDate: "📅 10 مارس 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 دقائق",
+        h1: "الأمان والموثوقية في بيع Pi Network",
+        body: `
+            <p>مع تزايد الاهتمام بعملة <strong>Pi Network</strong>، بدأ العديد من المستخدمين حول العالم في البحث عن طرق لتحويل عملاتهم إلى عملات رقمية أخرى مثل USDT. ومع ذلك، فإن عملية بيع العملات الرقمية تتطلب درجة عالية من الحذر لضمان الأمان وتجنب الوقوع في عمليات الاحتيال.</p>
+            <h2>لماذا يعتبر الأمان مهمًا في معاملات العملات الرقمية؟</h2>
+            <p>العملات الرقمية تعتمد على تقنية البلوكشين، وهي تقنية آمنة بطبيعتها. ولكن المشكلة لا تكون عادة في الشبكة نفسها، بل في التعامل مع أطراف غير موثوقة أو منصات غير معروفة.</p>
+            <p>لذلك من المهم دائمًا التأكد من مصدر المعاملة قبل إرسال أي عملات رقمية.</p>
+            <h2>أهم النصائح لبيع Pi بأمان</h2>
+            <ul>
+                <li>التعامل فقط مع منصات أو وسطاء موثوقين.</li>
+                <li>التأكد من السعر الحقيقي للعملة عبر مؤشرات مثل <strong>piprice</strong>.</li>
+                <li>عدم إرسال العملات قبل استلام المقابل.</li>
+                <li>استخدام محافظ رقمية آمنة.</li>
+            </ul>
+            <h2>تجنب العروض غير الواقعية</h2>
+            <p>في بعض الأحيان قد يعرض بعض الأشخاص أسعارًا مرتفعة جدًا لشراء Pi. هذه العروض قد تكون محاولة للاحتيال، لذلك من المهم مقارنة السعر مع السعر الحقيقي في السوق.</p>
+            <h2>التحقق من عنوان المحفظة</h2>
+            <p>قبل إرسال أي عملة رقمية، تأكد دائمًا من أن عنوان المحفظة صحيح. إرسال العملات إلى عنوان خاطئ قد يؤدي إلى فقدانها بشكل دائم، حيث لا يمكن التراجع عن المعاملة في شبكة البلوكشين.</p>
+            <h2>استخدام المحافظ الآمنة</h2>
+            <p>يفضل استخدام محافظ معروفة مثل <strong>Trust Wallet</strong> أو <strong>Phantom</strong> عند استقبال العملات الرقمية. هذه المحافظ توفر طبقات حماية إضافية مثل كلمات الاسترداد والتشفير.</p>
+            <div class="cta-box">
+                <h3>تابع سعر Pi Network الآن</h3>
+                <p>استخدم مؤشر piprice لمعرفة السعر المباشر للعملة قبل تنفيذ أي عملية بيع.</p>
+                <a href="../index.html" class="cta-btn">عرض سعر Pi الآن</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — جميع الحقوق محفوظة"
+    },
+    en: {
+        dir: "ltr",
+        flag: "🇬🇧",
+        name: "English",
+        title: "Security and Reliability in Selling Pi Network | PiPrice Blog",
+        desc: "Learn about the most important tips to ensure security when selling Pi Network and how to avoid risks and fraud in cryptocurrency transactions.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Security and Reliability in Selling Pi Network",
+        metaDate: "📅 March 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 min read",
+        h1: "Security and Reliability in Selling Pi Network",
+        body: `
+            <p>With the increasing interest in <strong>Pi Network</strong>, many users around the world have started looking for ways to convert their coins into other digital currencies like USDT. However, the process of selling cryptocurrencies requires a high degree of caution to ensure security and avoid falling into fraud.</p>
+            <h2>Why is security important in cryptocurrency transactions?</h2>
+            <p>Digital currencies rely on blockchain technology, which is inherently secure. But the problem is usually not with the network itself, but with dealing with untrusted parties or unknown platforms.</p>
+            <p>Therefore, it is always important to verify the source of the transaction before sending any digital currencies.</p>
+            <h2>Top tips for selling Pi safely</h2>
+            <ul>
+                <li>Deal only with trusted platforms or intermediaries.</li>
+                <li>Verify the real price of the currency through indicators like <strong>piprice</strong>.</li>
+                <li>Do not send coins before receiving payment.</li>
+                <li>Use secure digital wallets.</li>
+            </ul>
+            <h2>Avoid unrealistic offers</h2>
+            <p>Sometimes people may offer very high prices to buy Pi. These offers may be an attempt at fraud, so it is important to compare the price with the real market price.</p>
+            <h2>Verify wallet address</h2>
+            <p>Before sending any digital currency, always make sure that the wallet address is correct. Sending coins to a wrong address may result in permanent loss, as the transaction cannot be reversed on the blockchain network.</p>
+            <h2>Using secure wallets</h2>
+            <p>It is preferable to use known wallets like <strong>Trust Wallet</strong> or <strong>Phantom</strong> when receiving digital currencies. These wallets provide additional layers of protection such as recovery phrases and encryption.</p>
+            <div class="cta-box">
+                <h3>Track Pi Network Price Now</h3>
+                <p>Use the piprice indicator to know the live price of the currency before executing any sale.</p>
+                <a href="../index.html" class="cta-btn">View Pi Price Now</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — All Rights Reserved"
+    },
+    fr: {
+        dir: "ltr",
+        flag: "🇫🇷",
+        name: "Français",
+        title: "Sécurité et fiabilité dans la vente de Pi Network | Blog PiPrice",
+        desc: "Découvrez les conseils les plus importants pour assurer la sécurité lors de la vente de Pi Network et comment éviter les risques et la fraude dans les transactions de cryptomonnaies.",
+        navBlog: "Blog",
+        navHome: "Accueil",
+        breadHome: "Accueil",
+        breadBlog: "Blog",
+        breadTitle: "Sécurité et fiabilité dans la vente de Pi Network",
+        metaDate: "📅 10 mars 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 min de lecture",
+        h1: "Sécurité et fiabilité dans la vente de Pi Network",
+        body: `
+            <p>Avec l'intérêt croissant pour <strong>Pi Network</strong>, de nombreux utilisateurs à travers le monde ont commencé à chercher des moyens de convertir leurs pièces en d'autres devises numériques comme l'USDT. Cependant, le processus de vente de cryptomonnaies nécessite un haut degré de prudence pour assurer la sécurité et éviter les fraudes.</p>
+            <h2>Pourquoi la sécurité est-elle importante dans les transactions de cryptomonnaies ?</h2>
+            <p>Les devises numériques reposent sur la technologie blockchain, qui est intrinsèquement sécurisée. Mais le problème ne vient généralement pas du réseau lui-même, mais du fait de traiter avec des parties non fiables ou des plateformes inconnues.</p>
+            <p>Par conséquent, il est toujours important de vérifier la source de la transaction avant d'envoyer toute cryptomonnaie.</p>
+            <h2>Conseils principaux pour vendre Pi en toute sécurité</h2>
+            <ul>
+                <li>Traiter uniquement avec des plateformes ou intermédiaires de confiance.</li>
+                <li>Vérifier le prix réel de la devise via des indicateurs comme <strong>piprice</strong>.</li>
+                <li>Ne pas envoyer de pièces avant d'avoir reçu le paiement.</li>
+                <li>Utiliser des portefeuilles numériques sécurisés.</li>
+            </ul>
+            <h2>Éviter les offres irréalistes</h2>
+            <p>Parfois, des personnes peuvent offrir des prix très élevés pour acheter du Pi. Ces offres peuvent être une tentative de fraude, il est donc important de comparer le prix avec le prix réel du marché.</p>
+            <h2>Vérifier l'adresse du portefeuille</h2>
+            <p>Avant d'envoyer toute cryptomonnaie, assurez-vous toujours que l'adresse du portefeuille est correcte. L'envoi de pièces à une mauvaise adresse peut entraîner une perte permanente, car la transaction ne peut pas être annulée sur le réseau blockchain.</p>
+            <h2>Utilisation de portefeuilles sécurisés</h2>
+            <p>Il est préférable d'utiliser des portefeuilles connus comme <strong>Trust Wallet</strong> ou <strong>Phantom</strong> lors de la réception de cryptomonnaies. Ces portefeuilles fournissent des couches de protection supplémentaires telles que des phrases de récupération et un cryptage.</p>
+            <div class="cta-box">
+                <h3>Suivez le prix de Pi Network maintenant</h3>
+                <p>Utilisez l'indicateur piprice pour connaître le prix en direct de la devise avant d'exécuter toute vente.</p>
+                <a href="../index.html" class="cta-btn">Voir le prix du Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Tous droits réservés"
+    },
+    zh: {
+        dir: "ltr",
+        flag: "🇨🇳",
+        name: "中文",
+        title: "出售 Pi Network 的安全性和可靠性 | PiPrice 博客",
+        desc: "了解出售 Pi Network 时确保安全的最重要的提示，以及如何在加密货币交易中避免风险和欺诈。",
+        navBlog: "博客",
+        navHome: "首页",
+        breadHome: "首页",
+        breadBlog: "博客",
+        breadTitle: "出售 Pi Network 的安全性和可靠性",
+        metaDate: "📅 2026年3月10日",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5分钟阅读",
+        h1: "出售 Pi Network 的安全性和可靠性",
+        body: `
+            <p>随着对 <strong>Pi Network</strong> 的兴趣日益增加，全球许多用户开始寻找将其代币转换为其他数字货币（如 USDT）的方法。然而，出售加密货币的过程需要高度谨慎，以确保安全并避免陷入欺诈。</p>
+            <h2>为什么安全性在加密货币交易中很重要？</h2>
+            <p>数字货币依赖于区块链技术，该技术本质上是安全的。但问题通常不在于网络本身，而在于与不受信任的一方或未知平台打交道。</p>
+            <p>因此，在发送任何数字货币之前，务必始终验证交易来源。</p>
+            <h2>安全出售 Pi 的首要提示</h2>
+            <ul>
+                <li>仅与受信任的平台或中介打交道。</li>
+                <li>通过 <strong>piprice</strong> 等指标验证货币的真实价格。</li>
+                <li>在收到付款之前不要发送代币。</li>
+                <li>使用安全的数字钱包。</li>
+            </ul>
+            <h2>避免不切实际的报价</h2>
+            <p>有时人们可能会以非常高的价格购买 Pi。这些报价可能是欺诈企图，因此将价格与真实市场价格进行比较非常重要。</p>
+            <h2>验证钱包地址</h2>
+            <p>在发送任何数字货币之前，请务必确保钱包地址正确。将代币发送到错误的地址可能会导致永久丢失，因为区块链网络上的交易无法撤销。</p>
+            <h2>使用安全钱包</h2>
+            <p>在接收加密货币时，建议使用已知钱包，如 <strong>Trust Wallet</strong> 或 <strong>Phantom</strong>。这些钱包提供额外的保护层，如恢复短语和加密。</p>
+            <div class="cta-box">
+                <h3>立即追踪 Pi Network 价格</h3>
+                <p>在执行任何出售之前，使用 piprice 指标了解货币的实时价格。</p>
+                <a href="../index.html" class="cta-btn">查看 Pi 价格</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — 版权所有"
+    },
+    hi: {
+        dir: "ltr",
+        flag: "🇮🇳",
+        name: "हिन्दी",
+        title: "Pi Network बेचने में सुरक्षा और विश्वसनीयता | PiPrice ब्लॉग",
+        desc: "Pi Network बेचते समय सुरक्षा सुनिश्चित करने के लिए सबसे महत्वपूर्ण युक्तियाँ जानें और क्रिप्टोकरेंसी लेनदेन में जोखिमों और धोखाधड़ी से कैसे बचें।",
+        navBlog: "ब्लॉग",
+        navHome: "होम",
+        breadHome: "होम",
+        breadBlog: "ब्लॉग",
+        breadTitle: "Pi Network बेचने में सुरक्षा और विश्वसनीयता",
+        metaDate: "📅 10 मार्च 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 मिनट पढ़ें",
+        h1: "Pi Network बेचने में सुरक्षा और विश्वसनीयता",
+        body: `
+            <p><strong>Pi Network</strong> में बढ़ती रुचि के साथ, दुनिया भर के कई उपयोगकर्ताओं ने अपने सिक्कों को USDT जैसी अन्य डिजिटल मुद्राओं में बदलने के तरीकों की तलाश शुरू कर दी है। हालांकि, क्रिप्टोकरेंसी बेचने की प्रक्रिया के लिए सुरक्षा सुनिश्चित करने और धोखाधड़ी से बचने के लिए उच्च स्तर की सावधानी की आवश्यकता होती है।</p>
+            <h2>क्रिप्टोकरेंसी लेनदेन में सुरक्षा क्यों महत्वपूर्ण है?</h2>
+            <p>डिजिटल मुद्राएं ब्लॉकचेन तकनीक पर निर्भर करती हैं, जो स्वाभाविक रूप से सुरक्षित है। लेकिन समस्या आमतौर पर नेटवर्क में नहीं होती है, बल्कि अविश्वसनीय पक्षों या अज्ञात प्लेटफॉर्म के साथ व्यवहार करने में होती है।</p>
+            <p>इसलिए, किसी भी डिजिटल मुद्रा को भेजने से पहले लेनदेन के स्रोत को सत्यापित करना हमेशा महत्वपूर्ण है।</p>
+            <h2>Pi को सुरक्षित रूप से बेचने के लिए शीर्ष युक्तियाँ</h2>
+            <ul>
+                <li>केवल विश्वसनीय प्लेटफॉर्म या मध्यस्थों के साथ डील करें।</li>
+                <li><strong>piprice</strong> जैसे संकेतकों के माध्यम से मुद्रा की वास्तविक कीमत सत्यापित करें।</li>
+                <li>भुगतान प्राप्त करने से पहले सिक्के न भेजें।</li>
+                <li>सुरक्षित डिजिटल वॉलेट का उपयोग करें।</li>
+            </ul>
+            <h2>अवास्तविक ऑफर से बचें</h2>
+            <p>कभी-कभी लोग Pi खरीदने के लिए बहुत उच्च कीमतें पेश कर सकते हैं। ये ऑफर धोखाधड़ी का प्रयास हो सकते हैं, इसलिए कीमत की वास्तविक बाजार कीमत से तुलना करना महत्वपूर्ण है।</p>
+            <h2>वॉलेट पता सत्यापित करें</h2>
+            <p>कोई भी डिजिटल मुद्रा भेजने से पहले, हमेशा सुनिश्चित करें कि वॉलेट पता सही है। गलत पते पर सिक्के भेजने से स्थायी नुकसान हो सकता है, क्योंकि ब्लॉकचेन नेटवर्क पर लेनदेन को उलटा नहीं किया जा सकता।</p>
+            <h2>सुरक्षित वॉलेट का उपयोग करना</h2>
+            <p>क्रिप्टोकरेंसी प्राप्त करते समय, <strong>Trust Wallet</strong> या <strong>Phantom</strong> जैसे ज्ञात वॉलेट का उपयोग करना पसंद किया जाता है। ये वॉलेट पुनर्प्राप्ति वाक्यांश और एन्क्रिप्शन जैसी अतिरिक्त सुरक्षा परतें प्रदान करते हैं।</p>
+            <div class="cta-box">
+                <h3>अभी Pi Network की कीमत ट्रैक करें</h3>
+                <p>किसी भी बिक्री को निष्पादित करने से पहले मुद्रा की लाइव कीमत जानने के लिए piprice इंडिकेटर का उपयोग करें।</p>
+                <a href="../index.html" class="cta-btn">अभी Pi कीमत देखें</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — सर्वाधिकार सुरक्षित"
+    },
+    fil: {
+        dir: "ltr",
+        flag: "🇵🇭",
+        name: "Filipino",
+        title: "Seguridad at Pagiging maaasahan sa pagbebenta ng Pi Network | PiPrice Blog",
+        desc: "Alamin ang mga pinakamahalagang tip upang matiyak ang seguridad kapag nagbebenta ng Pi Network at kung paano maiwasan ang mga panganib at pandaraya sa mga transaksyon ng cryptocurrency.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Seguridad sa pagbebenta ng Pi Network",
+        metaDate: "📅 Marso 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 minutong basahin",
+        h1: "Seguridad at Pagiging maaasahan sa pagbebenta ng Pi Network",
+        body: `
+            <p>Sa pagtaas ng interes sa <strong>Pi Network</strong>, maraming user sa buong mundo ay nagsimulang maghanap ng mga paraan upang i-convert ang kanilang mga coin sa iba pang mga digital currency tulad ng USDT. Gayunpaman, ang proseso ng pagbebenta ng mga cryptocurrency ay nangangailangan ng mataas na antas ng pag-iingat upang masiguro ang seguridad at maiwasan ang pagkahulog sa pandaraya.</p>
+            <h2>Bakit mahalaga ang seguridad sa mga transaksyon ng cryptocurrency?</h2>
+            <p>Ang mga digital currency ay umaasa sa blockchain technology, na likas na seguro. Ngunit ang problema ay karaniwang wala sa network mismo, kundi sa pakikitungo sa mga hindi mapagkakatiwalaang partido o mga hindi kilalang platform.</p>
+            <p>Samakatuwid, laging mahalagang i-verify ang pinanggalingan ng transaksyon bago magpadala ng anumang mga digital currency.</p>
+            <h2>Pangunahing tip para sa ligtas na pagbebenta ng Pi</h2>
+            <ul>
+                <li>Mag-transaksyon lamang sa mga pinagkakatiwalaang platform o intermediary.</li>
+                <li>I-verify ang tunay na presyo ng currency sa pamamagitan ng mga indicator tulad ng <strong>piprice</strong>.</li>
+                <li>Huwag magpadala ng mga coin bago makatanggap ng pagbabayad.</li>
+                <li>Gumamit ng mga secure na digital wallet.</li>
+            </ul>
+            <h2>Iwasan ang mga hindi makatotohanang alok</h2>
+            <p>Minsan ay maaaring mag-alok ang mga tao ng napakataas na presyo upang bumili ng Pi. Ang mga alok na ito ay maaaring isang pagtatangka sa pandaraya, kaya mahalagang ihambing ang presyo sa tunay na presyo sa merkado.</p>
+            <h2>I-verify ang wallet address</h2>
+            <p>Bago magpadala ng anumang digital currency, laging tiyaking ang wallet address ay tama. Ang pagpapadala ng mga coin sa maling address ay maaaring magresulta sa permanenteng pagkawala, dahil ang transaksyon ay hindi maaaring i-reverse sa blockchain network.</p>
+            <h2>Paggamit ng mga secure na wallet</h2>
+            <p>Iminumungkahi na gumamit ng mga kilalang wallet tulad ng <strong>Trust Wallet</strong> o <strong>Phantom</strong> kapag tumatanggap ng mga cryptocurrency. Ang mga wallet na ito ay nagbibigay ng karagdagang mga layer ng proteksyon tulad ng recovery phrases at encryption.</p>
+            <div class="cta-box">
+                <h3>Subaybayan ang Presyo ng Pi Network Ngayon</h3>
+                <p>Gamitin ang piprice indicator upang malaman ang live na presyo ng currency bago isagawa ang anumang pagbebenta.</p>
+                <a href="../index.html" class="cta-btn">Tingnan ang Presyo ng Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Ang Lahat ng Karapatan Ay Nakalaan"
+    }
+};
+
+// 2. وظائف التحكم
+function toggleLangMenu() {
+    const list = document.getElementById('langList');
+    list.classList.toggle('active');
+}
+
+document.addEventListener('click', function(e) {
+    const list = document.getElementById('langList');
+    const btn = document.getElementById('langBtn');
+    if (!btn.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('active');
+    }
+});
+
+function changeLang(langCode) {
+    localStorage.setItem("lang", langCode);
+    applyLang(langCode);
+    toggleLangMenu();
+}
+
+function applyLang(lang) {
+    if (!DATA[lang]) lang = 'ar';
+    
+    const d = DATA[lang];
+    
+    // تحديث الهيكل والاتجاه
+    document.documentElement.lang = lang;
+    document.documentElement.dir = d.dir;
+    
+    // تحديث النصوص
+    document.getElementById('page-title').innerText = d.title;
+    document.getElementById('page-desc').content = d.desc;
+    
+    document.getElementById('currentLangFlag').innerText = d.flag;
+    document.getElementById('currentLangText').innerText = d.name;
+    
+    document.getElementById('navBlog').innerText = d.navBlog;
+    document.getElementById('navHome').innerText = d.navHome;
+    
+    document.getElementById('breadHome').innerText = d.breadHome;
+    document.getElementById('breadBlog').innerText = d.breadBlog;
+    document.getElementById('breadTitle').innerText = d.breadTitle;
+    
+    document.getElementById('metaDate').innerText = d.metaDate;
+    document.getElementById('metaAuthor').innerText = d.metaAuthor;
+    document.getElementById('metaRead').innerText = d.metaRead;
+    
+    document.getElementById('articleH1').innerText = d.h1;
+    document.getElementById('articleBody').innerHTML = d.body;
+    
+    document.getElementById('footerCopy').innerText = d.footer;
+    
+    // تحديث حالة الزر
+    const links = document.querySelectorAll('.lang-list li a');
+    links.forEach(link => {
+        if (link.getAttribute('data-lang') === lang) {
+            link.classList.add('selected');
+        } else {
+            link.classList.remove('selected');
+        }
+    });
+}
+
+// تحميل اللغة المحفوظة
+let savedLang = localStorage.getItem("lang") || "ar";
+applyLang(savedLang);
+
+</script>
 </body>
 </html>
