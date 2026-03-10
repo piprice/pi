@@ -4,86 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>مقارنة سعر Pi على منصات التداول مقابل piprice | مدونة PiPrice</title>
-
-<meta name="description" content="تعرف على الفرق بين سعر Pi Network في منصات التداول العالمية وبين السعر المعروض عبر مؤشر piprice وكيف يمكن استخدامه لمعرفة السعر الحقيقي للعملة.">
+<!-- العناوين الافتراضية -->
+<title id="page-title">مقارنة سعر Pi على منصات التداول مقابل piprice | مدونة PiPrice</title>
+<meta name="description" id="page-desc" content="تعرف على الفرق بين سعر Pi Network في منصات التداول العالمية وبين السعر المعروض عبر مؤشر piprice وكيف يمكن استخدامه لمعرفة السعر الحقيقي للعملة.">
 
 <meta name="keywords" content="piprice, سعر pi اليوم, pi network price, سعر pi في المنصات, مقارنة سعر pi, سعر pi network, تداول pi">
-
 <link rel="canonical" href="https://piprice.store/blog/article-5.html">
-
 <meta name="robots" content="index, follow">
-
 <meta name="theme-color" content="#d4a017">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a07810'/%3E%3Cstop offset='50%25' stop-color='%23d4a017'/%3E%3Cstop offset='100%25' stop-color='%23f0c040'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='900' fill='%23080810'%CF%80%3C/text%3E%3C/svg%3E">
 
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Article",
- "mainEntityOfPage":{
-   "@type":"WebPage",
-   "@id":"https://piprice.store/blog/article-5.html"
- },
- "headline":"مقارنة سعر Pi على منصات التداول مقابل piprice",
- "description":"مقارنة بين السعر المتداول لعملة Pi Network في منصات التداول وبين مؤشر piprice المستخدم لمتابعة السعر المباشر.",
- "image":"https://raw.githubusercontent.com/piprice/pi/main/1010.png",
- "author":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "url":"https://piprice.store"
- },
- "publisher":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "logo":{
-     "@type":"ImageObject",
-     "url":"https://raw.githubusercontent.com/piprice/pi/main/1010.png"
-   }
- },
- "datePublished":"2026-03-10",
- "dateModified":"2026-03-10"
-}
-</script>
-
 <style>
-
 :root{
 --gold:#d4a017;
 --gold-light:#f0c040;
 --gold-dark:#a07810;
-
 --dark:#06060f;
 --dark2:#0d0d1c;
 --dark3:#141428;
-
 --surface:#18182e;
-
 --border:rgba(212,160,23,0.15);
-
 --text:#f0f0ff;
 --text-muted:#9090bb;
-
 --radius:18px;
-
 --shadow:0 12px 40px rgba(0,0,0,0.5);
-
 --font:'Tajawal',system-ui,sans-serif;
-
 --transition:0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
-*,*::before,*::after{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
 body{
 font-family:var(--font);
@@ -142,17 +96,91 @@ font-weight:900;
 color:var(--gold);
 }
 
+.nav-actions{
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
 .nav-links a{
 color:var(--text);
 text-decoration:none;
 font-size:14px;
 font-weight:700;
-margin-right:15px;
+/* دعم الاتجاهين */
+margin-inline-end:15px;
 transition:color var(--transition);
 }
 
-.nav-links a:hover{
-color:var(--gold);
+.nav-links a:hover{color:var(--gold);}
+
+/* قائمة اللغة */
+.lang-menu{
+position: relative;
+font-family: sans-serif;
+}
+
+.lang-btn{
+background: #141428;
+color: #fff;
+padding: 6px 10px;
+border-radius: 8px;
+border: 1px solid rgba(255,255,255,0.1);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+font-size: 12px;
+}
+
+.lang-list{
+position: absolute;
+top: 45px;
+left: 0;
+background: #141428;
+border-radius: 8px;
+list-style: none;
+padding: 5px 0;
+margin: 0;
+width: 140px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+z-index: 100;
+display: none;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+[dir="rtl"] .lang-list{
+left: auto;
+right: 0;
+}
+
+.lang-list.active{
+display: block;
+opacity: 1;
+transform: translateY(0);
+}
+
+.lang-list li a{
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 15px;
+color: #fff;
+text-decoration: none;
+font-size: 13px;
+transition: background 0.2s;
+}
+
+.lang-list li a:hover{
+background: #d4a017;
+color: #000;
+}
+
+.lang-list li a.selected{
+background: rgba(212, 160, 23, 0.2);
+color: #d4a017;
 }
 
 .breadcrumbs{
@@ -165,7 +193,6 @@ margin-bottom:20px;
 color:var(--gold);
 text-decoration:none;
 }
-
 .breadcrumbs a:hover{
 text-decoration:underline;
 }
@@ -192,10 +219,9 @@ color:var(--text-muted);
 margin-bottom:30px;
 padding-bottom:20px;
 border-bottom:1px solid var(--border);
-}
-
-.article-meta span{
-margin-left:15px;
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
 }
 
 .article-content h2{
@@ -212,8 +238,8 @@ margin-bottom:20px;
 }
 
 .article-content ul{
-margin:0 20px 20px 0;
-padding:0;
+margin:0 0 20px 0;
+padding-inline-start: 40px;
 color:var(--text-muted);
 font-size:16px;
 }
@@ -232,15 +258,15 @@ margin-top:40px;
 }
 
 .cta-box h3{
-color:var(--gold);
-font-size:20px;
-margin-bottom:10px;
+color: var(--gold);
+font-size: 20px;
+margin-bottom: 10px;
 }
 
 .cta-box p{
-color:var(--text);
-font-size:15px;
-margin-bottom:20px;
+color: var(--text);
+font-size: 15px;
+margin-bottom: 20px;
 }
 
 .cta-btn{
@@ -255,10 +281,8 @@ text-decoration:none;
 box-shadow:0 6px 20px rgba(212,160,23,0.4);
 transition:transform 0.2s;
 }
-
 .cta-btn:hover{
 transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(212,160,23,0.6);
 }
 
 footer{
@@ -268,7 +292,6 @@ color:var(--text-muted);
 font-size:12px;
 border-top:1px solid rgba(255,255,255,0.04);
 }
-
 </style>
 </head>
 
@@ -277,152 +300,402 @@ border-top:1px solid rgba(255,255,255,0.04);
 <div class="container">
 
 <header>
-
 <a href="../index.html" class="brand">
 <div class="pi-logo">π</div>
 <div class="brand-name">PiPrice</div>
 </a>
 
-<div class="nav-links">
-<a href="index.html">المدونة</a>
-<a href="../index.html">الرئيسية</a>
-</div>
+<div class="nav-actions">
+    <div class="nav-links">
+        <a href="index.html" id="navBlog">المدونة</a>
+        <a href="../index.html" id="navHome">الرئيسية</a>
+    </div>
 
+    <!-- زر تغيير اللغة -->
+    <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
+            <span id="currentLangFlag">🇸🇦</span>
+            <span id="currentLangText">العربية</span>
+            <span style="font-size:8px;">▼</span>
+        </button>
+        <ul class="lang-list" id="langList">
+            <li><a href="javascript:void(0)" data-lang="ar" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
+            <li><a href="javascript:void(0)" data-lang="en" onclick="changeLang('en')">🇬🇧 English</a></li>
+            <li><a href="javascript:void(0)" data-lang="fr" onclick="changeLang('fr')">🇫🇷 Français</a></li>
+            <li><a href="javascript:void(0)" data-lang="zh" onclick="changeLang('zh')">🇨🇳 中文</a></li>
+            <li><a href="javascript:void(0)" data-lang="hi" onclick="changeLang('hi')">🇮🇳 हिन्दी</a></li>
+            <li><a href="javascript:void(0)" data-lang="fil" onclick="changeLang('fil')">🇵🇭 Filipino</a></li>
+        </ul>
+    </div>
+</div>
 </header>
 
-<div class="breadcrumbs">
-
-<a href="../index.html">الرئيسية</a> » 
-<a href="index.html">المدونة</a> »
-مقارنة: سعر Pi على منصات التداول مقابل piprice
-
+<div class="breadcrumbs" id="breadcrumb">
+<a href="../index.html" id="breadHome">الرئيسية</a> » 
+<a href="index.html" id="breadBlog">المدونة</a> »
+<span id="breadTitle">مقارنة: سعر Pi على منصات التداول مقابل piprice</span>
 </div>
 
 <article class="article-content">
 
-<h1 class="article-title">
+<h1 class="article-title" id="articleH1">
 مقارنة: سعر Pi على منصات التداول مقابل piprice
 </h1>
 
 <div class="article-meta">
-<span>📅 10 مارس 2026</span>
-<span>✍️ PiPrice</span>
-<span>⏱️ وقت القراءة: 5 دقائق</span>
+<span id="metaDate">📅 10 مارس 2026</span>
+<span id="metaAuthor">✍️ PiPrice</span>
+<span id="metaRead">⏱️ 5 دقائق</span>
 </div>
 
-<p>
-
-مع ازدياد الاهتمام بعملة <strong>Pi Network</strong>، أصبح من الشائع أن يبحث المستخدمون عن السعر الحقيقي للعملة. ومع ذلك، قد يلاحظ الكثير من المتابعين أن السعر قد يختلف أحيانًا بين منصات التداول المختلفة وبين المؤشرات السعرية مثل piprice.
-
-</p>
-
-<p>
-
-لفهم هذا الاختلاف، من المهم معرفة كيفية تحديد السعر في كل حالة.
-
-</p>
-
-<h2>
-كيف يتم تحديد سعر Pi في منصات التداول؟
-</h2>
-
-<p>
-
-في منصات التداول مثل <strong>OKX</strong> أو <strong>MEXC</strong> يتم تحديد السعر بناءً على العرض والطلب. عندما يرغب عدد كبير من المستخدمين في شراء العملة يرتفع السعر، وعندما يزيد عدد البائعين ينخفض السعر.
-
-</p>
-
-<p>
-
-هذا يعني أن السعر في هذه المنصات يتغير بشكل مستمر وقد يتأثر بحجم التداول والسيولة المتوفرة.
-
-</p>
-
-<h2>
-ما هو مؤشر piprice؟
-</h2>
-
-<p>
-
-piprice هو مؤشر رقمي يهدف إلى تقديم تقدير تقريبي لسعر Pi بناءً على بيانات متعددة من السوق. بدلاً من الاعتماد على منصة واحدة فقط، يمكن للمؤشر تحليل الأسعار المتاحة في أكثر من مصدر لتقديم رؤية أوضح للسعر.
-
-</p>
-
-<p>
-
-هذا يساعد المستخدمين على فهم الاتجاه العام للسوق بدلاً من الاعتماد على مصدر واحد قد يكون متغيرًا بشكل كبير.
-
-</p>
-
-<h2>
-لماذا قد يختلف السعر؟
-</h2>
-
-<ul>
-
-<li>اختلاف حجم التداول بين المنصات.</li>
-
-<li>تفاوت السيولة في السوق.</li>
-
-<li>اختلاف مناطق التداول.</li>
-
-<li>تأثير الأخبار والتوقعات.</li>
-
-</ul>
-
-<p>
-
-في بعض الأحيان قد يظهر السعر أعلى في منصة معينة بسبب قلة العرض أو زيادة الطلب في تلك المنصة تحديدًا.
-
-</p>
-
-<h2>
-كيف تستخدم piprice لمتابعة السوق؟
-</h2>
-
-<p>
-
-يمكن استخدام مؤشر piprice كمرجع عام لمتابعة اتجاه السعر، حيث يعرض السعر التقريبي للعملة بناءً على البيانات المتاحة. هذا يسمح للمستخدمين بفهم الحركة العامة للسوق قبل اتخاذ قرار البيع أو الشراء.
-
-</p>
-
-<h2>
-أهمية متابعة السعر باستمرار
-</h2>
-
-<p>
-
-سوق العملات الرقمية يتغير بسرعة كبيرة، لذلك فإن متابعة السعر بشكل مستمر يمكن أن تساعد المستخدمين على اتخاذ قرارات أفضل. كما أن معرفة السعر الحقيقي تساعد في تجنب العروض غير الواقعية أو عمليات الاحتيال.
-
-</p>
-
-<div class="cta-box">
-
-<h3>
-تابع سعر Pi Network الآن
-</h3>
-
-<p>
-استخدم مؤشر piprice لمعرفة السعر المباشر للعملة ومتابعة تحركات السوق لحظة بلحظة.
-</p>
-
-<a href="../index.html" class="cta-btn">
-عرض سعر Pi الآن
-</a>
-
+<div id="articleBody">
+    <!-- المحتوى يتم تحميله بالجافاسكربت -->
 </div>
 
 </article>
 
 <footer>
-
-<p>
-© 2026 PiPrice — جميع الحقوق محفوظة
-</p>
-
+<p id="footerCopy">© 2026 PiPrice — جميع الحقوق محفوظة</p>
 </footer>
 
 </div>
 
+<script>
+// 1. بيانات الترجمة الكاملة للمقال الخامس
+const DATA = {
+    ar: {
+        dir: "rtl",
+        flag: "🇸🇦",
+        name: "العربية",
+        title: "مقارنة سعر Pi على منصات التداول مقابل piprice | مدونة PiPrice",
+        desc: "تعرف على الفرق بين سعر Pi Network في منصات التداول العالمية وبين السعر المعروض عبر مؤشر piprice وكيف يمكن استخدامه لمعرفة السعر الحقيقي للعملة.",
+        navBlog: "المدونة",
+        navHome: "الرئيسية",
+        breadHome: "الرئيسية",
+        breadBlog: "المدونة",
+        breadTitle: "مقارنة: سعر Pi على منصات التداول مقابل piprice",
+        metaDate: "📅 10 مارس 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 دقائق",
+        h1: "مقارنة: سعر Pi على منصات التداول مقابل piprice",
+        body: `
+            <p>مع ازدياد الاهتمام بعملة <strong>Pi Network</strong>، أصبح من الشائع أن يبحث المستخدمون عن السعر الحقيقي للعملة. ومع ذلك، قد يلاحظ الكثير من المتابعين أن السعر قد يختلف أحيانًا بين منصات التداول المختلفة وبين المؤشرات السعرية مثل piprice.</p>
+            <p>لفهم هذا الاختلاف، من المهم معرفة كيفية تحديد السعر في كل حالة.</p>
+            <h2>كيف يتم تحديد سعر Pi في منصات التداول؟</h2>
+            <p>في منصات التداول مثل <strong>OKX</strong> أو <strong>MEXC</strong> يتم تحديد السعر بناءً على العرض والطلب. عندما يرغب عدد كبير من المستخدمين في شراء العملة يرتفع السعر، وعندما يزيد عدد البائعين ينخفض السعر.</p>
+            <p>هذا يعني أن السعر في هذه المنصات يتغير بشكل مستمر وقد يتأثر بحجم التداول والسيولة المتوفرة.</p>
+            <h2>ما هو مؤشر piprice؟</h2>
+            <p>piprice هو مؤشر رقمي يهدف إلى تقديم تقدير تقريبي لسعر Pi بناءً على بيانات متعددة من السوق. بدلاً من الاعتماد على منصة واحدة فقط، يمكن للمؤشر تحليل الأسعار المتاحة في أكثر من مصدر لتقديم رؤية أوضح للسعر.</p>
+            <p>هذا يساعد المستخدمين على فهم الاتجاه العام للسوق بدلاً من الاعتماد على مصدر واحد قد يكون متغيرًا بشكل كبير.</p>
+            <h2>لماذا قد يختلف السعر؟</h2>
+            <ul>
+                <li>اختلاف حجم التداول بين المنصات.</li>
+                <li>تفاوت السيولة في السوق.</li>
+                <li>اختلاف مناطق التداول.</li>
+                <li>تأثير الأخبار والتوقعات.</li>
+            </ul>
+            <p>في بعض الأحيان قد يظهر السعر أعلى في منصة معينة بسبب قلة العرض أو زيادة الطلب في تلك المنصة تحديدًا.</p>
+            <h2>كيف تستخدم piprice لمتابعة السوق؟</h2>
+            <p>يمكن استخدام مؤشر piprice كمرجع عام لمتابعة اتجاه السعر، حيث يعرض السعر التقريبي للعملة بناءً على البيانات المتاحة. هذا يسمح للمستخدمين بفهم الحركة العامة للسوق قبل اتخاذ قرار البيع أو الشراء.</p>
+            <h2>أهمية متابعة السعر باستمرار</h2>
+            <p>سوق العملات الرقمية يتغير بسرعة كبيرة، لذلك فإن متابعة السعر بشكل مستمر يمكن أن تساعد المستخدمين على اتخاذ قرارات أفضل. كما أن معرفة السعر الحقيقي تساعد في تجنب العروض غير الواقعية أو عمليات الاحتيال.</p>
+            <div class="cta-box">
+                <h3>تابع سعر Pi Network الآن</h3>
+                <p>استخدم مؤشر piprice لمعرفة السعر المباشر للعملة ومتابعة تحركات السوق لحظة بلحظة.</p>
+                <a href="../index.html" class="cta-btn">عرض سعر Pi الآن</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — جميع الحقوق محفوظة"
+    },
+    en: {
+        dir: "ltr",
+        flag: "🇬🇧",
+        name: "English",
+        title: "Comparing Pi Price on Trading Platforms vs piprice | PiPrice Blog",
+        desc: "Learn about the difference between Pi Network price on global trading platforms and the price displayed via piprice indicator and how it can be used to know the real price of the currency.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Comparison: Pi Price on Platforms vs piprice",
+        metaDate: "📅 March 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 min read",
+        h1: "Comparison: Pi Price on Trading Platforms vs piprice",
+        body: `
+            <p>With the increasing interest in <strong>Pi Network</strong>, it has become common for users to search for the real price of the currency. However, many observers may notice that the price may sometimes differ between different trading platforms and price indicators like piprice.</p>
+            <p>To understand this difference, it is important to know how the price is determined in each case.</p>
+            <h2>How is Pi price determined on trading platforms?</h2>
+            <p>On trading platforms like <strong>OKX</strong> or <strong>MEXC</strong>, the price is determined based on supply and demand. When a large number of users want to buy the currency, the price rises, and when the number of sellers increases, the price falls.</p>
+            <p>This means that the price on these platforms changes continuously and may be affected by trading volume and available liquidity.</p>
+            <h2>What is the piprice indicator?</h2>
+            <p>piprice is a digital indicator that aims to provide an approximate estimate of the Pi price based on multiple market data. Instead of relying on only one platform, the indicator can analyze prices available in more than one source to provide a clearer view of the price.</p>
+            <p>This helps users understand the general market trend instead of relying on one source that may be highly variable.</p>
+            <h2>Why might the price differ?</h2>
+            <ul>
+                <li>Difference in trading volume between platforms.</li>
+                <li>Variation in market liquidity.</li>
+                <li>Different trading regions.</li>
+                <li>Impact of news and expectations.</li>
+            </ul>
+            <p>Sometimes the price may appear higher on a specific platform due to low supply or increased demand on that particular platform.</p>
+            <h2>How to use piprice to track the market?</h2>
+            <p>The piprice indicator can be used as a general reference to track price direction, displaying the approximate price of the currency based on available data. This allows users to understand the general market movement before making a buy or sell decision.</p>
+            <h2>Importance of continuous price tracking</h2>
+            <p>The cryptocurrency market changes very quickly, so continuous price tracking can help users make better decisions. Also, knowing the real price helps avoid unrealistic offers or fraud.</p>
+            <div class="cta-box">
+                <h3>Track Pi Network Price Now</h3>
+                <p>Use the piprice indicator to know the live price of the currency and track market movements moment by moment.</p>
+                <a href="../index.html" class="cta-btn">View Pi Price Now</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — All Rights Reserved"
+    },
+    fr: {
+        dir: "ltr",
+        flag: "🇫🇷",
+        name: "Français",
+        title: "Comparaison du prix du Pi sur les plateformes de trading vs piprice | Blog PiPrice",
+        desc: "Découvrez la différence entre le prix de Pi Network sur les plateformes de trading mondiales et le prix affiché via l'indicateur piprice et comment l'utiliser pour connaître le prix réel de la devise.",
+        navBlog: "Blog",
+        navHome: "Accueil",
+        breadHome: "Accueil",
+        breadBlog: "Blog",
+        breadTitle: "Comparaison: Prix du Pi sur les plateformes vs piprice",
+        metaDate: "📅 10 mars 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 min de lecture",
+        h1: "Comparaison: Prix du Pi sur les plateformes de trading vs piprice",
+        body: `
+            <p>Avec l'intérêt croissant pour <strong>Pi Network</strong>, il est devenu courant pour les utilisateurs de rechercher le prix réel de la devise. Cependant, de nombreux observateurs peuvent remarquer que le prix peut parfois différer entre différentes plateformes de trading et des indicateurs de prix comme piprice.</p>
+            <p>Pour comprendre cette différence, il est important de savoir comment le prix est déterminé dans chaque cas.</p>
+            <h2>Comment le prix du Pi est-il déterminé sur les plateformes de trading ?</h2>
+            <p>Sur les plateformes de trading comme <strong>OKX</strong> ou <strong>MEXC</strong>, le prix est déterminé en fonction de l'offre et de la demande. Lorsqu'un grand nombre d'utilisateurs souhaitent acheter la devise, le prix augmente, et lorsque le nombre de vendeurs augmente, le prix baisse.</p>
+            <p>Cela signifie que le prix sur ces plateformes change continuellement et peut être affecté par le volume des échanges et la liquidité disponible.</p>
+            <h2>Qu'est-ce que l'indicateur piprice ?</h2>
+            <p>piprice est un indicateur numérique qui vise à fournir une estimation approximative du prix du Pi basée sur plusieurs données de marché. Au lieu de s'appuyer sur une seule plateforme, l'indicateur peut analyser les prix disponibles dans plusieurs sources pour fournir une vue plus claire du prix.</p>
+            <p>Cela aide les utilisateurs à comprendre la tendance générale du marché au lieu de s'appuyer sur une seule source qui peut être très variable.</p>
+            <h2>Pourquoi le prix peut-il différer ?</h2>
+            <ul>
+                <li>Différence de volume de trading entre les plateformes.</li>
+                <li>Variation de la liquidité sur le marché.</li>
+                <li>Différentes régions de trading.</li>
+                <li>Impact des actualités et des attentes.</li>
+            </ul>
+            <p>Parfois, le prix peut apparaître plus élevé sur une plateforme spécifique en raison d'une faible offre ou d'une demande accrue sur cette plateforme particulière.</p>
+            <h2>Comment utiliser piprice pour suivre le marché ?</h2>
+            <p>L'indicateur piprice peut être utilisé comme référence générale pour suivre la tendance des prix, affichant le prix approximatif de la devise basé sur les données disponibles. Cela permet aux utilisateurs de comprendre le mouvement général du marché avant de prendre une décision d'achat ou de vente.</p>
+            <h2>Importance du suivi continu des prix</h2>
+            <p>Le marché des cryptomonnaies change très rapidement, donc le suivi continu des prix peut aider les utilisateurs à prendre de meilleures décisions. De plus, connaître le prix réel aide à éviter les offres irréalistes ou la fraude.</p>
+            <div class="cta-box">
+                <h3>Suivez le prix de Pi Network maintenant</h3>
+                <p>Utilisez l'indicateur piprice pour connaître le prix en direct de la devise et suivre les mouvements du marché instantanément.</p>
+                <a href="../index.html" class="cta-btn">Voir le prix du Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Tous droits réservés"
+    },
+    zh: {
+        dir: "ltr",
+        flag: "🇨🇳",
+        name: "中文",
+        title: "交易平台上的 Pi 价格与 piprice 的比较 | PiPrice 博客",
+        desc: "了解 Pi Network 在全球交易平台上的价格与 piprice 指标显示的价格之间的区别，以及如何使用它来了解货币的真实价格。",
+        navBlog: "博客",
+        navHome: "首页",
+        breadHome: "首页",
+        breadBlog: "博客",
+        breadTitle: "比较：平台上的 Pi 价格与 piprice",
+        metaDate: "📅 2026年3月10日",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5分钟阅读",
+        h1: "比较：交易平台上的 Pi 价格与 piprice",
+        body: `
+            <p>随着对 <strong>Pi Network</strong> 的兴趣日益增加，用户搜索货币真实价格已变得普遍。然而，许多观察者可能会注意到，不同交易平台上的价格与 piprice 等价格指标之间有时会有所不同。</p>
+            <p>要理解这种差异，重要的是要了解每种情况下价格是如何确定的。</p>
+            <h2>Pi 价格在交易平台上是如何确定的？</h2>
+            <p>在 <strong>OKX</strong> 或 <strong>MEXC</strong> 等交易平台上，价格是根据供需确定的。当大量用户想要购买货币时，价格上涨；当卖家数量增加时，价格下跌。</p>
+            <p>这意味着这些平台上的价格不断变化，可能会受到交易量和可用流动性的影响。</p>
+            <h2>什么是 piprice 指标？</h2>
+            <p>piprice 是一个数字指标，旨在根据多个市场数据提供 Pi 价格的大致估计。该指标不仅依赖一个平台，还可以分析多个来源的可用价格，以提供更清晰的价格视图。</p>
+            <p>这有助于用户了解市场的总体趋势，而不是依赖可能变化很大的单一来源。</p>
+            <h2>为什么价格可能会不同？</h2>
+            <ul>
+                <li>平台之间交易量的差异。</li>
+                <li>市场流动性的变化。</li>
+                <li>不同的交易区域。</li>
+                <li>新闻和预期的影响。</li>
+            </ul>
+            <p>有时，由于该特定平台上的供应不足或需求增加，价格可能会在特定平台上显示较高。</p>
+            <h2>如何使用 piprice 跟踪市场？</h2>
+            <p>piprice 指标可以用作跟踪价格趋势的一般参考，根据可用数据显示货币的大致价格。这允许用户在做出买入或卖出决定之前了解市场的总体走势。</p>
+            <h2>持续跟踪价格的重要性</h2>
+            <p>加密货币市场变化非常快，因此持续跟踪价格可以帮助用户做出更好的决策。此外，了解真实价格有助于避免不切实际的报价或欺诈。</p>
+            <div class="cta-box">
+                <h3>立即追踪 Pi Network 价格</h3>
+                <p>使用 piprice 指标了解货币的实时价格，并实时跟踪市场走势。</p>
+                <a href="../index.html" class="cta-btn">查看 Pi 价格</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — 版权所有"
+    },
+    hi: {
+        dir: "ltr",
+        flag: "🇮🇳",
+        name: "हिन्दी",
+        title: "ट्रेडिंग प्लेटफॉर्म पर Pi मूल्य vs piprice की तुलना | PiPrice ब्लॉग",
+        desc: "वैश्विक ट्रेडिंग प्लेटफॉर्म पर Pi Network की कीमत और piprice इंडिकेटर के माध्यम से प्रदर्शित कीमत के बीच अंतर जानें और जानें कि मुद्रा की वास्तविक कीमत जानने के लिए इसका उपयोग कैसे किया जा सकता है।",
+        navBlog: "ब्लॉग",
+        navHome: "होम",
+        breadHome: "होम",
+        breadBlog: "ब्लॉग",
+        breadTitle: "तुलना: प्लेटफॉर्म पर Pi मूल्य vs piprice",
+        metaDate: "📅 10 मार्च 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 मिनट पढ़ें",
+        h1: "तुलना: ट्रेडिंग प्लेटफॉर्म पर Pi मूल्य vs piprice",
+        body: `
+            <p><strong>Pi Network</strong> में बढ़ती रुचि के साथ, उपयोगकर्ताओं के लिए मुद्रा की वास्तविक कीमत खोजना आम हो गया है। हालांकि, कई पर्यवेक्षक ध्यान दे सकते हैं कि कीमत कभी-कभी विभिन्न ट्रेडिंग प्लेटफॉर्म और piprice जैसे मूल्य संकेतकों के बीच भिन्न हो सकती है।</p>
+            <p>इस अंतर को समझने के लिए, यह जानना महत्वपूर्ण है कि प्रत्येक मामले में कीमत कैसे निर्धारित की जाती है।</p>
+            <h2>ट्रेडिंग प्लेटफॉर्म पर Pi की कीमत कैसे निर्धारित होती है?</h2>
+            <p><strong>OKX</strong> या <strong>MEXC</strong> जैसे ट्रेडिंग प्लेटफॉर्म पर, कीमत आपूर्ति और मांग के आधार पर निर्धारित होती है। जब बड़ी संख्या में उपयोगकर्ता मुद्रा खरीदना चाहते हैं, तो कीमत बढ़ जाती है, और जब विक्रेताओं की संख्या बढ़ती है, तो कीमत गिर जाती है।</p>
+            <p>इसका मतलब है कि इन प्लेटफॉर्म पर कीमत लगातार बदलती रहती है और ट्रेडिंग वॉल्यूम और उपलब्ध लिक्विडिटी से प्रभावित हो सकती है।</p>
+            <h2>piprice इंडिकेटर क्या है?</h2>
+            <p>piprice एक डिजिटल इंडिकेटर है जिसका उद्देश्य कई बाजार डेटा के आधार पर Pi की कीमत का अनुमानित अनुमान प्रदान करना है। केवल एक प्लेटफॉर्म पर भरोसा करने के बजाय, इंडिकेटर कीमत की स्पष्ट दृश्य प्रदान करने के लिए एक से अधिक स्रोतों में उपलब्ध कीमतों का विश्लेषण कर सकता है।</p>
+            <p>यह उपयोगकर्ताओं को सामान्य बाजार रुझान को समझने में मदद करता है बजाय एक ऐसे स्रोत पर भरोसा करने के जो अत्यधिक परिवर्तनशील हो सकता है।</p>
+            <h2>कीमत अलग क्यों हो सकती है?</h2>
+            <ul>
+                <li>प्लेटफॉर्म के बीच ट्रेडिंग वॉल्यूम में अंतर।</li>
+                <li>बाजार में तरलता में भिन्नता।</li>
+                <li>विभिन्न ट्रेडिंग क्षेत्र।</li>
+                <li>समाचारों और अपेक्षाओं का प्रभाव।</li>
+            </ul>
+            <p>कभी-कभी कीमत एक विशिष्ट प्लेटफॉर्म पर उस विशेष प्लेटफॉर्म पर कम आपूर्ति या बढ़ी हुई मांग के कारण अधिक दिखाई दे सकती है।</p>
+            <h2>बाजार को ट्रैक करने के लिए piprice का उपयोग कैसे करें?</h2>
+            <p>piprice इंडिकेटर का उपयोग मूल्य दिशा को ट्रैक करने के लिए एक सामान्य संदर्भ के रूप में किया जा सकता है, जो उपलब्ध डेटा के आधार पर मुद्रा की अनुमानित कीमत प्रदर्शित करता है। यह उपयोगकर्ताओं को खरीद या बिक्री का निर्णय लेने से पहले सामान्य बाजार आंदोलन को समझने की अनुमति देता है।</p>
+            <h2>निरंतर मूल्य ट्रैकिंग का महत्व</h2>
+            <p>क्रिप्टोकरेंसी बाजार बहुत तेजी से बदलता है, इसलिए निरंतर मूल्य ट्रैकिंग उपयोगकर्ताओं को बेहतर निर्णय लेने में मदद कर सकती है। साथ ही, वास्तविक कीमत जानना अवास्तविक ऑफर या धोखाधड़ी से बचने में मदद करता है।</p>
+            <div class="cta-box">
+                <h3>अभी Pi Network की कीमत ट्रैक करें</h3>
+                <p>मुद्रा की लाइव कीमत जानने और पल-पल बाजार की गतिविधियों को ट्रैक करने के लिए piprice इंडिकेटर का उपयोग करें।</p>
+                <a href="../index.html" class="cta-btn">अभी Pi कीमत देखें</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — सर्वाधिकार सुरक्षित"
+    },
+    fil: {
+        dir: "ltr",
+        flag: "🇵🇭",
+        name: "Filipino",
+        title: "Paghahambing ng Presyo ng Pi sa Trading Platforms vs piprice | PiPrice Blog",
+        desc: "Alamin ang pagkakaiba sa pagitan ng presyo ng Pi Network sa mga global trading platform at ang presyong ipinapakita sa pamamagitan ng piprice indicator at kung paano ito gagamitin para malaman ang tunay na presyo ng currency.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Paghahambing: Pi Price sa Platforms vs piprice",
+        metaDate: "📅 Marso 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 minutong basahin",
+        h1: "Paghahambing: Presyo ng Pi sa Trading Platforms vs piprice",
+        body: `
+            <p>Sa pagtaas ng interes sa <strong>Pi Network</strong>, naging karaniwan para sa mga user na hanapin ang tunay na presyo ng currency. Gayunpaman, maraming taga-obserba ang maaaring mapansin na ang presyo ay maaaring minsang magkaiba sa pagitan ng iba't ibang mga trading platform at mga price indicator tulad ng piprice.</p>
+            <p>Upang maunawaan ang pagkakaibang ito, mahalagang malaman kung paano tinutukoy ang presyo sa bawat kaso.</p>
+            <h2>Paano tinutukoy ang presyo ng Pi sa mga trading platform?</h2>
+            <p>Sa mga trading platform tulad ng <strong>OKX</strong> o <strong>MEXC</strong>, ang presyo ay tinutukoy batay sa supply at demand. Kapag ang isang malaking bilang ng mga user ay nais na bumili ng currency, tumataas ang presyo, at kapag tumaas ang bilang ng mga nagbebenta, bababa ang presyo.</p>
+            <p>Ibig sabihin nito na ang presyo sa mga platform na ito ay patuloy na nagbabago at maaaring maapektuhan ng trading volume at available na liquidity.</p>
+            <h2>Ano ang piprice indicator?</h2>
+            <p>Ang piprice ay isang digital indicator na naglalayong magbigay ng tinatayang pagtatantya ng presyo ng Pi batay sa maraming data ng merkado. Sa halip na umasa lamang sa isang platform, maaaring suriin ng indicator ang mga presyong available sa higit sa isang source upang magbigay ng mas malinaw na tanaw ng presyo.</p>
+            <p>Nakakatulong ito sa mga user na maunawaan ang pangkalahatang uso ng merkado sa halip na umasa sa isang source na maaaring lubos na nagbabago.</p>
+            <h2>Bakit maaaring magkaiba ang presyo?</h2>
+            <ul>
+                <li>Pagkakaiba sa trading volume sa pagitan ng mga platform.</li>
+                <li>Pagkakaiba-iba ng liquidity sa merkado.</li>
+                <li>Iba't ibang rehiyon ng kalakalan.</li>
+                <li>Epekto ng balita at mga inaasahan.</li>
+            </ul>
+            <p>Minsan ang presyo ay maaaring lumabas na mas mataas sa isang partikular na platform dahil sa mababang supply o nadagdagan na demand sa partikular na platform na iyon.</p>
+            <h2>Paano gamitin ang piprice para subaybayan ang merkado?</h2>
+            <p>Ang piprice indicator ay maaaring gamitin bilang isang pangkalahatang sanggunian upang subaybayan ang direksyon ng presyo, na nagpapakita ng tinatayang presyo ng currency batay sa available na data. Ito ay nagpapahintulot sa mga user na maunawaan ang pangkalahatang kilos ng merkado bago gumawa ng desisyon sa pagbili o pagbebenta.</p>
+            <h2>Ang kahalagahan ng patuloy na pagsubaybay ng presyo</h2>
+            <p>Ang merkado ng cryptocurrency ay nagbabago nang napakabilis, kaya ang patuloy na pagsubaybay ng presyo ay makakatulong sa mga user na gumawa ng mas mabuting mga desisyon. Gayundin, ang pag-alam sa tunay na presyo ay tumutulong sa pag-iwas sa mga hindi makatotohanang alok o pandaraya.</p>
+            <div class="cta-box">
+                <h3>Subaybayan ang Presyo ng Pi Network Ngayon</h3>
+                <p>Gamitin ang piprice indicator upang malaman ang live na presyo ng currency at subaybayan ang mga kilos ng merkado sandali-sandali.</p>
+                <a href="../index.html" class="cta-btn">Tingnan ang Presyo ng Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Ang Lahat ng Karapatan Ay Nakalaan"
+    }
+};
+
+// 2. وظائف التحكم
+function toggleLangMenu() {
+    const list = document.getElementById('langList');
+    list.classList.toggle('active');
+}
+
+document.addEventListener('click', function(e) {
+    const list = document.getElementById('langList');
+    const btn = document.getElementById('langBtn');
+    if (!btn.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('active');
+    }
+});
+
+function changeLang(langCode) {
+    localStorage.setItem("lang", langCode);
+    applyLang(langCode);
+    toggleLangMenu();
+}
+
+function applyLang(lang) {
+    if (!DATA[lang]) lang = 'ar';
+    
+    const d = DATA[lang];
+    
+    // تحديث الهيكل والاتجاه
+    document.documentElement.lang = lang;
+    document.documentElement.dir = d.dir;
+    
+    // تحديث النصوص
+    document.getElementById('page-title').innerText = d.title;
+    document.getElementById('page-desc').content = d.desc;
+    
+    document.getElementById('currentLangFlag').innerText = d.flag;
+    document.getElementById('currentLangText').innerText = d.name;
+    
+    document.getElementById('navBlog').innerText = d.navBlog;
+    document.getElementById('navHome').innerText = d.navHome;
+    
+    document.getElementById('breadHome').innerText = d.breadHome;
+    document.getElementById('breadBlog').innerText = d.breadBlog;
+    document.getElementById('breadTitle').innerText = d.breadTitle;
+    
+    document.getElementById('metaDate').innerText = d.metaDate;
+    document.getElementById('metaAuthor').innerText = d.metaAuthor;
+    document.getElementById('metaRead').innerText = d.metaRead;
+    
+    document.getElementById('articleH1').innerText = d.h1;
+    document.getElementById('articleBody').innerHTML = d.body;
+    
+    document.getElementById('footerCopy').innerText = d.footer;
+    
+    // تحديث حالة الزر
+    const links = document.querySelectorAll('.lang-list li a');
+    links.forEach(link => {
+        if (link.getAttribute('data-lang') === lang) {
+            link.classList.add('selected');
+        } else {
+            link.classList.remove('selected');
+        }
+    });
+}
+
+// تحميل اللغة المحفوظة
+let savedLang = localStorage.getItem("lang") || "ar";
+applyLang(savedLang);
+
+</script>
 </body>
 </html>
