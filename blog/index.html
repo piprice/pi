@@ -336,6 +336,9 @@ header {
 }
 
 /* ===== CARD ===== */
+a.blog-card { color: inherit; text-decoration: none; display: block; }
+a.blog-card.featured { display: grid; }
+
 .blog-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -928,36 +931,38 @@ function renderArticles(lang) {
     const icon = ICONS[i] || '📄';
     const num = String(i + 1).padStart(2, '0');
 
+    const url = `https://piprice.store/blog/article-${a.id}.html`;
+
     if (a.featured) {
       html += `
-        <div class="blog-card featured" style="animation-delay:${i*0.07}s">
+        <a href="${url}" class="blog-card featured" style="animation-delay:${i*0.07}s;">
           <div class="card-glow-line"></div>
           <div class="card-content">
             <div class="card-number">— ${num}</div>
             <div class="card-title" style="font-size:20px;">${t}</div>
             <div class="card-desc">${d}</div>
-            <a href="https://piprice.store/blog/article-${a.id}.html" class="read-link">
+            <span class="read-link">
               <span>${ui.read}</span>
               <span class="read-arrow">→</span>
-            </a>
+            </span>
           </div>
           <div class="featured-visual">
             <div class="floating-pi">π</div>
           </div>
-        </div>`;
+        </a>`;
     } else {
       html += `
-        <div class="blog-card" style="animation-delay:${i*0.07}s">
+        <a href="${url}" class="blog-card" style="animation-delay:${i*0.07}s;">
           <div class="card-glow-line"></div>
           <div class="card-number">— ${num}</div>
           <div class="card-icon">${icon}</div>
           <div class="card-title">${t}</div>
           <div class="card-desc">${d}</div>
-          <a href="https://piprice.store/blog/article-${a.id}.html" class="read-link">
+          <span class="read-link">
             <span>${ui.read}</span>
             <span class="read-arrow">→</span>
-          </a>
-        </div>`;
+          </span>
+        </a>`;
     }
   });
 
