@@ -11,7 +11,7 @@
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#d4a017">
 
-<link rel="canonical" href="https://piprice.store/about.html">
+<link rel="canonical" href="https://piprice.store/pages/about.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -487,42 +487,42 @@ font-size:20px;
 <div class="lang-content active" id="content-ar">
 <h1 class="redirect-title">جاري التحويل...</h1>
 <p class="redirect-desc">يرجى الانتظار، يتم تحويلك إلى الصفحة المطلوبة.</p>
-<p class="manual-link">إذا لم يتم تحويلك تلقائياً، <a href="https://piprice.store/about.html?lang=ar">اضغط هنا</a>.</p>
+<p class="manual-link">إذا لم يتم تحويلك تلقائياً، <a href="https://piprice.store/pages/about.html?lang=ar">اضغط هنا</a>.</p>
 </div>
 
 <!-- English -->
 <div class="lang-content" id="content-en">
 <h1 class="redirect-title">Redirecting...</h1>
 <p class="redirect-desc">Please wait, you are being redirected to the requested page.</p>
-<p class="manual-link">If you are not redirected automatically, <a href="https://piprice.store/about.html?lang=en">click here</a>.</p>
+<p class="manual-link">If you are not redirected automatically, <a href="https://piprice.store/pages/about.html?lang=en">click here</a>.</p>
 </div>
 
 <!-- Chinese -->
 <div class="lang-content" id="content-zh">
 <h1 class="redirect-title">正在跳转...</h1>
 <p class="redirect-desc">请稍候，正在将您重定向到请求的页面。</p>
-<p class="manual-link">如果您没有被自动重定向，<a href="https://piprice.store/about.html?lang=zh">请点击这里</a>。</p>
+<p class="manual-link">如果您没有被自动重定向，<a href="https://piprice.store/pages/about.html?lang=zh">请点击这里</a>。</p>
 </div>
 
 <!-- Filipino -->
 <div class="lang-content" id="content-ph">
 <h1 class="redirect-title">Nagre-redirect...</h1>
 <p class="redirect-desc">Mangyaring maghintay, hinihila ka sa hiniling na pahina.</p>
-<p class="manual-link">Kung hindi ka awtomatikong na-redirect, <a href="https://piprice.store/about.html?lang=ph">mag-click dito</a>.</p>
+<p class="manual-link">Kung hindi ka awtomatikong na-redirect, <a href="https://piprice.store/pages/about.html?lang=ph">mag-click dito</a>.</p>
 </div>
 
 <!-- Hindi -->
 <div class="lang-content" id="content-in">
 <h1 class="redirect-title">पुनर्निर्देशित हो रहा है...</h1>
 <p class="redirect-desc">कृपया प्रतीक्षा करें, आपको अनुरोधित पृष्ठ पर पुनर्निर्देशित किया जा रहा है।</p>
-<p class="manual-link">यदि आप स्वचालित रूप से पुनर्निर्देशित नहीं हुए, <a href="https://piprice.store/about.html?lang=in">तो यहां क्लिक करें</a>।</p>
+<p class="manual-link">यदि आप स्वचालित रूप से पुनर्निर्देशित नहीं हुए, <a href="https://piprice.store/pages/about.html?lang=in">तो यहां क्लिक करें</a>।</p>
 </div>
 
 <!-- French -->
 <div class="lang-content" id="content-fr">
 <h1 class="redirect-title">Redirection...</h1>
 <p class="redirect-desc">Veuillez patienter, vous êtes redirigé vers la page demandée.</p>
-<p class="manual-link">Si vous n'êtes pas redirigé automatiquement, <a href="https://piprice.store/about.html?lang=fr">cliquez ici</a>.</p>
+<p class="manual-link">Si vous n'êtes pas redirigé automatiquement, <a href="https://piprice.store/pages/about.html?lang=fr">cliquez ici</a>.</p>
 </div>
 
 </div>
@@ -546,15 +546,13 @@ const titles = {
   fr: 'Redirection... | PiPrice'
 };
 
-// Target URLs for each language
-const targetUrls = {
-  ar: 'https://piprice.store/about.html?lang=ar',
-  en: 'https://piprice.store/about.html?lang=en',
-  zh: 'https://piprice.store/about.html?lang=zh',
-  ph: 'https://piprice.store/about.html?lang=ph',
-  in: 'https://piprice.store/about.html?lang=in',
-  fr: 'https://piprice.store/about.html?lang=fr'
-};
+// Target URL - صفحة "من نحن"
+const baseUrl = 'https://piprice.store/pages/about.html';
+
+// بناء روابط التحويل حسب اللغة
+function getTargetUrl(lang) {
+  return baseUrl + '?lang=' + lang;
+}
 
 let currentLang = 'ar';
 let redirectTimeout = null;
@@ -597,9 +595,9 @@ function setLanguage(lang) {
   document.querySelectorAll('.lang-dropdown a').forEach(a => a.classList.remove('active'));
   document.querySelector('.lang-dropdown a[onclick="setLanguage(\'' + lang + '\')"]').classList.add('active');
   
-  // Update manual links
+  // Update manual links with correct language
   document.querySelectorAll('.manual-link a').forEach(link => {
-    link.href = targetUrls[lang];
+    link.href = getTargetUrl(lang);
   });
   
   // Close dropdown
@@ -617,9 +615,9 @@ function setLanguage(lang) {
   progressBar.offsetHeight; // Trigger reflow
   progressBar.style.animation = 'progressAnim 2s ease-out forwards';
   
-  // Set new redirect timeout
+  // Set new redirect timeout - تحويل تلقائي بعد 2.5 ثانية
   redirectTimeout = setTimeout(function() {
-    window.location.replace(targetUrls[lang]);
+    window.location.replace(getTargetUrl(lang));
   }, 2500);
   
   return false;
@@ -632,7 +630,7 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// Load saved language on page load
+// Load saved language on page load and start redirect
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
   const urlLang = urlParams.get('lang');
