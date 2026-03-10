@@ -209,23 +209,57 @@ header {
   background:#d4a017;
   color:#000;
 } 
-#piqr canvas{
-display:block;
-margin:auto;
-padding:10px;
+
+/* ═══════════════════════════════════════════
+   QR CODE STYLES (MODIFIED)
+═══════════════════════════════════════════ */
+.qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: rgba(0,0,0,0.2);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+  transition: border-color var(--transition);
+  text-align: center;
 }
- .qr-box canvas{
-width:100% !important;
-height:auto !important;
-padding:14px;
-background:#000;
-border-radius:16px;
-border:3px solid var(--gold);
-box-shadow:0 0 0 6px rgba(212,160,23,0.08),0 0 40px rgba(212,160,23,0.3);
-display:block;
-margin:0 auto;
-transition:transform var(--transition),box-shadow var(--transition);
+.qr-box:hover {
+  border-color: rgba(212,160,23,0.4);
 }
+.qr-box p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+#piqr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+#piqr canvas, #piqr img {
+  width: 220px !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+  padding: 12px;
+  background: #ffffff !important; 
+  border-radius: 16px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 0 4px rgba(212,160,23,0.1), 0 10px 30px rgba(0,0,0,0.5);
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+#piqr:hover canvas, #piqr:hover img {
+  transform: scale(1.06) translateY(-4px);
+  box-shadow: 0 0 0 6px rgba(212,160,23,0.2), 0 15px 40px rgba(212,160,23,0.3);
+}
+
 /* ═══════════════════════════════════════════
    TRUST BAR
 ═══════════════════════════════════════════ */
@@ -625,37 +659,6 @@ transition:transform var(--transition),box-shadow var(--transition);
 .btn-copy:hover{background:rgba(212,160,23,0.18);border-color:var(--gold);transform:translateY(-1px)}
 .btn-copy:active{transform:scale(0.98)}
 
-.qr-box {
-  text-align:center;
-  padding:0;
-  background:rgba(0,0,0,0.2);
-  border-radius:var(--radius);
-  border:1px solid var(--border);
-  margin-bottom:10px;
-  transition:border-color var(--transition);
-}
-.qr-box:hover{border-color:rgba(212,160,23,0.3)}
-.qr-box p{font-size:13px;color:var(--text-muted);margin-bottom:14px}
-.qr-box canvas{
-  width:260px;
-  height:260px;
-  max-width:100%;
-  padding:14px;
-  background:#000;
-  border-radius:16px;
-  border:3px solid var(--gold);
-  box-shadow:0 0 0 6px rgba(212,160,23,0.08),0 0 40px rgba(212,160,23,0.3);
-  display:block;
-  margin:0 auto;
-  transition:transform var(--transition),box-shadow var(--transition);
-}
-
-.qr-box canvas:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 0 8px rgba(212,160,23,0.12),0 0 60px rgba(212,160,23,0.4);
-}
-.qr-box img:hover{transform:scale(1.03);box-shadow:0 0 0 8px rgba(212,160,23,0.12),0 0 60px rgba(212,160,23,0.4)}
-
 .wallet-hint{font-size:12px;padding:8px 12px;border-radius:6px;margin-top:8px;display:none}
 .wallet-hint.ok{background:rgba(34,197,94,0.1);color:#86efac;border:1px solid rgba(34,197,94,0.2)}
 .wallet-hint.warn{background:rgba(239,68,68,0.1);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)}
@@ -917,7 +920,6 @@ transition:transform var(--transition),box-shadow var(--transition);
 .share-btn.wa{background:#25d366}
 .share-btn.cp{background:rgba(212,160,23,0.1);border:1px solid var(--border);color:var(--gold)}
 .copy-feedback{font-size:12px;color:var(--success);margin-top:12px;min-height:18px;transition:opacity 0.3s;opacity:0}
-
 
 /* ═══════════════════════════════════════════
    FOOTER
@@ -1200,14 +1202,17 @@ footer {
       <button type="button" class="btn-copy" id="btn-copy-addr">
         <span>📋</span><span id="txt-copy-lbl">نسخ العنوان</span>
       </button>
-<div class="qr-box">
-  <p id="lbl-qr">امسح رمز QR لنسخ العنوان</p>
-  <div id="piqr"
-       role="img"
-       aria-label="piprice - سعر Pi اليوم ومحفظة Al Ansari لتحويل عملة Pi Network"
-       title="piprice - Al Ansari Pi Exchange Dubai">
-  </div>
-</div>
+      
+      <div class="qr-box">
+        <p id="lbl-qr">امسح رمز QR لنسخ العنوان</p>
+        <div id="piqr"
+             role="img"
+             aria-label="piprice - سعر Pi اليوم ومحفظة Al Ansari لتحويل عملة Pi Network"
+             title="https://piprice.store/">
+        </div>
+      </div>
+      
+    </div>
     <div class="form-group">
       <label id="lbl-uwallet" for="userWallet">📥 عنوان محفظتك USDT (شبكة Solana)</label>
       <div class="input-wrap">
@@ -2219,20 +2224,18 @@ var App=(function(){
 
 document.addEventListener('DOMContentLoaded',function(){App.init();});
 </script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 
 <script>
 new QRCode(document.getElementById("piqr"), {
-text: "https://wallet.pinet.com/pay-request?publicKey=GDCPYOJXJGCEZBBANLOMDINPXDHZZZYIWGMHLJIL2BMNRQ743B2BKASN&name=%40nasrapp",
-width: 260,
-height: 260,
-colorDark: "#6f3fa5",
-colorLight: "#ffffff",
-correctLevel: QRCode.CorrectLevel.H
+  text: "https://wallet.pinet.com/pay-request?publicKey=GDCPYOJXJGCEZBBANLOMDINPXDHZZZYIWGMHLJIL2BMNRQ743B2BKASN&name=%40nasrapp",
+  width: 260,
+  height: 260,
+  colorDark: "#000000",
+  colorLight: "#ffffff",
+  correctLevel: QRCode.CorrectLevel.H
 });
 </script>
 
-</body>
-</html>
 </body>
 </html>
