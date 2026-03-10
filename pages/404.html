@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>404 - الصفحة غير موجودة | PiPrice</title>
+
+<meta name="description" content="عذراً، الصفحة التي تبحث عنها غير موجودة.">
+
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#d4a017">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a07810'/%3E%3Cstop offset='50%25' stop-color='%23d4a017'/%3E%3Cstop offset='100%25' stop-color='%23f0c040'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='900' fill='%23080810'%CF%80%3C/text%3E%3C/svg%3E">
+
+<style>
+
+:root{
+--gold:#d4a017;
+--gold-light:#f0c040;
+--gold-dark:#a07810;
+
+--dark:#06060f;
+--dark2:#0d0d1c;
+--dark3:#141428;
+
+--surface:#18182e;
+
+--border:rgba(212,160,23,0.15);
+
+--text:#f0f0ff;
+--text-muted:#9090bb;
+
+--radius:18px;
+
+--shadow:0 12px 40px rgba(0,0,0,0.5);
+
+--font:'Tajawal',system-ui,sans-serif;
+
+--transition:0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+*,*::before,*::after{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:var(--font);
+color:var(--text);
+background:var(--dark);
+min-height:100vh;
+overflow:hidden;
+background-image: radial-gradient(ellipse 120% 60% at 50% -10%, rgba(212,160,23,0.07) 0%, transparent 60%);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+body.lang-en, body.lang-fr{
+font-family:'Inter',system-ui,sans-serif;
+direction:ltr;
+}
+
+body.lang-zh{
+font-family:'Noto Sans SC',system-ui,sans-serif;
+direction:ltr;
+}
+
+body.lang-in{
+font-family:'Noto Sans Devanagari',system-ui,sans-serif;
+direction:ltr;
+}
+
+body.lang-ph{
+font-family:'Inter',system-ui,sans-serif;
+direction:ltr;
+}
+
+/* Animation Container */
+.animation-container{
+position:relative;
+width:100%;
+max-width:600px;
+height:300px;
+margin-bottom:30px;
+overflow:hidden;
+}
+
+/* Ground */
+.ground{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+height:60px;
+background:linear-gradient(to top, var(--dark2), transparent);
+border-top:2px solid var(--border);
+}
+
+/* Pi Coin */
+.pi-coin{
+position:absolute;
+bottom:60px;
+left:50%;
+width:100px;
+height:100px;
+transform:translateX(-50%);
+z-index:10;
+animation: piWin 3s ease-in-out infinite;
+}
+
+.pi-coin .coin{
+width:100px;
+height:100px;
+border-radius:50%;
+background:conic-gradient(from 0deg, #a07810, #d4a017, #f0c040, #d4a017, #a07810);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:50px;
+font-weight:900;
+color:var(--dark);
+box-shadow:0 10px 40px rgba(212,160,23,0.5);
+animation: coinShine 2s linear infinite;
+}
+
+.pi-coin .arms{
+position:absolute;
+width:140px;
+height:20px;
+top:40px;
+left:-20px;
+}
+
+.pi-coin .arm{
+position:absolute;
+width:40px;
+height:8px;
+background:var(--gold);
+border-radius:4px;
+animation: armsUp 0.5s ease-out infinite alternate;
+}
+
+.pi-coin .arm.left{
+left:0;
+transform:rotate(-45deg);
+transform-origin:right center;
+}
+
+.pi-coin .arm.right{
+right:0;
+transform:rotate(45deg);
+transform-origin:left center;
+}
+
+.pi-coin .face{
+position:absolute;
+top:15px;
+left:50%;
+transform:translateX(-50%);
+font-size:16px;
+animation: happyFace 0.3s ease-in-out infinite alternate;
+}
+
+/* Sparkles */
+.sparkle{
+position:absolute;
+font-size:20px;
+animation: sparkleAnim 1s ease-in-out infinite;
+opacity:0;
+}
+
+.sparkle:nth-child(1){top:20px;left:10px;animation-delay:0s;}
+.sparkle:nth-child(2){top:10px;right:10px;animation-delay:0.2s;}
+.sparkle:nth-child(3){top:40px;left:-10px;animation-delay:0.4s;}
+.sparkle:nth-child(4){top:30px;right:-10px;animation-delay:0.6s;}
+.sparkle:nth-child(5){top:0;left:50%;animation-delay:0.8s;}
+
+/* Bitcoin */
+.bitcoin{
+position:absolute;
+bottom:60px;
+left:-100px;
+width:70px;
+height:70px;
+z-index:5;
+animation: bitcoinChase 3s ease-in-out infinite;
+}
+
+.bitcoin .coin{
+width:70px;
+height:70px;
+border-radius:50%;
+background:linear-gradient(135deg, #f7931a, #ffb84d);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+font-weight:900;
+color:white;
+box-shadow:0 5px 20px rgba(247,147,26,0.5);
+}
+
+.bitcoin .sweat{
+position:absolute;
+top:5px;
+right:5px;
+font-size:12px;
+animation: sweat 0.5s ease-in-out infinite;
+}
+
+/* Victory Text */
+.victory-text{
+position:absolute;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+font-size:24px;
+color:var(--gold);
+font-weight:900;
+opacity:0;
+animation: victoryShow 3s ease-in-out infinite;
+}
+
+/* Dust Trail */
+.dust{
+position:absolute;
+bottom:70px;
+left:30%;
+width:20px;
+height:20px;
+background:rgba(212,160,23,0.3);
+border-radius:50%;
+animation: dustCloud 0.5s ease-out infinite;
+}
+
+.dust:nth-child(2){animation-delay:0.1s;left:35%;}
+.dust:nth-child(3){animation-delay:0.2s;left:40%;}
+
+/* Content */
+.content{
+text-align:center;
+padding:20px;
+z-index:100;
+}
+
+.error-code{
+font-size:120px;
+font-weight:900;
+color:var(--gold);
+line-height:1;
+text-shadow:0 10px 30px rgba(212,160,23,0.3);
+animation: bounce 2s ease-in-out infinite;
+}
+
+.error-title{
+font-size:28px;
+color:var(--text);
+margin:20px 0 10px;
+font-weight:800;
+}
+
+.error-desc{
+font-size:16px;
+color:var(--text-muted);
+margin-bottom:30px;
+max-width:400px;
+}
+
+.home-btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+background:linear-gradient(135deg,var(--gold-dark)0%,var(--gold)50%,var(--gold-light)100%);
+color:var(--dark);
+padding:14px 35px;
+border-radius:30px;
+font-size:16px;
+font-weight:900;
+text-decoration:none;
+box-shadow:0 6px 20px rgba(212,160,23,0.4);
+transition:transform 0.2s, box-shadow 0.2s;
+}
+
+.home-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(212,160,23,0.6);
+}
+
+/* Language Selector */
+.lang-selector{
+position:fixed;
+top:20px;
+left:20px;
+z-index:1000;
+}
+
+body.lang-en .lang-selector,
+body.lang-fr .lang-selector,
+body.lang-zh .lang-selector,
+body.lang-in .lang-selector,
+body.lang-ph .lang-selector{
+left:auto;
+right:20px;
+}
+
+.lang-btn{
+background:rgba(14,14,28,0.85);
+backdrop-filter:blur(24px);
+border:1px solid var(--border);
+border-radius:12px;
+padding:10px 16px;
+color:var(--gold);
+font-size:14px;
+font-weight:700;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:8px;
+transition:all var(--transition);
+font-family:inherit;
+}
+
+.lang-btn:hover{
+background:rgba(212,160,23,0.2);
+}
+
+.lang-btn::after{
+content:'▼';
+font-size:10px;
+}
+
+.lang-dropdown{
+position:absolute;
+top:100%;
+right:0;
+margin-top:8px;
+background:var(--dark2);
+border:1px solid var(--border);
+border-radius:var(--radius);
+min-width:180px;
+box-shadow:var(--shadow);
+z-index:1000;
+display:none;
+overflow:hidden;
+}
+
+body.lang-en .lang-dropdown,
+body.lang-fr .lang-dropdown,
+body.lang-zh .lang-dropdown,
+body.lang-in .lang-dropdown,
+body.lang-ph .lang-dropdown{
+right:auto;
+left:0;
+}
+
+.lang-dropdown.active{
+display:block;
+}
+
+.lang-dropdown a{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px 16px;
+color:var(--text);
+text-decoration:none;
+font-size:14px;
+font-weight:500;
+transition:all var(--transition);
+}
+
+.lang-dropdown a:hover{
+background:rgba(212,160,23,0.1);
+color:var(--gold);
+}
+
+.lang-dropdown a.active{
+background:rgba(212,160,23,0.15);
+color:var(--gold);
+}
+
+/* Animations */
+@keyframes piWin{
+0%, 10%{
+left:50%;
+bottom:60px;
+}
+30%{
+left:60%;
+bottom:60px;
+}
+50%{
+left:60%;
+bottom:120px;
+}
+70%{
+left:60%;
+bottom:100px;
+}
+100%{
+left:50%;
+bottom:60px;
+}
+}
+
+@keyframes coinShine{
+0%{filter:brightness(1);}
+50%{filter:brightness(1.2);}
+100%{filter:brightness(1);}
+}
+
+@keyframes armsUp{
+0%{transform:rotate(-60deg) translateY(0);}
+100%{transform:rotate(-70deg) translateY(-5px);}
+}
+
+@keyframes happyFace{
+0%{transform:translateX(-50%) scale(1);}
+100%{transform:translateX(-50%) scale(1.1);}
+}
+
+@keyframes sparkleAnim{
+0%, 100%{opacity:0;transform:scale(0.5);}
+50%{opacity:1;transform:scale(1);}
+}
+
+@keyframes bitcoinChase{
+0%{
+left:-100px;
+bottom:60px;
+}
+20%{
+left:20%;
+bottom:60px;
+}
+40%{
+left:30%;
+bottom:80px;
+}
+60%{
+left:25%;
+bottom:60px;
+}
+80%{
+left:10%;
+bottom:60px;
+}
+100%{
+left:-100px;
+bottom:60px;
+}
+}
+
+@keyframes sweat{
+0%, 100%{opacity:1;transform:translateY(0);}
+50%{opacity:0.5;transform:translateY(5px);}
+}
+
+@keyframes victoryShow{
+0%, 30%{opacity:0;transform:translateX(-50%) translateY(20px);}
+50%, 80%{opacity:1;transform:translateX(-50%) translateY(0);}
+100%{opacity:0;transform:translateX(-50%) translateY(-20px);}
+}
+
+@keyframes dustCloud{
+0%{opacity:0.5;transform:scale(0.5);}
+100%{opacity:0;transform:scale(1.5) translateY(-20px);}
+}
+
+@keyframes bounce{
+0%, 100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+/* Language Content */
+.lang-content{
+display:none;
+}
+
+.lang-content.active{
+display:block;
+}
+
+/* Mobile */
+@media (max-width:500px){
+.error-code{
+font-size:80px;
+}
+.error-title{
+font-size:22px;
+}
+.animation-container{
+height:250px;
+}
+.pi-coin{
+width:80px;
+height:80px;
+}
+.pi-coin .coin{
+width:80px;
+height:80px;
+font-size:40px;
+}
+.bitcoin{
+width:50px;
+height:50px;
+}
+.bitcoin .coin{
+width:50px;
+height:50px;
+font-size:25px;
+}
+.victory-text{
+font-size:18px;
+}
+}
+
+</style>
+</head>
+
+<body class="lang-ar">
+
+<!-- Language Selector -->
+<div class="lang-selector">
+<button class="lang-btn" onclick="toggleLangDropdown()">
+<span>🇸🇦 العربية</span>
+</button>
+<div class="lang-dropdown" id="langDropdown">
+<a href="#" onclick="setLanguage('ar')" class="active"><span>🇸🇦</span> العربية</a>
+<a href="#" onclick="setLanguage('en')"><span>🇬🇧</span> English</a>
+<a href="#" onclick="setLanguage('zh')"><span>🇨🇳</span> 中文</a>
+<a href="#" onclick="setLanguage('ph')"><span>🇵🇭</span> Filipino</a>
+<a href="#" onclick="setLanguage('in')"><span>🇮🇳</span> हिन्दी</a>
+<a href="#" onclick="setLanguage('fr')"><span>🇫🇷</span> Français</a>
+</div>
+</div>
+
+<!-- Animation Container -->
+<div class="animation-container">
+
+<!-- Victory Text -->
+<div class="victory-text">🎉 PI Wins! 🎉</div>
+
+<!-- Sparkles around Pi -->
+<div class="sparkle">✨</div>
+<div class="sparkle">⭐</div>
+<div class="sparkle">✨</div>
+<div class="sparkle">⭐</div>
+<div class="sparkle">✨</div>
+
+<!-- Pi Coin -->
+<div class="pi-coin">
+<div class="coin">π</div>
+<div class="arms">
+<div class="arm left"></div>
+<div class="arm right"></div>
+</div>
+<div class="face">😄</div>
+</div>
+
+<!-- Bitcoin chasing -->
+<div class="bitcoin">
+<div class="coin">₿</div>
+<div class="sweat">💧</div>
+</div>
+
+<!-- Dust trail -->
+<div class="dust"></div>
+<div class="dust"></div>
+<div class="dust"></div>
+
+<!-- Ground -->
+<div class="ground"></div>
+
+</div>
+
+<!-- Content -->
+<div class="content">
+
+<!-- Arabic -->
+<div class="lang-content active" id="content-ar">
+<div class="error-code">404</div>
+<h1 class="error-title">عذراً، هذه الصفحة غير موجودة!</h1>
+<p class="error-desc">يبدو أن الصفحة التي تبحث عنها قد تم نقلها أو حذفها أو غير موجودة.</p>
+<a href="https://piprice.store/?lang=ar" class="home-btn">
+<span>🏠</span>
+العودة للصفحة الرئيسية
+</a>
+</div>
+
+<!-- English -->
+<div class="lang-content" id="content-en">
+<div class="error-code">404</div>
+<h1 class="error-title">Oops! Page Not Found</h1>
+<p class="error-desc">It looks like the page you're looking for has been moved, deleted, or doesn't exist.</p>
+<a href="https://piprice.store/?lang=en" class="home-btn">
+<span>🏠</span>
+Back to Homepage
+</a>
+</div>
+
+<!-- Chinese -->
+<div class="lang-content" id="content-zh">
+<div class="error-code">404</div>
+<h1 class="error-title">抱歉，页面未找到！</h1>
+<p class="error-desc">您寻找的页面可能已被移动、删除或不存在。</p>
+<a href="https://piprice.store/?lang=zh" class="home-btn">
+<span>🏠</span>
+返回首页
+</a>
+</div>
+
+<!-- Filipino -->
+<div class="lang-content" id="content-ph">
+<div class="error-code">404</div>
+<h1 class="error-title">Paumanhin, Hindi Nahanap ang Pahina!</h1>
+<p class="error-desc">Mukhang ang pahinang hinahanap mo ay nailipat, tinanggal, o hindi umiiral.</p>
+<a href="https://piprice.store/?lang=ph" class="home-btn">
+<span>🏠</span>
+Bumalik sa Homepage
+</a>
+</div>
+
+<!-- Hindi -->
+<div class="lang-content" id="content-in">
+<div class="error-code">404</div>
+<h1 class="error-title">क्षमा करें, पृष्ठ नहीं मिला!</h1>
+<p class="error-desc">ऐसा लगता है कि आप जिस पृष्ठ की तलाश कर रहे हैं वह स्थानांतरित, हटा दिया गया या मौजूद नहीं है।</p>
+<a href="https://piprice.store/?lang=in" class="home-btn">
+<span>🏠</span>
+होमपेज पर वापस जाएं
+</a>
+</div>
+
+<!-- French -->
+<div class="lang-content" id="content-fr">
+<div class="error-code">404</div>
+<h1 class="error-title">Désolé, Page Non Trouvée!</h1>
+<p class="error-desc">Il semble que la page que vous recherchez a été déplacée, supprimée ou n'existe pas.</p>
+<a href="https://piprice.store/?lang=fr" class="home-btn">
+<span>🏠</span>
+Retour à l'Accueil
+</a>
+</div>
+
+</div>
+
+<script>
+const langNames = {
+  ar: { name: 'العربية', flag: '🇸🇦' },
+  en: { name: 'English', flag: '🇬🇧' },
+  zh: { name: '中文', flag: '🇨🇳' },
+  ph: { name: 'Filipino', flag: '🇵🇭' },
+  in: { name: 'हिन्दी', flag: '🇮🇳' },
+  fr: { name: 'Français', flag: '🇫🇷' }
+};
+
+const titles = {
+  ar: '404 - الصفحة غير موجودة | PiPrice',
+  en: '404 - Page Not Found | PiPrice',
+  zh: '404 - 页面未找到 | PiPrice',
+  ph: '404 - Hindi Nahanap ang Pahina | PiPrice',
+  in: '404 - पृष्ठ नहीं मिला | PiPrice',
+  fr: '404 - Page Non Trouvée | PiPrice'
+};
+
+const victoryTexts = {
+  ar: '🎉 Pi يفوز! 🎉',
+  en: '🎉 Pi Wins! 🎉',
+  zh: '🎉 Pi 胜利! 🎉',
+  ph: '🎉 Panalo si Pi! 🎉',
+  in: '🎉 Pi जीता! 🎉',
+  fr: '🎉 Pi Gagne! 🎉'
+};
+
+function toggleLangDropdown() {
+  document.getElementById('langDropdown').classList.toggle('active');
+}
+
+function setLanguage(lang) {
+  // Update body class
+  document.body.className = 'lang-' + lang;
+  
+  // Update lang and dir attributes
+  if (lang === 'ar') {
+    document.documentElement.lang = 'ar';
+    document.documentElement.dir = 'rtl';
+  } else {
+    document.documentElement.lang = lang === 'ph' ? 'fil' : (lang === 'in' ? 'hi' : lang);
+    document.documentElement.dir = 'ltr';
+  }
+  
+  // Update title
+  document.title = titles[lang];
+  
+  // Update victory text
+  document.querySelector('.victory-text').textContent = victoryTexts[lang];
+  
+  // Show correct content
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.getElementById('content-' + lang).classList.add('active');
+  
+  // Update dropdown button
+  const btn = document.querySelector('.lang-btn span');
+  btn.textContent = langNames[lang].flag + ' ' + langNames[lang].name;
+  
+  // Update active state in dropdown
+  document.querySelectorAll('.lang-dropdown a').forEach(a => a.classList.remove('active'));
+  document.querySelector('.lang-dropdown a[onclick="setLanguage(\'' + lang + '\')"]').classList.add('active');
+  
+  // Close dropdown
+  document.getElementById('langDropdown').classList.remove('active');
+  
+  // Save preference
+  localStorage.setItem('piprice-lang', lang);
+  
+  // Update URL
+  history.replaceState(null, '', '?lang=' + lang);
+  
+  return false;
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.lang-selector')) {
+    document.getElementById('langDropdown').classList.remove('active');
+  }
+});
+
+// Load saved language on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+  const savedLang = localStorage.getItem('piprice-lang');
+  
+  if (urlLang && langNames[urlLang]) {
+    setLanguage(urlLang);
+  } else if (savedLang && langNames[savedLang]) {
+    setLanguage(savedLang);
+  }
+});
+</script>
+
+</body>
+</html>
