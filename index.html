@@ -209,7 +209,11 @@ header {
   background:#d4a017;
   color:#000;
 } 
-
+#piqr canvas{
+display:block;
+margin:auto;
+padding:10px;
+}
 /* ═══════════════════════════════════════════
    TRUST BAR
 ═══════════════════════════════════════════ */
@@ -1176,15 +1180,13 @@ footer {
       <button type="button" class="btn-copy" id="btn-copy-addr">
         <span>📋</span><span id="txt-copy-lbl">نسخ العنوان</span>
       </button>
- <div class="qr-box">
+<div class="qr-box">
   <p id="lbl-qr">امسح رمز QR لنسخ العنوان</p>
-
   <div id="piqr"
        role="img"
        aria-label="piprice - سعر Pi اليوم ومحفظة Al Ansari لتحويل عملة Pi Network"
        title="piprice - Al Ansari Pi Exchange Dubai">
   </div>
-
 </div>
     <div class="form-group">
       <label id="lbl-uwallet" for="userWallet">📥 عنوان محفظتك USDT (شبكة Solana)</label>
