@@ -4,86 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>متى ستطرح Pi Network في السوق المفتوح؟ | مدونة PiPrice</title>
-
-<meta name="description" content="تعرف على موعد إطلاق الشبكة المفتوحة لعملة Pi Network وما الذي سيحدث عند إدراج العملة في منصات التداول العالمية.">
+<!-- العناوين الافتراضية -->
+<title id="page-title">متى ستطرح Pi Network في السوق المفتوح؟ | مدونة PiPrice</title>
+<meta name="description" id="page-desc" content="تعرف على موعد إطلاق الشبكة المفتوحة لعملة Pi Network وما الذي سيحدث عند إدراج العملة في منصات التداول العالمية.">
 
 <meta name="keywords" content="open mainnet pi, موعد طرح pi network, سعر pi بعد الاطلاق, piprice, pi network mainnet, الشبكة المفتوحة, إدراج pi في التداول">
-
 <link rel="canonical" href="https://piprice.store/blog/article-10.html">
-
 <meta name="robots" content="index, follow">
-
 <meta name="theme-color" content="#d4a017">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a07810'/%3E%3Cstop offset='50%25' stop-color='%23d4a017'/%3E%3Cstop offset='100%25' stop-color='%23f0c040'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='url(%23g)'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-size='40' font-weight='900' fill='%23080810'%CF%80%3C/text%3E%3C/svg%3E">
 
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Article",
- "mainEntityOfPage":{
-   "@type":"WebPage",
-   "@id":"https://piprice.store/blog/article-10.html"
- },
- "headline":"متى ستطرح Pi Network في السوق المفتوح؟",
- "description":"تعرف على موعد إطلاق الشبكة المفتوحة لعملة Pi Network وما الذي سيحدث عند إدراج العملة في منصات التداول العالمية.",
- "image":"https://raw.githubusercontent.com/piprice/pi/main/1010.png",
- "author":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "url":"https://piprice.store"
- },
- "publisher":{
-   "@type":"Organization",
-   "name":"PiPrice",
-   "logo":{
-     "@type":"ImageObject",
-     "url":"https://raw.githubusercontent.com/piprice/pi/main/1010.png"
-   }
- },
- "datePublished":"2026-03-10",
- "dateModified":"2026-03-10"
-}
-</script>
-
 <style>
-
 :root{
 --gold:#d4a017;
 --gold-light:#f0c040;
 --gold-dark:#a07810;
-
 --dark:#06060f;
 --dark2:#0d0d1c;
 --dark3:#141428;
-
 --surface:#18182e;
-
 --border:rgba(212,160,23,0.15);
-
 --text:#f0f0ff;
 --text-muted:#9090bb;
-
 --radius:18px;
-
 --shadow:0 12px 40px rgba(0,0,0,0.5);
-
 --font:'Tajawal',system-ui,sans-serif;
-
 --transition:0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
-*,*::before,*::after{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
 body{
 font-family:var(--font);
@@ -142,17 +96,91 @@ font-weight:900;
 color:var(--gold);
 }
 
+.nav-actions{
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
 .nav-links a{
 color:var(--text);
 text-decoration:none;
 font-size:14px;
 font-weight:700;
-margin-right:15px;
+/* دعم الاتجاهين */
+margin-inline-end:15px;
 transition:color var(--transition);
 }
 
-.nav-links a:hover{
-color:var(--gold);
+.nav-links a:hover{color:var(--gold);}
+
+/* قائمة اللغة */
+.lang-menu{
+position: relative;
+font-family: sans-serif;
+}
+
+.lang-btn{
+background: #141428;
+color: #fff;
+padding: 6px 10px;
+border-radius: 8px;
+border: 1px solid rgba(255,255,255,0.1);
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+font-size: 12px;
+}
+
+.lang-list{
+position: absolute;
+top: 45px;
+left: 0;
+background: #141428;
+border-radius: 8px;
+list-style: none;
+padding: 5px 0;
+margin: 0;
+width: 140px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+z-index: 100;
+display: none;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+[dir="rtl"] .lang-list{
+left: auto;
+right: 0;
+}
+
+.lang-list.active{
+display: block;
+opacity: 1;
+transform: translateY(0);
+}
+
+.lang-list li a{
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 15px;
+color: #fff;
+text-decoration: none;
+font-size: 13px;
+transition: background 0.2s;
+}
+
+.lang-list li a:hover{
+background: #d4a017;
+color: #000;
+}
+
+.lang-list li a.selected{
+background: rgba(212, 160, 23, 0.2);
+color: #d4a017;
 }
 
 .breadcrumbs{
@@ -165,7 +193,6 @@ margin-bottom:20px;
 color:var(--gold);
 text-decoration:none;
 }
-
 .breadcrumbs a:hover{
 text-decoration:underline;
 }
@@ -192,10 +219,9 @@ color:var(--text-muted);
 margin-bottom:30px;
 padding-bottom:20px;
 border-bottom:1px solid var(--border);
-}
-
-.article-meta span{
-margin-left:15px;
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
 }
 
 .article-content h2{
@@ -212,8 +238,8 @@ margin-bottom:20px;
 }
 
 .article-content ul{
-margin:0 20px 20px 0;
-padding:0;
+margin:0 0 20px 0;
+padding-inline-start: 40px;
 color:var(--text-muted);
 font-size:16px;
 }
@@ -232,15 +258,15 @@ margin-top:40px;
 }
 
 .cta-box h3{
-color:var(--gold);
-font-size:20px;
-margin-bottom:10px;
+color: var(--gold);
+font-size: 20px;
+margin-bottom: 10px;
 }
 
 .cta-box p{
-color:var(--text);
-font-size:15px;
-margin-bottom:20px;
+color: var(--text);
+font-size: 15px;
+margin-bottom: 20px;
 }
 
 .cta-btn{
@@ -255,10 +281,8 @@ text-decoration:none;
 box-shadow:0 6px 20px rgba(212,160,23,0.4);
 transition:transform 0.2s;
 }
-
 .cta-btn:hover{
 transform:translateY(-3px);
-box-shadow:0 10px 25px rgba(212,160,23,0.6);
 }
 
 footer{
@@ -268,7 +292,6 @@ color:var(--text-muted);
 font-size:12px;
 border-top:1px solid rgba(255,255,255,0.04);
 }
-
 </style>
 </head>
 
@@ -277,106 +300,348 @@ border-top:1px solid rgba(255,255,255,0.04);
 <div class="container">
 
 <header>
-
 <a href="../index.html" class="brand">
 <div class="pi-logo">π</div>
 <div class="brand-name">PiPrice</div>
 </a>
 
-<div class="nav-links">
-<a href="index.html">المدونة</a>
-<a href="../index.html">الرئيسية</a>
-</div>
+<div class="nav-actions">
+    <div class="nav-links">
+        <a href="index.html" id="navBlog">المدونة</a>
+        <a href="../index.html" id="navHome">الرئيسية</a>
+    </div>
 
+    <!-- زر تغيير اللغة -->
+    <div class="lang-menu">
+        <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
+            <span id="currentLangFlag">🇸🇦</span>
+            <span id="currentLangText">العربية</span>
+            <span style="font-size:8px;">▼</span>
+        </button>
+        <ul class="lang-list" id="langList">
+            <li><a href="javascript:void(0)" data-lang="ar" onclick="changeLang('ar')">🇸🇦 العربية</a></li>
+            <li><a href="javascript:void(0)" data-lang="en" onclick="changeLang('en')">🇬🇧 English</a></li>
+            <li><a href="javascript:void(0)" data-lang="fr" onclick="changeLang('fr')">🇫🇷 Français</a></li>
+            <li><a href="javascript:void(0)" data-lang="zh" onclick="changeLang('zh')">🇨🇳 中文</a></li>
+            <li><a href="javascript:void(0)" data-lang="hi" onclick="changeLang('hi')">🇮🇳 हिन्दी</a></li>
+            <li><a href="javascript:void(0)" data-lang="fil" onclick="changeLang('fil')">🇵🇭 Filipino</a></li>
+        </ul>
+    </div>
+</div>
 </header>
 
-<div class="breadcrumbs">
-
-<a href="../index.html">الرئيسية</a> » 
-<a href="index.html">المدونة</a> »
-متى ستطرح Pi Network في السوق المفتوح؟
-
+<div class="breadcrumbs" id="breadcrumb">
+<a href="../index.html" id="breadHome">الرئيسية</a> » 
+<a href="index.html" id="breadBlog">المدونة</a> »
+<span id="breadTitle">متى ستطرح Pi Network في السوق المفتوح؟</span>
 </div>
 
 <article class="article-content">
 
-<h1 class="article-title">
+<h1 class="article-title" id="articleH1">
 متى ستطرح Pi Network في السوق المفتوح؟
 </h1>
 
 <div class="article-meta">
-<span>📅 10 مارس 2026</span>
-<span>✍️ PiPrice</span>
-<span>⏱️ وقت القراءة: 5 دقائق</span>
+<span id="metaDate">📅 10 مارس 2026</span>
+<span id="metaAuthor">✍️ PiPrice</span>
+<span id="metaRead">⏱️ 5 دقائق</span>
 </div>
 
-<p>
-
-يعد إطلاق الشبكة المفتوحة لعملة <strong>Pi Network</strong> أحد أكثر الأحداث المنتظرة في مجتمع العملات الرقمية. منذ إطلاق المشروع عام 2019، انضم ملايين المستخدمين إلى الشبكة بهدف تعدين العملة والمشاركة في بناء نظام اقتصادي جديد يعتمد على البلوكشين.
-
-</p>
-
-<h2>
-ما المقصود بالشبكة المفتوحة؟
-</h2>
-
-<p>
-
-الشبكة المفتوحة <strong>(Open Mainnet)</strong> تعني أن العملة تصبح متاحة للتداول بشكل كامل في منصات التداول العالمية، كما يمكن استخدامها بحرية خارج النظام البيئي الخاص بالمشروع.
-
-</p>
-
-<h2>
-ما الذي سيحدث بعد الإطلاق؟
-</h2>
-
-<ul>
-
-<li>إدراج العملة في منصات تداول عالمية.</li>
-
-<li>إمكانية تحويل العملة بين المحافظ المختلفة.</li>
-
-<li>تحديد السعر الحقيقي في السوق.</li>
-
-</ul>
-
-<h2>
-هل سيرتفع سعر Pi بعد الإطلاق؟
-</h2>
-
-<p>
-
-لا يمكن التنبؤ بالسعر بدقة، لأن السعر يعتمد على العرض والطلب في السوق. ومع ذلك، فإن زيادة استخدام العملة قد يؤدي إلى زيادة قيمتها مع مرور الوقت.
-
-</p>
-
-<div class="cta-box">
-
-<h3>
-تابع سعر Pi Network الآن
-</h3>
-
-<p>
-يمكنك متابعة السعر التقريبي للعملة عبر مؤشر piprice.
-</p>
-
-<a href="../index.html" class="cta-btn">
-عرض سعر Pi الآن
-</a>
-
+<div id="articleBody">
+    <!-- المحتوى يتم تحميله بالجافاسكربت -->
 </div>
 
 </article>
 
 <footer>
-
-<p>
-© 2026 PiPrice — جميع الحقوق محفوظة
-</p>
-
+<p id="footerCopy">© 2026 PiPrice — جميع الحقوق محفوظة</p>
 </footer>
 
 </div>
 
+<script>
+// 1. بيانات الترجمة الكاملة للمقال العاشر
+const DATA = {
+    ar: {
+        dir: "rtl",
+        flag: "🇸🇦",
+        name: "العربية",
+        title: "متى ستطرح Pi Network في السوق المفتوح؟ | مدونة PiPrice",
+        desc: "تعرف على موعد إطلاق الشبكة المفتوحة لعملة Pi Network وما الذي سيحدث عند إدراج العملة في منصات التداول العالمية.",
+        navBlog: "المدونة",
+        navHome: "الرئيسية",
+        breadHome: "الرئيسية",
+        breadBlog: "المدونة",
+        breadTitle: "متى ستطرح Pi Network في السوق المفتوح؟",
+        metaDate: "📅 10 مارس 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 دقائق",
+        h1: "متى ستطرح Pi Network في السوق المفتوح؟",
+        body: `
+            <p>يعد إطلاق الشبكة المفتوحة لعملة <strong>Pi Network</strong> أحد أكثر الأحداث المنتظرة في مجتمع العملات الرقمية. منذ إطلاق المشروع عام 2019، انضم ملايين المستخدمين إلى الشبكة بهدف تعدين العملة والمشاركة في بناء نظام اقتصادي جديد يعتمد على البلوكشين.</p>
+            <h2>ما المقصود بالشبكة المفتوحة؟</h2>
+            <p>الشبكة المفتوحة <strong>(Open Mainnet)</strong> تعني أن العملة تصبح متاحة للتداول بشكل كامل في منصات التداول العالمية، كما يمكن استخدامها بحرية خارج النظام البيئي الخاص بالمشروع.</p>
+            <h2>ما الذي سيحدث بعد الإطلاق؟</h2>
+            <ul>
+                <li>إدراج العملة في منصات تداول عالمية.</li>
+                <li>إمكانية تحويل العملة بين المحافظ المختلفة.</li>
+                <li>تحديد السعر الحقيقي في السوق.</li>
+            </ul>
+            <h2>هل سيرتفع سعر Pi بعد الإطلاق؟</h2>
+            <p>لا يمكن التنبؤ بالسعر بدقة، لأن السعر يعتمد على العرض والطلب في السوق. ومع ذلك، فإن زيادة استخدام العملة قد يؤدي إلى زيادة قيمتها مع مرور الوقت.</p>
+            <div class="cta-box">
+                <h3>تابع سعر Pi Network الآن</h3>
+                <p>يمكنك متابعة السعر التقريبي للعملة عبر مؤشر piprice.</p>
+                <a href="../index.html" class="cta-btn">عرض سعر Pi الآن</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — جميع الحقوق محفوظة"
+    },
+    en: {
+        dir: "ltr",
+        flag: "🇬🇧",
+        name: "English",
+        title: "When will Pi Network launch in the open market? | PiPrice Blog",
+        desc: "Learn about the launch date of the Pi Network open network and what will happen when the currency is listed on global trading platforms.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "When will Pi Network launch in open market?",
+        metaDate: "📅 March 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 min read",
+        h1: "When will Pi Network launch in the open market?",
+        body: `
+            <p>The launch of the open network for <strong>Pi Network</strong> is one of the most anticipated events in the cryptocurrency community. Since the project's launch in 2019, millions of users have joined the network with the goal of mining the currency and participating in building a new blockchain-based economic system.</p>
+            <h2>What is meant by Open Network?</h2>
+            <p><strong>Open Mainnet</strong> means that the currency becomes fully available for trading on global trading platforms, and can be used freely outside the project's ecosystem.</p>
+            <h2>What will happen after the launch?</h2>
+            <ul>
+                <li>Listing the currency on global trading platforms.</li>
+                <li>Ability to transfer the currency between different wallets.</li>
+                <li>Determining the real price in the market.</li>
+            </ul>
+            <h2>Will Pi price rise after launch?</h2>
+            <p>The price cannot be predicted precisely, as price depends on supply and demand in the market. However, increased use of the currency may lead to an increase in its value over time.</p>
+            <div class="cta-box">
+                <h3>Track Pi Network Price Now</h3>
+                <p>You can track the approximate price of the currency via the piprice indicator.</p>
+                <a href="../index.html" class="cta-btn">View Pi Price Now</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — All Rights Reserved"
+    },
+    fr: {
+        dir: "ltr",
+        flag: "🇫🇷",
+        name: "Français",
+        title: "Quand Pi Network sera-t-il lancé sur le marché ouvert ? | Blog PiPrice",
+        desc: "Découvrez la date de lancement du réseau ouvert de Pi Network et ce qui se passera lorsque la devise sera cotée sur les plateformes de trading mondiales.",
+        navBlog: "Blog",
+        navHome: "Accueil",
+        breadHome: "Accueil",
+        breadBlog: "Blog",
+        breadTitle: "Quand Pi Network sera-t-il lancé sur le marché ouvert ?",
+        metaDate: "📅 10 mars 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 min de lecture",
+        h1: "Quand Pi Network sera-t-il lancé sur le marché ouvert ?",
+        body: `
+            <p>Le lancement du réseau ouvert pour <strong>Pi Network</strong> est l'un des événements les plus attendus de la communauté des cryptomonnaies. Depuis le lancement du projet en 2019, des millions d'utilisateurs ont rejoint le réseau dans le but de miner la devise et de participer à la construction d'un nouveau système économique basé sur la blockchain.</p>
+            <h2>Qu'entend-on par réseau ouvert ?</h2>
+            <p>L'<strong>Open Mainnet</strong> signifie que la devise devient entièrement disponible pour le trading sur les plateformes de trading mondiales, et peut être utilisée librement en dehors de l'écosystème du projet.</p>
+            <h2>Que se passera-t-il après le lancement ?</h2>
+            <ul>
+                <li>Inscription de la devise sur les plateformes de trading mondiales.</li>
+                <li>Possibilité de transférer la devise entre différents portefeuilles.</li>
+                <li>Détermination du prix réel sur le marché.</li>
+            </ul>
+            <h2>Le prix du Pi augmentera-t-il après le lancement ?</h2>
+            <p>Le prix ne peut pas être prédit avec précision, car le prix dépend de l'offre et de la demande sur le marché. Cependant, une utilisation accrue de la devise peut entraîner une augmentation de sa valeur au fil du temps.</p>
+            <div class="cta-box">
+                <h3>Suivez le prix de Pi Network maintenant</h3>
+                <p>Vous pouvez suivre le prix approximatif de la devise via l'indicateur piprice.</p>
+                <a href="../index.html" class="cta-btn">Voir le prix du Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Tous droits réservés"
+    },
+    zh: {
+        dir: "ltr",
+        flag: "🇨🇳",
+        name: "中文",
+        title: "Pi Network 何时在公开市场推出？ | PiPrice 博客",
+        desc: "了解 Pi Network 开放网络的发布日期，以及当货币在全球交易平台上列出时会发生什么。",
+        navBlog: "博客",
+        navHome: "首页",
+        breadHome: "首页",
+        breadBlog: "博客",
+        breadTitle: "Pi Network 何时在公开市场推出？",
+        metaDate: "📅 2026年3月10日",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5分钟阅读",
+        h1: "Pi Network 何时在公开市场推出？",
+        body: `
+            <p><strong>Pi Network</strong> 开放网络的推出是加密货币社区最期待的事件之一。自 2019 年项目启动以来，数百万用户加入网络，目标是挖掘货币并参与构建基于区块链的新经济系统。</p>
+            <h2>什么是开放网络？</h2>
+            <p><strong>Open Mainnet</strong> 意味着货币可以在全球交易平台上完全进行交易，并且可以在项目生态系统之外自由使用。</p>
+            <h2>推出后会发生什么？</h2>
+            <ul>
+                <li>在全球交易平台上列出货币。</li>
+                <li>能够在不同钱包之间转移货币。</li>
+                <li>确定市场真实价格。</li>
+            </ul>
+            <h2>推出后 Pi 价格会上涨吗？</h2>
+            <p>价格无法精确预测，因为价格取决于市场的供需。然而，货币使用量的增加可能会导致其价值随时间增加。</p>
+            <div class="cta-box">
+                <h3>立即追踪 Pi Network 价格</h3>
+                <p>您可以通过 piprice 指标追踪货币的大致价格。</p>
+                <a href="../index.html" class="cta-btn">查看 Pi 价格</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — 版权所有"
+    },
+    hi: {
+        dir: "ltr",
+        flag: "🇮🇳",
+        name: "हिन्दी",
+        title: "Pi Network खुले बाजार में कब लॉन्च होगा? | PiPrice ब्लॉग",
+        desc: "Pi Network ओपन नेटवर्क की लॉन्च तिथि के बारे में जानें और जब मुद्रा वैश्विक ट्रेडिंग प्लेटफॉर्म पर लिस्ट की जाएगी तो क्या होगा।",
+        navBlog: "ब्लॉग",
+        navHome: "होम",
+        breadHome: "होम",
+        breadBlog: "ब्लॉग",
+        breadTitle: "Pi Network खुले बाजार में कब लॉन्च होगा?",
+        metaDate: "📅 10 मार्च 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 मिनट पढ़ें",
+        h1: "Pi Network खुले बाजार में कब लॉन्च होगा?",
+        body: `
+            <p><strong>Pi Network</strong> के लिए ओपन नेटवर्क का लॉन्च क्रिप्टोकरेंसी समुदाय में सबसे अधिक प्रतीक्षित घटनाओं में से एक है। 2019 में परियोजना की शुरुआत के बाद से, लाखों उपयोगकर्ता मुद्रा का माइनिंग करने और ब्लॉकचेन आधारित नई आर्थिक प्रणाली के निर्माण में भाग लेने के लक्ष्य के साथ नेटवर्क में शामिल हुए हैं।</p>
+            <h2>ओपन नेटवर्क से क्या तात्पर्य है?</h2>
+            <p><strong>Open Mainnet</strong> का मतलब है कि मुद्रा वैश्विक ट्रेडिंग प्लेटफॉर्म पर पूरी तरह से ट्रेडिंग के लिए उपलब्ध हो जाती है, और परियोजना के पारिस्थितिकी तंत्र के बाहर स्वतंत्र रूप से उपयोग की जा सकती है।</p>
+            <h2>लॉन्च के बाद क्या होगा?</h2>
+            <ul>
+                <li>वैश्विक ट्रेडिंग प्लेटफॉर्म पर मुद्रा की लिस्टिंग।</li>
+                <li>विभिन्न वॉलेट के बीच मुद्रा स्थानांतरित करने की क्षमता।</li>
+                <li>बाजार में वास्तविक कीमत का निर्धारण।</li>
+            </ul>
+            <h2>क्या लॉन्च के बाद Pi की कीमत बढ़ेगी?</h2>
+            <p>कीमत का सटीक अनुमान नहीं लगाया जा सकता, क्योंकि कीमत बाजार में मांग और आपूर्ति पर निर्भर करती है। हालांकि, मुद्रा के बढ़ते उपयोग से समय के साथ इसके मूल्य में वृद्धि हो सकती है।</p>
+            <div class="cta-box">
+                <h3>अभी Pi Network की कीमत ट्रैक करें</h3>
+                <p>आप piprice इंडिकेटर के माध्यम से मुद्रा की अनुमानित कीमत ट्रैक कर सकते हैं।</p>
+                <a href="../index.html" class="cta-btn">अभी Pi कीमत देखें</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — सर्वाधिकार सुरक्षित"
+    },
+    fil: {
+        dir: "ltr",
+        flag: "🇵🇭",
+        name: "Filipino",
+        title: "Kailan ilulunsad ang Pi Network sa open market? | PiPrice Blog",
+        desc: "Alamin ang petsa ng paglulunsad ng Pi Network open network at kung ano ang mangyayari kapag ang currency ay na-list na sa mga global trading platform.",
+        navBlog: "Blog",
+        navHome: "Home",
+        breadHome: "Home",
+        breadBlog: "Blog",
+        breadTitle: "Kailan ilulunsad ang Pi Network sa open market?",
+        metaDate: "📅 Marso 10, 2026",
+        metaAuthor: "✍️ PiPrice",
+        metaRead: "⏱️ 5 minutong basahin",
+        h1: "Kailan ilulunsad ang Pi Network sa open market?",
+        body: `
+            <p>Ang paglulunsad ng open network para sa <strong>Pi Network</strong> ay isa sa mga pinakahihintay na kaganapan sa komunidad ng cryptocurrency. Mula nang ilunsad ang proyekto noong 2019, milyun-milyong user ang sumali sa network na may layuning mag-mine ng currency at lumahok sa pagbuo ng isang bagong sistema ng ekonomiya na nakabatay sa blockchain.</p>
+            <h2>Ano ang ibig sabihin ng Open Network?</h2>
+            <p>Ang <strong>Open Mainnet</strong> ay nangangahulugan na ang currency ay nagiging ganap na available para sa trading sa mga global trading platform, at maaaring gamitin nang malaya sa labas ng ecosystem ng proyekto.</p>
+            <h2>Ano ang mangyayari pagkatapos ng paglulunsad?</h2>
+            <ul>
+                <li>Pag-lista ng currency sa mga global trading platform.</li>
+                <li>Kakayahang ilipat ang currency sa pagitan ng iba't ibang wallet.</li>
+                <li>Pagtatakda ng tunay na presyo sa merkado.</li>
+            </ul>
+            <h2>Magtaas ba ang presyo ng Pi pagkatapos ng paglulunsad?</h2>
+            <p>Ang presyo ay hindi maaaring hulaan nang tumpak, dahil ang presyo ay nakadepende sa supply at demand sa merkado. Gayunpaman, ang nadagdagan na paggamit ng currency ay maaaring humantong sa pagtaas ng halaga nito sa paglipas ng panahon.</p>
+            <div class="cta-box">
+                <h3>Subaybayan ang Presyo ng Pi Network Ngayon</h3>
+                <p>Maaari mong subaybayan ang tinatayang presyo ng currency sa pamamagitan ng piprice indicator.</p>
+                <a href="../index.html" class="cta-btn">Tingnan ang Presyo ng Pi</a>
+            </div>
+        `,
+        footer: "© 2026 PiPrice — Ang Lahat ng Karapatan Ay Nakalaan"
+    }
+};
+
+// 2. وظائف التحكم
+function toggleLangMenu() {
+    const list = document.getElementById('langList');
+    list.classList.toggle('active');
+}
+
+document.addEventListener('click', function(e) {
+    const list = document.getElementById('langList');
+    const btn = document.getElementById('langBtn');
+    if (!btn.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('active');
+    }
+});
+
+function changeLang(langCode) {
+    localStorage.setItem("lang", langCode);
+    applyLang(langCode);
+    toggleLangMenu();
+}
+
+function applyLang(lang) {
+    if (!DATA[lang]) lang = 'ar';
+    
+    const d = DATA[lang];
+    
+    // تحديث الهيكل والاتجاه
+    document.documentElement.lang = lang;
+    document.documentElement.dir = d.dir;
+    
+    // تحديث النصوص
+    document.getElementById('page-title').innerText = d.title;
+    document.getElementById('page-desc').content = d.desc;
+    
+    document.getElementById('currentLangFlag').innerText = d.flag;
+    document.getElementById('currentLangText').innerText = d.name;
+    
+    document.getElementById('navBlog').innerText = d.navBlog;
+    document.getElementById('navHome').innerText = d.navHome;
+    
+    document.getElementById('breadHome').innerText = d.breadHome;
+    document.getElementById('breadBlog').innerText = d.breadBlog;
+    document.getElementById('breadTitle').innerText = d.breadTitle;
+    
+    document.getElementById('metaDate').innerText = d.metaDate;
+    document.getElementById('metaAuthor').innerText = d.metaAuthor;
+    document.getElementById('metaRead').innerText = d.metaRead;
+    
+    document.getElementById('articleH1').innerText = d.h1;
+    document.getElementById('articleBody').innerHTML = d.body;
+    
+    document.getElementById('footerCopy').innerText = d.footer;
+    
+    // تحديث حالة الزر
+    const links = document.querySelectorAll('.lang-list li a');
+    links.forEach(link => {
+        if (link.getAttribute('data-lang') === lang) {
+            link.classList.add('selected');
+        } else {
+            link.classList.remove('selected');
+        }
+    });
+}
+
+// تحميل اللغة المحفوظة
+let savedLang = localStorage.getItem("lang") || "ar";
+applyLang(savedLang);
+
+</script>
 </body>
 </html>
