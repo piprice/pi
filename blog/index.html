@@ -3,18 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">مدونة PiPrice | أخبار Pi Network</title>
-<meta name="description" id="page-desc" content="تابع مدونة PiPrice لمعرفة أحدث أخبار Pi Network وتحليلات سعر Pi اليوم">
+<title>مدونة PiPrice | أخبار وتحليلات Pi Network</title>
+<meta name="description" content="مدونة PiPrice – دليلك الكامل لبيع Pi Network في الإمارات، تحليلات السعر، وأخبار الشبكة">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-
 <style>
 :root {
   --gold: #f0b429;
   --gold-dim: #c8901a;
-  --gold-glow: rgba(240, 180, 41, 0.35);
-  --gold-soft: rgba(240, 180, 41, 0.08);
+  --gold-glow: rgba(240,180,41,0.35);
+  --gold-soft: rgba(240,180,41,0.08);
   --bg: #04040f;
   --surface: #080818;
   --surface2: #0d0d22;
@@ -23,639 +22,138 @@
   --border-hover: rgba(240,180,41,0.35);
   --text: #e8e8ff;
   --text-dim: #a0a0c8;
-  --muted: #5858888;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 
-body {
-  font-family: 'Tajawal', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+#cosmosCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
 
-/* ===== CANVAS ===== */
-#cosmosCanvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
+.page-wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px 100px}
 
-.page-wrap {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px 80px;
-}
+/* HEADER */
+header{display:flex;justify-content:space-between;align-items:center;padding:28px 0 24px;flex-wrap:wrap;gap:14px;border-bottom:1px solid var(--border);margin-bottom:0}
+.logo{font-family:'Orbitron',sans-serif;font-size:24px;font-weight:900;background:linear-gradient(135deg,var(--gold) 0%,#fff5cc 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:3px;position:relative}
+.logo::after{content:'';position:absolute;bottom:-6px;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:shimmer 3s ease infinite}
+@keyframes shimmer{0%,100%{opacity:0.3;transform:scaleX(0.5)}50%{opacity:1;transform:scaleX(1)}}
 
-/* ===== HEADER ===== */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 28px 0 24px;
-  flex-wrap: wrap;
-  gap: 14px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 0;
-}
+.header-right{display:flex;align-items:center;gap:10px}
+.lang-menu{position:relative}
+.lang-btn{background:var(--surface2);color:var(--text);border:1px solid var(--border);padding:8px 14px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:13px;font-family:'Tajawal',sans-serif;transition:all .3s}
+.lang-btn:hover{border-color:var(--gold);background:var(--gold-soft);color:var(--gold)}
+.lang-list{position:absolute;top:calc(100% + 8px);right:0;background:#0a0a20;border:1px solid rgba(240,180,41,0.18);border-radius:14px;list-style:none;padding:6px 0;min-width:170px;box-shadow:0 25px 60px rgba(0,0,0,0.8);z-index:200;display:none;opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .25s}
+.lang-list.open{display:block;opacity:1;transform:translateY(0)}
+.lang-list li a{display:flex;align-items:center;gap:10px;padding:9px 16px;color:var(--text-dim);text-decoration:none;font-size:13px;font-family:'Tajawal',sans-serif;transition:all .2s}
+.lang-list li a:hover{background:var(--gold-soft);color:var(--gold)}
+.lang-list li a.selected{color:var(--gold);background:rgba(240,180,41,0.06)}
+.back-btn{color:var(--text-dim);text-decoration:none;border:1px solid var(--border);padding:8px 16px;border-radius:10px;font-size:13px;font-family:'Tajawal',sans-serif;background:var(--surface2);transition:all .3s;white-space:nowrap}
+.back-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
 
-.logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 24px;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--gold) 0%, #fff5cc 50%, var(--gold) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 3px;
-  position: relative;
-}
+/* HERO */
+.hero{text-align:center;padding:70px 0 50px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(240,180,41,0.08);border:1px solid rgba(240,180,41,0.2);color:var(--gold);padding:6px 18px;border-radius:100px;font-size:11px;font-weight:600;margin-bottom:30px;letter-spacing:2px;animation:fadeUp .6s ease both}
+.coin-wrap{display:flex;justify-content:center;margin-bottom:32px;animation:fadeUp .6s ease .1s both}
+.coin-scene{width:90px;height:90px;perspective:600px}
+.coin{width:90px;height:90px;position:relative;transform-style:preserve-3d;animation:coinSpin 7s linear infinite}
+@keyframes coinSpin{0%{transform:rotateY(0deg) rotateX(8deg)}100%{transform:rotateY(360deg) rotateX(8deg)}}
+.coin-face{position:absolute;width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;backface-visibility:hidden}
+.coin-front{background:radial-gradient(circle at 32% 32%,#ffe88a,#c8901a 55%,#7a5200);box-shadow:0 0 30px rgba(240,180,41,0.7),inset 0 3px 8px rgba(255,255,255,0.3);color:#7a4500;transform:translateZ(5px)}
+.coin-back{background:radial-gradient(circle at 68% 32%,#d4a020,#8a6010 60%,#5a3800);color:#c89030;transform:translateZ(-5px) rotateY(180deg)}
+.hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(24px,5vw,46px);font-weight:900;line-height:1.25;margin-bottom:14px;animation:fadeUp .6s ease .15s both}
+.hero h1 .accent{background:linear-gradient(135deg,var(--gold),#ffe9a0,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:#7070a0;font-size:15px;max-width:560px;margin:0 auto 44px;line-height:1.8;animation:fadeUp .6s ease .2s both}
 
-.logo::after {
-  content: '';
-  position: absolute;
-  bottom: -6px; left: 0;
-  width: 100%; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  animation: shimmer 3s ease infinite;
-}
+/* STATS */
+.stats-bar{display:flex;justify-content:center;flex-wrap:wrap;margin-bottom:60px;animation:fadeUp .6s ease .3s both;background:var(--surface2);border:1px solid var(--border);border-radius:18px;overflow:hidden;max-width:520px;margin-left:auto;margin-right:auto}
+.stat-item{flex:1;text-align:center;padding:20px 24px;border-right:1px solid var(--border)}
+.stat-item:last-child{border-right:none}
+[dir="rtl"] .stat-item{border-right:none;border-left:1px solid var(--border)}
+[dir="rtl"] .stat-item:last-child{border-left:none}
+.stat-num{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;color:var(--gold);display:block;margin-bottom:4px}
+.stat-label{font-size:10px;color:#585888;letter-spacing:1.5px;text-transform:uppercase}
 
-@keyframes shimmer {
-  0%,100% { opacity: 0.3; transform: scaleX(0.5); }
-  50% { opacity: 1; transform: scaleX(1); }
-}
+/* SECTION HEAD */
+.section-head{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.section-head h2{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:3px;white-space:nowrap}
+.section-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(240,180,41,0.25),transparent)}
+[dir="rtl"] .section-line{background:linear-gradient(270deg,rgba(240,180,41,0.25),transparent)}
 
-.header-right { display: flex; align-items: center; gap: 10px; }
+/* FEATURED CARD */
+.featured-card-wrap{margin-bottom:28px}
+.featured-card{display:grid;grid-template-columns:1fr 260px;gap:0;background:linear-gradient(135deg,#090921 0%,#0f0c2a 100%);border:1px solid rgba(240,180,41,0.18);border-radius:24px;overflow:hidden;position:relative;text-decoration:none;color:inherit;transition:transform .4s cubic-bezier(.23,1,.32,1),border-color .4s,box-shadow .4s;opacity:0;animation:cardReveal .7s cubic-bezier(.23,1,.32,1) .35s forwards}
+.featured-card:hover{transform:translateY(-6px);border-color:rgba(240,180,41,0.38);box-shadow:0 24px 60px rgba(0,0,0,0.6),0 0 50px rgba(240,180,41,0.08)}
+.featured-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+.featured-card:hover::before{opacity:1}
+.featured-content{padding:40px 44px}
+.feat-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(240,180,41,0.1);border:1px solid rgba(240,180,41,0.2);color:var(--gold);padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:2px;margin-bottom:18px}
+.featured-content .card-title{font-size:21px;font-weight:900;color:var(--text);line-height:1.45;margin-bottom:12px}
+.featured-content .card-desc{font-size:14px;color:#7070a8;line-height:1.75;margin-bottom:28px}
+.featured-visual{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(240,180,41,0.03),rgba(240,180,41,0.08));border-right:1px solid rgba(240,180,41,0.1);position:relative;overflow:hidden}
+[dir="rtl"] .featured-visual{border-right:none;border-left:1px solid rgba(240,180,41,0.1)}
+.featured-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(240,180,41,0.08) 0%,transparent 70%)}
+.floating-pi{font-family:'Orbitron',sans-serif;font-size:80px;font-weight:900;background:linear-gradient(135deg,var(--gold),#fff5cc,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:floatPi 3.5s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(240,180,41,0.4));position:relative;z-index:1}
+@keyframes floatPi{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
 
-.lang-menu { position: relative; }
-.lang-btn {
-  background: var(--surface2);
-  color: var(--text);
-  border: 1px solid var(--border);
-  padding: 8px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-family: 'Tajawal', sans-serif;
-  transition: all 0.3s;
-}
-.lang-btn:hover { border-color: var(--gold); background: var(--gold-soft); color: var(--gold); }
+/* FILTER */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;opacity:0;animation:fadeUp .6s ease .35s forwards}
+.filter-btn{background:var(--surface2);border:1px solid var(--border);color:#6868a0;padding:7px 16px;border-radius:100px;font-size:12px;font-family:'Tajawal',sans-serif;cursor:pointer;transition:all .25s;letter-spacing:.5px}
+.filter-btn.active,.filter-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
 
-.lang-list {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: #0a0a20;
-  border: 1px solid rgba(240,180,41,0.18);
-  border-radius: 14px;
-  list-style: none;
-  padding: 6px 0;
-  min-width: 170px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(240,180,41,0.05);
-  z-index: 200;
-  display: none;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 0.25s, transform 0.25s;
-}
-.lang-list.open { display: block; opacity: 1; transform: translateY(0); }
-.lang-list li a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 16px;
-  color: var(--text-dim);
-  text-decoration: none;
-  font-size: 13px;
-  font-family: 'Tajawal', sans-serif;
-  transition: all 0.2s;
-}
-.lang-list li a:hover { background: var(--gold-soft); color: var(--gold); }
-.lang-list li a.selected { color: var(--gold); background: rgba(240,180,41,0.06); }
+/* GRID */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+a.blog-card{text-decoration:none;color:inherit;display:block}
+.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.23,1,.32,1),border-color .4s,box-shadow .4s;cursor:pointer;opacity:0;transform:translateY(24px)}
+.blog-card.visible{animation:cardReveal .6s cubic-bezier(.23,1,.32,1) forwards}
+@keyframes cardReveal{from{opacity:0;transform:translateY(24px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.blog-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(240,180,41,0.07) 0%,transparent 65%);opacity:0;transition:opacity .4s;pointer-events:none}
+.blog-card:hover{transform:translateY(-7px) scale(1.01);border-color:var(--border-hover);box-shadow:0 20px 50px rgba(0,0,0,0.55),0 0 35px rgba(240,180,41,0.07)}
+.blog-card:hover::before{opacity:1}
+.card-top-line{position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+.blog-card:hover .card-top-line{opacity:.8}
+.card-number{font-family:'Orbitron',sans-serif;font-size:10px;color:rgba(240,180,41,0.35);margin-bottom:14px;letter-spacing:2px;display:flex;align-items:center;justify-content:space-between}
+.cat-badge{font-size:9px;font-weight:700;padding:3px 9px;border-radius:100px;letter-spacing:1px}
+.cat-guide{background:rgba(100,200,255,0.12);color:#7ad4ff;border:1px solid rgba(100,200,255,0.2)}
+.cat-news{background:rgba(255,180,41,0.1);color:var(--gold);border:1px solid rgba(255,180,41,0.2)}
+.cat-analysis{background:rgba(180,100,255,0.1);color:#c478ff;border:1px solid rgba(180,100,255,0.2)}
+.cat-store{background:rgba(100,255,160,0.1);color:#5fffaa;border:1px solid rgba(100,255,160,0.2)}
+.new-badge{background:linear-gradient(135deg,#f0b429,#ff8c42);color:#000;font-size:9px;font-weight:900;padding:3px 9px;border-radius:100px;letter-spacing:1px}
+.card-icon{width:44px;height:44px;background:rgba(240,180,41,0.07);border:1px solid rgba(240,180,41,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:16px;transition:background .3s,transform .3s}
+.blog-card:hover .card-icon{background:rgba(240,180,41,0.14);transform:scale(1.1) rotateZ(4deg)}
+.card-title{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:9px;line-height:1.55}
+.card-desc{font-size:12px;color:#6868a0;line-height:1.7;margin-bottom:22px}
+.read-link{display:inline-flex;align-items:center;gap:7px;color:var(--gold);font-size:12px;font-weight:700;transition:gap .3s;letter-spacing:.5px}
+.read-link:hover{gap:11px}
+.read-arrow{font-size:14px;transition:transform .3s}
+.read-link:hover .read-arrow{transform:translateX(-3px)}
+[dir="rtl"] .read-link{flex-direction:row-reverse}
+[dir="rtl"] .read-arrow{transform:scaleX(-1)}
+[dir="rtl"] .read-link:hover .read-arrow{transform:scaleX(-1) translateX(-3px)}
 
-.back-btn {
-  color: var(--text-dim);
-  text-decoration: none;
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-family: 'Tajawal', sans-serif;
-  background: var(--surface2);
-  transition: all 0.3s;
-  white-space: nowrap;
-}
-.back-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-soft); }
+/* UAE BANNER */
+.uae-banner{background:linear-gradient(135deg,rgba(0,115,72,0.12),rgba(255,255,255,0.04),rgba(255,0,0,0.08));border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:18px 24px;display:flex;align-items:center;gap:16px;margin-bottom:28px;animation:fadeUp .6s ease .25s both}
+.uae-flag{font-size:28px}
+.uae-text{font-size:13px;color:#8888b0;line-height:1.6}
+.uae-text strong{color:var(--text);font-size:14px;display:block;margin-bottom:3px}
 
-/* ===== HERO ===== */
-.hero {
-  text-align: center;
-  padding: 70px 0 60px;
-}
+/* FOOTER */
+footer{text-align:center;margin-top:70px;padding:32px 0 24px;border-top:1px solid var(--border);color:#484878;font-size:12px}
+.footer-logo{font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;color:var(--gold);display:block;margin-bottom:8px;letter-spacing:2px}
+.footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:12px;flex-wrap:wrap}
+.footer-links a{color:#484878;text-decoration:none;font-size:12px;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.scroll-top{position:fixed;bottom:28px;left:28px;width:42px;height:42px;background:var(--surface2);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--gold);transition:all .3s;opacity:0;pointer-events:none;z-index:100}
+.scroll-top.show{opacity:1;pointer-events:all}
+.scroll-top:hover{background:var(--gold-soft);transform:translateY(-3px);border-color:var(--gold)}
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(240,180,41,0.08);
-  border: 1px solid rgba(240,180,41,0.2);
-  color: var(--gold);
-  padding: 6px 18px;
-  border-radius: 100px;
-  font-size: 11px;
-  font-weight: 600;
-  margin-bottom: 30px;
-  letter-spacing: 2px;
-  animation: fadeUp 0.6s ease both;
-}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-.coin-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 32px;
-  animation: fadeUp 0.6s ease 0.1s both;
-}
-.coin-scene { width: 90px; height: 90px; perspective: 600px; }
-.coin {
-  width: 90px; height: 90px;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: coinSpin 7s linear infinite;
-}
-@keyframes coinSpin {
-  0% { transform: rotateY(0deg) rotateX(8deg); }
-  100% { transform: rotateY(360deg) rotateX(8deg); }
-}
-.coin-face {
-  position: absolute;
-  width: 90px; height: 90px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 28px;
-  font-weight: 900;
-  backface-visibility: hidden;
-}
-.coin-front {
-  background: radial-gradient(circle at 32% 32%, #ffe88a, #c8901a 55%, #7a5200);
-  box-shadow: 0 0 30px rgba(240,180,41,0.7), inset 0 3px 8px rgba(255,255,255,0.3);
-  color: #7a4500;
-  transform: translateZ(5px);
-}
-.coin-back {
-  background: radial-gradient(circle at 68% 32%, #d4a020, #8a6010 60%, #5a3800);
-  color: #c89030;
-  transform: translateZ(-5px) rotateY(180deg);
-}
-
-.hero h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(26px, 5vw, 48px);
-  font-weight: 900;
-  line-height: 1.2;
-  margin-bottom: 14px;
-  animation: fadeUp 0.6s ease 0.15s both;
-}
-.hero h1 .accent {
-  background: linear-gradient(135deg, var(--gold), #ffe9a0, var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero p {
-  color: #6868a0;
-  font-size: 15px;
-  max-width: 500px;
-  margin: 0 auto 44px;
-  line-height: 1.75;
-  animation: fadeUp 0.6s ease 0.2s both;
-}
-
-/* ===== STATS ===== */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 0;
-  flex-wrap: wrap;
-  margin-bottom: 60px;
-  animation: fadeUp 0.6s ease 0.3s both;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  overflow: hidden;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.stat-item {
-  flex: 1;
-  text-align: center;
-  padding: 20px 24px;
-  border-right: 1px solid var(--border);
-  position: relative;
-}
-.stat-item:last-child { border-right: none; }
-[dir="rtl"] .stat-item { border-right: none; border-left: 1px solid var(--border); }
-[dir="rtl"] .stat-item:last-child { border-left: none; }
-.stat-num {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 4px;
-}
-.stat-label {
-  font-size: 10px;
-  color: #5858888;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-/* ===== SECTION HEAD ===== */
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
-}
-.section-head h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--gold);
-  letter-spacing: 3px;
-  white-space: nowrap;
-}
-.section-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(240,180,41,0.25), transparent);
-}
-[dir="rtl"] .section-line { background: linear-gradient(270deg, rgba(240,180,41,0.25), transparent); }
-
-/* ===== FEATURED CARD ===== */
-.featured-card-wrap {
-  margin-bottom: 28px;
-}
-
-.featured-card {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 0;
-  background: linear-gradient(135deg, #090921 0%, #0f0c2a 100%);
-  border: 1px solid rgba(240,180,41,0.18);
-  border-radius: 24px;
-  overflow: hidden;
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.4s, box-shadow 0.4s;
-  opacity: 0;
-  animation: cardReveal 0.7s cubic-bezier(0.23,1,0.32,1) 0.35s forwards;
-}
-.featured-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(240,180,41,0.38);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 50px rgba(240,180,41,0.08);
-}
-.featured-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-.featured-card:hover::before { opacity: 1; }
-
-.featured-content {
-  padding: 40px 44px;
-}
-.feat-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(240,180,41,0.1);
-  border: 1px solid rgba(240,180,41,0.2);
-  color: var(--gold);
-  padding: 4px 12px;
-  border-radius: 100px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  margin-bottom: 18px;
-}
-.featured-content .card-title {
-  font-size: 22px;
-  font-weight: 900;
-  color: var(--text);
-  line-height: 1.4;
-  margin-bottom: 12px;
-}
-.featured-content .card-desc {
-  font-size: 14px;
-  color: #6060909;
-  line-height: 1.7;
-  margin-bottom: 28px;
-  color: #7070a8;
-}
-.featured-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(240,180,41,0.03), rgba(240,180,41,0.08));
-  border-right: 1px solid rgba(240,180,41,0.1);
-  position: relative;
-  overflow: hidden;
-}
-[dir="rtl"] .featured-visual {
-  border-right: none;
-  border-left: 1px solid rgba(240,180,41,0.1);
-}
-.featured-visual::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(240,180,41,0.08) 0%, transparent 70%);
-}
-.floating-pi {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 80px;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--gold), #fff5cc, var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: floatPi 3.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 30px rgba(240,180,41,0.4));
-  position: relative;
-  z-index: 1;
-}
-@keyframes floatPi {
-  0%,100% { transform: translateY(0) rotate(-3deg); }
-  50% { transform: translateY(-14px) rotate(3deg); }
-}
-
-/* ===== BLOG GRID ===== */
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-/* ===== CARD ===== */
-a.blog-card {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.blog-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 28px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.4s, box-shadow 0.4s;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(24px);
-}
-.blog-card.visible {
-  animation: cardReveal 0.6s cubic-bezier(0.23,1,0.32,1) forwards;
-}
-@keyframes cardReveal {
-  from { opacity: 0; transform: translateY(24px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-.blog-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(240,180,41,0.07) 0%, transparent 65%);
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-}
-.blog-card:hover {
-  transform: translateY(-7px) scale(1.01);
-  border-color: var(--border-hover);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.55), 0 0 35px rgba(240,180,41,0.07);
-}
-.blog-card:hover::before { opacity: 1; }
-
-.card-top-line {
-  position: absolute;
-  top: 0; left: 20%; right: 20%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-.blog-card:hover .card-top-line { opacity: 0.8; }
-
-.card-number {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 10px;
-  color: rgba(240,180,41,0.35);
-  margin-bottom: 14px;
-  letter-spacing: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.new-badge {
-  background: linear-gradient(135deg, #f0b429, #ff8c42);
-  color: #000;
-  font-size: 9px;
-  font-weight: 900;
-  padding: 3px 9px;
-  border-radius: 100px;
-  letter-spacing: 1px;
-}
-
-.card-icon {
-  width: 44px; height: 44px;
-  background: rgba(240,180,41,0.07);
-  border: 1px solid rgba(240,180,41,0.15);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 19px;
-  margin-bottom: 16px;
-  transition: background 0.3s, transform 0.3s;
-}
-.blog-card:hover .card-icon {
-  background: rgba(240,180,41,0.14);
-  transform: scale(1.1) rotateZ(4deg);
-}
-
-.card-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 9px;
-  line-height: 1.5;
-}
-.card-desc {
-  font-size: 12.5px;
-  color: #6868a0;
-  line-height: 1.65;
-  margin-bottom: 22px;
-}
-.read-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: 700;
-  transition: gap 0.3s;
-  letter-spacing: 0.5px;
-}
-.read-link:hover { gap: 11px; }
-.read-arrow { font-size: 14px; transition: transform 0.3s; }
-.read-link:hover .read-arrow { transform: translateX(-3px); }
-
-[dir="rtl"] .read-link { flex-direction: row-reverse; }
-[dir="rtl"] .read-arrow { transform: scaleX(-1); }
-[dir="rtl"] .read-link:hover .read-arrow { transform: scaleX(-1) translateX(-3px); }
-
-/* ===== CATEGORY DOTS ===== */
-.cat-dot {
-  display: inline-block;
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  margin-left: 8px;
-  vertical-align: middle;
-}
-
-/* ===== FILTER BAR ===== */
-.filter-bar {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-  animation: fadeUp 0.6s ease 0.35s both;
-  opacity: 0;
-}
-.filter-bar.visible { animation: fadeUp 0.6s ease 0.35s forwards; }
-.filter-btn {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  color: #6868a0;
-  padding: 7px 16px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-family: 'Tajawal', sans-serif;
-  cursor: pointer;
-  transition: all 0.25s;
-  letter-spacing: 0.5px;
-}
-.filter-btn.active,
-.filter-btn:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: var(--gold-soft);
-}
-
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  margin-top: 70px;
-  padding: 32px 0 24px;
-  border-top: 1px solid var(--border);
-  color: #484878;
-  font-size: 12px;
-}
-.footer-logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 8px;
-  letter-spacing: 2px;
-}
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-}
-.footer-links a {
-  color: #484878;
-  text-decoration: none;
-  font-size: 12px;
-  transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--gold); }
-
-/* ===== SCROLL TOP ===== */
-.scroll-top {
-  position: fixed;
-  bottom: 28px;
-  left: 28px;
-  width: 42px; height: 42px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 16px;
-  color: var(--gold);
-  transition: all 0.3s;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 100;
-}
-.scroll-top.show { opacity: 1; pointer-events: all; }
-.scroll-top:hover { background: var(--gold-soft); transform: translateY(-3px); border-color: var(--gold); }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .blog-grid { grid-template-columns: repeat(2, 1fr); }
-  .featured-card { grid-template-columns: 1fr; }
-  .featured-visual { height: 100px; }
-  .floating-pi { font-size: 60px; }
-}
-@media (max-width: 600px) {
-  .blog-grid { grid-template-columns: 1fr; }
-  .featured-content { padding: 28px 24px; }
-  .stats-bar { flex-direction: row; }
-  .page-wrap { padding: 0 16px 60px; }
-}
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}.featured-card{grid-template-columns:1fr}.featured-visual{height:100px}.floating-pi{font-size:60px}}
+@media(max-width:600px){.blog-grid{grid-template-columns:1fr}.featured-content{padding:28px 24px}.page-wrap{padding:0 16px 60px}}
 </style>
 </head>
 <body>
-
 <canvas id="cosmosCanvas"></canvas>
-
 <div class="page-wrap">
 
   <header>
@@ -665,7 +163,7 @@ footer {
         <button class="lang-btn" id="langBtn">
           <span id="currentFlag">🇸🇦</span>
           <span id="currentName">العربية</span>
-          <span style="font-size:9px;opacity:0.4">▼</span>
+          <span style="font-size:9px;opacity:.4">▼</span>
         </button>
         <ul class="lang-list" id="langList">
           <li><a href="#" data-lang="ar">🇸🇦 العربية</a></li>
@@ -676,18 +174,13 @@ footer {
           <li><a href="#" data-lang="fil">🇵🇭 Filipino</a></li>
         </ul>
       </div>
-      <a href="../" class="back-btn" id="backBtn">العودة للرئيسية</a>
+      <a href="https://piprice.store/" class="back-btn" id="backBtn">العودة للرئيسية</a>
     </div>
   </header>
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-badge">
-      <span>✦</span>
-      <span id="badgeText">Pi Network Blog</span>
-      <span>✦</span>
-    </div>
-
+    <div class="hero-badge"><span>✦</span><span id="badgeText">متجر Pi Network في الإمارات</span><span>✦</span></div>
     <div class="coin-wrap">
       <div class="coin-scene">
         <div class="coin">
@@ -696,24 +189,23 @@ footer {
         </div>
       </div>
     </div>
-
     <h1><span id="heroTitle">مدونة <span class="accent">PiPrice</span></span></h1>
-    <p id="heroDesc">دليلك الكامل لأخبار Pi Network وسعر Pi اليوم</p>
+    <p id="heroDesc">دليلك الكامل لبيع Pi Network في الإمارات، تحليلات السعر، والأخبار الحصرية</p>
   </div>
 
   <!-- STATS -->
   <div class="stats-bar" id="statsBar">
-    <div class="stat-item">
-      <span class="stat-num">13</span>
-      <span class="stat-label" id="stat1lbl">مقال</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">6</span>
-      <span class="stat-label" id="stat2lbl">لغة</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">2025</span>
-      <span class="stat-label" id="stat3lbl">تحديث</span>
+    <div class="stat-item"><span class="stat-num">13</span><span class="stat-label" id="stat1lbl">مقال</span></div>
+    <div class="stat-item"><span class="stat-num">🇦🇪</span><span class="stat-label" id="stat2lbl">الإمارات</span></div>
+    <div class="stat-item"><span class="stat-num">2025</span><span class="stat-label" id="stat3lbl">تحديث</span></div>
+  </div>
+
+  <!-- UAE BANNER -->
+  <div class="uae-banner" id="uaeBanner">
+    <div class="uae-flag">🇦🇪</div>
+    <div class="uae-text">
+      <strong id="uaeTitle">PiPrice – المتجر الرسمي لبيع Pi Network في الإمارات</strong>
+      <span id="uaeDesc">شريك الأنصاري للصرافة · دبي · معاملات آمنة وموثوقة</span>
     </div>
   </div>
 
@@ -721,11 +213,11 @@ footer {
   <div class="featured-card-wrap" id="featuredWrap"></div>
 
   <!-- FILTER -->
-  <div class="filter-bar visible" id="filterBar"></div>
+  <div class="filter-bar" id="filterBar"></div>
 
   <!-- SECTION HEAD -->
   <div class="section-head">
-    <h2 id="sectionTitle">المقالات</h2>
+    <h2 id="sectionTitle">جميع المقالات</h2>
     <div class="section-line"></div>
   </div>
 
@@ -737,471 +229,267 @@ footer {
 <footer>
   <span class="footer-logo">PiPrice</span>
   <div class="footer-links">
-    <a href="#" id="footerHome">الرئيسية</a>
-    <a href="#" id="footerBlog">المدونة</a>
-    <a href="#" id="footerPrice">سعر Pi</a>
+    <a href="https://piprice.store/" id="footerHome">الرئيسية</a>
+    <a href="https://piprice.store/blog/" id="footerBlog">المدونة</a>
+    <a href="https://piprice.store/#price" id="footerPrice">سعر Pi</a>
   </div>
-  <span id="footerText">© PiPrice 2025 · جميع الحقوق محفوظة</span>
+  <span id="footerText">© PiPrice 2025 · متجر Pi Network في الإمارات · جميع الحقوق محفوظة</span>
 </footer>
 
 <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
 <script>
-/* ============================================================
-   COSMOS BACKGROUND
-   ============================================================ */
-(function() {
-  const canvas = document.getElementById('cosmosCanvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, stars = [], hexes = [], nebulas = [];
-
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+/* COSMOS */
+(function(){
+  const canvas=document.getElementById('cosmosCanvas'),ctx=canvas.getContext('2d');
+  let W,H,stars=[],hexes=[];
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+  function initAll(){
+    stars=[];
+    for(let i=0;i<180;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3+.2,a:Math.random(),speed:Math.random()*.25+.04,color:Math.random()>.8?'rgba(180,200,255,':'rgba(240,200,100,'});
+    hexes=[];
+    for(let i=0;i<10;i++)hexes.push({x:Math.random()*W,y:Math.random()*H,size:Math.random()*70+25,rot:Math.random()*Math.PI,rotSpeed:(Math.random()-.5)*.004,a:Math.random()*.05+.015,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.12});
   }
-
-  function initAll() {
-    stars = [];
-    for (let i = 0; i < 180; i++) {
-      stars.push({
-        x: Math.random() * W, y: Math.random() * H,
-        r: Math.random() * 1.3 + 0.2,
-        a: Math.random(),
-        speed: Math.random() * 0.25 + 0.04,
-        color: Math.random() > 0.8 ? `rgba(180,200,255,` : `rgba(240,200,100,`
-      });
-    }
-    hexes = [];
-    for (let i = 0; i < 10; i++) {
-      hexes.push({
-        x: Math.random() * W, y: Math.random() * H,
-        size: Math.random() * 70 + 25,
-        rot: Math.random() * Math.PI,
-        rotSpeed: (Math.random() - 0.5) * 0.004,
-        a: Math.random() * 0.05 + 0.015,
-        vx: (Math.random() - 0.5) * 0.18,
-        vy: (Math.random() - 0.5) * 0.12
-      });
-    }
-  }
-
-  function drawHex(cx, cy, size, rot) {
-    ctx.beginPath();
-    for (let i = 0; i < 6; i++) {
-      const a = rot + (Math.PI / 3) * i;
-      i === 0 ? ctx.moveTo(cx + size * Math.cos(a), cy + size * Math.sin(a))
-              : ctx.lineTo(cx + size * Math.cos(a), cy + size * Math.sin(a));
-    }
-    ctx.closePath();
-  }
-
-  function draw(t) {
-    ctx.clearRect(0, 0, W, H);
-
-    stars.forEach(s => {
-      s.y -= s.speed;
-      if (s.y < 0) { s.y = H; s.x = Math.random() * W; }
-      const alpha = 0.3 + 0.6 * Math.abs(Math.sin(t * 0.0008 + s.x * 0.01));
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = s.color + alpha + ')';
-      ctx.fill();
-    });
-
-    hexes.forEach(h => {
-      h.rot += h.rotSpeed;
-      h.x += h.vx; h.y += h.vy;
-      if (h.x < -120) h.x = W + 120;
-      if (h.x > W + 120) h.x = -120;
-      if (h.y < -120) h.y = H + 120;
-      if (h.y > H + 120) h.y = -120;
-
-      drawHex(h.x, h.y, h.size, h.rot);
-      ctx.strokeStyle = `rgba(240,180,41,${h.a})`;
-      ctx.lineWidth = 0.8;
-      ctx.stroke();
-
-      drawHex(h.x, h.y, h.size * 0.55, h.rot + 0.5);
-      ctx.strokeStyle = `rgba(240,180,41,${h.a * 0.45})`;
-      ctx.lineWidth = 0.4;
-      ctx.stroke();
-    });
-
-    ctx.strokeStyle = 'rgba(240,180,41,0.02)';
-    ctx.lineWidth = 0.5;
-    const gap = 90;
-    for (let x = 0; x < W; x += gap) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
-    for (let y = 0; y < H; y += gap) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
-
+  function drawHex(cx,cy,sz,rot){ctx.beginPath();for(let i=0;i<6;i++){const a=rot+(Math.PI/3)*i;i===0?ctx.moveTo(cx+sz*Math.cos(a),cy+sz*Math.sin(a)):ctx.lineTo(cx+sz*Math.cos(a),cy+sz*Math.sin(a))}ctx.closePath()}
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+    stars.forEach(s=>{s.y-=s.speed;if(s.y<0){s.y=H;s.x=Math.random()*W}const al=.3+.6*Math.abs(Math.sin(t*.0008+s.x*.01));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=s.color+al+')';ctx.fill()});
+    hexes.forEach(h=>{h.rot+=h.rotSpeed;h.x+=h.vx;h.y+=h.vy;if(h.x<-120)h.x=W+120;if(h.x>W+120)h.x=-120;if(h.y<-120)h.y=H+120;if(h.y>H+120)h.y=-120;drawHex(h.x,h.y,h.size,h.rot);ctx.strokeStyle=`rgba(240,180,41,${h.a})`;ctx.lineWidth=.8;ctx.stroke();drawHex(h.x,h.y,h.size*.55,h.rot+.5);ctx.strokeStyle=`rgba(240,180,41,${h.a*.45})`;ctx.lineWidth=.4;ctx.stroke()});
+    ctx.strokeStyle='rgba(240,180,41,0.02)';ctx.lineWidth=.5;const gap=90;
+    for(let x=0;x<W;x+=gap){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+    for(let y=0;y<H;y+=gap){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
     requestAnimationFrame(draw);
   }
-
-  resize(); initAll(); requestAnimationFrame(draw);
-  window.addEventListener('resize', () => { resize(); initAll(); });
+  resize();initAll();requestAnimationFrame(draw);
+  window.addEventListener('resize',()=>{resize();initAll()});
 })();
 
-/* ============================================================
-   TILT EFFECT
-   ============================================================ */
-function applyTilt(card) {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    const x = e.clientX - r.left, y = e.clientY - r.top;
-    const cx = r.width / 2, cy = r.height / 2;
-    card.style.transform = `translateY(-7px) rotateX(${(y-cy)/cy*-5}deg) rotateY(${(x-cx)/cx*7}deg) scale(1.01)`;
-    card.style.setProperty('--mx', `${(x/r.width)*100}%`);
-    card.style.setProperty('--my', `${(y/r.height)*100}%`);
-  });
-  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+/* TILT */
+function applyTilt(card){
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,cx=r.width/2,cy=r.height/2;card.style.transform=`translateY(-7px) rotateX(${(y-cy)/cy*-5}deg) rotateY(${(x-cx)/cx*7}deg) scale(1.01)`;card.style.setProperty('--mx',`${(x/r.width)*100}%`);card.style.setProperty('--my',`${(y/r.height)*100}%`)});
+  card.addEventListener('mouseleave',()=>{card.style.transform=''});
 }
 
-/* ============================================================
-   UI STRINGS
-   ============================================================ */
-const UI = {
-  ar: {
-    flag:'🇸🇦', name:'العربية', dir:'rtl',
+/* UI STRINGS */
+const UI={
+  ar:{flag:'🇸🇦',name:'العربية',dir:'rtl',
     heroTitle:'مدونة <span class="accent">PiPrice</span>',
-    heroDesc:'دليلك الكامل لأخبار Pi Network وسعر Pi اليوم',
-    back:'العودة للرئيسية', read:'اقرأ المقال',
-    section:'المقالات', badge:'Pi Network Blog',
-    stat1:'مقال', stat2:'لغة', stat3:'تحديث',
-    featured:'مقال مميز', newLabel:'جديد',
-    filterAll:'الكل', filterNews:'أخبار', filterGuides:'أدلة', filterAnalysis:'تحليل',
-    footerHome:'الرئيسية', footerBlog:'المدونة', footerPrice:'سعر Pi',
-    footer:'© PiPrice 2025 · جميع الحقوق محفوظة',
-    pageTitle:'مدونة PiPrice | أخبار Pi Network'
-  },
-  en: {
-    flag:'🇬🇧', name:'English', dir:'ltr',
+    heroDesc:'دليلك الكامل لبيع Pi Network في الإمارات، تحليلات السعر، والأخبار الحصرية',
+    back:'العودة للرئيسية',read:'اقرأ المقال',section:'جميع المقالات',badge:'متجر Pi Network في الإمارات',
+    stat1:'مقال',stat2:'الإمارات',stat3:'تحديث',featured:'مقال مميز',newLabel:'جديد',
+    filterAll:'الكل',filterNews:'أخبار',filterGuides:'أدلة',filterAnalysis:'تحليل',filterStore:'المتجر',
+    footerHome:'الرئيسية',footerBlog:'المدونة',footerPrice:'سعر Pi',
+    footer:'© PiPrice 2025 · متجر Pi Network في الإمارات · جميع الحقوق محفوظة',
+    uaeTitle:'PiPrice – المتجر الرسمي لبيع Pi Network في الإمارات',
+    uaeDesc:'شريك الأنصاري للصرافة · دبي · معاملات آمنة وموثوقة',
+    pageTitle:'مدونة PiPrice | أخبار وتحليلات Pi Network في الإمارات'},
+  en:{flag:'🇬🇧',name:'English',dir:'ltr',
     heroTitle:'<span class="accent">PiPrice</span> Blog',
-    heroDesc:'Your complete guide to Pi Network news and Pi price today',
-    back:'Back to Home', read:'Read Article',
-    section:'ARTICLES', badge:'Pi Network Blog',
-    stat1:'Articles', stat2:'Languages', stat3:'Updated',
-    featured:'FEATURED', newLabel:'NEW',
-    filterAll:'All', filterNews:'News', filterGuides:'Guides', filterAnalysis:'Analysis',
-    footerHome:'Home', footerBlog:'Blog', footerPrice:'Pi Price',
-    footer:'© PiPrice 2025 · All rights reserved',
-    pageTitle:'PiPrice Blog | Pi Network News'
-  },
-  fr: {
-    flag:'🇫🇷', name:'Français', dir:'ltr',
+    heroDesc:'Your complete guide to selling Pi Network in UAE, price analysis & exclusive news',
+    back:'Back to Home',read:'Read Article',section:'ALL ARTICLES',badge:'Pi Network Store in UAE',
+    stat1:'Articles',stat2:'UAE',stat3:'Updated',featured:'FEATURED',newLabel:'NEW',
+    filterAll:'All',filterNews:'News',filterGuides:'Guides',filterAnalysis:'Analysis',filterStore:'Store',
+    footerHome:'Home',footerBlog:'Blog',footerPrice:'Pi Price',
+    footer:'© PiPrice 2025 · Pi Network Store UAE · All rights reserved',
+    uaeTitle:'PiPrice – Official Pi Network Store in the UAE',
+    uaeDesc:'Al Ansari Exchange Partner · Dubai · Safe & Trusted Transactions',
+    pageTitle:'PiPrice Blog | Pi Network News & Analysis UAE'},
+  fr:{flag:'🇫🇷',name:'Français',dir:'ltr',
     heroTitle:'Blog <span class="accent">PiPrice</span>',
-    heroDesc:"Actualités Pi Network et prix du Pi aujourd'hui",
-    back:"Retour à l'accueil", read:"Lire l'article",
-    section:'ARTICLES', badge:'Pi Network Blog',
-    stat1:'Articles', stat2:'Langues', stat3:'Mis à jour',
-    featured:'À LA UNE', newLabel:'NOUVEAU',
-    filterAll:'Tout', filterNews:'Actualités', filterGuides:'Guides', filterAnalysis:'Analyse',
-    footerHome:'Accueil', footerBlog:'Blog', footerPrice:'Prix Pi',
-    footer:'© PiPrice 2025 · Tous droits réservés',
-    pageTitle:'Blog PiPrice | Nouvelles Pi Network'
-  },
-  zh: {
-    flag:'🇨🇳', name:'中文', dir:'ltr',
+    heroDesc:"Guide complet pour vendre Pi Network aux EAU, analyses de prix et actualités",
+    back:"Retour à l'accueil",read:"Lire l'article",section:'ARTICLES',badge:'Pi Network Store UAE',
+    stat1:'Articles',stat2:'EAU',stat3:'Mis à jour',featured:'À LA UNE',newLabel:'NOUVEAU',
+    filterAll:'Tout',filterNews:'Actualités',filterGuides:'Guides',filterAnalysis:'Analyse',filterStore:'Boutique',
+    footerHome:'Accueil',footerBlog:'Blog',footerPrice:'Prix Pi',
+    footer:'© PiPrice 2025 · Pi Network UAE · Tous droits réservés',
+    uaeTitle:'PiPrice – Boutique officielle Pi Network aux EAU',
+    uaeDesc:'Partenaire Al Ansari Exchange · Dubaï · Transactions sécurisées',
+    pageTitle:'Blog PiPrice | Pi Network Actualités EAU'},
+  zh:{flag:'🇨🇳',name:'中文',dir:'ltr',
     heroTitle:'<span class="accent">PiPrice</span> 博客',
-    heroDesc:'了解 Pi Network 新闻和今日 Pi 价格',
-    back:'返回主页', read:'阅读文章',
-    section:'文章', badge:'Pi Network 博客',
-    stat1:'文章', stat2:'语言', stat3:'更新',
-    featured:'精选', newLabel:'新',
-    filterAll:'全部', filterNews:'新闻', filterGuides:'指南', filterAnalysis:'分析',
-    footerHome:'首页', footerBlog:'博客', footerPrice:'Pi价格',
-    footer:'© PiPrice 2025 · 版权所有',
-    pageTitle:'PiPrice 博客 | Pi Network 新闻'
-  },
-  hi: {
-    flag:'🇮🇳', name:'हिन्दी', dir:'ltr',
+    heroDesc:'在阿联酋出售Pi Network完整指南，价格分析与最新动态',
+    back:'返回主页',read:'阅读文章',section:'全部文章',badge:'阿联酋Pi Network商店',
+    stat1:'文章',stat2:'阿联酋',stat3:'更新',featured:'精选',newLabel:'新',
+    filterAll:'全部',filterNews:'新闻',filterGuides:'指南',filterAnalysis:'分析',filterStore:'商店',
+    footerHome:'首页',footerBlog:'博客',footerPrice:'Pi价格',
+    footer:'© PiPrice 2025 · 阿联酋Pi Network · 版权所有',
+    uaeTitle:'PiPrice – 阿联酋官方Pi Network商店',
+    uaeDesc:'Al Ansari Exchange合作伙伴 · 迪拜 · 安全可信交易',
+    pageTitle:'PiPrice博客 | 阿联酋Pi Network新闻分析'},
+  hi:{flag:'🇮🇳',name:'हिन्दी',dir:'ltr',
     heroTitle:'<span class="accent">PiPrice</span> ब्लॉग',
-    heroDesc:'Pi Network समाचार और आज की Pi कीमत',
-    back:'होम पेज', read:'लेख पढ़ें',
-    section:'लेख', badge:'Pi Network Blog',
-    stat1:'लेख', stat2:'भाषाएं', stat3:'अपडेट',
-    featured:'विशेष', newLabel:'नया',
-    filterAll:'सभी', filterNews:'समाचार', filterGuides:'गाइड', filterAnalysis:'विश्लेषण',
-    footerHome:'होम', footerBlog:'ब्लॉग', footerPrice:'Pi मूल्य',
-    footer:'© PiPrice 2025 · सर्वाधिकार सुरक्षित',
-    pageTitle:'PiPrice ब्लॉग | Pi Network समाचार'
-  },
-  fil: {
-    flag:'🇵🇭', name:'Filipino', dir:'ltr',
+    heroDesc:'UAE में Pi Network बेचने की पूरी गाइड, मूल्य विश्लेषण और ताज़ा खबरें',
+    back:'होम पेज',read:'लेख पढ़ें',section:'सभी लेख',badge:'UAE में Pi Network स्टोर',
+    stat1:'लेख',stat2:'UAE',stat3:'अपडेट',featured:'विशेष',newLabel:'नया',
+    filterAll:'सभी',filterNews:'समाचार',filterGuides:'गाइड',filterAnalysis:'विश्लेषण',filterStore:'स्टोर',
+    footerHome:'होम',footerBlog:'ब्लॉग',footerPrice:'Pi मूल्य',
+    footer:'© PiPrice 2025 · UAE Pi Network · सर्वाधिकार सुरक्षित',
+    uaeTitle:'PiPrice – UAE में आधिकारिक Pi Network स्टोर',
+    uaeDesc:'Al Ansari Exchange Partner · Dubai · सुरक्षित लेनदेन',
+    pageTitle:'PiPrice ब्लॉग | UAE Pi Network समाचार'},
+  fil:{flag:'🇵🇭',name:'Filipino',dir:'ltr',
     heroTitle:'Blog ng <span class="accent">PiPrice</span>',
-    heroDesc:'Gabay sa balita ng Pi Network at presyo ng Pi ngayon',
-    back:'Bumalik sa Home', read:'Basahin',
-    section:'MGA ARTIKULO', badge:'Pi Network Blog',
-    stat1:'Artikulo', stat2:'Wika', stat3:'Update',
-    featured:'TAMPOK', newLabel:'BAGO',
-    filterAll:'Lahat', filterNews:'Balita', filterGuides:'Gabay', filterAnalysis:'Pagsusuri',
-    footerHome:'Home', footerBlog:'Blog', footerPrice:'Presyo ng Pi',
-    footer:'© PiPrice 2025 · Lahat ng karapatan nakalaan',
-    pageTitle:'PiPrice Blog | Balita ng Pi Network'
-  }
+    heroDesc:'Kumpletong gabay sa pagbebenta ng Pi Network sa UAE, pagsusuri ng presyo at mga balita',
+    back:'Bumalik sa Home',read:'Basahin',section:'LAHAT NG ARTIKULO',badge:'Pi Network Store sa UAE',
+    stat1:'Artikulo',stat2:'UAE',stat3:'Update',featured:'TAMPOK',newLabel:'BAGO',
+    filterAll:'Lahat',filterNews:'Balita',filterGuides:'Gabay',filterAnalysis:'Pagsusuri',filterStore:'Tindahan',
+    footerHome:'Home',footerBlog:'Blog',footerPrice:'Presyo ng Pi',
+    footer:'© PiPrice 2025 · Pi Network UAE · Lahat ng karapatan nakalaan',
+    uaeTitle:'PiPrice – Opisyal na Pi Network Store sa UAE',
+    uaeDesc:'Al Ansari Exchange Partner · Dubai · Ligtas na Transaksyon',
+    pageTitle:'PiPrice Blog | Pi Network Balita UAE'}
 };
 
-/* ============================================================
-   ARTICLES — 13 articles with categories
-   ============================================================ */
-const ICONS = ['🔍','📡','💼','📈','🛡️','🌐','🌏','🔐','💸','🚀','💡','👥','🎂'];
-const CATS  = ['guides','news','guides','analysis','guides','news','guides','guides','guides','analysis','news','news','news'];
-
-const articles = [
-  {
-    id:1, featured:true, cat:'guides',
-    title:{ar:'ما هو PiPrice وكيف يحدد سعر Pi؟',en:'What is PiPrice and how does it set Pi price?',fr:'Qu\'est-ce que PiPrice et comment fixe-t-il le prix du Pi?',zh:'什么是PiPrice？',hi:'PiPrice क्या है?',fil:'Ano ang PiPrice?'},
-    desc:{ar:'PiPrice هو مؤشر لمتابعة سعر Pi Network اليوم في الأسواق بطريقة لحظية ودقيقة.',en:'PiPrice is a real-time index tracking Pi Network price in markets worldwide.',fr:'PiPrice est un indice en temps réel pour suivre le prix Pi sur les marchés.',zh:'PiPrice是实时追踪Pi Network市场价格的指数。',hi:'PiPrice Pi Network की कीमत ट्रैक करने वाला रियल-टाइम इंडेक्स है।',fil:'Ang PiPrice ay isang real-time index na sinusubaybayan ang presyo ng Pi.'}
-  },
-  {
-    id:2, cat:'news',
-    title:{ar:'أخبار Pi Network: التحديثات الجديدة',en:'Pi Network News: New Updates',fr:'Nouvelles Pi Network: Mises à jour',zh:'Pi Network最新更新',hi:'Pi Network: नए अपडेट',fil:'Pi Network: Bagong Update'},
-    desc:{ar:'تعرف على آخر التحديثات والتطورات في شبكة Pi Network خلال الفترة الحالية.',en:'Learn about the latest updates and developments in Pi Network.',fr:'Découvrez les dernières mises à jour dans Pi Network.',zh:'了解Pi Network目前的最新更新。',hi:'Pi Network में नवीनतम अपडेट।',fil:'Mga pinakabagong update sa Pi Network.'}
-  },
-  {
-    id:3, cat:'guides',
-    title:{ar:'كيفية استخدام محفظة Pi Wallet',en:'How to use Pi Wallet',fr:'Comment utiliser Pi Wallet',zh:'如何使用Pi钱包',hi:'Pi Wallet का उपयोग कैसे करें',fil:'Paano gamitin ang Pi Wallet'},
-    desc:{ar:'دليلك الشامل لإنشاء محفظة Pi Wallet وتأمين مفاتيحك الخاصة بشكل صحيح.',en:'Complete guide to creating and securing your Pi Wallet.',fr:'Guide complet pour créer et sécuriser votre portefeuille Pi.',zh:'创建并保护Pi钱包的完整指南。',hi:'Pi Wallet बनाने और सुरक्षित करने की पूरी गाइड।',fil:'Kumpletong gabay sa paggawa ng Pi Wallet.'}
-  },
-  {
-    id:4, cat:'analysis',
-    title:{ar:'توقعات سعر عملة Pi Network',en:'Pi Network Price Predictions',fr:'Prévisions de prix Pi Network',zh:'Pi Network价格预测',hi:'Pi Network मूल्य भविष्यवाणियाँ',fil:'Mga Hula sa Presyo ng Pi'},
-    desc:{ar:'تحليلات وتوقعات خبراء العملات الرقمية حول مستقبل سعر عملة Pi.',en:'Expert crypto analysis and predictions about Pi price future.',fr:'Analyses d\'experts sur le futur prix Pi.',zh:'专家关于Pi价格未来的分析和预测。',hi:'Pi मूल्य के भविष्य के बारे में विशेषज्ञ विश्लेषण।',fil:'Pagsusuri ng eksperto tungkol sa presyo ng Pi.'}
-  },
-  {
-    id:5, cat:'guides',
-    title:{ar:'ما هو KYC ولماذا هو مهم؟',en:'What is KYC and why is it important?',fr:'Qu\'est-ce que le KYC?',zh:'什么是KYC？',hi:'KYC क्या है?',fil:'Ano ang KYC?'},
-    desc:{ar:'شرح مفصل لعملية التحقق من الهوية KYC في شبكة Pi Network وأهميتها.',en:'Detailed explanation of the KYC verification process in Pi Network.',fr:'Explication du processus de vérification KYC dans Pi Network.',zh:'Pi网络中KYC验证过程的详细说明。',hi:'Pi Network में KYC सत्यापन प्रक्रिया की विस्तृत व्याख्या।',fil:'Detalyadong paliwanag sa KYC sa Pi Network.'}
-  },
-  {
-    id:6, cat:'news',
-    title:{ar:'الفرق بين Pi Mainnet و Testnet',en:'Pi Mainnet vs Testnet',fr:'Pi Mainnet vs Testnet',zh:'Pi主网与测试网',hi:'Pi Mainnet बनाम Testnet',fil:'Pi Mainnet vs Testnet'},
-    desc:{ar:'مقال يوضح الفروقات الجوهرية بين الشبكة التجريبية والشبكة الرئيسية.',en:'Explaining the key differences between Pi Testnet and Mainnet.',fr:'Les différences entre Testnet et Mainnet expliquées.',zh:'解释Pi测试网和主网的主要区别。',hi:'Pi Testnet और Mainnet के बीच अंतर।',fil:'Mga pagkakaiba ng Pi Testnet at Mainnet.'}
-  },
-  {
-    id:7, cat:'guides',
-    title:{ar:'دليل استخدام متصفح Pi Browser',en:'Guide to Pi Browser',fr:'Guide du navigateur Pi',zh:'Pi浏览器指南',hi:'Pi Browser गाइड',fil:'Gabay sa Pi Browser'},
-    desc:{ar:'خطوات تحميل واستخدام متصفح Pi Browser للوصول لتطبيقات النظام البيئي.',en:'Steps to download and use Pi Browser to access ecosystem apps.',fr:'Télécharger Pi Browser pour accéder aux apps.',zh:'下载和使用Pi浏览器的步骤。',hi:'Pi Browser डाउनलोड के चरण।',fil:'Mga hakbang sa pag-download ng Pi Browser.'}
-  },
-  {
-    id:8, cat:'guides',
-    title:{ar:'نصائح أمنية لحماية حساب Pi',en:'Security Tips for Pi Account',fr:'Conseils de sécurité Pi',zh:'Pi账户安全提示',hi:'Pi Account सुरक्षा टिप्स',fil:'Security Tips para sa Pi'},
-    desc:{ar:'أفضل الممارسات لتأمين حسابك من السرقة والاحتيال في عالم العملات.',en:'Best practices to secure your Pi account from fraud and theft.',fr:'Meilleures pratiques pour sécuriser votre compte Pi.',zh:'保护Pi账户免受欺诈的最佳做法。',hi:'धोखाधड़ी से Pi खाते की सुरक्षा।',fil:'Best practices para i-secure ang Pi account.'}
-  },
-  {
-    id:9, cat:'guides',
-    title:{ar:'كيفية السحب والتحويل في Pi Network',en:'Withdrawals & Transfers in Pi',fr:'Retraits et transferts Pi',zh:'Pi提现与转账',hi:'Pi में निकासी और स्थानांतरण',fil:'Pag-withdraw at Transfer sa Pi'},
-    desc:{ar:'خطوات عملية لسحب وتحويل أرصدة Pi بعد فتح الشبكة الرئيسية.',en:'Practical steps to withdraw and transfer Pi after Mainnet.',fr:'Étapes pour retirer et transférer des Pi.',zh:'主网后提取和转移Pi的步骤。',hi:'Mainnet के बाद Pi निकालने के व्यावहारिक चरण।',fil:'Mga hakbang sa pag-withdraw ng Pi.'}
-  },
-  {
-    id:10, cat:'analysis',
-    title:{ar:'مستقبل تطبيقات Pi Apps',en:'The Future of Pi Apps',fr:'L\'avenir des apps Pi',zh:'Pi应用程序的未来',hi:'Pi Apps का भविष्य',fil:'Kinabukasan ng Pi Apps'},
-    desc:{ar:'نظرة على التطبيقات المبنية على شبكة Pi وكيف ستغير اقتصاد العملات.',en:'A look at Pi network apps and how they will reshape crypto.',fr:'Applications Pi et leur impact sur la crypto.',zh:'Pi网络应用程序的前景。',hi:'Pi नेटवर्क ऐप्स और क्रिप्टो पर उनका प्रभाव।',fil:'Mga app sa Pi network at ang epekto nito.'}
-  },
-  {
-    id:11, cat:'news',
-    title:{ar:'حقائق وشائعات حول Pi Network',en:'Facts & Myths about Pi Network',fr:'Faits et mythes sur Pi Network',zh:'Pi Network事实与谣言',hi:'Pi Network तथ्य और मिथक',fil:'Katotohanan at Mito tungkol sa Pi'},
-    desc:{ar:'نفي وتوضيح أشهر الشائعات المنتشرة حول عملة Pi Network.',en:'Debunking the most famous myths and rumors about Pi.',fr:'Démystifier les rumeurs les plus célèbres sur Pi.',zh:'揭穿最著名的Pi传言。',hi:'Pi के बारे में मशहूर मिथकों का खंडन।',fil:'Pinabubunyag ang mga sikat na mito tungkol sa Pi.'}
-  },
-  {
-    id:12, cat:'news',
-    title:{ar:'كيف تشارك في مجتمع Pi Network؟',en:'How to Join the Pi Community?',fr:'Rejoindre la communauté Pi',zh:'如何参与Pi社区',hi:'Pi समुदाय से कैसे जुड़ें?',fil:'Paano Sumali sa Pi Community?'},
-    desc:{ar:'دليل للانضمام للمجتمعات الفعالة والمساهمة في تطوير الشبكة.',en:'Guide to joining active communities and contributing to Pi.',fr:'Rejoindre les communautés Pi et contribuer au réseau.',zh:'加入Pi社区并参与网络发展。',hi:'Pi समुदायों में शामिल होने की गाइड।',fil:'Gabay sa pagsali sa mga Pi community.'}
-  },
-  {
-    id:13, cat:'news', isNew:true,
-    title:{
-      ar:'يوم باي العالمي: احتفال بالرقم الأكثر إثارة',
-      en:'Pi Day: Celebrating the Most Fascinating Number',
-      fr:'Journée de Pi: Célébrer le nombre le plus fascinant',
-      zh:'圆周率日：庆祝最迷人的数字',
-      hi:'Pi दिवस: सबसे आकर्षक संख्या का उत्सव',
-      fil:'Pi Day: Pagdiriwang ng Pinaka-kapana-pangarap na Numero'
-    },
-    desc:{
-      ar:'اكتشف قصة يوم باي العالمي في 14 مارس وأهميته لعشاق الرياضيات ومجتمع Pi Network.',
-      en:'Discover the story of Pi Day on March 14 and its significance for math lovers and Pi Network community.',
-      fr:'Découvrez l\'histoire de la Journée de Pi le 14 mars et son importance.',
-      zh:'探索3月14日圆周率日的故事及其意义。',
-      hi:'14 मार्च को Pi दिवस की कहानी और इसके महत्व के बारे में जानें।',
-      fil:'Alamin ang kwento ng Pi Day sa Marso 14 at ang kahalagahan nito.'
-    }
-  }
+/* ARTICLES from Excel SEO data */
+const articles=[
+  {id:1,featured:true,cat:'store',icon:'🔍',
+   title:{ar:'ما هو piprice وكيف يحدد سعر Pi Network اليوم؟',en:'What is PiPrice and how does it set the Pi Network price today?',fr:'Qu\'est-ce que PiPrice et comment fixe-t-il le prix de Pi Network?',zh:'什么是PiPrice？它如何确定今日Pi价格？',hi:'PiPrice क्या है और यह Pi Network का मूल्य कैसे निर्धारित करता है?',fil:'Ano ang PiPrice at paano nito tinutukoy ang presyo ng Pi Network ngayon?'},
+   desc:{ar:'اكتشف كيف يعمل موقع piprice لتحديد سعر Pi Network في الوقت الفعلي، وكيف يساعدك في معرفة القيمة السوقية لعملة Pi يومياً بدقة وموثوقية.',en:'Discover how PiPrice tracks Pi Network price in real-time and helps you know the daily market value accurately.',fr:'Découvrez comment PiPrice suit le prix Pi Network en temps réel avec précision.',zh:'了解PiPrice如何实时追踪Pi Network价格，帮助您准确了解每日市场价值。',hi:'जानें PiPrice कैसे Pi Network का मूल्य रियल-टाइम में ट्रैक करता है।',fil:'Alamin kung paano sinusubaybayan ng PiPrice ang presyo ng Pi Network.'}},
+  {id:2,cat:'store',icon:'🇦🇪',
+   title:{ar:'دليل بيع Pi Network في دبي والإمارات',en:'Guide to selling Pi Network in Dubai and UAE',fr:'Guide de vente Pi Network à Dubaï et aux EAU',zh:'迪拜和阿联酋出售Pi Network指南',hi:'दुबई और UAE में Pi Network बेचने की गाइड',fil:'Gabay sa pagbebenta ng Pi Network sa Dubai at UAE'},
+   desc:{ar:'دليل شامل لبيع عملة Pi Network في دبي والإمارات العربية المتحدة، مع أفضل الطرق الآمنة والموثوقة للتحويل والحصول على أعلى سعر ممكن.',en:'Complete guide to selling Pi Network in Dubai and UAE with the safest and most reliable methods.',fr:'Guide complet pour vendre Pi Network à Dubaï avec les meilleures méthodes sécurisées.',zh:'在迪拜和阿联酋出售Pi Network的完整指南，包含最安全可靠的方法。',hi:'दुबई और UAE में Pi Network बेचने की पूरी गाइड।',fil:'Kumpletong gabay sa pagbebenta ng Pi Network sa Dubai at UAE.'}},
+  {id:3,cat:'analysis',icon:'📈',
+   title:{ar:'مستقبل عملة Pi Network في 2026 – تحليل شامل للسعر والتوقعات',en:'Pi Network future in 2026 – Full price analysis and predictions',fr:'Avenir de Pi Network en 2026 – Analyse complète du prix',zh:'Pi Network 2026年前景 – 完整价格分析与预测',hi:'2026 में Pi Network का भविष्य – पूर्ण मूल्य विश्लेषण',fil:'Kinabukasan ng Pi Network sa 2026 – Kumpletong pagsusuri ng presyo'},
+   desc:{ar:'تحليل معمّق لتوقعات سعر Pi Network خلال عام 2026، مع استعراض العوامل المؤثرة في قيمة العملة وآفاق نموها في السوق الرقمي العالمي.',en:'In-depth analysis of Pi Network price predictions for 2026 and the factors affecting its value.',fr:'Analyse approfondie des prévisions de prix de Pi Network pour 2026.',zh:'对2026年Pi Network价格预测的深入分析，以及影响其价值的因素。',hi:'2026 के लिए Pi Network मूल्य भविष्यवाणियों का गहन विश्लेषण।',fil:'Malalim na pagsusuri ng mga hula sa presyo ng Pi Network para sa 2026.'}},
+  {id:4,cat:'guides',icon:'⚡',
+   title:{ar:'لماذا نستخدم شبكة Solana لتحويلات Pi؟',en:'Why do we use the Solana network for Pi transfers?',fr:'Pourquoi utilisons-nous le réseau Solana pour les transferts Pi?',zh:'为什么我们使用Solana网络进行Pi转账？',hi:'Pi ट्रांसफर के लिए Solana नेटवर्क क्यों उपयोग करते हैं?',fil:'Bakit gumagamit ng Solana network para sa Pi transfers?'},
+   desc:{ar:'تعرّف على أسباب اختيار شبكة Solana لإجراء تحويلات Pi Network، وكيف توفر سرعة عالية ورسوم منخفضة وأماناً موثوقاً لمستخدمي piprice.',en:'Learn why Solana network is chosen for Pi transfers: high speed, low fees, and reliable security.',fr:'Découvrez pourquoi Solana est choisi pour les transferts Pi: vitesse, faibles frais et sécurité.',zh:'了解为何选择Solana网络进行Pi转账：高速、低费用、可靠安全。',hi:'जानें Pi ट्रांसफर के लिए Solana नेटवर्क क्यों चुना गया।',fil:'Alamin kung bakit pinili ang Solana para sa Pi transfers.'}},
+  {id:5,cat:'analysis',icon:'💹',
+   title:{ar:'مقارنة سعر Pi على منصات التداول مقابل piprice',en:'Pi price comparison: trading platforms vs PiPrice',fr:'Comparaison prix Pi: plateformes de trading vs PiPrice',zh:'Pi价格比较：交易平台与PiPrice',hi:'Pi मूल्य तुलना: ट्रेडिंग प्लेटफॉर्म बनाम PiPrice',fil:'Paghahambing ng presyo ng Pi: trading platforms kumpara sa PiPrice'},
+   desc:{ar:'مقارنة تفصيلية بين أسعار Pi Network على منصات التداول الكبرى وموقع piprice، لمساعدتك في اتخاذ أفضل قرار عند البيع أو الشراء.',en:'Detailed comparison between Pi prices on major exchanges and PiPrice to help you make the best decision.',fr:'Comparaison détaillée entre les prix Pi sur les grandes plateformes et PiPrice.',zh:'主要交易所与PiPrice之间Pi价格的详细比较，帮助您做出最佳决策。',hi:'बड़े एक्सचेंज और PiPrice पर Pi कीमतों की विस्तृत तुलना।',fil:'Detalyadong paghahambing ng presyo ng Pi sa mga pangunahing exchange at PiPrice.'}},
+  {id:6,cat:'store',icon:'🛡️',
+   title:{ar:'الأمان والموثوقية في بيع Pi Network عبر piprice',en:'Security and reliability in selling Pi Network via PiPrice',fr:'Sécurité et fiabilité dans la vente de Pi Network via PiPrice',zh:'通过PiPrice出售Pi Network的安全性与可靠性',hi:'PiPrice के माध्यम से Pi Network बेचने में सुरक्षा और विश्वसनीयता',fil:'Kaligtasan at pagiging maaasahan sa pagbebenta ng Pi sa PiPrice'},
+   desc:{ar:'اكتشف كيف يضمن موقع piprice أعلى معايير الأمان والموثوقية عند بيع Pi Network، من خلال بروتوكولات حماية متقدمة وتجربة مستخدم آمنة.',en:'Discover how PiPrice ensures top security standards when selling Pi Network.',fr:'Découvrez comment PiPrice garantit les meilleures normes de sécurité pour vendre Pi.',zh:'了解PiPrice如何在出售Pi Network时确保最高安全标准。',hi:'जानें PiPrice Pi Network बेचते समय उच्चतम सुरक्षा मानक कैसे सुनिश्चित करता है।',fil:'Alamin kung paano tinitiyak ng PiPrice ang pinakamataas na antas ng seguridad.'}},
+  {id:7,cat:'guides',icon:'🔐',
+   title:{ar:'خطوات إنشاء محفظة Pi Network بأمان',en:'Steps to create a Pi Network wallet securely',fr:'Étapes pour créer un portefeuille Pi Network en toute sécurité',zh:'安全创建Pi Network钱包的步骤',hi:'Pi Network वॉलेट सुरक्षित तरीके से बनाने के चरण',fil:'Mga hakbang sa ligtas na paggawa ng Pi Network wallet'},
+   desc:{ar:'دليل خطوة بخطوة لإنشاء محفظة Pi Network بشكل آمن وصحيح، مع أهم النصائح لحماية أصولك الرقمية وتجنب الأخطاء الشائعة.',en:'Step-by-step guide to creating your Pi wallet safely with tips to protect your digital assets.',fr:'Guide étape par étape pour créer votre portefeuille Pi en toute sécurité.',zh:'安全创建Pi钱包的分步指南，包含保护数字资产的重要提示。',hi:'Pi वॉलेट सुरक्षित तरीके से बनाने की चरण-दर-चरण गाइड।',fil:'Hakbang-hakbang na gabay sa ligtas na paggawa ng Pi wallet.'}},
+  {id:8,cat:'guides',icon:'⚠️',
+   title:{ar:'كيف تتجنب الاحتيال عند بيع Pi Network؟',en:'How to avoid fraud when selling Pi Network?',fr:'Comment éviter la fraude lors de la vente de Pi Network?',zh:'出售Pi Network时如何避免欺诈？',hi:'Pi Network बेचते समय धोखाधड़ी से कैसे बचें?',fil:'Paano maiwasan ang scam sa pagbebenta ng Pi Network?'},
+   desc:{ar:'تعرّف على أبرز أساليب الاحتيال في سوق Pi Network وكيفية تجنبها، مع نصائح عملية لضمان بيع عملتك بأمان عبر قنوات موثوقة كـ piprice.',en:'Learn about the most common Pi fraud methods and practical tips to sell safely through trusted channels.',fr:'Les méthodes de fraude Pi les plus courantes et conseils pour vendre en toute sécurité.',zh:'了解最常见的Pi欺诈方式，以及通过可信渠道安全出售的实用建议。',hi:'Pi के सबसे सामान्य धोखाधड़ी के तरीके और सुरक्षित बेचने के व्यावहारिक सुझाव।',fil:'Ang pinakakaraniwang paraan ng Pi fraud at mga tip para sa ligtas na pagbebenta.'}},
+  {id:9,cat:'guides',icon:'🪪',
+   title:{ar:'أهمية توثيق الهوية (KYC) في Pi Network',en:'The importance of KYC in Pi Network',fr:'L\'importance du KYC dans Pi Network',zh:'Pi Network中KYC的重要性',hi:'Pi Network में KYC का महत्व',fil:'Ang kahalagahan ng KYC sa Pi Network'},
+   desc:{ar:'شرح مفصّل لأهمية إتمام عملية KYC في Pi Network، وتأثيرها على إمكانية التداول والبيع، مع خطوات التحقق من الهوية بسهولة وأمان.',en:'Detailed explanation of KYC importance in Pi Network and its impact on trading and selling.',fr:'Explication détaillée de l\'importance du KYC dans Pi Network et son impact sur le trading.',zh:'详细说明Pi Network中KYC的重要性及其对交易和出售的影响。',hi:'Pi Network में KYC के महत्व और इसके ट्रेडिंग पर प्रभाव की विस्तृत व्याख्या।',fil:'Detalyadong paliwanag sa kahalagahan ng KYC at epekto nito sa trading.'}},
+  {id:10,cat:'analysis',icon:'🚀',
+   title:{ar:'متى ستطرح Pi Network في السوق المفتوح؟',en:'When will Pi Network launch on the open market?',fr:'Quand Pi Network sera-t-il lancé sur le marché ouvert?',zh:'Pi Network何时在开放市场上市？',hi:'Pi Network खुले बाजार में कब लॉन्च होगा?',fil:'Kailan ilalabas ang Pi Network sa open market?'},
+   desc:{ar:'تحليل شامل لتوقيت إطلاق Pi Network في السوق المفتوح، مع استعراض أحدث التطورات والإعلانات الرسمية وتأثيرها على سعر العملة.',en:'Comprehensive analysis of Pi Network\'s open market launch timing and latest official announcements.',fr:'Analyse du timing du lancement de Pi Network sur le marché ouvert.',zh:'对Pi Network开放市场上市时间和最新官方公告的全面分析。',hi:'Pi Network के खुले बाजार में लॉन्च के समय का व्यापक विश्लेषण।',fil:'Komprehensibong pagsusuri ng timing ng Pi Network open market launch.'}},
+  {id:11,cat:'store',icon:'💰',
+   title:{ar:'كيف تربح من تداول Pi عبر piprice؟',en:'How to profit from trading Pi via PiPrice?',fr:'Comment profiter du trading Pi via PiPrice?',zh:'如何通过PiPrice从Pi交易中获利？',hi:'PiPrice के माध्यम से Pi ट्रेडिंग से कैसे कमाएं?',fil:'Paano kumita mula sa Pi trading sa PiPrice?'},
+   desc:{ar:'دليل عملي لتحقيق أقصى ربح من تداول Pi Network عبر منصة piprice، مع استراتيجيات ذكية للتوقيت المثالي للبيع والشراء.',en:'Practical guide to maximizing profit from Pi trading on PiPrice with smart timing strategies.',fr:'Guide pratique pour maximiser les profits du trading Pi via PiPrice.',zh:'通过PiPrice最大化Pi交易利润的实用指南，包含智能时机策略。',hi:'PiPrice के माध्यम से Pi ट्रेडिंग से अधिकतम लाभ के लिए व्यावहारिक गाइड।',fil:'Praktikal na gabay sa pag-maximize ng kita mula sa Pi trading sa PiPrice.'}},
+  {id:12,cat:'store',icon:'🏦',
+   title:{ar:'الأنصاري للصرافة: شريكك الموثوق لتداول Pi',en:'Al Ansari Exchange: your trusted partner for Pi trading',fr:'Al Ansari Exchange: votre partenaire de confiance pour Pi',zh:'Al Ansari Exchange：您值得信赖的Pi交易伙伴',hi:'Al Ansari Exchange: Pi ट्रेडिंग के लिए आपका विश्वसनीय साझेदार',fil:'Al Ansari Exchange: ang iyong mapagkakatiwalaang kasosyo para sa Pi'},
+   desc:{ar:'تعرّف على شراكة piprice مع الأنصاري للصرافة لتقديم خدمات تداول Pi Network بأعلى معايير الثقة والشفافية في منطقة الخليج العربي.',en:'Learn about PiPrice\'s partnership with Al Ansari Exchange for Pi Network trading with highest trust standards.',fr:'La partenariat PiPrice avec Al Ansari Exchange pour le trading Pi avec transparence.',zh:'了解PiPrice与Al Ansari Exchange的合作伙伴关系，以最高信任标准进行Pi交易。',hi:'PiPrice और Al Ansari Exchange की साझेदारी के बारे में जानें।',fil:'Ang pakikipagsosyo ng PiPrice sa Al Ansari Exchange para sa Pi trading.'}},
+  {id:13,cat:'news',icon:'🎂',isNew:true,
+   title:{ar:'يوم باي العالمي: احتفال بالرقم الأكثر إثارة في الكون',en:'Pi Day: Celebrating the most fascinating number in the universe',fr:'Journée de Pi: Célébrer le nombre le plus fascinant de l\'univers',zh:'圆周率日：庆祝宇宙中最迷人的数字',hi:'Pi दिवस: ब्रह्मांड की सबसे आकर्षक संख्या का उत्सव',fil:'Pi Day: Pagdiriwang ng pinaka-kapana-pangarap na numero sa sansinukob'},
+   desc:{ar:'استكشف أصل يوم باي العالمي في 14 مارس، وكيف أصبح رمزاً للاحتفاء بعملة Pi Network والمجتمع الرياضي والتقني حول العالم.',en:'Explore the origin of Pi Day on March 14 and how it became a symbol for Pi Network and the global tech community.',fr:'L\'origine de la Journée de Pi le 14 mars et son rôle pour Pi Network.',zh:'探索3月14日圆周率日的起源以及它如何成为Pi Network的象征。',hi:'14 मार्च को Pi दिवस की उत्पत्ति और Pi Network के लिए इसके महत्व को जानें।',fil:'Ang pinagmulan ng Pi Day sa Marso 14 at kung paano ito naging simbolo ng Pi Network.'}}
 ];
 
-/* ============================================================
-   RENDER
-   ============================================================ */
-let currentFilter = 'all';
+/* CAT LABELS */
+const catLabels={
+  store:{ar:'متجر',en:'Store',fr:'Boutique',zh:'商店',hi:'स्टोर',fil:'Tindahan'},
+  guides:{ar:'دليل',en:'Guide',fr:'Guide',zh:'指南',hi:'गाइड',fil:'Gabay'},
+  analysis:{ar:'تحليل',en:'Analysis',fr:'Analyse',zh:'分析',hi:'विश्लेषण',fil:'Pagsusuri'},
+  news:{ar:'أخبار',en:'News',fr:'Actualités',zh:'新闻',hi:'समाचार',fil:'Balita'}
+};
 
-function renderAll(lang) {
-  const ui = UI[lang] || UI['ar'];
+let currentFilter='all';
 
-  // Filter bar
-  const fb = document.getElementById('filterBar');
-  const filters = [
-    ['all', ui.filterAll],
-    ['news', ui.filterNews],
-    ['guides', ui.filterGuides],
-    ['analysis', ui.filterAnalysis]
-  ];
-  fb.innerHTML = filters.map(([k,l]) =>
-    `<button class="filter-btn${currentFilter===k?' active':''}" data-filter="${k}">${l}</button>`
-  ).join('');
-  fb.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      currentFilter = btn.dataset.filter;
-      renderAll(lang);
-    });
+function renderAll(lang){
+  const ui=UI[lang]||UI['ar'];
+
+  // Filter
+  const fb=document.getElementById('filterBar');
+  const filters=[['all',ui.filterAll],['news',ui.filterNews],['guides',ui.filterGuides],['analysis',ui.filterAnalysis],['store',ui.filterStore]];
+  fb.innerHTML=filters.map(([k,l])=>`<button class="filter-btn${currentFilter===k?' active':''}" data-filter="${k}">${l}</button>`).join('');
+  fb.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{currentFilter=btn.dataset.filter;renderAll(lang)});
   });
 
   // Featured
-  const feat = articles[0];
-  const featWrap = document.getElementById('featuredWrap');
-  const ft = feat.title[lang] || feat.title['ar'];
-  const fd = feat.desc[lang] || feat.desc['ar'];
-  featWrap.innerHTML = `
+  const feat=articles[0];
+  document.getElementById('featuredWrap').innerHTML=`
     <a href="https://piprice.store/blog/article-1.html?lang=${lang}" class="featured-card">
       <div class="featured-content">
         <div class="feat-tag">✦ ${ui.featured}</div>
-        <div class="card-title">${ft}</div>
-        <div class="card-desc">${fd}</div>
-        <span class="read-link">
-          <span>${ui.read}</span>
-          <span class="read-arrow">→</span>
-        </span>
+        <div class="card-title">${feat.title[lang]||feat.title.ar}</div>
+        <div class="card-desc">${feat.desc[lang]||feat.desc.ar}</div>
+        <span class="read-link"><span>${ui.read}</span><span class="read-arrow">→</span></span>
       </div>
-      <div class="featured-visual">
-        <div class="floating-pi">π</div>
-      </div>
+      <div class="featured-visual"><div class="floating-pi">π</div></div>
     </a>`;
 
-  // Grid (articles 2–13, filtered)
-  const grid = document.getElementById('blogGrid');
-  const rest = articles.slice(1).filter(a => currentFilter === 'all' || a.cat === currentFilter);
-
-  let html = '';
-  rest.forEach((a, i) => {
-    const idx = articles.indexOf(a);
-    const t = a.title[lang] || a.title['ar'];
-    const d = a.desc[lang] || a.desc['ar'];
-    const icon = ICONS[idx] || '📄';
-    const num = String(a.id).padStart(2, '0');
-    const url = `https://piprice.store/blog/article-${a.id}.html?lang=${lang}`;
-    const newBadge = a.isNew ? `<span class="new-badge">${ui.newLabel}</span>` : '';
-
-    html += `
-      <a href="${url}" class="blog-card" style="animation-delay:${i*0.06}s;">
+  // Grid
+  const grid=document.getElementById('blogGrid');
+  const rest=articles.slice(1).filter(a=>currentFilter==='all'||a.cat===currentFilter);
+  let html='';
+  rest.forEach((a,i)=>{
+    const t=a.title[lang]||a.title.ar;
+    const d=a.desc[lang]||a.desc.ar;
+    const url=`https://piprice.store/blog/article-${a.id}.html?lang=${lang}`;
+    const num=String(a.id).padStart(2,'0');
+    const catClass=`cat-${a.cat}`;
+    const catLabel=catLabels[a.cat]?catLabels[a.cat][lang]||catLabels[a.cat].ar:'';
+    const newBadge=a.isNew?`<span class="new-badge">${ui.newLabel}</span>`:'';
+    html+=`
+      <a href="${url}" class="blog-card" style="animation-delay:${i*.06}s">
         <div class="card-top-line"></div>
         <div class="card-number">
           <span>— ${num}</span>
+          <span class="${catClass} cat-badge">${catLabel}</span>
           ${newBadge}
         </div>
-        <div class="card-icon">${icon}</div>
+        <div class="card-icon">${a.icon}</div>
         <div class="card-title">${t}</div>
         <div class="card-desc">${d}</div>
-        <span class="read-link">
-          <span>${ui.read}</span>
-          <span class="read-arrow">→</span>
-        </span>
+        <span class="read-link"><span>${ui.read}</span><span class="read-arrow">→</span></span>
       </a>`;
   });
-
-  grid.innerHTML = html || `<div style="grid-column:1/-1;text-align:center;color:#5858888;padding:40px;font-size:14px;">—</div>`;
-
-  // Intersection observer
-  const cards = grid.querySelectorAll('.blog-card');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        applyTilt(entry.target);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
-  cards.forEach(c => observer.observe(c));
+  grid.innerHTML=html||`<div style="grid-column:1/-1;text-align:center;color:#585888;padding:40px;font-size:14px;">—</div>`;
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');applyTilt(e.target);obs.unobserve(e.target)}})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+  grid.querySelectorAll('.blog-card').forEach(c=>obs.observe(c));
 }
 
-/* ============================================================
-   SET LANGUAGE
-   ============================================================ */
-function setLang(lang) {
-  if (!UI[lang]) lang = 'ar';
-  const ui = UI[lang];
-  try { localStorage.setItem('lang', lang); } catch(e) {}
-  try {
-    const u = new URL(window.location.href);
-    u.searchParams.set('lang', lang);
-    window.history.replaceState(null, '', u.toString());
-  } catch(e) {}
-
-  document.documentElement.lang = lang;
-  document.documentElement.dir = ui.dir;
-  document.title = ui.pageTitle;
-
-  document.getElementById('heroTitle').innerHTML = ui.heroTitle;
-  document.getElementById('heroDesc').textContent = ui.heroDesc;
-  document.getElementById('badgeText').textContent = ui.badge;
-  document.getElementById('stat1lbl').textContent = ui.stat1;
-  document.getElementById('stat2lbl').textContent = ui.stat2;
-  document.getElementById('stat3lbl').textContent = ui.stat3;
-  document.getElementById('sectionTitle').textContent = ui.section;
-  document.getElementById('footerText').textContent = ui.footer;
-
-  const homeUrl = `https://piprice.store/?lang=${lang}`;
-  const blogUrl = `https://piprice.store/blog/?lang=${lang}`;
-  const priceUrl = `https://piprice.store/?lang=${lang}#price`;
-
-  const fHome = document.getElementById('footerHome');
-  fHome.textContent = ui.footerHome;
-  fHome.href = homeUrl;
-
-  const fBlog = document.getElementById('footerBlog');
-  fBlog.textContent = ui.footerBlog;
-  fBlog.href = blogUrl;
-
-  const fPrice = document.getElementById('footerPrice');
-  fPrice.textContent = ui.footerPrice;
-  fPrice.href = priceUrl;
-
-  const backBtn = document.getElementById('backBtn');
-  backBtn.textContent = ui.back;
-  backBtn.href = homeUrl;
-
-  document.getElementById('currentFlag').textContent = ui.flag;
-  document.getElementById('currentName').textContent = ui.name;
-  document.querySelectorAll('.lang-list li a').forEach(a => {
-    a.classList.toggle('selected', a.getAttribute('data-lang') === lang);
-  });
-
+function setLang(lang){
+  if(!UI[lang])lang='ar';
+  const ui=UI[lang];
+  try{localStorage.setItem('lang',lang)}catch(e){}
+  try{const u=new URL(window.location.href);u.searchParams.set('lang',lang);window.history.replaceState(null,'',u.toString())}catch(e){}
+  document.documentElement.lang=lang;
+  document.documentElement.dir=ui.dir;
+  document.title=ui.pageTitle;
+  document.getElementById('heroTitle').innerHTML=ui.heroTitle;
+  document.getElementById('heroDesc').textContent=ui.heroDesc;
+  document.getElementById('badgeText').textContent=ui.badge;
+  document.getElementById('stat1lbl').textContent=ui.stat1;
+  document.getElementById('stat2lbl').textContent=ui.stat2;
+  document.getElementById('stat3lbl').textContent=ui.stat3;
+  document.getElementById('sectionTitle').textContent=ui.section;
+  document.getElementById('footerText').textContent=ui.footer;
+  document.getElementById('uaeTitle').textContent=ui.uaeTitle;
+  document.getElementById('uaeDesc').textContent=ui.uaeDesc;
+  const homeUrl=`https://piprice.store/?lang=${lang}`;
+  const blogUrl=`https://piprice.store/blog/?lang=${lang}`;
+  const priceUrl=`https://piprice.store/?lang=${lang}#price`;
+  const fH=document.getElementById('footerHome');fH.textContent=ui.footerHome;fH.href=homeUrl;
+  const fB=document.getElementById('footerBlog');fB.textContent=ui.footerBlog;fB.href=blogUrl;
+  const fP=document.getElementById('footerPrice');fP.textContent=ui.footerPrice;fP.href=priceUrl;
+  const bb=document.getElementById('backBtn');bb.textContent=ui.back;bb.href=homeUrl;
+  document.getElementById('currentFlag').textContent=ui.flag;
+  document.getElementById('currentName').textContent=ui.name;
+  document.querySelectorAll('.lang-list li a').forEach(a=>a.classList.toggle('selected',a.getAttribute('data-lang')===lang));
   renderAll(lang);
 }
 
-/* ============================================================
-   EVENTS
-   ============================================================ */
-document.getElementById('langBtn').addEventListener('click', e => {
-  e.stopPropagation();
-  document.getElementById('langList').classList.toggle('open');
-});
-document.querySelectorAll('.lang-list li a').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    setLang(a.getAttribute('data-lang'));
-    document.getElementById('langList').classList.remove('open');
-  });
-});
-document.addEventListener('click', () => document.getElementById('langList').classList.remove('open'));
-window.addEventListener('scroll', () => {
-  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 300);
-});
+/* Events */
+document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langList').classList.toggle('open')});
+document.querySelectorAll('.lang-list li a').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();setLang(a.getAttribute('data-lang'));document.getElementById('langList').classList.remove('open')})});
+document.addEventListener('click',()=>document.getElementById('langList').classList.remove('open'));
+window.addEventListener('scroll',()=>document.getElementById('scrollTop').classList.toggle('show',window.scrollY>300));
 
-/* ============================================================
-   INIT
-   ============================================================ */
-const up = new URLSearchParams(window.location.search);
-const ul = up.get('lang');
-const sl = (() => { try { return localStorage.getItem('lang'); } catch(e) { return null; } })();
-setLang((ul && UI[ul]) ? ul : (sl && UI[sl]) ? sl : 'ar');
+/* Init */
+const up=new URLSearchParams(window.location.search);
+const ul=up.get('lang');
+const sl=(()=>{try{return localStorage.getItem('lang')}catch(e){return null}})();
+setLang((ul&&UI[ul])?ul:(sl&&UI[sl])?sl:'ar');
 </script>
 </body>
 </html>
