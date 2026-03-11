@@ -1146,13 +1146,26 @@ function setLang(lang) {
   document.getElementById('stat3lbl').textContent = ui.stat3;
   document.getElementById('sectionTitle').textContent = ui.section;
   document.getElementById('footerText').textContent = ui.footer;
-  document.getElementById('footerHome').textContent = ui.footerHome;
-  document.getElementById('footerBlog').textContent = ui.footerBlog;
-  document.getElementById('footerPrice').textContent = ui.footerPrice;
+
+  const homeUrl = `https://piprice.store/?lang=${lang}`;
+  const blogUrl = `https://piprice.store/blog/?lang=${lang}`;
+  const priceUrl = `https://piprice.store/?lang=${lang}#price`;
+
+  const fHome = document.getElementById('footerHome');
+  fHome.textContent = ui.footerHome;
+  fHome.href = homeUrl;
+
+  const fBlog = document.getElementById('footerBlog');
+  fBlog.textContent = ui.footerBlog;
+  fBlog.href = blogUrl;
+
+  const fPrice = document.getElementById('footerPrice');
+  fPrice.textContent = ui.footerPrice;
+  fPrice.href = priceUrl;
 
   const backBtn = document.getElementById('backBtn');
   backBtn.textContent = ui.back;
-  backBtn.href = '../?lang=' + lang;
+  backBtn.href = homeUrl;
 
   document.getElementById('currentFlag').textContent = ui.flag;
   document.getElementById('currentName').textContent = ui.name;
