@@ -552,6 +552,26 @@ footer .footer-logo {
 }
 .scroll-top.show { opacity: 1; pointer-events: all; }
 .scroll-top:hover { background: rgba(240,180,41,0.12); transform: translateY(-3px); }
+
+/* ===== NEW BADGE ===== */
+.new-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, #f0b429, #ff6b35);
+  color: #000;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+[dir="rtl"] .new-badge {
+  left: auto;
+  right: 20px;
+}
 </style>
 </head>
 <body>
@@ -606,7 +626,7 @@ footer .footer-logo {
 
   <div class="stats-bar">
     <div class="stat-item">
-      <span class="stat-num" id="stat1num">12</span>
+      <span class="stat-num" id="stat1num">13</span>
       <span class="stat-label" id="stat1lbl">مقال</span>
     </div>
     <div class="stat-item">
@@ -614,7 +634,7 @@ footer .footer-logo {
       <span class="stat-label" id="stat2lbl">لغة</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">2026</span>
+      <span class="stat-num">2025</span>
       <span class="stat-label" id="stat3lbl">تحديث</span>
     </div>
   </div>
@@ -630,7 +650,7 @@ footer .footer-logo {
 
 <footer>
   <span class="footer-logo">PiPrice</span>
-  <span id="footerText">© PiPrice 2026 · جميع الحقوق محفوظة</span>
+  <span id="footerText">© PiPrice 2025 · جميع الحقوق محفوظة</span>
 </footer>
 
 <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
@@ -777,7 +797,7 @@ const UI = {
     stat1: 'مقال', stat2: 'لغة', stat3: 'تحديث',
     badge: 'Pi Network Blog',
     pageTitle: 'مدونة PiPrice | أخبار Pi Network',
-    footer: '© PiPrice 2026 · جميع الحقوق محفوظة'
+    footer: '© PiPrice 2025 · جميع الحقوق محفوظة'
   },
   en: {
     flag: '🇬🇧', name: 'English', dir: 'ltr',
@@ -789,7 +809,7 @@ const UI = {
     stat1: 'Articles', stat2: 'Languages', stat3: 'Updated',
     badge: 'Pi Network Blog',
     pageTitle: 'PiPrice Blog | Pi Network News',
-    footer: '© PiPrice 2026 · All rights reserved'
+    footer: '© PiPrice 2025 · All rights reserved'
   },
   fr: {
     flag: '🇫🇷', name: 'Français', dir: 'ltr',
@@ -801,7 +821,7 @@ const UI = {
     stat1: 'Articles', stat2: 'Langues', stat3: 'Mis à jour',
     badge: 'Pi Network Blog',
     pageTitle: 'Blog PiPrice | Nouvelles Pi Network',
-    footer: '© PiPrice 2026 · Tous droits réservés'
+    footer: '© PiPrice 2025 · Tous droits réservés'
   },
   zh: {
     flag: '🇨🇳', name: '中文', dir: 'ltr',
@@ -813,7 +833,7 @@ const UI = {
     stat1: '文章', stat2: '语言', stat3: '更新',
     badge: 'Pi Network 博客',
     pageTitle: 'PiPrice 博客 | Pi Network 新闻',
-    footer: '© PiPrice 2026 · 版权所有'
+    footer: '© PiPrice 2025 · 版权所有'
   },
   hi: {
     flag: '🇮🇳', name: 'हिन्दी', dir: 'ltr',
@@ -825,7 +845,7 @@ const UI = {
     stat1: 'लेख', stat2: 'भाषाएं', stat3: 'अपडेट',
     badge: 'Pi Network Blog',
     pageTitle: 'PiPrice ब्लॉग | Pi Network समाचार',
-    footer: '© PiPrice 2026 · सर्वाधिकार सुरक्षित'
+    footer: '© PiPrice 2025 · सर्वाधिकार सुरक्षित'
   },
   fil: {
     flag: '🇵🇭', name: 'Filipino', dir: 'ltr',
@@ -837,76 +857,96 @@ const UI = {
     stat1: 'Artikulo', stat2: 'Wika', stat3: 'Update',
     badge: 'Pi Network Blog',
     pageTitle: 'PiPrice Blog | Balita ng Pi Network',
-    footer: '© PiPrice 2026 · Lahat ng karapatan nakalaan'
+    footer: '© PiPrice 2025 · Lahat ng karapatan nakalaan'
   }
 };
 
 /* ============================================================
-   ARTICLES DATA
+   ARTICLES DATA - تم إضافة المقال 13
    ============================================================ */
-const ICONS = ['🔍','📡','💼','📈','🛡️','🌐','🌏','🔐','💸','🚀','💡','👥'];
+const ICONS = ['🔍','📡','💼','📈','🛡️','🌐','🌏','🔐','💸','🚀','💡','👥','🎂'];
 
 const articles = [
   {
-    id:1,
+    id: 1,
     title:{ar:'ما هو PiPrice وكيف يحدد سعر Pi؟',en:'What is PiPrice and how does it set Pi price?',fr:'Qu\'est-ce que PiPrice et comment fixe-t-il le prix du Pi?',zh:'什么是PiPrice以及它如何设定Pi价格？',hi:'PiPrice क्या है?',fil:'Ano ang PiPrice?'},
     desc:{ar:'PiPrice هو مؤشر لمتابعة سعر Pi Network اليوم في الأسواق بطريقة لحظية ودقيقة.',en:'PiPrice is a real-time index tracking Pi Network price in markets worldwide.',fr:'PiPrice est un indice en temps réel pour suivre le prix Pi sur les marchés.',zh:'PiPrice是实时追踪Pi Network市场价格的指数。',hi:'PiPrice Pi Network की कीमत ट्रैक करने के लिए एक रियल-टाइम इंडेक्स है।',fil:'Ang PiPrice ay isang real-time index na sinusubaybayan ang presyo ng Pi Network.'},
     featured: true
   },
   {
-    id:2,
+    id: 2,
     title:{ar:'أخبار Pi Network: التحديثات الجديدة',en:'Pi Network News: New Updates',fr:'Nouvelles Pi Network: Mises à jour',zh:'Pi Network新闻：最新更新',hi:'Pi Network समाचार: नए अपडेट',fil:'Balita ng Pi Network: Mga Bagong Update'},
     desc:{ar:'تعرف على آخر التحديثات والتطورات في شبكة Pi Network خلال الفترة الحالية.',en:'Learn about the latest updates and developments in Pi Network.',fr:'Découvrez les dernières mises à jour dans Pi Network.',zh:'了解Pi Network目前的最新更新。',hi:'Pi Network में नवीनतम अपडेट जानें।',fil:'Alamin ang mga pinakabagong update sa Pi Network.'}
   },
   {
-    id:3,
+    id: 3,
     title:{ar:'كيفية استخدام محفظة Pi Wallet',en:'How to use Pi Wallet',fr:'Comment utiliser Pi Wallet',zh:'如何使用Pi钱包',hi:'Pi Wallet का उपयोग कैसे करें',fil:'Paano gamitin ang Pi Wallet'},
     desc:{ar:'دليلك الشامل لإنشاء محفظة Pi Wallet وتأمين مفاتيحك الخاصة بشكل صحيح.',en:'Complete guide to creating and securing your Pi Wallet.',fr:'Guide complet pour créer et sécuriser votre portefeuille Pi.',zh:'创建并保护您的Pi钱包完整指南。',hi:'Pi Wallet बनाने और सुरक्षित करने की पूरी गाइड।',fil:'Kumpletong gabay sa paggawa ng Pi Wallet.'}
   },
   {
-    id:4,
+    id: 4,
     title:{ar:'توقعات سعر عملة Pi Network',en:'Pi Network Price Predictions',fr:'Prévisions de prix Pi Network',zh:'Pi Network价格预测',hi:'Pi Network मूल्य भविष्यवाणियाँ',fil:'Mga Hula sa Presyo ng Pi Network'},
     desc:{ar:'تحليلات وتوقعات خبراء العملات الرقمية حول مستقبل سعر عملة Pi.',en:'Expert crypto analysis and predictions about Pi price future.',fr:'Analyses et prédictions des experts sur le futur prix Pi.',zh:'专家关于Pi价格未来的分析和预测。',hi:'Pi मूल्य के भविष्य के बारे में विशेषज्ञ विश्लेषण।',fil:'Pagsusuri ng eksperto tungkol sa kinabukasan ng presyo ng Pi.'}
   },
   {
-    id:5,
+    id: 5,
     title:{ar:'ما هو KYC ولماذا هو مهم؟',en:'What is KYC and why is it important?',fr:'Qu\'est-ce que le KYC?',zh:'什么是KYC？',hi:'KYC क्या है?',fil:'Ano ang KYC?'},
     desc:{ar:'شرح مفصل لعملية التحقق من الهوية KYC في شبكة Pi Network وأهميتها.',en:'Detailed explanation of the KYC verification process in Pi Network.',fr:'Explication du processus de vérification KYC dans Pi Network.',zh:'Pi网络中KYC验证过程的详细说明。',hi:'Pi Network में KYC सत्यापन प्रक्रिया की विस्तृत व्याख्या।',fil:'Detalyadong paliwanag sa KYC verification sa Pi Network.'}
   },
   {
-    id:6,
+    id: 6,
     title:{ar:'الفرق بين Pi Mainnet و Testnet',en:'Pi Mainnet vs Testnet',fr:'Pi Mainnet vs Testnet',zh:'Pi主网与测试网',hi:'Pi Mainnet बनाम Testnet',fil:'Pi Mainnet vs Testnet'},
     desc:{ar:'مقال يوضح الفروقات الجوهرية بين الشبكة التجريبية والشبكة الرئيسية.',en:'Explaining the key differences between Pi Testnet and Mainnet.',fr:'Les différences entre Testnet et Mainnet expliquées.',zh:'解释Pi测试网和主网的主要区别。',hi:'Pi Testnet और Mainnet के बीच अंतर।',fil:'Mga pagkakaiba ng Pi Testnet at Mainnet.'}
   },
   {
-    id:7,
+    id: 7,
     title:{ar:'دليل استخدام متصفح Pi Browser',en:'Guide to Pi Browser',fr:'Guide du navigateur Pi',zh:'Pi浏览器指南',hi:'Pi Browser गाइड',fil:'Gabay sa Pi Browser'},
     desc:{ar:'خطوات تحميل واستخدام متصفح Pi Browser للوصول لتطبيقات النظام البيئي.',en:'Steps to download and use Pi Browser to access ecosystem apps.',fr:'Télécharger et utiliser le navigateur Pi pour les apps.',zh:'下载和使用Pi浏览器的步骤。',hi:'Pi Browser डाउनलोड और उपयोग के चरण।',fil:'Mga hakbang sa pag-download ng Pi Browser.'}
   },
   {
-    id:8,
+    id: 8,
     title:{ar:'نصائح أمنية لحماية حساب Pi',en:'Security Tips for Pi Account',fr:'Conseils de sécurité Pi',zh:'Pi账户安全提示',hi:'Pi Account सुरक्षा टिप्स',fil:'Mga Security Tips para sa Pi'},
     desc:{ar:'أفضل الممارسات لتأمين حسابك من السرقة والاحتيال في عالم العملات.',en:'Best practices to secure your Pi account from fraud and theft.',fr:'Meilleures pratiques pour sécuriser votre compte Pi.',zh:'保护Pi账户免受欺诈的最佳做法。',hi:'धोखाधड़ी से Pi खाते की सुरक्षा।',fil:'Best practices para i-secure ang Pi account.'}
   },
   {
-    id:9,
+    id: 9,
     title:{ar:'كيفية السحب والتحويل في Pi Network',en:'Withdrawals & Transfers in Pi',fr:'Retraits et transferts Pi',zh:'Pi提现与转账',hi:'Pi में निकासी और स्थानांतरण',fil:'Pag-withdraw at Transfer sa Pi'},
     desc:{ar:'خطوات عملية لسحب وتحويل أرصدة Pi بعد فتح الشبكة الرئيسية.',en:'Practical steps to withdraw and transfer Pi after Mainnet.',fr:'Étapes pour retirer et transférer des Pi.',zh:'主网后提取和转移Pi的步骤。',hi:'Mainnet के बाद Pi निकालने के व्यावहारिक चरण।',fil:'Mga hakbang sa pag-withdraw ng Pi.'}
   },
   {
-    id:10,
+    id: 10,
     title:{ar:'مستقبل تطبيقات Pi Apps',en:'The Future of Pi Apps',fr:'L\'avenir des apps Pi',zh:'Pi应用程序的未来',hi:'Pi Apps का भविष्य',fil:'Kinabukasan ng Pi Apps'},
     desc:{ar:'نظرة على التطبيقات المبنية على شبكة Pi وكيف ستغير اقتصاد العملات.',en:'A look at Pi network apps and how they will change crypto.',fr:'Applications Pi et comment elles changeront la crypto.',zh:'Pi网络应用程序的前景。',hi:'Pi नेटवर्क ऐप्स और क्रिप्टो पर उनका प्रभाव।',fil:'Mga app sa Pi network at ang epekto nito.'}
   },
   {
-    id:11,
+    id: 11,
     title:{ar:'حقائق وشائعات حول Pi Network',en:'Facts & Myths about Pi Network',fr:'Faits et mythes sur Pi Network',zh:'Pi Network事实与谣言',hi:'Pi Network तथ्य और मिथक',fil:'Katotohanan at Mito tungkol sa Pi'},
     desc:{ar:'نفي وتوضيح أشهر الشائعات المنتشرة حول عملة Pi Network.',en:'Debunking the most famous myths and rumors about Pi.',fr:'Démystifier les rumeurs les plus célèbres sur Pi.',zh:'揭穿最著名的Pi传言。',hi:'Pi के बारे में मशहूर मिथकों का खंडन।',fil:'Pinabubunyag ang mga sikat na mito tungkol sa Pi.'}
   },
   {
-    id:12,
+    id: 12,
     title:{ar:'كيف تشارك في مجتمع Pi Network؟',en:'How to Join the Pi Community?',fr:'Rejoindre la communauté Pi',zh:'如何参与Pi社区',hi:'Pi समुदाय से कैसे जुड़ें?',fil:'Paano Sumali sa Pi Community?'},
     desc:{ar:'دليل للانضمام للمجتمعات الفعالة والمساهمة في تطوير الشبكة.',en:'Guide to joining active communities and contributing to Pi.',fr:'Rejoindre les communautés Pi et contribuer au réseau.',zh:'加入Pi社区并参与网络发展。',hi:'Pi समुदायों में शामिल होने की गाइड।',fil:'Gabay sa pagsali sa mga Pi community.'}
+  },
+  {
+    id: 13,
+    isNew: true,
+    title:{
+      ar:'يوم باي العالمي: احتفال بالرقم الأكثر إثارة',
+      en:'Pi Day: Celebrating the Most Fascinating Number',
+      fr:'Journée de Pi: Célébrer le nombre le plus fascinant',
+      zh:'圆周率日：庆祝最迷人的数字',
+      hi:'Pi दिवस: सबसे आकर्षक संख्या का उत्सव',
+      fil:'Pi Day: Pagdiriwang ng Pinaka-kapana-pangarap na Numero'
+    },
+    desc:{
+      ar:'اكتشف قصة يوم باي العالمي في 14 مارس وأهميته لعشاق الرياضيات ومجتمع Pi Network.',
+      en:'Discover the story of Pi Day on March 14 and its significance for math lovers and Pi Network community.',
+      fr:'Découvrez l\'histoire de la Journée de Pi le 14 mars et son importance.',
+      zh:'探索3月14日圆周率日的故事及其意义。',
+      hi:'14 मार्च को Pi दिवस की कहानी और इसके महत्व के बारे में जानें।',
+      fil:'Alamin ang kwento ng Pi Day sa Marso 14 at ang kahalagahan nito.'
+    }
   }
 ];
 
@@ -924,7 +964,6 @@ function renderArticles(lang) {
     const icon = ICONS[i] || '📄';
     const num = String(i + 1).padStart(2, '0');
 
-    // تم إضافة ?lang= للرابط حتى تنتقل اللغة لصفحة المقال
     const url = `https://piprice.store/blog/article-${a.id}.html?lang=${lang}`;
 
     if (a.featured) {
@@ -945,9 +984,11 @@ function renderArticles(lang) {
           </div>
         </a>`;
     } else {
+      const newBadge = a.isNew ? '<span class="new-badge">NEW</span>' : '';
       html += `
         <a href="${url}" class="blog-card" style="animation-delay:${i*0.07}s;">
           <div class="card-glow-line"></div>
+          ${newBadge}
           <div class="card-number">— ${num}</div>
           <div class="card-icon">${icon}</div>
           <div class="card-title">${t}</div>
@@ -1055,7 +1096,6 @@ window.addEventListener('scroll', () => {
 /* ============================================================
    INIT
    ============================================================ */
-// Read from URL first, then LocalStorage, fallback to 'ar'
 const urlParams = new URLSearchParams(window.location.search);
 const urlLang = urlParams.get('lang');
 const savedLang = localStorage.getItem('lang');
