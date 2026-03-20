@@ -463,6 +463,84 @@ footer { text-align:center;padding:26px;color:var(--text-muted);font-size:12px; 
 }
 .reveal { opacity:0;transform:translateY(24px); transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1); }
 .reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ═══════════════════════════════════════════
+   NEW: PROMO POPUP STYLES 
+═══════════════════════════════════════════ */
+.promo-popup {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(150px);
+    background: linear-gradient(135deg, var(--dark2), var(--dark3));
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 16px 40px 16px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px rgba(212,160,23,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+    width: 90%;
+    max-width: 480px;
+    direction: rtl;
+}
+[dir="ltr"] .promo-popup {
+    direction: ltr;
+    padding: 16px 20px 16px 40px;
+}
+.promo-popup.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+.promo-popup-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    animation: logoPulse 2s infinite;
+}
+.promo-popup-text {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.6;
+}
+.promo-popup-text span {
+    color: var(--gold);
+    font-weight: 900;
+}
+.promo-popup-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255,255,255,0.05);
+    border: none;
+    color: var(--text-muted);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+[dir="ltr"] .promo-popup-close {
+    right: auto;
+    left: 8px;
+}
+.promo-popup-close:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+@media (max-width: 520px) {
+    .promo-popup { width: 95%; bottom: 16px; padding: 14px 36px 14px 16px; }
+    [dir="ltr"] .promo-popup { padding: 14px 16px 14px 36px; }
+    .promo-popup-text { font-size: 12px; }
+    .promo-popup-icon { font-size: 24px; }
+}
 </style>
 </head>
 <body>
@@ -762,6 +840,13 @@ footer { text-align:center;padding:26px;color:var(--text-muted);font-size:12px; 
 </main>
 </div>
 
+<div class="promo-popup" id="promo-popup">
+    <button class="promo-popup-close" id="promo-popup-close" aria-label="Close">✕</button>
+    <div class="promo-popup-icon">🎁</div>
+    <div class="promo-popup-text" id="promo-popup-text">
+        بيع معنا عملة pi ولديك فرصة تكسب لحد <span style="color:var(--gold)">10000 دولار</span> من صرافة الانصاري+
+    </div>
+</div>
 <div class="modal-overlay" id="modal-guide">
   <div class="modal-box" style="max-width:640px">
     <button class="modal-close" onclick="App.closeModal('guide')">✕</button>
@@ -1398,6 +1483,49 @@ var App=(function(){
 })();
 
 document.addEventListener('DOMContentLoaded',function(){App.init();});
+
+/* ═══════════════════════════════════════════
+   NEW: PROMO POPUP LOGIC
+═══════════════════════════════════════════ */
+(function initPromoPopup() {
+    var translations = {
+        ar: 'بيع معنا عملة pi ولديك فرصة تكسب لحد <span style="color:var(--gold)">10000 دولار</span> من صرافة الانصاري+',
+        en: 'Sell Pi coin with us and get a chance to win up to <span style="color:var(--gold)">$10,000</span> from Al Ansari Exchange+',
+        zh: '与我们一起出售Pi币，即有机会赢取高达 <span style="color:var(--gold)">10,000美元</span>（Al Ansari交易所+）',
+        fil: 'Ibenta ang Pi coin sa amin at manalo ng hanggang <span style="color:var(--gold)">$10,000</span> mula sa Al Ansari Exchange+',
+        hi: 'हमारे साथ Pi कॉइन बेचें और Al Ansari Exchange+ से <span style="color:var(--gold)">$10,000</span> तक जीतने का मौका पाएं',
+        fr: 'Vendez vos pièces Pi avec nous et gagnez jusqu\'à <span style="color:var(--gold)">10 000 $</span> avec Al Ansari Exchange+'
+    };
+
+    function updatePopupLang() {
+        var currentLang = document.documentElement.lang || 'ar';
+        var textEl = document.getElementById('promo-popup-text');
+        if (textEl && translations[currentLang]) {
+            textEl.innerHTML = translations[currentLang];
+        }
+    }
+
+    // مراقبة تغيير اللغة تلقائياً دون لمس الدوال الأخرى
+    var observer = new MutationObserver(updatePopupLang);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updatePopupLang();
+        var popup = document.getElementById('promo-popup');
+        var closeBtn = document.getElementById('promo-popup-close');
+        
+        if(closeBtn && popup) {
+            closeBtn.addEventListener('click', function() {
+                popup.style.display = 'none';
+            });
+        }
+        
+        // إظهار النافذة بعد ثانيتين من فتح الصفحة
+        setTimeout(function() {
+            if(popup) popup.classList.add('show');
+        }, 2000);
+    });
+})();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 <script>
