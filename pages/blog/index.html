@@ -580,7 +580,7 @@ footer .footer-logo {
         </ul>
       </div>
 
-      <a href="../" class="back-btn" id="backBtn">العودة للرئيسية</a>
+      <a href="../../" class="back-btn" id="backBtn">العودة للرئيسية</a>
     </div>
   </header>
 
@@ -925,7 +925,7 @@ function renderArticles(lang) {
     const num = String(i + 1).padStart(2, '0');
 
     // تم إضافة ?lang= للرابط حتى تنتقل اللغة لصفحة المقال
-    const url = `https://piprice.store/blog/article-${a.id}.html?lang=${lang}`;
+    const url = `https://piprice.store/pages/blog/article-${a.id}.html?lang=${lang}`;
 
     if (a.featured) {
       html += `
@@ -984,7 +984,7 @@ function setLang(lang) {
   if (!UI[lang]) lang = 'ar';
   const ui = UI[lang];
 
-  try { localStorage.setItem('lang', lang); } catch(e) {}
+  try { localStorage.setItem('pi_lang', lang); } catch(e) {}
 
   // Update URL to reflect selected language without reloading
   try {
@@ -995,7 +995,7 @@ function setLang(lang) {
 
   // Update Back Button Link to hold current lang
   const backBtn = document.getElementById('backBtn');
-  if(backBtn) backBtn.href = '../?lang=' + lang;
+  if(backBtn) backBtn.href = '../../?lang=' + lang;
 
   // dir
   document.documentElement.lang = lang;
@@ -1058,7 +1058,7 @@ window.addEventListener('scroll', () => {
 // Read from URL first, then LocalStorage, fallback to 'ar'
 const urlParams = new URLSearchParams(window.location.search);
 const urlLang = urlParams.get('lang');
-const savedLang = localStorage.getItem('lang');
+const savedLang = localStorage.getItem('pi_lang');
 const initLang = (urlLang && UI[urlLang]) ? urlLang : (savedLang && UI[savedLang]) ? savedLang : 'ar';
 
 setLang(initLang);
