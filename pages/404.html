@@ -523,6 +523,36 @@ font-size:18px;
 }
 }
 
+
+/* ═══ COUNTDOWN BAR ═══ */
+.countdown-bar {
+  margin-top: 24px;
+  width: 100%;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cd-progress {
+  height: 4px;
+  background: rgba(212,160,23,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.cd-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  border-radius: 4px;
+  transition: width 0.9s linear;
+}
+.cd-text {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0;
+  opacity: 0.8;
+}
 </style>
 </head>
 
@@ -720,7 +750,8 @@ function setLanguage(lang) {
   document.getElementById('langDropdown').classList.remove('active');
   
   // Save preference
-  localStorage.setItem('piprice-lang', lang);
+  localStorage.setItem('pi_lang', lang === 'ph' ? 'fil' : lang === 'in' ? 'hi' : lang);
+  startCountdown(lang);
   
   // Update URL
   history.replaceState(null, '', '?lang=' + lang);
@@ -735,17 +766,75 @@ document.addEventListener('click', function(e) {
   }
 });
 
+// خريطة تحويل: الموقع يستخدم 'fil' و 'hi' لكن 404 يستخدم 'ph' و 'in'
+const LANG_MAP = { fil: 'ph', hi: 'in', ph: 'ph', 'in': 'in' };
+
+// ═══ عداد التحويل التلقائي بعد 10 ثوانٍ ═══
+const REDIRECT_DELAY = 10;
+const countdownMsgs = {
+  ar: 'سيتم توجيهك للرئيسية خلال',
+  en: 'Redirecting to home in',
+  zh: '将在以下时间内跳转至首页：',
+  ph: 'Ireredirect sa home sa loob ng',
+  'in': 'होम पर रीडायरेक्ट हो रहे हैं',
+  fr: 'Redirection vers l'accueil dans'
+};
+const countdownSeconds = {
+  ar: 'ثانية', en: 'seconds', zh: '秒', ph: 'segundo', 'in': 'सेकंड', fr: 'secondes'
+};
+
+// أضف عنصر العداد لكل content block
+document.querySelectorAll('.lang-content').forEach(function(el) {
+  var cd = document.createElement('div');
+  cd.className = 'countdown-bar';
+  cd.innerHTML = '<div class="cd-progress"><div class="cd-fill" id="cd-fill-' + el.id.replace('content-','') + '"></div></div><p class="cd-text" id="cd-text-' + el.id.replace('content-','') + '"></p>';
+  el.appendChild(cd);
+});
+
+var cdInterval = null;
+var cdSeconds = REDIRECT_DELAY;
+var currentLangForRedirect = 'ar';
+
+function startCountdown(lang) {
+  currentLangForRedirect = lang;
+  cdSeconds = REDIRECT_DELAY;
+  if (cdInterval) clearInterval(cdInterval);
+
+  function tick() {
+    var fillEl = document.getElementById('cd-fill-' + lang);
+    var textEl = document.getElementById('cd-text-' + lang);
+    if (fillEl) fillEl.style.width = ((cdSeconds / REDIRECT_DELAY) * 100) + '%';
+    if (textEl) {
+      var msg = countdownMsgs[lang] || countdownMsgs['en'];
+      var sec = countdownSeconds[lang] || countdownSeconds['en'];
+      textEl.textContent = msg + ' ' + cdSeconds + ' ' + sec + '...';
+    }
+    cdSeconds--;
+    if (cdSeconds < 0) {
+      clearInterval(cdInterval);
+      // رابط اللغة — نحوّل ph→fil و in→hi للرئيسية
+      var homeLang = (lang === 'ph') ? 'fil' : (lang === 'in') ? 'hi' : lang;
+      window.location.href = 'https://piprice.store/?lang=' + homeLang;
+    }
+  }
+  tick();
+  cdInterval = setInterval(tick, 1000);
+}
+
 // Load saved language on page load
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
-  const urlLang = urlParams.get('lang');
-  const savedLang = localStorage.getItem('piprice-lang');
-  
-  if (urlLang && langNames[urlLang]) {
-    setLanguage(urlLang);
-  } else if (savedLang && langNames[savedLang]) {
-    setLanguage(savedLang);
-  }
+  let urlLang = urlParams.get('lang');
+  const savedLang = localStorage.getItem('pi_lang');
+
+  // تحويل المفاتيح
+  if (urlLang) urlLang = LANG_MAP[urlLang] || urlLang;
+  let initLang = (urlLang && langNames[urlLang]) ? urlLang
+               : (savedLang && langNames[LANG_MAP[savedLang] || savedLang]) ? (LANG_MAP[savedLang] || savedLang)
+               : 'ar';
+
+  setLanguage(initLang);
+  startCountdown(initLang);
 });
 </script>
 
