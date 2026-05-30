@@ -1022,7 +1022,7 @@ footer { text-align:center;padding:26px;color:var(--text-muted);font-size:12px; 
   <span class="nav-sep">•</span>
   <a href="#price" class="nav-link" id="nav-price">📈 السعر</a>
   <span class="nav-sep">•</span>
-  <a href="/pages/blog/" class="nav-link" id="nav-blog">📝 المدونة</a>
+  <a href="/blog/" class="nav-link" id="nav-blog">📝 المدونة</a>
   <span class="nav-sep">•</span>
   <a href="/pages/about.html" class="nav-link" id="nav-about">من نحن</a>
   <span class="nav-sep">•</span>
@@ -1284,7 +1284,7 @@ footer { text-align:center;padding:26px;color:var(--text-muted);font-size:12px; 
 <footer>
   <div class="footer-links">
     <button class="footer-link" id="btn-guide">📖 الدليل الشامل</button>
-    <a href="/pages/blog/" class="footer-link" id="btn-blog">📝 المدونة</a>
+    <a href="/blog/" class="footer-link" id="btn-blog">📝 المدونة</a>
     <a href="/pages/about.html" class="footer-link" id="btn-about">من نحن</a>
     <a href="/pages/ContactUs.html" class="footer-link" id="btn-contact">اتصل بنا</a>
     <a href="/pages/PrivacyPolicy.html" class="footer-link" id="btn-privacy">سياسة الخصوصية</a>
@@ -1862,6 +1862,10 @@ var App=(function(){
     try{localStorage.setItem('pi_lang',l);}catch(e){}
     try{var url=new URL(window.location.href);url.searchParams.set('lang',l);window.history.replaceState(null,'',url.toString());}catch(e){}
     document.querySelectorAll('a.footer-link').forEach(function(link) { try { var u = new URL(link.href); u.searchParams.set('lang', l); link.href = u.toString(); } catch(e) {} });
+    // تحديث روابط شريط التنقل بـ ?lang=
+    document.querySelectorAll('a.nav-link').forEach(function(link) {
+      try { var u = new URL(link.href); u.searchParams.set('lang', l); link.href = u.toString(); } catch(e) {}
+    });
 
     var t=T(); document.documentElement.lang=l; document.body.setAttribute('dir',t.dir); $$('langSelect').value=l;
     setText('txt-brand',t.brand);setText('txt-brand-sub',t.brandSub||'');
