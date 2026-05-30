@@ -963,7 +963,7 @@ function setLanguage(lang) {
   document.getElementById('langDropdown').classList.remove('active');
   
   // Save preference
-  localStorage.setItem('piprice-lang', lang);
+  localStorage.setItem('pi_lang', lang);
   
   // Update URL
   history.replaceState(null, '', '?lang=' + lang);
@@ -982,7 +982,7 @@ document.addEventListener('click', function(e) {
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
   const urlLang = urlParams.get('lang');
-  const savedLang = localStorage.getItem('piprice-lang');
+  const savedLang = localStorage.getItem('pi_lang');
   
   if (urlLang && langNames[urlLang]) {
     setLanguage(urlLang);
