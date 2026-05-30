@@ -984,7 +984,7 @@ function setLang(lang) {
   if (!UI[lang]) lang = 'ar';
   const ui = UI[lang];
 
-  try { localStorage.setItem('lang', lang); } catch(e) {}
+  try { localStorage.setItem('pi_lang', lang); } catch(e) {}
 
   // Update URL to reflect selected language without reloading
   try {
@@ -1058,7 +1058,7 @@ window.addEventListener('scroll', () => {
 // Read from URL first, then LocalStorage, fallback to 'ar'
 const urlParams = new URLSearchParams(window.location.search);
 const urlLang = urlParams.get('lang');
-const savedLang = localStorage.getItem('lang');
+const savedLang = localStorage.getItem('pi_lang');
 const initLang = (urlLang && UI[urlLang]) ? urlLang : (savedLang && UI[savedLang]) ? savedLang : 'ar';
 
 setLang(initLang);
